@@ -27,9 +27,6 @@ Top Contributors
    * - sarvesh kesharwani
      - `Sarvesh-Kesharwani <https://github.com/Sarvesh-Kesharwani>`_
      - Ivy Inspector Bronze, OG Gold
-   * - Arunima Santhosh Kumar
-     - `niixxaaa <https://github.com/niixxaaa>`_
-     - OG Gold
    * - Krishna Boppana
      - `krishna-boppana <https://github.com/krishna-boppana>`_
      - OG Gold
