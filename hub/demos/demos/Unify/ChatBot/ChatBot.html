@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Install Dependencies &#8212; Unify Documentation</title>
+    <title>Build a ChatBot &#8212; Unify Documentation</title>
   
   
   
@@ -65,7 +65,7 @@
     <link rel="icon" href="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/ivy_logo_only.png?raw=true"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="LangChain Examples" href="../../../langchain.html" />
+    <link rel="next" title="Synchronous VS Asynchronous Clients" href="../AsyncVsSync/AsyncVsSync.html" />
     <link rel="prev" title="Python Package Examples" href="../../../unify.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -265,8 +265,10 @@ document.write(`
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../unify.html">Python Package Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Install Dependencies</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Build a ChatBot</a></li>
 
+
+<li class="toctree-l2"><a class="reference internal" href="../AsyncVsSync/AsyncVsSync.html">Synchronous VS Asynchronous Clients</a></li>
 
 </ul>
 </li>
@@ -319,7 +321,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../../../unify.html" class="nav-link">Python Package Examples</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Install Dependencies</li>
+    <li class="breadcrumb-item active" aria-current="page">Build a ChatBot</li>
   </ul>
 </nav>
 </div>
@@ -336,11 +338,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>#Build a ChatBot</p>
+  <section id="Build-a-ChatBot">
+<h1>Build a ChatBot<a class="headerlink" href="#Build-a-ChatBot" title="Link to this heading">#</a></h1>
 <p>In this notebook, we will build an interactive chatbot using the <code class="docutils literal notranslate"><span class="pre">unifyai</span></code> python package.</p>
 <p>Under the hood, chatbots are very simple to implement. All LLM endpoints are stateless, and therefore the entire conversation history is repeatedly fed as input to the model. All that is required of the local agent is to store this history, and correctly pass it to the model.</p>
 <section id="Install-Dependencies">
-<h1>Install Dependencies<a class="headerlink" href="#Install-Dependencies" title="Link to this heading">#</a></h1>
+<h2>Install Dependencies<a class="headerlink" href="#Install-Dependencies" title="Link to this heading">#</a></h2>
 <p>To run this notebook, you will need to install the <code class="docutils literal notranslate"><span class="pre">unifyai</span></code> <a class="reference external" href="https://pypi.org/project/unifyai/">python package</a>. You can do so by running the cell below ⬇️</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -385,7 +388,7 @@ Successfully installed unifyai-0.8.1
 </div>
 </section>
 <section id="The-Agent">
-<h1>The Agent<a class="headerlink" href="#The-Agent" title="Link to this heading">#</a></h1>
+<h2>The Agent<a class="headerlink" href="#The-Agent" title="Link to this heading">#</a></h2>
 <p>We define a simple chatbot class below, with the only public function being <code class="docutils literal notranslate"><span class="pre">run</span></code>. Before starting, you should to obtain a UNIFY key from the <a class="reference external" href="https://console.unify.ai/login?callbackUrl=%2F">console page</a> and assign it to the <code class="docutils literal notranslate"><span class="pre">UNIFY_KEY</span></code> variable below.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -632,7 +635,7 @@ Successfully installed unifyai-0.8.1
 </div>
 </section>
 <section id="Let's-Chat">
-<h1>Let’s Chat<a class="headerlink" href="#Let's-Chat" title="Link to this heading">#</a></h1>
+<h2>Let’s Chat<a class="headerlink" href="#Let's-Chat" title="Link to this heading">#</a></h2>
 <p>Now, we can instantiate and chat with this agent. For this demo, we’ll utilize the <code class="docutils literal notranslate"><span class="pre">llama-2-7b-chat</span></code> model from <code class="docutils literal notranslate"><span class="pre">anyscale</span></code>. However, you have the flexibility to select any model and provider from our supported options on the <a class="reference external" href="https://unify.ai/hub">benchmarks interface</a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -822,8 +825,10 @@ Let&#39;s have a chat. (Enter `pause` to pause and `quit` to exit)
 &gt; quit
 </pre></div></div>
 </div>
+</section>
+</section>
 <section id="Python-Package">
-<h2>Python Package<a class="headerlink" href="#Python-Package" title="Link to this heading">#</a></h2>
+<h1>Python Package<a class="headerlink" href="#Python-Package" title="Link to this heading">#</a></h1>
 <p>The python package already contains the <code class="docutils literal notranslate"><span class="pre">ChatBot</span></code> agent and you may use it directly as follows:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -846,16 +851,10 @@ Let&#39;s have a chat. (Enter `pause` to pause and `quit` to exit)
 &gt; quit
 </pre></div></div>
 </div>
-<p>#Round Up Congratulations! 🚀 You are now capable of building ChatBot Agents for your application using our LLM endpoints. If you’re a contributor and want to earn a cool badge, you should fill out this <a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSdTd0U5czFNY3aNFHHbjizd4a9gz-oTINMrHMnopOgZzajs9g/viewform?usp=sf_link">form</a> which contains a few quiz questions about the concepts you learnt in this tutorial. Happy</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </section>
+<section id="Round-Up">
+<h1>Round Up<a class="headerlink" href="#Round-Up" title="Link to this heading">#</a></h1>
+<p>Congratulations! 🚀 You are now capable of building ChatBot Agents for your application using our LLM endpoints.</p>
 </section>
 
 
@@ -878,11 +877,11 @@ Let&#39;s have a chat. (Enter `pause` to pause and `quit` to exit)
       </div>
     </a>
     <a class="right-next"
-       href="../../../langchain.html"
+       href="../AsyncVsSync/AsyncVsSync.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LangChain Examples</p>
+        <p class="prev-next-title">Synchronous VS Asynchronous Clients</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -904,12 +903,14 @@ Let&#39;s have a chat. (Enter `pause` to pause and `quit` to exit)
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Install Dependencies</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Agent">The Agent</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Let's-Chat">Let’s Chat</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Python-Package">Python Package</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Build a ChatBot</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Install-Dependencies">Install Dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Agent">The Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Let's-Chat">Let’s Chat</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Python-Package">Python Package</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Round-Up">Round Up</a></li>
 </ul>
 
   </nav></div>
@@ -984,8 +985,10 @@ document.write(`
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../unify.html">Python Package Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Install Dependencies</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Build a ChatBot</a></li>
 
+
+<li class="toctree-l2"><a class="reference internal" href="../AsyncVsSync/AsyncVsSync.html">Synchronous VS Asynchronous Clients</a></li>
 
 </ul>
 </li>

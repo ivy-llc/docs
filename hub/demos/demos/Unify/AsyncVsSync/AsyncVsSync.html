@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Install Dependencies &#8212; Unify Documentation</title>
+    <title>Synchronous VS Asynchronous Clients &#8212; Unify Documentation</title>
   
   
   
@@ -61,10 +61,12 @@
             </script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'demos/demos/Unify/AsyncVsSync/SyncvsAsync';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'demos/demos/Unify/AsyncVsSync/AsyncVsSync';</script>
     <link rel="icon" href="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/ivy_logo_only.png?raw=true"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="LangChain Examples" href="../../../langchain.html" />
+    <link rel="prev" title="Build a ChatBot" href="../ChatBot/ChatBot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +127,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -197,7 +197,7 @@
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../../../unify.html">
                         Python Package Examples
                       </a>
@@ -263,10 +263,12 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference/endpoints.html">Endpoints</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../unify.html">Python Package Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ChatBot/ChatBot.html">Install Dependencies</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../unify.html">Python Package Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ChatBot/ChatBot.html">Build a ChatBot</a></li>
 
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Synchronous VS Asynchronous Clients</a></li>
 
 </ul>
 </li>
@@ -316,7 +318,10 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Install Dependencies</li>
+    
+    <li class="breadcrumb-item"><a href="../../../unify.html" class="nav-link">Python Package Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Synchronous...</li>
   </ul>
 </nav>
 </div>
@@ -333,7 +338,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>#Synchronous VS Asynchronous Clients</p>
+  <section id="Synchronous-VS-Asynchronous-Clients">
+<h1>Synchronous VS Asynchronous Clients<a class="headerlink" href="#Synchronous-VS-Asynchronous-Clients" title="Link to this heading">#</a></h1>
 <p>Given the growing demand for real-time applications and user demands for instant responses, it’s crucial to grasp the performance implications between Sync and Async clients. In this notebook, we’ll delve into the variations between asynchronous and synchronous response times using UnifyAI’s API.</p>
 <p>In order to run this notebook, you need to generate your UNIFY key from the <a class="reference external" href="https://console.unify.ai/login?callbackUrl=%2F">console</a>. Once you have it, assign it to the <code class="docutils literal notranslate"><span class="pre">UNIFY_KEY</span></code> variable below.</p>
 <div class="nbinput nblast docutils container">
@@ -345,7 +351,7 @@ document.write(`
 </div>
 </div>
 <section id="Install-Dependencies">
-<h1>Install Dependencies<a class="headerlink" href="#Install-Dependencies" title="Link to this heading">#</a></h1>
+<h2>Install Dependencies<a class="headerlink" href="#Install-Dependencies" title="Link to this heading">#</a></h2>
 <p>To run this notebook, you will need to install the <code class="docutils literal notranslate"><span class="pre">unifyai</span></code> <a class="reference external" href="https://pypi.org/project/unifyai/">python package</a>. You can do so by running the cell below ⬇️</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -394,7 +400,7 @@ Successfully installed h11-0.14.0 httpcore-1.0.5 httpx-0.27.0 openai-1.17.1 unif
 </div>
 </section>
 <section id="Synchronous-Clients">
-<h1>Synchronous Clients<a class="headerlink" href="#Synchronous-Clients" title="Link to this heading">#</a></h1>
+<h2>Synchronous Clients<a class="headerlink" href="#Synchronous-Clients" title="Link to this heading">#</a></h2>
 <p>A Synchronous client handles requests sequentially, processing one at a time. This means that each request must be fully handled before the next one is processed, resulting in potential blocking of the program’s execution. You can use a Sync client with Unify as shown below:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -426,7 +432,7 @@ Newton was a true renaissance thinker, and his contributions to science and math
 </div>
 </section>
 <section id="Async-Clients">
-<h1>Async Clients<a class="headerlink" href="#Async-Clients" title="Link to this heading">#</a></h1>
+<h2>Async Clients<a class="headerlink" href="#Async-Clients" title="Link to this heading">#</a></h2>
 <p>An Asynchronous client can handle multiple requests concurrently without blocking. To use the Async client, import <code class="docutils literal notranslate"><span class="pre">AsyncUnify</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Unify</span></code> and use <code class="docutils literal notranslate"><span class="pre">await</span></code> with the <code class="docutils literal notranslate"><span class="pre">.generate</span></code> method. This signals to the program to pause execution until the asynchronous operation completes. Additionally, we’ll use the <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> library for managing asynchronous execution and coroutines. <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> provides tools for building concurrent programs using coroutines, which can be paused and
 resumed, allowing for efficient handling of asynchronous tasks.</p>
 <p>NOTE: Running ansyncio in notebooks conflicts with the existing event loop run in the notebook. As a workaround, we need to use <code class="docutils literal notranslate"><span class="pre">net_asyncio.apply</span></code>. Please see <a class="reference external" href="https://github.com/jupyter/notebook/issues/3397">this issue</a> for more details.</p>
@@ -571,16 +577,12 @@ Synchronous Response Times: 55.45608472824097
 </pre></div></div>
 </div>
 <p>As expected, the Asynchronous client peforms much better than the sequential synchorous client.</p>
-<p>#Round Up Congratulations! 🚀 You now have an understanding of Async and Sync clients and can hopefully leverage these concepts in your own applications. If you’re a contributor and want to earn a cool badge, you should fill out this <a class="reference external" href="https://docs.google.com/forms/d/e/1FAIpQLSfQHh2H08G5UeR2s3Vc5zYTpnuLGGKAcW3pT7RliUzsytxUug/viewform?usp=sf_link">form</a> which contains a few quiz questions about the concepts you learnt in this tutorial. Happy quizzing!</p>
+</section>
+</section>
+<section id="Round-Up">
+<h1>Round Up<a class="headerlink" href="#Round-Up" title="Link to this heading">#</a></h1>
+<p>Congratulations! 🚀 You now have an understanding of Async and Sync clients and can hopefully leverage these concepts in your own applications.</p>
 <p>In the next tutorial, we will expore how to build an interactive ChatBot Agent! See you there ➡️!</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </section>
 
 
@@ -593,6 +595,24 @@ Synchronous Response Times: 55.45608472824097
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../ChatBot/ChatBot.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Build a ChatBot</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../../langchain.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LangChain Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -611,9 +631,13 @@ Synchronous Response Times: 55.45608472824097
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Install Dependencies</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Synchronous-Clients">Synchronous Clients</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Async-Clients">Async Clients</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Synchronous VS Asynchronous Clients</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Install-Dependencies">Install Dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Synchronous-Clients">Synchronous Clients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Async-Clients">Async Clients</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Round-Up">Round Up</a></li>
 </ul>
 
   </nav></div>
@@ -686,10 +710,12 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../../../reference/endpoints.html">Endpoints</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../unify.html">Python Package Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ChatBot/ChatBot.html">Install Dependencies</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../unify.html">Python Package Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../ChatBot/ChatBot.html">Build a ChatBot</a></li>
 
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Synchronous VS Asynchronous Clients</a></li>
 
 </ul>
 </li>
