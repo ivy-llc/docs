@@ -389,7 +389,7 @@ document.write(`
 <p>If you have various private endpoints deployed across various servers, each with varying latencies, it can be useful to track these speeds across time, to ensure you’re always sending your requests to the fastest servers.</p>
 <p>To trigger periodic runtime benchmarking for a custom endpoint, simply add it to the list under the heading <strong>Runtime Benchmarks</strong>. You also need to specify at least one IP address from where you would like to test this endpoint, and also at least one prompt dataset against which you would like to perform the benchmarking.</p>
 <a class="reference internal image-reference" href="../_images/console_runtime_benchmarks.png"><img alt="Console Runtime Benchmarks." class="align-center" src="../_images/console_runtime_benchmarks.png" style="width: 650px;" /></a>
-<p>Once all endpoints are added, you can then go to the <code class="code docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">Benchmarks</span></code> page, and you’ll find your model listed. Note the <strong>lock icon</strong>, which indicates that this benchmark is private (only accessible from your own account).</p>
+<p>Once all endpoints are added, you can then go to the <cite>Benchmarks &lt;https://unify.ai/benchmarks&gt;_</cite> page, and you’ll find your model listed. Note the <strong>lock icon</strong>, which indicates that this benchmark is private (only accessible from your own account).</p>
 <a class="reference internal image-reference" href="../_images/custom_benchmarks.png"><img alt="Custom Benchmarks." class="align-center" src="../_images/custom_benchmarks.png" style="width: 650px;" /></a>
 <p>You can open up the benchmark page like any other endpoint, and view the performance for various metrics plotted across time.</p>
 <a class="reference internal image-reference" href="../_images/custom_benchmarks_model.png"><img alt="Custom Benchmarks Model." class="align-center" src="../_images/custom_benchmarks_model.png" style="width: 650px;" /></a>
@@ -405,8 +405,8 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/console_benchmarks_quality_submitted.png"><img alt="Console Benchmarks Quality Submitted." class="align-center" src="../_images/console_benchmarks_quality_submitted.png" style="width: 650px;" /></a>
 <p>The job can be expanded, to see each endpoint and dataset pair, and check the progress.</p>
 <a class="reference internal image-reference" href="../_images/console_benchmarks_quality_jobs.png"><img alt="Console Benchmarks Quality Quality Jobs." class="align-center" src="../_images/console_benchmarks_quality_jobs.png" style="width: 650px;" /></a>
-<p>The entire history of benchmarking jobs can also be viewed by clicking on <a href="#id2"><span class="problematic" id="id3">**</span></a>History”<a href="#id4"><span class="problematic" id="id5">*</span></a>, like so.</p>
-<a class="reference internal image-reference" href="images/custom_benchmarks_quality_history.png"><img alt="Console Benchmarks Quality History." class="align-center" src="images/custom_benchmarks_quality_history.png" style="width: 650px;" /></a>
+<p>The entire history of benchmarking jobs can also be viewed by clicking on <strong>History</strong>, like so.</p>
+<a class="reference internal image-reference" href="images/console_benchmarks_quality_history.png"><img alt="Console Benchmarks Quality History." class="align-center" src="images/console_benchmarks_quality_history.png" style="width: 650px;" /></a>
 <p>That’s it, you now know how to submit quality benchmarking jobs! In the next section, we’ll explain how to visualize these benchmarking results.</p>
 </section>
 </section>
@@ -418,7 +418,7 @@ document.write(`
 <p>On the dataset dropdown at the top, you can select any dataset of prompts to benchmark each model and provider against in the graph.</p>
 <a class="reference internal image-reference" href="../_images/console_dashboard_dataset.png"><img alt="Console Dashboard Dataset." class="align-center" src="../_images/console_dashboard_dataset.png" style="width: 650px;" /></a>
 <p>When clicked, the scatter graph will be replotted, on your own custom prompts in your dataset. If no quality benchmarks have been run, then the scatter graph will be empty. In this case, let’s plot the benchmarks for the custom dataset <strong>Customer Calls 1</strong>.</p>
-<a class="reference internal image-reference" href="../_images/console_dashboard_dataset.png"><img alt="Console Dashboard Dataset." class="align-center" src="../_images/console_dashboard_dataset.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="../_images/console_dashboard_custom_dataset.png"><img alt="Console Dashboard Custom Dataset." class="align-center" src="../_images/console_dashboard_custom_dataset.png" style="width: 650px;" /></a>
 <p>We can see that the custom endpoints <code class="code docutils literal notranslate"><span class="pre">mixtral-tuned-finances</span></code>, <code class="code docutils literal notranslate"><span class="pre">llama-3-tuned-calls1</span></code> and <code class="code docutils literal notranslate"><span class="pre">llama-3-tuned-calls2</span></code> are plotted, alongside the foundation router, which is always plotted by default. If there is a model not plotted, but you would like it to be, then you can simply head over to the <code class="code docutils literal notranslate"><span class="pre">Benchmarks</span></code> page and trigger a quality benchmark job. Once the job completes, the model will then be visible in this dashboard.</p>
 <p>Let’s return to the default view of all models and providers plotted on the <code class="code docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Hermes</span></code> dataset. We can change the metric plotted on the x axis from cost to something else, by clicking <strong>Metric</strong>. This will let us plot the score against time-to-first-token (TTFT) for e.g.</p>
 <a class="reference internal image-reference" href="../_images/console_dashboard_metric.png"><img alt="Console Dashboard Metric." class="align-center" src="../_images/console_dashboard_metric.png" style="width: 650px;" /></a>
@@ -461,7 +461,7 @@ We’ll name the router <code class="code docutils literal notranslate"><span cl
 <p>The base router and all custom routers can also be further configured, by clicking on <strong>Router</strong>, and then clicking on the router which you’d like to customize.</p>
 <a class="reference internal image-reference" href="../_images/console_dashboard_router.png"><img alt="Console Dashboard Router." class="align-center" src="../_images/console_dashboard_router.png" style="width: 650px;" /></a>
 <p>Then, the following window appears, from where a router view can be created. A router view takes a router and constrains the search space in some way. This can be useful if you only have access to certain models or providers in the deployment environment, or if you want to ensure each model routed to is guaranteed to meet certain quality and performance requirements.</p>
-<a class="reference internal image-reference" href="images/console_dashboard_custom_view.png"><img alt="Console Dashboard Custom View." class="align-center" src="images/console_dashboard_custom_view.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="../_images/console_dashboard_custom_view.png"><img alt="Console Dashboard Custom View." class="align-center" src="../_images/console_dashboard_custom_view.png" style="width: 650px;" /></a>
 <p>Of course, only the models the router has been trained on will be visible in the dropdown. However, you can remove some of these models from the search space. Let’s presume we don’t want to use anthropic models, as we don’t have them properly configured to run in our deployment environment yet.</p>
 <p>We don’t want to save the router view to our account, we’re only testing at the moment. We therefore click <strong>Apply</strong>.</p>
 <div class="admonition note">
@@ -479,7 +479,7 @@ We’ll name the router <code class="code docutils literal notranslate"><span cl
 <p>Once the point is selected, that same selected point will be visible across all three graphs, with x axes for cost, inter-token-latency and time-to-first-token, so that any specific router configuration can be thoroughly examined across all metrics of importance.</p>
 </div>
 <p>As with the router views, we can save this router configuration either to the dashboard session, or to our user account. Let’s assume we’re very happy with this configuration, and we don’t want to forget it. We’ll therefore save it to our account, by clicking <strong>Save As</strong></p>
-<a class="reference internal image-reference" href="images/console_dashboard_custom_configuration.png"><img alt="Console Dashboard Custom Selected." class="align-center" src="images/console_dashboard_custom_configuration.png" style="width: 650px;" /></a>
+<a class="reference internal image-reference" href="../_images/console_dashboard_custom_configuration.png"><img alt="Console Dashboard Custom Selected." class="align-center" src="../_images/console_dashboard_custom_configuration.png" style="width: 650px;" /></a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This router configuration depends on the router view <strong>openai-llama3-calls-&gt;no-anthropic</strong>, which has not yet been saved to the account. We are therefore informed that this will also save the router view to the account.</p>
@@ -491,14 +491,20 @@ We’ll name the router <code class="code docutils literal notranslate"><span cl
 <p>You can also copy the configuration from the dashboard which will now show it (along with the parent view) by default.</p>
 </div>
 <p>With the configuration copied to the clipboard, all you now need to do is pass this into the Unify instructor if using the Python client, like so:</p>
-<p><code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">from</span> <span class="pre">unifyai</span> <span class="pre">import</span> <span class="pre">Unify</span>
-<span class="pre">unify</span> <span class="pre">=</span> <span class="pre">Unify(“openai-llama3-calls-&gt;no-anthropic_8.28e-03_4.66e-0.4_1.00e-06&#64;unify”)</span>
-<span class="pre">response</span> <span class="pre">=</span> <span class="pre">unify.generate(user_prompt=&quot;Explain</span> <span class="pre">who</span> <span class="pre">Newton</span> <span class="pre">was</span> <span class="pre">and</span> <span class="pre">his</span> <span class="pre">entire</span> <span class="pre">theory</span> <span class="pre">of</span> <span class="pre">gravitation.</span> <span class="pre">Give</span> <span class="pre">a</span> <span class="pre">long</span> <span class="pre">detailed</span> <span class="pre">response</span> <span class="pre">please</span> <span class="pre">and</span> <span class="pre">explain</span> <span class="pre">all</span> <span class="pre">of</span> <span class="pre">his</span> <span class="pre">achievements&quot;)</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">unify</span> <span class="kn">import</span> <span class="n">Unify</span>
+
+<span class="n">unify</span> <span class="o">=</span> <span class="n">Unify</span><span class="p">(</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;UNIFY_KEY&quot;</span><span class="p">),</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;openai-llama3-calls-&gt;no-anthropic_8.28e-03_4.66e-0.4_1.00e-06@unify”&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">unify</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">user_prompt</span><span class="o">=</span><span class="s2">&quot;Explain who Newton was and his entire theory of gravitation. Give a long detailed response please and explain all of his achievements&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can also query the API with a CuRL request, among others. For more details head to the <cite>make your first request &lt;https://unify.ai/docs/hub/home/make_your_first_request.html&gt;</cite> section.</p>
+<p>You can also query the API with a CuRL request, among others. For more details head to the next section to learn how you can make your first request.</p>
 </div>
 <p>That’s it! You now know how to explore the various configurations of your custom trained router, and get it deployed in your own application.</p>
 </section>
