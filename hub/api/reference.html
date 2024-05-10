@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Endpoints &#8212; Unify Documentation</title>
+    <title>API Reference &#8212; Unify Documentation</title>
   
   
   
@@ -58,12 +58,12 @@
                 gtag('js', new Date());
                 gtag('config', 'G-QP5BET66XH');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/endpoints';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/reference';</script>
     <link rel="icon" href="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/ivy_logo_only.png?raw=true"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python Package Examples" href="../demos/unify.html" />
-    <link rel="prev" title="Dynamic Routing" href="../concepts/runtime_routing.html" />
+    <link rel="prev" title="Deploying a router" href="deploy_router.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -146,29 +146,57 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/walkthrough.html">
-                        Unify Walkthrough
+                      <a class="nav-link nav-internal" href="../interfaces/setting_up.html">
+                        Setting-Up
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/make_your_first_request.html">
-                        Make your First Request
+                      <a class="nav-link nav-internal" href="../interfaces/connecting_stack.html">
+                        Connecting your stack
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/build_a_chatbot.html">
-                        Build a Chatbot
+                      <a class="nav-link nav-internal" href="../interfaces/running_benchmarks.html">
+                        Benchmarking endpoints
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/pricing.html">
-                        Pricing and Credits
+                      <a class="nav-link nav-internal" href="../interfaces/building_router.html">
+                        Building a custom router
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="first_request.html">
+                        Making your first request
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="deploy_router.html">
+                        Deploying a router
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../demos/unify.html">
+                        Python Package Examples
                       </a>
                     </li>
                 
@@ -188,22 +216,8 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../concepts/runtime_routing.html">
-                        Dynamic Routing
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Endpoints
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../demos/unify.html">
-                        Python Package Examples
+                      <a class="nav-link nav-internal" href="../concepts/routing.html">
+                        Routing
                       </a>
                     </li>
                 
@@ -238,20 +252,19 @@ document.write(`
     <div class="bd-toc-item navbar-nav">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to Unify!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/walkthrough.html">Unify Walkthrough</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/make_your_first_request.html">Make your First Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/build_a_chatbot.html">Build a Chatbot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/pricing.html">Pricing and Credits</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfaces</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../concepts/endpoints.html">Model Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/benchmarks.html">Benchmarks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/runtime_routing.html">Dynamic Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/setting_up.html">Setting-Up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/connecting_stack.html">Connecting your stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/running_benchmarks.html">Benchmarking endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/building_router.html">Building a custom router</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_request.html">Making your first request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_router.html">Deploying a router</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">API Reference</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
@@ -263,6 +276,12 @@ document.write(`
 
 </ul>
 </li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../concepts/endpoints.html">Model Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/routing.html">Routing</a></li>
 </ul>
 
     </div>
@@ -301,7 +320,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Endpoints</li>
+    <li class="breadcrumb-item active" aria-current="page">API Reference</li>
   </ul>
 </nav>
 </div>
@@ -318,14 +337,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="endpoints">
-<h1>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading">#</a></h1>
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
 <p>Welcome to the Endpoints API reference!
 This page is your go-to resource when it comes to learning about the different Unify API endpoints you can interact with.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To use the endpoints you will need an API Key. If you don’t have one yet, you can go through the instructions in
-<a class="reference external" href="https://unify.ai/docs/hub/index.html">this page</a>.</p>
+<p>If you don’t have one yet, <a class="reference external" href="https://console.unify.ai">Sign Up</a> first to get your API key.</p>
 </div>
 <hr class="docutils" />
 <section id="get-get-credits">
@@ -536,12 +554,12 @@ This endpoint follows the OpenAI specification for text completion, which is ava
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../concepts/runtime_routing.html"
+       href="deploy_router.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Dynamic Routing</p>
+        <p class="prev-next-title">Deploying a router</p>
       </div>
     </a>
     <a class="right-next"
@@ -630,20 +648,19 @@ document.write(`
     <div class="bd-toc-item navbar-nav">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to Unify!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/walkthrough.html">Unify Walkthrough</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/make_your_first_request.html">Make your First Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/build_a_chatbot.html">Build a Chatbot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/pricing.html">Pricing and Credits</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfaces</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../concepts/endpoints.html">Model Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/benchmarks.html">Benchmarks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../concepts/runtime_routing.html">Dynamic Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/setting_up.html">Setting-Up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/connecting_stack.html">Connecting your stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/running_benchmarks.html">Benchmarking endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/building_router.html">Building a custom router</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first_request.html">Making your first request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_router.html">Deploying a router</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">API Reference</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
@@ -655,6 +672,12 @@ document.write(`
 
 </ul>
 </li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../concepts/endpoints.html">Model Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/benchmarks.html">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/routing.html">Routing</a></li>
 </ul>
 
     </div>

@@ -62,7 +62,7 @@
     <link rel="icon" href="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/ivy_logo_only.png?raw=true"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Dynamic Routing" href="runtime_routing.html" />
+    <link rel="next" title="Routing" href="routing.html" />
     <link rel="prev" title="Model Endpoints" href="endpoints.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -146,29 +146,57 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/walkthrough.html">
-                        Unify Walkthrough
+                      <a class="nav-link nav-internal" href="../interfaces/setting_up.html">
+                        Setting-Up
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/make_your_first_request.html">
-                        Make your First Request
+                      <a class="nav-link nav-internal" href="../interfaces/connecting_stack.html">
+                        Connecting your stack
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/build_a_chatbot.html">
-                        Build a Chatbot
+                      <a class="nav-link nav-internal" href="../interfaces/running_benchmarks.html">
+                        Benchmarking endpoints
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../home/pricing.html">
-                        Pricing and Credits
+                      <a class="nav-link nav-internal" href="../interfaces/building_router.html">
+                        Building a custom router
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api/first_request.html">
+                        Making your first request
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api/deploy_router.html">
+                        Deploying a router
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api/reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../demos/unify.html">
+                        Python Package Examples
                       </a>
                     </li>
                 
@@ -188,22 +216,8 @@
                 
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="runtime_routing.html">
-                        Dynamic Routing
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reference/endpoints.html">
-                        Endpoints
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../demos/unify.html">
-                        Python Package Examples
+                      <a class="nav-link nav-internal" href="routing.html">
+                        Routing
                       </a>
                     </li>
                 
@@ -238,20 +252,19 @@ document.write(`
     <div class="bd-toc-item navbar-nav">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to Unify!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/walkthrough.html">Unify Walkthrough</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/make_your_first_request.html">Make your First Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/build_a_chatbot.html">Build a Chatbot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/pricing.html">Pricing and Credits</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Model Endpoints</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Benchmarks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runtime_routing.html">Dynamic Routing</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfaces</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/endpoints.html">Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/setting_up.html">Setting-Up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/connecting_stack.html">Connecting your stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/running_benchmarks.html">Benchmarking endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/building_router.html">Building a custom router</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../api/first_request.html">Making your first request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/deploy_router.html">Deploying a router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Reference</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
@@ -263,6 +276,12 @@ document.write(`
 
 </ul>
 </li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Model Endpoints</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing.html">Routing</a></li>
 </ul>
 
     </div>
@@ -320,28 +339,72 @@ document.write(`
                   
   <section id="benchmarks">
 <h1>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading">#</a></h1>
-<p>One of the fundamental missions of Unify is to help you navigate through the maze of LLM deployment options and find the best solution for your needs. Because this is a complex decision, it needs to be made based on data. For this data to be reliable, it should also result from transparent and objective measurements, which we outline in this section.</p>
+<p>In this section, we explain our process for benchmarking LLM endpoints. We discuss quality and runtime benchmarks separately.</p>
+<section id="quality-benchmarks">
+<h2>Quality Benchmarks<a class="headerlink" href="#quality-benchmarks" title="Link to this heading">#</a></h2>
+<p>Finding the best LLM(s) for a given application can be challenging. The performance of a model can vary significantly depending on the task, dataset, and evaluation metrics used. Existing benchmarks attempt to compare models based on standardized approaches, but biases inevitably creep in as models learn to do well on these targeted assessments.</p>
+<p>Practically, the LLM community still heavily relies on testing models manually to build an intuition around their expected behavior for a given use-case. While this generally works better, hand-crafted testing isn’t sustainable as one’s needs evolve and new LLMs emerge at a rapid pace.
+Our LLM assessment pipeline is based on the method outlined below.</p>
+<section id="design-principles">
+<h3>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">#</a></h3>
+<p>Our quality benchmarks are based on a set of guiding principles. Specifically, we strive to make our pipeline:</p>
+<ul class="simple">
+<li><p><strong>Systematized:</strong> A rigorous benchmarking pipeline should be standardized across assessments, repeatable, and scalable. We make sure to benchmark all LLMs identically to with a well-defined approach we outline in the next passage.</p></li>
+<li><p><strong>Task-centric:</strong> Models perform differently on various tasks. Some might do better at coding, others are well suited for summarizing content, etc. These broad task categories can also be refined into specific subtasks. For e.g summarizing technical content to generate product documentation is radically different from summarizing news. This should be reflected in assessments. For this reason, we allow you to upload your custom prompt dataset, that you believe reflects the intended task, to use as a reference for running benchmarks.</p></li>
+<li><p><strong>Customizable:</strong> Assessments should reflect the unique needs of the assessor. Depending on your application requirements, you may need to strictly include / exclude some models from the benchmarks. We try to strike a balance between standardization and modularity such that you can run the benchmarks that are relevant to your needs.</p></li>
+</ul>
+</section>
+<section id="methodology">
+<h3>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h3>
+<section id="overview">
+<h4>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h4>
+<p>We benchmark models using the LLM-as-a-judge approach. This relies on using a powerful language model to generate assessments on the outputs of other models, using a standard reviewing procedure. LLM-as-a-judge is sometimes used to run experiments at scale when generating human assessments isn’t an option or to avoid introducing human biases.</p>
+<p>Given a dataset of user prompts, each prompt is sent to all endpoints to generate an output. Then, we ask GPT-4 to review each output and give a final assessment based on how helpful and accurate the response is relative to either (a) the user prompt, in the case of unlabelled datasets, or (b) the prompt and the reference answer, in the case of labelled datasets.</p>
+</section>
+<section id="scoring">
+<h4>Scoring<a class="headerlink" href="#scoring" title="Link to this heading">#</a></h4>
+<p>The assessor LLM reviews the output of an endpoint which it categorizes as <code class="code docutils literal notranslate"><span class="pre">irrelevant</span></code>, <code class="code docutils literal notranslate"><span class="pre">bad</span></code>, <code class="code docutils literal notranslate"><span class="pre">satisfactory</span></code>, <code class="code docutils literal notranslate"><span class="pre">very</span> <span class="pre">good</span></code>, or <code class="code docutils literal notranslate"><span class="pre">excellent</span></code>. Each of these labels is then mapped to a numeric score ranging from 0.0 to 1.0. We repeat the same proces for all prompts in the dataset to get the endpoint’s performance score on each prompt. The overall endpoint’s score is then the average of these prompt-specific scores.</p>
+</section>
+<section id="visualizing-results">
+<h4>Visualizing Results<a class="headerlink" href="#visualizing-results" title="Link to this heading">#</a></h4>
+<p>In addition to the list of model scores, we also compute runtime performance for the endpoint (as explained in the section below). Doing so allows us to plot the quality performance versus runtime to assess the quality-to-performance of the endpoints, instead of relying on the quality scores alone.</p>
+<a class="reference internal image-reference" href="../_images/console_dashboard.png"><img alt="Console Dashboard." class="align-center" src="../_images/console_dashboard.png" style="width: 650px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because quality scores are model-specific, they are the same across the different endpoints exposed for a given model. As a result, all the endpoints for a model will plot horizontally at the same quality level, with only the runtime metric setting them apart.</p>
+</div>
+</section>
+</section>
+<section id="considerations-and-limitations">
+<h3>Considerations and Limitations<a class="headerlink" href="#considerations-and-limitations" title="Link to this heading">#</a></h3>
+<p>Despite having a well-defined benchmarking approach, it also inevitably comes with its own issues. Using an LLM to judge outputs may introduce a different kind of bias through the data used to train the assessor model. We are currently looking at ways to mitigate this with more diversified and / or customized judge LLM selection.</p>
+</section>
+</section>
+<section id="runtime-benchmarks">
+<h2>Runtime Benchmarks<a class="headerlink" href="#runtime-benchmarks" title="Link to this heading">#</a></h2>
+<p>Finding the best model(s) for a task is just the first step to optimize LLM pipelines. Given the plethora of endpoint providers offering the same models, true optimization requires considering performance discrepancies across endpoints and time.</p>
+<p>Because this is a complex decision, it needs to be made based on data. For this data to be reliable, it should also result from transparent and objective measurements, which we outline in this below.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Our benchmarking code is openly available in <a class="reference external" href="https://github.com/unifyai/aibench-llm-endpoints">this repository</a>.</p>
 </div>
-<section id="design-principles">
-<h2>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">#</a></h2>
-<p>Our benchmarks are based on a set of guiding principles. Specifically, we believe benchmarks should be:</p>
+<section id="id1">
+<h3>Design Principles<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Our runtime benchmarks are based on a set of guiding principles. Specifically, we believe benchmarks should be:</p>
 <ul class="simple">
 <li><p><strong>Community-driven:</strong> We invite everyone to audit or improve the logic and the code. We are building these benchmarks for the community, so contributions and discussions around them are more than welcome!</p></li>
 <li><p><strong>User-centric:</strong> External factors (e.g. how different providers set up their infrastructure) may impact measurements. Nevertheless, our benchmarks are not designed to gauge performance in controlled environments. Rather, we aime to measure performance as experienced by the end-user who, ultimately, is subject to the same distortions.</p></li>
 <li><p><strong>Model and Provider-agnostic:</strong> While some metrics are more relevant to certain scenarios (e.g. cold start time in model endpoints that scale to zero), we try to make as few assumptions as possible on the providers or technologies being benchmarked. We only assume that endpoints take a string as the input and return a streaming response.</p></li>
 </ul>
 </section>
-<section id="methodology">
-<h2>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h3>Methodology<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <section id="tokenizer">
-<h3>Tokenizer<a class="headerlink" href="#tokenizer" title="Link to this heading">#</a></h3>
+<h4>Tokenizer<a class="headerlink" href="#tokenizer" title="Link to this heading">#</a></h4>
 <p>To avoid biases towards any model-specific tokenizer, we calculate all metrics using the same tokenizer across different models. We have chosen the <cite>cl100k_base</cite> tokenizer from OpenAI’s <a class="reference external" href="https://github.com/openai/tiktoken">tiktoken</a> library for this since it’s MIT licensed and already widely adopted by the community.</p>
 </section>
 <section id="inputs-and-outputs">
-<h3>Inputs and Outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading">#</a></h3>
+<h4>Inputs and Outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading">#</a></h4>
 <p>To fairly assess optimizations such as speculative decoding, we use real text as the input and avoid using randomly generated data. The length of the input affects prefill time and therefore can affect the responsiveness of the system. To account for this, we run the benchmark with two input regimes.</p>
 <ul class="simple">
 <li><p>Short inputs: Using sentences with an average length of 200 tokens and a standard deviation of 20.</p></li>
@@ -352,12 +415,12 @@ document.write(`
 <p>When running one benchmark across different endpoints, we seed each runner with the same initial value, so that the inputs are the same for all endpoints.</p>
 </section>
 <section id="computation">
-<h3>Computation<a class="headerlink" href="#computation" title="Link to this heading">#</a></h3>
+<h4>Computation<a class="headerlink" href="#computation" title="Link to this heading">#</a></h4>
 <p>To execute the benchmarks, we run three processes periodically from three different regions: <strong>Hong Kong, Belgium and Iowa</strong>. Each one of these processes is triggered every three hours and benchmarks every available endpoint.</p>
 <p>Accounting for the different input policies, we run a total of 4 benchmarks for each endpoint every time a region benchmark is triggered.</p>
 </section>
 <section id="metrics">
-<h3>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h3>
+<h4>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h4>
 <p>Several key metrics are captured and calculated during the benchmarking process:</p>
 <ul class="simple">
 <li><p><strong>Time to First Token (TTFT):</strong> Time between request initiation and the arrival of the first streaming response packet. TTFT directly reflects the prompt processing speed, offering insights into the efficiency of the model’s initial response. A lower TTFT signifies quicker engagement, which is crucial for applications that require dynamic interactions or real-time feedback.</p></li>
@@ -369,21 +432,27 @@ document.write(`
 </ul>
 </section>
 <section id="data-presentation">
-<h3>Data Presentation<a class="headerlink" href="#data-presentation" title="Link to this heading">#</a></h3>
+<h4>Data Presentation<a class="headerlink" href="#data-presentation" title="Link to this heading">#</a></h4>
 <p>When aggregating metrics, particularly in benchmark regimes with multiple concurrent requests, we calculate and present the P90 (90th percentile) value from the set of measurements. We choose the P90 to reduce the influence of extreme values and provide a reliable snapshot of the model’s performance.</p>
 <p>When applicable, aggregated data is shown both in the plots and the benchmark tables.</p>
+<a class="reference internal image-reference" href="../_images/benchmarks_model_page.png"><img alt="Benchmarks Model Page." class="align-center" src="../_images/benchmarks_model_page.png" style="width: 650px;" /></a>
 <p>Additionally, we also include a MA5 view (Moving Average of the last 5 measurements) in the graphs. This smoothing technique helps mitigate short-term fluctuations and should provide a clearer trend representation over time.</p>
-<section id="not-computed-no-metrics-are-available-yet">
-<h4>Not computed / No metrics are available yet<a class="headerlink" href="#not-computed-no-metrics-are-available-yet" title="Link to this heading">#</a></h4>
-<p>In some cases, you will find <code class="code docutils literal notranslate"><span class="pre">Not</span> <span class="pre">computed</span></code> instead of a value, or even a <code class="code docutils literal notranslate"><span class="pre">No</span> <span class="pre">metrics</span> <span class="pre">are</span> <span class="pre">available</span> <span class="pre">yet</span></code> message instead of the benchmark data. This basically means that we don’t have valid data to show you. Most of the time, this means we have hit a rate limit or there is an internal issue. We try to stay on top of these messages and we are probably working on (1) getting our quotas increased for the specific endpoint/provider or (2) fixing the problem. We’ll try to get you the data ASAP!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some cases, you will find <code class="code docutils literal notranslate"><span class="pre">Not</span> <span class="pre">computed</span></code> instead of a value, or even a <code class="code docutils literal notranslate"><span class="pre">No</span> <span class="pre">metrics</span> <span class="pre">are</span> <span class="pre">available</span> <span class="pre">yet</span></code> message instead of the benchmark data. This is typically due to an internal issue or a rate limit, which we’ll be quickly fixing.</p>
+</div>
 </section>
 </section>
-</section>
-<section id="considerations-and-limitations">
-<h2>Considerations and Limitations<a class="headerlink" href="#considerations-and-limitations" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Considerations and Limitations<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>We try to tackle some of the more significant limitations of benchmarking inference endpoints. For example, network latency, by running the benchmarks in different regions; or unreliable point-measurements, by continuously benchmarking the endpoints and plotting their trends over time.</p>
 <p>However, there are still some relevant considerations to have in mind. Our methodology at the moment is solely focused on performance, which means that we don’t look at the output of the models.</p>
 <p>Nonetheless, even accounting for the public-facing nature of these endpoints (no gibberish allowed!), there might be some implementation differences that affect the output quality, such as quantization/compression of the models, different context window sizes, or different speculative decoding models, among others. We are working towards mitigating this as well, so stay tuned!</p>
+</section>
+</section>
+<section id="round-up">
+<h2>Round Up<a class="headerlink" href="#round-up" title="Link to this heading">#</a></h2>
+<p>You are now familiar with how we run our benchmarks. Next, you can explore how to <a class="reference external" href="https://unify.ai/docs/interfaces/running_benchmarks.html">use the benchmarks, or run your own</a> through the benchmarks interface!</p>
 </section>
 </section>
 
@@ -407,11 +476,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="runtime_routing.html"
+       href="routing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Dynamic Routing</p>
+        <p class="prev-next-title">Routing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -433,19 +502,31 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-principles">Design Principles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizer">Tokenizer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-outputs">Inputs and Outputs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">Computation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics">Metrics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-presentation">Data Presentation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#not-computed-no-metrics-are-available-yet">Not computed / No metrics are available yet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-benchmarks">Quality Benchmarks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-principles">Design Principles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scoring">Scoring</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-results">Visualizing Results</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations-and-limitations">Considerations and Limitations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations-and-limitations">Considerations and Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-benchmarks">Runtime Benchmarks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Design Principles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Methodology</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizer">Tokenizer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-outputs">Inputs and Outputs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">Computation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics">Metrics</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-presentation">Data Presentation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Considerations and Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#round-up">Round Up</a></li>
 </ul>
   </nav></div>
 
@@ -502,20 +583,19 @@ document.write(`
     <div class="bd-toc-item navbar-nav">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to Unify!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/walkthrough.html">Unify Walkthrough</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/make_your_first_request.html">Make your First Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/build_a_chatbot.html">Build a Chatbot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../home/pricing.html">Pricing and Credits</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Model Endpoints</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Benchmarks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runtime_routing.html">Dynamic Routing</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interfaces</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../reference/endpoints.html">Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/setting_up.html">Setting-Up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/connecting_stack.html">Connecting your stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/running_benchmarks.html">Benchmarking endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interfaces/building_router.html">Building a custom router</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../api/first_request.html">Making your first request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/deploy_router.html">Deploying a router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/reference.html">API Reference</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
@@ -527,6 +607,12 @@ document.write(`
 
 </ul>
 </li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">Model Endpoints</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing.html">Routing</a></li>
 </ul>
 
     </div>
