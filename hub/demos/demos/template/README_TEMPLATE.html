@@ -195,6 +195,20 @@
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../langchain.html">
+                        LangChain Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../llamaindex.html">
+                        LlamaIndex Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../concepts/endpoints.html">
                         Model Endpoints
                       </a>
@@ -267,6 +281,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../Unify/AsyncVsSync/AsyncVsSync.html">Synchronous VS Asynchronous Clients</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../Unify/LLM-Wars/README.html">LLM-Wars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unify/SemanticRouter/README.html">Semantic Router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unify/Chatbot_Arena/README.html">Chatbot Arena</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../langchain.html">LangChain Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LangChain/RAG_playground/README.html">RAG Playground 🛝</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../llamaindex.html">LlamaIndex Examples</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LlamaIndex/RAGPlayground/README.html">RAG Playground</a></li>
 </ul>
 </li>
 </ul>
@@ -332,13 +356,21 @@ document.write(`
                   
   <section id="project-title">
 <h1>Project Title<a class="headerlink" href="#project-title" title="Link to this heading">#</a></h1>
+<p>The section will contain the demo video. In order to embed your video in the README as well as our docs, you need to do the following:</p>
+<ol class="arabic simple">
+<li><p>Drag the drop the video in the README. Doing that will generate a link for your video. Convert the link to a href by writing it in this format [demo](&lt;generated_link&gt;). Checkout this <a class="reference external" href="https://github.com/unifyai/demos/blob/main/Unify/LLM-Wars/README.md?plain=1#L2">example</a> incase you’re not sure what to do.</p></li>
+<li><p>Add your video the <a class="reference external" href="https://github.com/unifyai/demos/tree/main/videos">Video</a> folder with the name &lt;project_name&gt;.mp4. And add the following lines to your README:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">video</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;640&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;480&quot;</span> <span class="n">autoplay</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">source</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../../../_static/&lt;project_name&gt;.mp4&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;video/mp4&quot;</span><span class="o">&gt;</span>
+<span class="n">Your</span> <span class="n">browser</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">the</span> <span class="n">video</span> <span class="n">tag</span><span class="o">.</span>
+<span class="o">&lt;/</span><span class="n">video</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Incase the above is confusing, checkout this <a class="reference external" href="https://github.com/unifyai/demos/blob/main/Unify/LLM-Wars/README.md?plain=1#L4C1-L7C9">example</a></p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Provide a brief introduction to your project here. Describe what your project demonstrates, the tech stack used, the motivation behind the project, and briefly explain the necessary concepts used. Feel free to break down this section into multiple subsections depending on your project.</p>
-</section>
-<section id="quick-demo">
-<h2>Quick Demo<a class="headerlink" href="#quick-demo" title="Link to this heading">#</a></h2>
-<p>Include a recorded video of the demo here. You should the embed the video in the README.</p>
 </section>
 <section id="repository-and-deployment">
 <h2>Repository and Deployment<a class="headerlink" href="#repository-and-deployment" title="Link to this heading">#</a></h2>
@@ -394,7 +426,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-demo">Quick Demo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-and-deployment">Repository and Deployment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
 </ul>
@@ -475,6 +506,16 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../Unify/AsyncVsSync/AsyncVsSync.html">Synchronous VS Asynchronous Clients</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../Unify/LLM-Wars/README.html">LLM-Wars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unify/SemanticRouter/README.html">Semantic Router</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unify/Chatbot_Arena/README.html">Chatbot Arena</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../langchain.html">LangChain Examples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LangChain/RAG_playground/README.html">RAG Playground 🛝</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../llamaindex.html">LlamaIndex Examples</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LlamaIndex/RAGPlayground/README.html">RAG Playground</a></li>
 </ul>
 </li>
 </ul>
