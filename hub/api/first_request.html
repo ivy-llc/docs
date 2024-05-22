@@ -384,7 +384,8 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>unifyai
 </pre></div>
 </div>
-<p>To use it in your script, import the package and initialize a <code class="code docutils literal notranslate"><span class="pre">Unify</span></code> client with your <code class="code docutils literal notranslate"><span class="pre">UNIFY</span> <span class="pre">API</span> <span class="pre">KEY</span></code>. You can then query any endpoint through the <code class="code docutils literal notranslate"><span class="pre">.generate</span></code> method. To specify the endpoint, you can use the model and provider Ids from above.</p>
+<p>To use it in your script, import the package and insert the line <code class="code docutils literal notranslate"><span class="pre">UNIFY_KEY=&quot;Your_API_Key&quot;</span></code> into the <code class="code docutils literal notranslate"><span class="pre">.env</span></code> file of your project. You can also pass your key into the <code class="code docutils literal notranslate"><span class="pre">api_key</span></code> argument or the Unify client but we recommend you store your key in an environment file for safety. We will assume you added your key to your <code class="code docutils literal notranslate"><span class="pre">.env</span></code> file for the remaining code examples.</p>
+<p>You are now ready to query any endpoint through the <code class="code docutils literal notranslate"><span class="pre">.generate</span></code> method. To specify the endpoint, you can use the model and provider Ids from above.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">unify</span> <span class="kn">import</span> <span class="n">Unify</span>
 
