@@ -1409,7 +1409,7 @@ document.write(`
 <h1>can_cast<a class="headerlink" href="#can-cast" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.can_cast">
-<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">can_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/functional/ivy/data_type.py#L546-L619"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.can_cast" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">can_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Transpile-AI/ivy/blob/main/ivy/functional/ivy/data_type.py#L546-L619"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.can_cast" title="Link to this definition">#</a></dt>
 <dd><p>Determine if one data type can be cast to another data type according to
 <span class="xref std std-ref">type- promotion</span> rules.</p>
 <dl class="field-list simple">
@@ -1476,7 +1476,7 @@ otherwise, <code class="docutils literal notranslate"><span class="pre">False</s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.Array.can_cast">
-<span class="sig-prename descclassname"><span class="pre">Array.</span></span><span class="sig-name descname"><span class="pre">can_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/data_classes/array/data_type.py#L146-L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.Array.can_cast" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Array.</span></span><span class="sig-name descname"><span class="pre">can_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Transpile-AI/ivy/blob/main/ivy/data_classes/array/data_type.py#L146-L174"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.Array.can_cast" title="Link to this definition">#</a></dt>
 <dd><p><cite>ivy.Array</cite> instance method variant of <cite>ivy.can_cast</cite>. This method
 simply wraps the function, and so the docstring for <cite>ivy.can_cast</cite> also
 applies to this method with minimal changes.</p>
@@ -1510,7 +1510,7 @@ otherwise, <code class="docutils literal notranslate"><span class="pre">False</s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.Container.can_cast">
-<span class="sig-prename descclassname"><span class="pre">Container.</span></span><span class="sig-name descname"><span class="pre">can_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/data_classes/container/data_type.py#L478-L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.Container.can_cast" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Container.</span></span><span class="sig-name descname"><span class="pre">can_cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/Transpile-AI/ivy/blob/main/ivy/data_classes/container/data_type.py#L478-L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.Container.can_cast" title="Link to this definition">#</a></dt>
 <dd><p><cite>ivy.Container</cite> instance method variant of <cite>ivy.can_cast</cite>. This
 method simply wraps the function, and so the docstring for
 <cite>ivy.can_cast</cite> also applies to this method with minimal changes.</p>
@@ -2718,7 +2718,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2020-2023, Unify.
+      © Copyright 2024, Transpile AI.
       <br/>
     
   </p>
