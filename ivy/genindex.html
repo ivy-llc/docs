@@ -1314,6 +1314,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.binaries.html">Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.decorator_utils.html">Decorator utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.dynamic_import.html">Dynamic import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.einsum_parser.html">Einsum parser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.einsum_path_helpers.html">Einsum path helpers</a></li>
@@ -1597,6 +1598,8 @@ document.write(`
         <li><a href="docs/utils/ivy.utils.backend/ivy.utils.backend.ast_helpers.html#ivy.utils.backend.ast_helpers.IvyLoader.__init__">(ivy.utils.backend.ast_helpers.IvyLoader method)</a>
 </li>
         <li><a href="docs/utils/ivy.utils.backend/ivy.utils.backend.handler.html#ivy.utils.backend.handler.ContextManager.__init__">(ivy.utils.backend.handler.ContextManager method)</a>
+</li>
+        <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.CallVisitor.__init__">(ivy.utils.decorator_utils.CallVisitor method)</a>
 </li>
         <li><a href="docs/utils/ivy.utils.exceptions.html#ivy.utils.exceptions.InplaceUpdateException.__init__">(ivy.utils.exceptions.InplaceUpdateException method)</a>
 </li>
@@ -2895,6 +2898,8 @@ document.write(`
 </li>
       <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.hypothesis_helpers/ivy_tests.test_ivy.helpers.hypothesis_helpers.general_helpers.html#ivy_tests.test_ivy.helpers.hypothesis_helpers.general_helpers.apply_safety_factor">apply_safety_factor() (in module ivy_tests.test_ivy.helpers.hypothesis_helpers.general_helpers)</a>
 </li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.apply_transpose">apply_transpose() (in module ivy.utils.decorator_utils)</a>
+</li>
       <li><a href="docs/functional/ivy/creation/ivy.functional.ivy.creation.arange.html#ivy.arange">arange() (in module ivy)</a>, <a href="docs/functional/ivy/ivy.functional.ivy.creation.html#ivy.arange">[1]</a>
 </li>
       <li><a href="docs/functional/ivy/experimental/ivy.functional.ivy.experimental.layers.html#ivy.area_interpolate">area_interpolate() (in module ivy)</a>, <a href="docs/functional/ivy/experimental/layers/ivy.functional.ivy.experimental.layers.area_interpolate.html#ivy.area_interpolate">[1]</a>
@@ -2929,10 +2934,10 @@ document.write(`
       </ul></li>
       <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.function_testing.html#ivy_tests.test_ivy.helpers.function_testing.args_to_container">args_to_container() (in module ivy_tests.test_ivy.helpers.function_testing)</a>
 </li>
-      <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.function_testing.html#ivy_tests.test_ivy.helpers.function_testing.args_to_frontend">args_to_frontend() (in module ivy_tests.test_ivy.helpers.function_testing)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.function_testing.html#ivy_tests.test_ivy.helpers.function_testing.args_to_frontend">args_to_frontend() (in module ivy_tests.test_ivy.helpers.function_testing)</a>
+</li>
       <li><a href="docs/data_classes/data_classes/array/ivy.data_classes.array.conversions.html#ivy.data_classes.array.conversions.args_to_ivy">args_to_ivy() (in module ivy.data_classes.array.conversions)</a>
 </li>
       <li><a href="docs/data_classes/data_classes/array/ivy.data_classes.array.conversions.html#ivy.data_classes.array.conversions.args_to_native">args_to_native() (in module ivy.data_classes.array.conversions)</a>
@@ -3480,6 +3485,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docs/functional/ivy/general/ivy.functional.ivy.general.cache_fn.html#ivy.cache_fn">cache_fn() (in module ivy)</a>, <a href="docs/functional/ivy/ivy.functional.ivy.general.html#ivy.cache_fn">[1]</a>
 </li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.CallVisitor">CallVisitor (class in ivy.utils.decorator_utils)</a>
+</li>
       <li><a href="docs/functional/ivy/data_type/ivy.functional.ivy.data_type.can_cast.html#ivy.can_cast">can_cast() (in module ivy)</a>, <a href="docs/functional/ivy/ivy.functional.ivy.data_type.html#ivy.can_cast">[1]</a>
 
       <ul>
@@ -3856,10 +3863,10 @@ document.write(`
 </li>
       <li><a href="docs/data_classes/data_classes/container/ivy.data_classes.container.base.html#ivy.data_classes.container.base.ContainerBase.cont_remove_print_limit">cont_remove_print_limit() (ivy.data_classes.container.base.ContainerBase method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docs/data_classes/data_classes/container/ivy.data_classes.container.base.html#ivy.data_classes.container.base.ContainerBase.cont_reshape_like">cont_reshape_like() (ivy.data_classes.container.base.ContainerBase method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docs/data_classes/data_classes/container/ivy.data_classes.container.base.html#ivy.data_classes.container.base.ContainerBase.cont_restructure">cont_restructure() (ivy.data_classes.container.base.ContainerBase method)</a>
 </li>
       <li><a href="docs/data_classes/data_classes/container/ivy.data_classes.container.base.html#ivy.data_classes.container.base.ContainerBase.cont_restructure_key_chains">cont_restructure_key_chains() (ivy.data_classes.container.base.ContainerBase method)</a>
@@ -3948,6 +3955,8 @@ document.write(`
 </li>
       <li><a href="docs/stateful/ivy.stateful.layers.html#ivy.stateful.layers.Conv1D">Conv1D (class in ivy.stateful.layers)</a>
 </li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.TransposeType.CONV1D">CONV1D (ivy.utils.decorator_utils.TransposeType attribute)</a>
+</li>
       <li><a href="docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.conv1d">conv1d() (in module ivy)</a>, <a href="docs/functional/ivy/layers/ivy.functional.ivy.layers.conv1d.html#ivy.conv1d">[1]</a>
 
       <ul>
@@ -3976,6 +3985,8 @@ document.write(`
 </li>
       <li><a href="docs/stateful/ivy.stateful.layers.html#ivy.stateful.layers.Conv2D">Conv2D (class in ivy.stateful.layers)</a>
 </li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.TransposeType.CONV2D">CONV2D (ivy.utils.decorator_utils.TransposeType attribute)</a>
+</li>
       <li><a href="docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.conv2d">conv2d() (in module ivy)</a>, <a href="docs/functional/ivy/layers/ivy.functional.ivy.layers.conv2d.html#ivy.conv2d">[1]</a>
 
       <ul>
@@ -4003,6 +4014,8 @@ document.write(`
       <li><a href="docs/stateful/ivy.stateful.layers.html#ivy.stateful.layers.Conv2DTranspose">Conv2DTranspose (class in ivy.stateful.layers)</a>
 </li>
       <li><a href="docs/stateful/ivy.stateful.layers.html#ivy.stateful.layers.Conv3D">Conv3D (class in ivy.stateful.layers)</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.TransposeType.CONV3D">CONV3D (ivy.utils.decorator_utils.TransposeType attribute)</a>
 </li>
       <li><a href="docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.conv3d">conv3d() (in module ivy)</a>, <a href="docs/functional/ivy/layers/ivy.functional.ivy.layers.conv3d.html#ivy.conv3d">[1]</a>
 
@@ -5364,13 +5377,15 @@ document.write(`
 </li>
       <li><a href="docs/stateful/ivy.stateful.layers.html#ivy.stateful.layers.LSTM.get_initial_state">get_initial_state() (ivy.stateful.layers.LSTM method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docs/functional/ivy/experimental/ivy.functional.ivy.experimental.layers.html#ivy.get_interpolate_kernel">get_interpolate_kernel() (in module ivy)</a>, <a href="docs/functional/ivy/experimental/layers/ivy.functional.ivy.experimental.layers.get_interpolate_kernel.html#ivy.get_interpolate_kernel">[1]</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="docs/functional/ivy/general/ivy.functional.ivy.general.get_item.html#ivy.get_item">get_item() (in module ivy)</a>, <a href="docs/functional/ivy/ivy.functional.ivy.general.html#ivy.get_item">[1]</a>
 </li>
       <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.hypothesis_helpers/ivy_tests.test_ivy.helpers.hypothesis_helpers.general_helpers.html#ivy_tests.test_ivy.helpers.hypothesis_helpers.general_helpers.get_mean_std">get_mean_std() (in module ivy_tests.test_ivy.helpers.hypothesis_helpers.general_helpers)</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.get_next_func">get_next_func() (in module ivy.utils.decorator_utils)</a>
 </li>
       <li><a href="docs/functional/ivy/general/ivy.functional.ivy.general.get_num_dims.html#ivy.get_num_dims">get_num_dims() (in module ivy)</a>, <a href="docs/functional/ivy/ivy.functional.ivy.general.html#ivy.get_num_dims">[1]</a>
 
@@ -5496,11 +5511,19 @@ document.write(`
 </li>
       <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.testing_helpers.html#ivy_tests.test_ivy.helpers.testing_helpers.handle_frontend_test">handle_frontend_test() (in module ivy_tests.test_ivy.helpers.testing_helpers)</a>
 </li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.handle_get_item">handle_get_item() (in module ivy.utils.decorator_utils)</a>
+</li>
       <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.testing_helpers.html#ivy_tests.test_ivy.helpers.testing_helpers.handle_method">handle_method() (in module ivy_tests.test_ivy.helpers.testing_helpers)</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.handle_methods">handle_methods() (in module ivy.utils.decorator_utils)</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.handle_set_item">handle_set_item() (in module ivy.utils.decorator_utils)</a>
 </li>
       <li><a href="docs/functional/ivy/device/ivy.functional.ivy.device.handle_soft_device_variable.html#ivy.handle_soft_device_variable">handle_soft_device_variable() (in module ivy)</a>, <a href="docs/functional/ivy/ivy.functional.ivy.device.html#ivy.handle_soft_device_variable">[1]</a>
 </li>
       <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.testing_helpers.html#ivy_tests.test_ivy.helpers.testing_helpers.handle_test">handle_test() (in module ivy_tests.test_ivy.helpers.testing_helpers)</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.handle_transpose_in_input_and_output">handle_transpose_in_input_and_output() (in module ivy.utils.decorator_utils)</a>
 </li>
       <li><a href="docs/functional/ivy/experimental/creation/ivy.functional.ivy.experimental.creation.hann_window.html#ivy.hann_window">hann_window() (in module ivy)</a>, <a href="docs/functional/ivy/experimental/ivy.functional.ivy.experimental.creation.html#ivy.hann_window">[1]</a>
 
@@ -7255,6 +7278,13 @@ document.write(`
 </li>
       </ul></li>
       <li>
+    ivy.utils.decorator_utils
+
+      <ul>
+        <li><a href="docs/utils/ivy.utils.decorator_utils.html#module-ivy.utils.decorator_utils">module</a>
+</li>
+      </ul></li>
+      <li>
     ivy.utils.dynamic_import
 
       <ul>
@@ -8582,6 +8612,8 @@ document.write(`
 </li>
         <li><a href="docs/utils/ivy.utils.binaries.html#module-ivy.utils.binaries">ivy.utils.binaries</a>
 </li>
+        <li><a href="docs/utils/ivy.utils.decorator_utils.html#module-ivy.utils.decorator_utils">ivy.utils.decorator_utils</a>
+</li>
         <li><a href="docs/utils/ivy.utils.dynamic_import.html#module-ivy.utils.dynamic_import">ivy.utils.dynamic_import</a>
 </li>
         <li><a href="docs/utils/ivy.utils.einsum_parser.html#module-ivy.utils.einsum_parser">ivy.utils.einsum_parser</a>
@@ -8908,6 +8940,8 @@ document.write(`
 </li>
       </ul></li>
       <li><a href="docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.nms">nms() (in module ivy)</a>, <a href="docs/functional/ivy/layers/ivy.functional.ivy.layers.nms.html#ivy.nms">[1]</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.TransposeType.NO_TRANSPOSE">NO_TRANSPOSE (ivy.utils.decorator_utils.TransposeType attribute)</a>
 </li>
       <li><a href="docs/functional/ivy/ivy.functional.ivy.searching.html#ivy.nonzero">nonzero() (in module ivy)</a>, <a href="docs/functional/ivy/searching/ivy.functional.ivy.searching.nonzero.html#ivy.nonzero">[1]</a>
 
@@ -9537,6 +9571,8 @@ document.write(`
         <li><a href="docs/data_classes/data_classes/container/ivy.data_classes.container.data_type.html#ivy.data_classes.container.data_type._ContainerWithDataTypes.result_type">(ivy.data_classes.container.data_type._ContainerWithDataTypes method)</a>
 </li>
       </ul></li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.retrieve_object">retrieve_object() (in module ivy.utils.decorator_utils)</a>
+</li>
       <li><a href="docs/functional/ivy/experimental/ivy.functional.ivy.experimental.layers.html#ivy.rfft">rfft() (in module ivy)</a>, <a href="docs/functional/ivy/experimental/layers/ivy.functional.ivy.experimental.layers.rfft.html#ivy.rfft">[1]</a>
 
       <ul>
@@ -10547,6 +10583,8 @@ document.write(`
         <li><a href="docs/data_classes/data_classes/container/ivy.data_classes.container.gradients.html#ivy.data_classes.container.gradients._ContainerWithGradients.stop_gradient">(ivy.data_classes.container.gradients._ContainerWithGradients method)</a>
 </li>
       </ul></li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.store_config_info">store_config_info() (in module ivy.utils.decorator_utils)</a>
+</li>
       <li><a href="docs/helpers/ivy_tests.test_ivy.helpers.test_parameter_flags.html#ivy_tests.test_ivy.helpers.test_parameter_flags.DynamicFlag.strategy">strategy (ivy_tests.test_ivy.helpers.test_parameter_flags.DynamicFlag attribute)</a>
 </li>
       <li><a href="docs/data_classes/data_classes/ivy.data_classes.array.html#ivy.data_classes.array.array.Array.strides">strides (ivy.data_classes.array.array.Array property)</a>
@@ -10998,6 +11036,8 @@ document.write(`
       <li><a href="docs/stateful/ivy.stateful.module.html#ivy.stateful.module.Module.train">train() (ivy.stateful.module.Module method)</a>
 </li>
       <li><a href="docs/stateful/ivy.stateful.module.html#ivy.stateful.module.Module.training">training (ivy.stateful.module.Module property)</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.TransposeType">TransposeType (class in ivy.utils.decorator_utils)</a>
 </li>
       <li><a href="docs/functional/ivy/elementwise/ivy.functional.ivy.elementwise.trapz.html#ivy.trapz">trapz() (in module ivy)</a>, <a href="docs/functional/ivy/ivy.functional.ivy.elementwise.html#ivy.trapz">[1]</a>
 
@@ -11482,6 +11522,8 @@ document.write(`
 </li>
       </ul></li>
       <li><a href="docs/data_classes/data_classes/array/ivy.data_classes.array.manipulation.html#ivy.data_classes.array.manipulation._ArrayWithManipulation.view">view() (ivy.data_classes.array.manipulation._ArrayWithManipulation method)</a>
+</li>
+      <li><a href="docs/utils/ivy.utils.decorator_utils.html#ivy.utils.decorator_utils.CallVisitor.visit_Call">visit_Call() (ivy.utils.decorator_utils.CallVisitor method)</a>
 </li>
       <li><a href="docs/utils/ivy.utils.backend/ivy.utils.backend.ast_helpers.html#ivy.utils.backend.ast_helpers.ImportTransformer.visit_Import">visit_Import() (ivy.utils.backend.ast_helpers.ImportTransformer method)</a>
 </li>
@@ -12697,6 +12739,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.binaries.html">Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.decorator_utils.html">Decorator utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.dynamic_import.html">Dynamic import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.einsum_parser.html">Einsum parser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/utils/ivy.utils.einsum_path_helpers.html">Einsum path helpers</a></li>

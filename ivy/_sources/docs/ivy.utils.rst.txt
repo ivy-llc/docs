@@ -10,6 +10,7 @@
     ivy.utils.assertions
     ivy.utils.backend
     ivy.utils.binaries
+    ivy.utils.decorator_utils
     ivy.utils.dynamic_import
     ivy.utils.einsum_parser
     ivy.utils.einsum_path_helpers
