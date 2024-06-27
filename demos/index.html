@@ -121,7 +121,7 @@
 </form></div>
   </div>
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar"><div id="unify-navbar"></div>
     </header>
   
 
@@ -388,6 +388,7 @@ document.write(`
 
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>
 </ul>
@@ -1315,6 +1316,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.binaries.html">Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.decorator_utils.html">Decorator utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.dynamic_import.html">Dynamic import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.einsum_parser.html">Einsum parser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.einsum_path_helpers.html">Einsum path helpers</a></li>
@@ -1599,6 +1601,15 @@ Using TensorFlow Models in your PyTorch Projects</div>
 </div>
 <a class="sd-stretched-link reference internal" href="examples_and_demos/convnext_to_torch.html"><span class="doc"></span></a></div>
 </div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Finetuning PyTorch Models in your TensorFlow Projects</div>
+<p class="sd-card-text">In this demo, we finetune the PyTorch ResNet model in TensorFlow</p>
+</div>
+<a class="sd-stretched-link reference internal" href="examples_and_demos/resnet_to_tensorflow.html"><span class="doc"></span></a></div>
+</div>
 </div>
 </div>
 <div class="toctree-wrapper compound">
@@ -1766,6 +1777,7 @@ document.write(`
 
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>
 </ul>
@@ -2693,6 +2705,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.binaries.html">Binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.decorator_utils.html">Decorator utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.dynamic_import.html">Dynamic import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.einsum_parser.html">Einsum parser</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/utils/ivy.utils.einsum_path_helpers.html">Einsum path helpers</a></li>
@@ -2752,7 +2765,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2024, Transpile AI.
+      © Copyright 2020-2023, Unify.
       <br/>
     
   </p>
