@@ -18,6 +18,15 @@ Losses
    
    ivy.functional.ivy.losses.sparse_cross_entropy
    
+   
+   ivy.functional.ivy.losses.ssim_loss
+   
+   
+   ivy.functional.ivy.losses.wasserstein_loss_discriminator
+   
+   
+   ivy.functional.ivy.losses.wasserstein_loss_generator
+   
 
 
 
@@ -36,6 +45,12 @@ Losses
 .. autofunction:: ivy.cross_entropy
 
 .. autofunction:: ivy.sparse_cross_entropy
+
+.. autofunction:: ivy.ssim_loss
+
+.. autofunction:: ivy.wasserstein_loss_discriminator
+
+.. autofunction:: ivy.wasserstein_loss_generator
 
 
 

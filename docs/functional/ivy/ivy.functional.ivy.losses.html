@@ -1116,6 +1116,9 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.binary_cross_entropy.html">binary_cross_entropy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.cross_entropy.html">cross_entropy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.sparse_cross_entropy.html">sparse_cross_entropy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.ssim_loss.html">ssim_loss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.wasserstein_loss_discriminator.html">wasserstein_loss_discriminator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.wasserstein_loss_generator.html">wasserstein_loss_generator</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="ivy.functional.ivy.manipulation.html">Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-40"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -1661,6 +1664,71 @@ ivy.array([0.08916873])</p>
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="ivy.ssim_loss">
+<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">ssim_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/functional/ivy/losses.py#L386-L443"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.ssim_loss" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the Structural Similarity Index (SSIM) loss between two
+images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> (<em>A 4D image array</em><em> of </em><em>shape</em><em> (</em><em>batch_size</em><em>, </em><em>channels</em><em>, </em><em>height</em><em>, </em><em>width</em><em>)</em><em>.</em>) – </p></li>
+<li><p><strong>pred</strong> (<em>A 4D image array</em><em> of </em><em>shape</em><em> (</em><em>batch_size</em><em>, </em><em>channels</em><em>, </em><em>height</em><em>, </em><em>width</em><em>)</em><em>.</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../data_classes/data_classes/ivy.data_classes.array.html#ivy.data_classes.array.array.Array" title="ivy.data_classes.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ivy.Array: The SSIM loss measure similarity between the two images.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>With <code class="xref py py-class docutils literal notranslate"><span class="pre">ivy.Array</span></code> input:
+&gt;&gt;&gt; import ivy
+&gt;&gt;&gt; x = ivy.ones((5, 3, 28, 28))
+&gt;&gt;&gt; y = ivy.zeros((5, 3, 28, 28))
+&gt;&gt;&gt; ivy.ssim_loss(x, y)
+ivy.array(0.99989986)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ivy.wasserstein_loss_discriminator">
+<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">wasserstein_loss_discriminator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_fake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/functional/ivy/losses.py#L446-L473"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.wasserstein_loss_discriminator" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Wasserstein loss for the discriminator (critic).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>ivy.Array</strong><strong>)</strong> (<em>p_fake</em>) – </p></li>
+<li><p><strong>(</strong><strong>ivy.Array</strong><strong>)</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../data_classes/data_classes/ivy.data_classes.array.html#ivy.data_classes.array.array.Array" title="ivy.data_classes.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>ivy.Array</cite>: Wasserstein loss for the discriminator.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ivy.wasserstein_loss_generator">
+<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">wasserstein_loss_generator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred_fake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/functional/ivy/losses.py#L476-L499"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.wasserstein_loss_generator" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Wasserstein loss for the generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>(</strong><strong>ivy.Array</strong><strong>)</strong> (<em>pred_fake</em>) – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../data_classes/data_classes/ivy.data_classes.array.html#ivy.data_classes.array.array.Array" title="ivy.data_classes.array.array.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ivy.Array: Wasserstein loss for the generator.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <p>This should have hopefully given you an overview of the losses submodule, if you have any questions, please feel free to reach out on our <a class="reference external" href="https://discord.gg/ZVQdvbzNQJ">discord</a> in the <a class="reference external" href="https://discord.com/channels/799879767196958751/1000044049333485648">losses channel</a>!</p>
 </section>
 
@@ -1713,6 +1781,9 @@ ivy.array([0.08916873])</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.binary_cross_entropy"><code class="docutils literal notranslate"><span class="pre">binary_cross_entropy()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.cross_entropy"><code class="docutils literal notranslate"><span class="pre">cross_entropy()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.sparse_cross_entropy"><code class="docutils literal notranslate"><span class="pre">sparse_cross_entropy()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.ssim_loss"><code class="docutils literal notranslate"><span class="pre">ssim_loss()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.wasserstein_loss_discriminator"><code class="docutils literal notranslate"><span class="pre">wasserstein_loss_discriminator()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.wasserstein_loss_generator"><code class="docutils literal notranslate"><span class="pre">wasserstein_loss_generator()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -2570,6 +2641,9 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.binary_cross_entropy.html">binary_cross_entropy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.cross_entropy.html">cross_entropy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.sparse_cross_entropy.html">sparse_cross_entropy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.ssim_loss.html">ssim_loss</a></li>
+<li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.wasserstein_loss_discriminator.html">wasserstein_loss_discriminator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="losses/ivy.functional.ivy.losses.wasserstein_loss_generator.html">wasserstein_loss_generator</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="ivy.functional.ivy.manipulation.html">Manipulation</a><input class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-40"><i class="fa-solid fa-chevron-down"></i></label><ul>
