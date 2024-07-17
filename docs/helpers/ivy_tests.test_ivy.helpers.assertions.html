@@ -59,13 +59,7 @@
                 gtag('config', 'G-QP5BET66XH');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/helpers/ivy_tests.test_ivy.helpers.assertions';</script>
-    <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://unify.ai/docs/versions/ivy.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
-        </script>
-    <link rel="icon" href="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/ivy_logo_only.png?raw=true"/>
+    <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Available frameworks" href="ivy_tests.test_ivy.helpers.available_frameworks.html" />
@@ -291,30 +285,6 @@
     
     
       <div class="sidebar-header-items__end">
-        
-          <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
-  </div>
-`);
-</script></div>
         
           <div class="navbar-item">
 
@@ -1410,7 +1380,7 @@ document.write(`
 <span id="assertions"></span><h1>Assertions<a class="headerlink" href="#module-ivy_tests.test_ivy.helpers.assertions" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.assert_all_close">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">assert_all_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ret_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_from_gt_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TensorFlow'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L13-L63"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.assert_all_close" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">assert_all_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ret_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_from_gt_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TensorFlow'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L13-L63"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.assert_all_close" title="Link to this definition">#</a></dt>
 <dd><p>Match the ret_np and ret_from_gt_np inputs element-by-element to ensure
 that they are the same.</p>
 <dl class="field-list simple">
@@ -1431,7 +1401,7 @@ that they are the same.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.assert_same_type">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">assert_same_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ret_from_target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_from_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend_to_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gt_backend</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L80-L98"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.assert_same_type" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">assert_same_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ret_from_target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_from_gt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend_to_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gt_backend</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L80-L98"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.assert_same_type" title="Link to this definition">#</a></dt>
 <dd><p>Assert that the return types from the target and ground truth frameworks
 are the same.</p>
 <p>checks with a string comparison because with_backend returns
@@ -1440,12 +1410,12 @@ different objects. Doesn’t check recursively.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.assert_same_type_and_shape">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">assert_same_type_and_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_key_chain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L66-L77"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.assert_same_type_and_shape" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">assert_same_type_and_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_key_chain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L66-L77"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.assert_same_type_and_shape" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.check_unsupported_device">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">check_unsupported_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_as_kwargs_np</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L232-L267"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.check_unsupported_device" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">check_unsupported_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_as_kwargs_np</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L232-L267"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.check_unsupported_device" title="Link to this definition">#</a></dt>
 <dd><p>Check whether a function does not support a given device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1463,7 +1433,7 @@ different objects. Doesn’t check recursively.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.check_unsupported_device_and_dtype">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">check_unsupported_device_and_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_as_kwargs_np</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L270-L302"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.check_unsupported_device_and_dtype" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">check_unsupported_device_and_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_as_kwargs_np</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L270-L302"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.check_unsupported_device_and_dtype" title="Link to this definition">#</a></dt>
 <dd><p>Check whether a function does not support a given device or data types.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1486,7 +1456,7 @@ different objects. Doesn’t check recursively.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.check_unsupported_dtype">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">check_unsupported_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_as_kwargs_np</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L186-L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.check_unsupported_dtype" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">check_unsupported_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_as_kwargs_np</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L186-L229"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.check_unsupported_dtype" title="Link to this definition">#</a></dt>
 <dd><p>Check whether a function does not support the input data types or the
 output data type.</p>
 <dl class="field-list simple">
@@ -1509,7 +1479,7 @@ output data type.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.test_unsupported_function">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">test_unsupported_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L305-L321"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.test_unsupported_function" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">test_unsupported_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L305-L321"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.test_unsupported_function" title="Link to this definition">#</a></dt>
 <dd><p>Test a function with an unsupported datatype to raise an exception.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1524,7 +1494,7 @@ output data type.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy_tests.test_ivy.helpers.assertions.value_test">
-<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">value_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_np_flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_np_from_gt_flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specific_tolerance_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TensorFlow'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L101-L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.value_test" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy_tests.test_ivy.helpers.assertions.</span></span><span class="sig-name descname"><span class="pre">value_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_np_flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret_np_from_gt_flat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specific_tolerance_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TensorFlow'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy_tests/test_ivy/helpers/assertions.py#L101-L183"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy_tests.test_ivy.helpers.assertions.value_test" title="Link to this definition">#</a></dt>
 <dd><p>Perform a value test for matching the arrays in ret_np_flat and
 ret_from_np_gt_flat.</p>
 <dl class="field-list simple">
@@ -1546,6 +1516,7 @@ truth framework.</p></li>
 </dl>
 </dd></dl>
 
+<p>This should have hopefully given you an overview of the assertions submodule, if you have any questions, please feel free to reach out on our <a class="reference external" href="https://discord.gg/r5mcSAfp">discord</a>!</p>
 </section>
 
 
@@ -1635,30 +1606,6 @@ document.write(`
 </script>
     </div>
     
-    
-    <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
-  </div>
-`);
-</script></div>
     
     <div class="navbar-item">
 
@@ -2722,7 +2669,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2020-2023, Unify.
+      © Copyright 2024 [Ivy], All rights reserved..
       <br/>
     
   </p>

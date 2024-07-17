@@ -59,13 +59,7 @@
                 gtag('config', 'G-QP5BET66XH');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/utils/ivy.utils.einsum_parser';</script>
-    <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
-        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://unify.ai/docs/versions/ivy.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'dev';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
-        </script>
-    <link rel="icon" href="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/ivy_logo_only.png?raw=true"/>
+    <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Einsum path helpers" href="ivy.utils.einsum_path_helpers.html" />
@@ -291,30 +285,6 @@
     
     
       <div class="sidebar-header-items__end">
-        
-          <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
-  </div>
-`);
-</script></div>
         
           <div class="navbar-item">
 
@@ -1410,7 +1380,7 @@ document.write(`
 <span id="einsum-parser"></span><h1>Einsum parser<a class="headerlink" href="#module-ivy.utils.einsum_parser" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.convert_interleaved_input">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">convert_interleaved_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L180-L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.convert_interleaved_input" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">convert_interleaved_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L180-L218"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.convert_interleaved_input" title="Link to this definition">#</a></dt>
 <dd><p>Convert ‘interleaved’ input to standard einsum input.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1421,7 +1391,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.convert_subscripts">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">convert_subscripts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_sub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol_map</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L166-L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.convert_subscripts" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">convert_subscripts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_sub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol_map</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L166-L177"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.convert_subscripts" title="Link to this definition">#</a></dt>
 <dd><p>Convert user custom subscripts list to subscript string according to
 <cite>symbol_map</cite>.</p>
 <dl class="field-list simple">
@@ -1440,7 +1410,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.find_output_shape">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">find_output_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L111-L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.find_output_shape" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">find_output_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shapes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L111-L133"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.find_output_shape" title="Link to this definition">#</a></dt>
 <dd><p>Find the output shape for given inputs, shapes and output string, taking
 into account broadcasting.</p>
 <dl class="field-list simple">
@@ -1460,7 +1430,7 @@ into account broadcasting.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.find_output_str">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">find_output_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscripts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L89-L108"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.find_output_str" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">find_output_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscripts</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L89-L108"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.find_output_str" title="Link to this definition">#</a></dt>
 <dd><p>Find the output string for the inputs <code class="docutils literal notranslate"><span class="pre">subscripts</span></code> under canonical
 einstein summation rules.That is, repeated indices are summed over by
 default.</p>
@@ -1486,7 +1456,7 @@ default.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.gen_unused_symbols">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">gen_unused_symbols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L70-L86"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.gen_unused_symbols" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">gen_unused_symbols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">used</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L70-L86"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.gen_unused_symbols" title="Link to this definition">#</a></dt>
 <dd><p>Generate <code class="docutils literal notranslate"><span class="pre">n</span></code> symbols that are not already in <code class="docutils literal notranslate"><span class="pre">used</span></code>.</p>
 <p><strong>Examples:</strong>
 <code class="docutils literal notranslate"><span class="pre">`python</span>
@@ -1502,7 +1472,7 @@ default.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.get_symbol">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">get_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L43-L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.get_symbol" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">get_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L43-L67"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.get_symbol" title="Link to this definition">#</a></dt>
 <dd><p>Get the symbol corresponding to int <code class="docutils literal notranslate"><span class="pre">i</span></code> - runs through the usual 52
 letters before resorting to unicode characters, starting at <code class="docutils literal notranslate"><span class="pre">chr(192)</span></code>
 and skipping surrogates.
@@ -1520,7 +1490,7 @@ and skipping surrogates.
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.has_valid_einsum_chars_only">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">has_valid_einsum_chars_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">einsum_str</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L28-L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.has_valid_einsum_chars_only" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">has_valid_einsum_chars_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">einsum_str</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L28-L40"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.has_valid_einsum_chars_only" title="Link to this definition">#</a></dt>
 <dd><p>Check if <code class="docutils literal notranslate"><span class="pre">einsum_str</span></code> contains only valid characters for numpy einsum.
 <strong>Examples:</strong></p>
 <p><a href="#id7"><span class="problematic" id="id8">``</span></a><cite>python
@@ -1534,7 +1504,7 @@ and skipping surrogates.
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.is_valid_einsum_char">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">is_valid_einsum_char</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L14-L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.is_valid_einsum_char" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">is_valid_einsum_char</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L14-L25"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.is_valid_einsum_char" title="Link to this definition">#</a></dt>
 <dd><p>Check if the character <code class="docutils literal notranslate"><span class="pre">x</span></code> is valid for numpy einsum. <strong>Examples:</strong></p>
 <p><a href="#id13"><span class="problematic" id="id14">``</span></a><cite>python
 :rtype: :py:class:`bool</cite></p>
@@ -1547,7 +1517,7 @@ and skipping surrogates.
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.legalise_einsum_expr">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">legalise_einsum_expr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L221-L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.legalise_einsum_expr" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">legalise_einsum_expr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L221-L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.legalise_einsum_expr" title="Link to this definition">#</a></dt>
 <dd><p>Reproduction of einsum c side einsum parsing in python. <strong>Parameters:</strong>
 Intakes the same inputs as <cite>contract_path</cite>, but NOT the keyword args. The
 only.</p>
@@ -1582,7 +1552,7 @@ array shapes have been supplied.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.utils.einsum_parser.possibly_convert_to_numpy">
-<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">possibly_convert_to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/unifyai/ivy/blob/main/ivy/utils/einsum_parser.py#L136-L163"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.possibly_convert_to_numpy" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.utils.einsum_parser.</span></span><span class="sig-name descname"><span class="pre">possibly_convert_to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/utils/einsum_parser.py#L136-L163"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.utils.einsum_parser.possibly_convert_to_numpy" title="Link to this definition">#</a></dt>
 <dd><p>Convert things without a ‘shape’ to ndarrays, but leave everything else.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1614,6 +1584,7 @@ array shapes have been supplied.</p>
 </div>
 </dd></dl>
 
+<p>This should have hopefully given you an overview of the einsum_parser submodule, if you have any questions, please feel free to reach out on our <a class="reference external" href="https://discord.gg/r5mcSAfp">discord</a>!</p>
 </section>
 
 
@@ -1705,30 +1676,6 @@ document.write(`
 </script>
     </div>
     
-    
-    <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
-  </div>
-`);
-</script></div>
     
     <div class="navbar-item">
 
@@ -2792,7 +2739,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2020-2023, Unify.
+      © Copyright 2024 [Ivy], All rights reserved..
       <br/>
     
   </p>
