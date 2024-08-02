@@ -1391,19 +1391,20 @@ document.write(`
 <section id="Transpile-code">
 <h1>Transpile code<a class="headerlink" href="#Transpile-code" title="Link to this heading">#</a></h1>
 <p>Convert a <code class="docutils literal notranslate"><span class="pre">torch</span></code> function to <code class="docutils literal notranslate"><span class="pre">jax</span></code> with just one line of code.</p>
-<p>⚠️ If you are running this notebook in Colab, you will have to install <code class="docutils literal notranslate"><span class="pre">Ivy</span></code> and some dependencies manually. You can do so by running the cell below ⬇️</p>
-<p>If you want to run the notebook locally but don’t have Ivy installed just yet, you can check out the <a class="reference external" href="https://unify.ai/docs/ivy/overview/get_started.html">Get Started section of the docs.</a></p>
+<p>You can install the dependencies required for this notebook by running the cell below ⬇️, or check out the <a class="reference external" href="https://ivy.dev/docs/overview/get_started.html">Get Started section of the docs</a> to find out more about installing ivy.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>ivy
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>torch
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>jax<span class="w"> </span>jaxlib
 </pre></div>
 </div>
 </div>
 <p>Using what we learnt in the previous two notebooks for <a class="reference internal" href="02_unify_code.html"><span class="doc">Unify</span></a> and <a class="reference internal" href="03_trace_code.html"><span class="doc">Trace</span></a>, the workflow for converting directly from <code class="docutils literal notranslate"><span class="pre">torch</span></code> to <code class="docutils literal notranslate"><span class="pre">jax</span></code> would be as follows, first unifying to <code class="docutils literal notranslate"><span class="pre">ivy</span></code> code, and then tracing to the <code class="docutils literal notranslate"><span class="pre">jax</span></code> backend:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
@@ -1426,7 +1427,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">normalize</span></code> is now traced to <code class="docutils literal notranslate"><span class="pre">jax</span></code>, ready to be integrated into your wider <code class="docutils literal notranslate"><span class="pre">jax</span></code> project.</p>
 <p>This workflow is common, and so in order to avoid repeated calls to <code class="docutils literal notranslate"><span class="pre">ivy.unify</span></code> followed by <code class="docutils literal notranslate"><span class="pre">ivy.trace_graph</span></code>, there is another convenience function <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>, which basically acts as a shorthand for this pair of function calls:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jax_normalize</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
@@ -1435,7 +1436,7 @@ document.write(`
 </div>
 <p>Again, <code class="docutils literal notranslate"><span class="pre">normalize</span></code> is now a <code class="docutils literal notranslate"><span class="pre">jax</span></code> function, ready to be integrated into your <code class="docutils literal notranslate"><span class="pre">jax</span></code> project.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>

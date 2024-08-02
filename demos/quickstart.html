@@ -1784,7 +1784,7 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_array</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">torch_model</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">input_array</span><span class="p">,))</span>
+<span class="n">torch_model</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">input_array</span><span class="p">,))</span>
 </pre></div>
 </div>
 </div>

@@ -1376,14 +1376,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a class="reference external" href="https://colab.research.google.com/github/unifyai/demos/blob/main/%7B%7B%3C%20meta%20file%20%3E%7D%7D"><img alt="Open in Colab" src="demos/wip/0_building_blocks/%7B%7B%3C%20var%20remote_badge.colab%20%3E%7D%7D" /></a> <a href="https://github.com/ivy-llc/demos/blob/main/wip/0_building_blocks/0_2_transpile.ipynb" target="_blank">
+  <p><a class="reference external" href="https://colab.research.google.com/github/ivy-llc/demos/blob/main/%7B%7B%3C%20meta%20file%20%3E%7D%7D"><img alt="Open in Colab" src="demos/wip/0_building_blocks/%7B%7B%3C%20var%20remote_badge.colab%20%3E%7D%7D" /></a> <a href="https://github.com/ivy-llc/demos/blob/main/wip/0_building_blocks/0_2_transpile.ipynb" target="_blank">
     <img src="https://badgen.net/badge/icon/github?icon=github&label">
 </a></p>
 <section id="0.2:-Transpile">
 <h1>0.2: Transpile<a class="headerlink" href="#0.2:-Transpile" title="Link to this heading">#</a></h1>
 <p>In this example, we transpile the original <code class="docutils literal notranslate"><span class="pre">normalize</span></code> function from <code class="docutils literal notranslate"><span class="pre">torch</span></code> to <code class="docutils literal notranslate"><span class="pre">jax</span></code> in one line of code. This is a common use case, where there is <em>one</em> target framework in mind.</p>
 <div class="docutils container" id="colab-button">
-<p><a class="reference external" href="https://colab.research.google.com/github/unifyai/demos/blob/main/%7B%7B%3C%20meta%20file%20%3E%7D%7D"><img alt="Open in Colab" src="demos/wip/0_building_blocks/%7B%7B%3C%20var%20remote_badge.colab%20%3E%7D%7D" /></a> <a class="reference external" href="https://github.com/unifyai/demos/blob/main/%7B%7B%3C%20meta%20file%20%3E%7D%7D"><img alt="GitHub" src="demos/wip/0_building_blocks/%7B%7B%3C%20var%20remote_badge.github%20%3E%7D%7D" /></a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/ivy-llc/demos/blob/main/%7B%7B%3C%20meta%20file%20%3E%7D%7D"><img alt="Open in Colab" src="demos/wip/0_building_blocks/%7B%7B%3C%20var%20remote_badge.colab%20%3E%7D%7D" /></a> <a class="reference external" href="https://github.com/ivy-llc/demos/blob/main/%7B%7B%3C%20meta%20file%20%3E%7D%7D"><img alt="GitHub" src="demos/wip/0_building_blocks/%7B%7B%3C%20var%20remote_badge.github%20%3E%7D%7D" /></a></p>
 </div>
 <p>Using what we learnt in the previous two notebooks for <a href="#id1"><span class="problematic" id="id2">`Unify &lt;&gt;`__</span></a> and <a href="#id1"><span class="problematic" id="id3">`Compile &lt;&gt;`__</span></a>, the workflow for converting directly from <code class="docutils literal notranslate"><span class="pre">torch</span></code> to <code class="docutils literal notranslate"><span class="pre">jax</span></code> would be as follows, first unifying to <code class="docutils literal notranslate"><span class="pre">ivy</span></code> code, and then compiling to the <code class="docutils literal notranslate"><span class="pre">jax</span></code> backend:</p>
 <div class="nbinput nblast docutils container">

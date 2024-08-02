@@ -1402,7 +1402,7 @@ document.write(`
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>ivy
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>dm-haiku
-<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/unifyai/models.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
+<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ivy-llc/models.git<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span>
 
 <span class="c1"># Installing models package from cloned repository! 😄</span>
 <span class="o">!</span><span class="nb">cd</span><span class="w"> </span>models/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
@@ -1474,7 +1474,7 @@ document.write(`
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preprocess image</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/unifyai/models/master/images/car.jpg
+<span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/ivy-llc/models/master/images/car.jpg
 <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;car.jpg&quot;</span>
 <span class="n">full_img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">torch_img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">preprocess</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">full_img</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
