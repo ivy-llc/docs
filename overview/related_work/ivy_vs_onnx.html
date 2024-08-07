@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API Standards &#8212; Ivy Documentation</title>
+    <title>Comparing Ivy with ONNX &#8212; Ivy Documentation</title>
   
   
   
@@ -58,12 +58,12 @@
                 gtag('js', new Date());
                 gtag('config', 'G-QP5BET66XH');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'overview/related_work/api_standards';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'overview/related_work/ivy_vs_onnx';</script>
     <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Wrapper Frameworks" href="wrapper_frameworks.html" />
-    <link rel="prev" title="Related Work" href="../related_work.html" />
+    <link rel="next" title="What does Ivy Add?" href="what_does_ivy_add.html" />
+    <link rel="prev" title="Graph Tracers" href="graph_tracers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -365,21 +365,13 @@ document.write(`
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../motivation.html">Motivation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../motivation/ml_explosion.html">ML Explosion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/why_unify.html">Why Unify?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/standardization.html">Standardization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motivation/why_transpile.html">Why Transpile?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../related_work.html">Related Work</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">API Standards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wrapper_frameworks.html">Wrapper Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frameworks.html">Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_tracers.html">Graph Tracers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exchange_formats.html">Exchange Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiler_infrastructure.html">Compiler Infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_vendor_compiler_frameworks.html">Multi-Vendor Compiler Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_apis.html">Vendor-Specific APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_compilers.html">Vendor-Specific Compilers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml_unifying_companies.html">ML-Unifying Companies</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Comparing Ivy with ONNX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="what_does_ivy_add.html">What does Ivy Add?</a></li>
 </ul>
 </li>
@@ -1359,7 +1351,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../related_work.html" class="nav-link">Related Work</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">API Standards</li>
+    <li class="breadcrumb-item active" aria-current="page">Comparing...</li>
   </ul>
 </nav>
 </div>
@@ -1376,40 +1368,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="api-standards">
-<span id="rworks-api-standards"></span><h1>API Standards<a class="headerlink" href="#api-standards" title="Link to this heading">#</a></h1>
-<p>API standards are standardized application programming interfaces (APIs) which define the function signatures which similar libraries should adhere to for maximal interoperability between those libraries.</p>
-<section id="id1">
-<h2>Array API Standard<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://data-apis.org/array-api/latest/">Array API Standard</a> defines a unified application programming interface (API) for Python libraries which perform numerical operations on high dimensional arrays (tensors).
-This standard can be considered as “higher level” than the ML frameworks themselves, given that the standard defines the functions without implementing them, whereas the frameworks include implementations for all of the functions which fit into this standard API, with all the lower level considerations also handled within these implementations.
-The Array API Standard takes the lowest common denominator approach, whereby each function in the standard represents the minimum behaviors of the function without restricting extensions to the function.
-This means that two very different libraries can adhere to the same standard, despite having very different extended behaviors for some of the functions in the standard.
-The standard is also not exhaustive.
-For example, there are 64 functions defined in the standard, whereas the functions defined in each framework are as follows:</p>
-<section id="table">
-<h3>Table:<a class="headerlink" href="#table" title="Link to this heading">#</a></h3>
-<div class="line-block">
-<div class="line-block">
-<div class="line">|                                                                  |</div>
-</div>
-<div class="line">Framework   | Functions                                                        |</div>
-</div>
-<p><a href="#id2"><span class="problematic" id="id3">|-------------|</span></a>——————————————————————|
-| NumPy       | all, any, argmax, argmin, around, clip, cumprod, cumsum, max,    |
-|             | mean, min, prod, round, std, sum, var                            |
-<a href="#id4"><span class="problematic" id="id5">|-------------|</span></a>——————————————————————|
-| Pandas      | append, diff, fillna, head, isin, loc, mean, min, pct_change,    |
-|             | prod, quantile, rolling, shift, tail, to_numpy                   |
-<a href="#id6"><span class="problematic" id="id7">|-------------|</span></a>——————————————————————|
-| TensorFlow  | cast, clip_by_value, equal, greater, greater_equal, less,        |
-|             | less_equal, maximum, minimum, not_equal, ones_like, reshape,     |
-|             | sum                                                              |
-<a href="#id8"><span class="problematic" id="id9">|-------------|</span></a>——————————————————————|
-| PyTorch     | abs, add, mean, max, min, pow, sum                               |
-<a href="#id10"><span class="problematic" id="id11">|_____________|__________________________________________________________________|</span></a></p>
-<p>Therefore, two frameworks which adhere to the standard will still have major differences by virtue of the extra functions they support which are not present in the standard.</p>
+  <section id="comparing-ivy-with-onnx">
+<span id="rworks-ivy-vs-onnx"></span><h1>Comparing Ivy with ONNX<a class="headerlink" href="#comparing-ivy-with-onnx" title="Link to this heading">#</a></h1>
+<section id="onnx-onnx">
+<h2>ONNX <a class="dark-light reference internal" href="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/onnx.png"><img alt="onnx" class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/onnx.png" style="height: 20pt;" /></a><a class="headerlink" href="#onnx-onnx" title="Link to this heading">#</a></h2>
+<p>Neural network exchange formats define a standardized file representation specifically for neural networks. The idea is that these can be used as
+an intermediate representation for communicating or “exchanging” neural network architectures between different ML frameworks or between ML frameworks
+and the target hardware. The focus is generally on simplifying the deployment of neural networks, with a typical workflow being: train the model,
+save in an exchange format, and use this exchange format to communicate with the target compilers and hardware for model inference.</p>
+<p>The <a class="reference external" href="https://onnx.ai/">Open Neural Network Exchange (ONNX)</a> is a standardized static file format which fully defines the structure of a neural network and all of its weights.
+Third parties can implement their own bindings to the ONNX standard format, which then enables the model to be saved to disk in the standard ONNX file format,
+and be deployed on any hardware which supports the ONNX format. Some frameworks have also added support to “load in” ONNX models from disk, as well as support
+for exporting to the format. This enables some degree of model conversion between frameworks, but generally only for model deployment and not training. ONNX
+focuses on core neural network operations, with limited support for other more general array processing functions such as high order optimization,
+signal processing, and advanced linear algebra.</p>
 </section>
+<section id="ivy">
+<h2><a class="dark-light reference internal" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/full_logo_dark_long.svg#gh-dark-mode-only"><img alt="ivy" class="dark-light" src="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/full_logo_dark_long.svg#gh-dark-mode-only" style="height: 26pt;" /></a><a class="headerlink" href="#ivy" title="Link to this heading">#</a></h2>
+<p>The goal of Ivy is to be a comprehensive ML code conversion tool for all aspects of ML development, rather than solely focusing on deployment.
+Ivy’s transpiler uses a source code-to-source code approach to conversion, allowing any ML code to be converted. This includes models, functions, tools,
+and entire libraries or codebases, providing a holistic solution for ML framework interoperability. Exchange formats like ONNX primarily work with deep
+learning models, focusing on deployment and inference optimization. While ONNX offers a standardized file format that ensures consistent model representation
+and efficient inference across diverse hardware platforms, it has limited support for model training and may not fully support advanced framework-specific
+features. In contrast, Ivy supports both training and inference for converted models, enabling seamless end-to-end ML workflows within different frameworks.
+By preserving the full functionality and flexibility of the original code, Ivy allows developers to leverage advanced features and optimizations specific to
+each framework, thus addressing the limitations of exchange formats that only handle deep learning models for inference purposes. Ultmately, Ivy aims to solve
+the broader challenge of enabling seamless development and flexibility across multiple ML frameworks, whereas ONNX addresses deployment of trained models
+across various platforms and hardware environments.</p>
 </section>
 </section>
 
@@ -1424,20 +1409,20 @@ For example, there are 64 functions defined in the standard, whereas the functio
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../related_work.html"
+       href="graph_tracers.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Related Work</p>
+        <p class="prev-next-title">Graph Tracers</p>
       </div>
     </a>
     <a class="right-next"
-       href="wrapper_frameworks.html"
+       href="what_does_ivy_add.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Wrapper Frameworks</p>
+        <p class="prev-next-title">What does Ivy Add?</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1459,10 +1444,8 @@ For example, there are 64 functions defined in the standard, whereas the functio
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Array API Standard</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table">Table:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#onnx-onnx">ONNX </a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy"></a></li>
 </ul>
   </nav></div>
 
@@ -1544,21 +1527,13 @@ For example, there are 64 functions defined in the standard, whereas the functio
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../motivation.html">Motivation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../motivation/ml_explosion.html">ML Explosion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/why_unify.html">Why Unify?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/standardization.html">Standardization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../motivation/why_transpile.html">Why Transpile?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../related_work.html">Related Work</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">API Standards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wrapper_frameworks.html">Wrapper Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="frameworks.html">Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_tracers.html">Graph Tracers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exchange_formats.html">Exchange Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiler_infrastructure.html">Compiler Infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_vendor_compiler_frameworks.html">Multi-Vendor Compiler Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_apis.html">Vendor-Specific APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_compilers.html">Vendor-Specific Compilers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml_unifying_companies.html">ML-Unifying Companies</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Comparing Ivy with ONNX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="what_does_ivy_add.html">What does Ivy Add?</a></li>
 </ul>
 </li>

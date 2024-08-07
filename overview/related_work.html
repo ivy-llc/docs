@@ -62,8 +62,8 @@
     <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="API Standards" href="related_work/api_standards.html" />
-    <link rel="prev" title="Standardization" href="motivation/standardization.html" />
+    <link rel="next" title="Frameworks" href="related_work/frameworks.html" />
+    <link rel="prev" title="Why Transpile?" href="motivation/why_transpile.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -365,21 +365,13 @@ document.write(`
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="motivation.html">Motivation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="motivation/ml_explosion.html">ML Explosion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motivation/why_unify.html">Why Unify?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motivation/standardization.html">Standardization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motivation/why_transpile.html">Why Transpile?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Related Work</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="related_work/api_standards.html">API Standards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/wrapper_frameworks.html">Wrapper Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="related_work/frameworks.html">Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="related_work/graph_tracers.html">Graph Tracers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/exchange_formats.html">Exchange Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/compiler_infrastructure.html">Compiler Infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/multi_vendor_compiler_frameworks.html">Multi-Vendor Compiler Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/vendor_specific_apis.html">Vendor-Specific APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/vendor_specific_compilers.html">Vendor-Specific Compilers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/ml_unifying_companies.html">ML-Unifying Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="related_work/ivy_vs_onnx.html">Comparing Ivy with ONNX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="related_work/what_does_ivy_add.html">What does Ivy Add?</a></li>
 </ul>
 </li>
@@ -1375,46 +1367,19 @@ document.write(`
                   
   <section id="related-work">
 <h1>Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h1>
-<p>In this section, we explain how Ivy compares to many other very important and related pieces of work, which also address fragmentation but at other areas within the ML stack.</p>
-<p>Firstly, we need to look at the overall ML stack, and understand how the high level frameworks relate to the low level components.</p>
-<p>In order to conceptualize this rather complex hierarchy, we have broken the ML stack into 9 groups, which are: <a class="reference internal" href="related_work/api_standards.html"><span class="doc">RWorks API Standards</span></a>, <a class="reference internal" href="related_work/wrapper_frameworks.html"><span class="doc">RWorks Wrapper Frameworks</span></a>, <a class="reference internal" href="related_work/frameworks.html"><span class="doc">RWorks Frameworks</span></a>, <a class="reference internal" href="related_work/graph_tracers.html"><span class="doc">RWorks Graph Tracers</span></a>, <a class="reference internal" href="related_work/exchange_formats.html"><span class="doc">RWorks Exchange Formats</span></a>, <a class="reference internal" href="related_work/compiler_infrastructure.html"><span class="doc">RWorks Compiler Infrastructure</span></a>, <a class="reference internal" href="related_work/multi_vendor_compiler_frameworks.html"><span class="doc">RWorks Multi-Vendor Compiler Frameworks</span></a>, <a class="reference internal" href="related_work/vendor_specific_apis.html"><span class="doc">RWorks Vendor-Specific APIs</span></a> and <a class="reference internal" href="related_work/vendor_specific_compilers.html"><span class="doc">RWorks Vendor-Specific Compilers</span></a>, going from high level to low level respectively.</p>
-<a class="reference internal image-reference" href="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/related_work/ml_stack.png?raw=true"><img alt="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/related_work/ml_stack.png?raw=true" src="https://github.com/unifyai/unifyai.github.io/blob/main/img/externally_linked/related_work/ml_stack.png?raw=true" style="width: 100%;" /></a>
-<p>Each of these groups within the ML stack has it’s own sub-section, linked below, within which we discuss various related projects which operate at that particular level within the stack.</p>
-<p>We then compare Ivy to some other ML-unifying companies which are working on very important problems and are helping to unify the lower levels of the ML stack.
-We see these efforts as being very complimentary to Ivy’s vision for high level unification.</p>
-<p>Finally, we discuss how Ivy compares to each of these important works at all levels within the ML stack.</p>
+<p>In this section, we explain how Ivy compares to many other very important and related pieces of work, which also address
+fragmentation in parts of the ML stack.</p>
 <div class="line-block">
-<div class="line">(a) <a class="reference internal" href="related_work/api_standards.html"><span class="doc">RWorks API Standards</span></a> 🤝🏽</div>
-<div class="line">Standardized APIs which similar libraries should adhere to</div>
-<div class="line"><br /></div>
-<div class="line">(b) <a class="reference internal" href="related_work/wrapper_frameworks.html"><span class="doc">RWorks Wrapper Frameworks</span></a> 🎁</div>
-<div class="line">Frameworks which wrap other ML frameworks</div>
-<div class="line"><br /></div>
-<div class="line">(c) <a class="reference internal" href="related_work/frameworks.html"><span class="doc">RWorks Frameworks</span></a> 🔢</div>
+<div class="line">(a) <a class="reference internal" href="related_work/frameworks.html"><span class="doc">RWorks Frameworks</span></a> 🔢</div>
 <div class="line">Standalone ML Frameworks</div>
 <div class="line"><br /></div>
-<div class="line">(d) <a class="reference internal" href="related_work/graph_tracers.html"><span class="doc">RWorks Graph Tracers</span></a> 🕸️</div>
+<div class="line">(b) <a class="reference internal" href="related_work/graph_tracers.html"><span class="doc">RWorks Graph Tracers</span></a> 🕸️</div>
 <div class="line">Extracting acyclic directed computation graphs from code</div>
 <div class="line"><br /></div>
-<div class="line">(e) <a class="reference internal" href="related_work/exchange_formats.html"><span class="doc">RWorks Exchange Formats</span></a> 💱</div>
-<div class="line">File formats to exchange neural networks between frameworks</div>
+<div class="line">(c) <a class="reference internal" href="related_work/ivy_vs_onnx.html"><span class="doc">RWorks Ivy vs ONNX</span></a> 💱</div>
+<div class="line">How Ivy compares in functionality to ONNX</div>
 <div class="line"><br /></div>
-<div class="line">(f) <a class="reference internal" href="related_work/compiler_infrastructure.html"><span class="doc">RWorks Compiler Infrastructure</span></a> 🔟️🏗️</div>
-<div class="line">Infrastructure and standards to simplify the lives of compiler designers</div>
-<div class="line"><br /></div>
-<div class="line">(g) <a class="reference internal" href="related_work/multi_vendor_compiler_frameworks.html"><span class="doc">RWorks Multi-Vendor Compiler Frameworks</span></a> 🖥️💻🔟</div>
-<div class="line">Executing ML code on a variety of hardware targets</div>
-<div class="line"><br /></div>
-<div class="line">(h) <a class="reference internal" href="related_work/vendor_specific_apis.html"><span class="doc">RWorks Vendor-Specific APIs</span></a> 💻🔢</div>
-<div class="line">Interfacing with specific hardware in an intuitive manner</div>
-<div class="line"><br /></div>
-<div class="line">(i) <a class="reference internal" href="related_work/vendor_specific_compilers.html"><span class="doc">RWorks Vendor-Specific Compilers</span></a> 💻🔟</div>
-<div class="line">Compiling code to specific hardware</div>
-<div class="line"><br /></div>
-<div class="line">(j) <a class="reference internal" href="related_work/ml_unifying_companies.html"><span class="doc">RWorks ML-Unifying Companies</span></a> 📈</div>
-<div class="line">Companies working towards unification in ML</div>
-<div class="line"><br /></div>
-<div class="line">(k) <a class="reference internal" href="related_work/what_does_ivy_add.html"><span class="doc">RWorks What does Ivy Add?</span></a> 🟢</div>
+<div class="line">(d) <a class="reference internal" href="related_work/what_does_ivy_add.html"><span class="doc">RWorks What does Ivy Add?</span></a> 🟢</div>
 <div class="line">How does Ivy fit into all of this?</div>
 </div>
 <div class="toctree-wrapper compound">
@@ -1432,20 +1397,20 @@ We see these efforts as being very complimentary to Ivy’s vision for high leve
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="motivation/standardization.html"
+       href="motivation/why_transpile.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Standardization</p>
+        <p class="prev-next-title">Why Transpile?</p>
       </div>
     </a>
     <a class="right-next"
-       href="related_work/api_standards.html"
+       href="related_work/frameworks.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">API Standards</p>
+        <p class="prev-next-title">Frameworks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1534,21 +1499,13 @@ We see these efforts as being very complimentary to Ivy’s vision for high leve
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="motivation.html">Motivation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="motivation/ml_explosion.html">ML Explosion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motivation/why_unify.html">Why Unify?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motivation/standardization.html">Standardization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motivation/why_transpile.html">Why Transpile?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Related Work</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="related_work/api_standards.html">API Standards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/wrapper_frameworks.html">Wrapper Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="related_work/frameworks.html">Frameworks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="related_work/graph_tracers.html">Graph Tracers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/exchange_formats.html">Exchange Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/compiler_infrastructure.html">Compiler Infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/multi_vendor_compiler_frameworks.html">Multi-Vendor Compiler Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/vendor_specific_apis.html">Vendor-Specific APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/vendor_specific_compilers.html">Vendor-Specific Compilers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="related_work/ml_unifying_companies.html">ML-Unifying Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="related_work/ivy_vs_onnx.html">Comparing Ivy with ONNX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="related_work/what_does_ivy_add.html">What does Ivy Add?</a></li>
 </ul>
 </li>

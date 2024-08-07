@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exchange Formats &#8212; Ivy Documentation</title>
+    <title>Why Transpile? &#8212; Ivy Documentation</title>
   
   
   
@@ -58,12 +58,12 @@
                 gtag('js', new Date());
                 gtag('config', 'G-QP5BET66XH');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'overview/related_work/exchange_formats';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'overview/motivation/why_transpile';</script>
     <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Compiler Infrastructure" href="compiler_infrastructure.html" />
-    <link rel="prev" title="Graph Tracers" href="graph_tracers.html" />
+    <link rel="next" title="Related Work" href="../related_work.html" />
+    <link rel="prev" title="ML Explosion" href="ml_explosion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,14 +180,14 @@
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../motivation.html">
                         Motivation
                       </a>
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../related_work.html">
                         Related Work
                       </a>
@@ -363,24 +363,16 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../motivation.html">Motivation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/ml_explosion.html">ML Explosion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/why_unify.html">Why Unify?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/standardization.html">Standardization</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../motivation.html">Motivation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ml_explosion.html">ML Explosion</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Why Transpile?</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../related_work.html">Related Work</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_standards.html">API Standards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wrapper_frameworks.html">Wrapper Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph_tracers.html">Graph Tracers</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exchange Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiler_infrastructure.html">Compiler Infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_vendor_compiler_frameworks.html">Multi-Vendor Compiler Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_apis.html">Vendor-Specific APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_compilers.html">Vendor-Specific Compilers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml_unifying_companies.html">ML-Unifying Companies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="what_does_ivy_add.html">What does Ivy Add?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../related_work.html">Related Work</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/frameworks.html">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/graph_tracers.html">Graph Tracers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/ivy_vs_onnx.html">Comparing Ivy with ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/what_does_ivy_add.html">What does Ivy Add?</a></li>
 </ul>
 </li>
 </ul>
@@ -1357,9 +1349,9 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../related_work.html" class="nav-link">Related Work</a></li>
+    <li class="breadcrumb-item"><a href="../motivation.html" class="nav-link">Motivation</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Exchange Formats</li>
+    <li class="breadcrumb-item active" aria-current="page">Why Transpile?</li>
   </ul>
 </nav>
 </div>
@@ -1376,31 +1368,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="exchange-formats">
-<span id="rworks-exchange-formats"></span><h1>Exchange Formats<a class="headerlink" href="#exchange-formats" title="Link to this heading">#</a></h1>
-<p>Neural network exchange formats define a standardized file representation specifically for neural networks.
-The idea is that these can be used as an intermediate representation for communicating or “exchanging” neural network architectures between different ML frameworks or between ML frameworks and the target hardware.
-The focus is generally on simplifying the deployment of neural networks, with a typical workflow being: train the model, save in an exchange format, and use this exchange format to communicate with the target compilers and hardware for model inference.</p>
-<section id="onnx-onnx">
-<h2>ONNX <a class="dark-light reference internal" href="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/onnx.png"><img alt="onnx" class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/onnx.png" style="height: 20pt;" /></a><a class="headerlink" href="#onnx-onnx" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://onnx.ai/">Open Neural Network Exchange (ONNX)</a> is a standardized static file format which fully defines the structure of a neural network and all of its weights.
-Third parties can implement their own bindings to the ONNX standard format, which then enables the model to be saved to disk in the standard ONNX file format, and be deployed on any hardware which supports the ONNX format.
-Some frameworks have also added support to “load in” ONNX models from disk, as well as support for exporting to the format.
-This enables some degree of model conversion between frameworks, but generally only for model deployment and not training.
-ONNX focuses on core neural network operations, with limited support for other more general array processing functions such as high order optimization, signal processing, and advanced linear algebra.</p>
-</section>
-<section id="nnef-nnef">
-<h2>NNEF <a class="dark-light reference internal" href="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/nnef.png"><img alt="nnef" class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/nnef.png" style="height: 15pt;" /></a><a class="headerlink" href="#nnef-nnef" title="Link to this heading">#</a></h2>
-<p>Similar to <a class="reference external" href="https://onnx.ai/">ONNX</a>, the <a class="reference external" href="https://www.khronos.org/nnef">Neural Network Exchange Format (NNEF)</a> is also a standardized static file format which fully defines the structure of a neural network and all of its weights, with some support also for training tools.
-The format was developed and is maintained by the <a class="reference external" href="https://www.khronos.org/">Khronos Group</a>.
-Overall, NNEF shares a lot of similarities with ONNX, but has not reached the same level of adoption.</p>
-</section>
-<section id="coreml-coreml">
-<h2>CoreML <a class="dark-light reference internal" href="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/coreml.png"><img alt="coreml" class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/related_work/exchange_formats/coreml.png" style="height: 20pt;" /></a><a class="headerlink" href="#coreml-coreml" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://developer.apple.com/documentation/coreml">CoreML</a> itself is not an exchange format, it is a framework which enables models to be trained and deployed on <a class="reference external" href="https://www.apple.com/">Apple</a> devices with a simple zero-code interactive interface.
-However, CoreML is built upon its own Core ML format, and Apple has open sourced <code class="code docutils literal notranslate"><span class="pre">coremltools</span></code>, which provides a set of tools to convert ML models from various frameworks into the Core ML format.
-The Core ML format is itself an exchange format, albeit with the sole purpose of exchanging to Apple’s CoreML framework, rather than enabling exchanges between multiple different parties as is the case for the other exchange formats.</p>
-</section>
+  <section id="why-transpile">
+<h1>Why Transpile?<a class="headerlink" href="#why-transpile" title="Link to this heading">#</a></h1>
+<p>The crucial advancement offered by Ivy is the ability to convert machine learning models, functions, and libraries
+between any of the different frameworks in this fragmented landscape. This tool is call Ivy’s transpiler.
+So why would we want to transpile a ML model between frameworks?</p>
+<p><strong>Interoperability</strong></p>
+<p>The ability to convert models helps in integrating diverse components and libraries, enabling
+developers to build more complex and feature-rich applications by combining the best tools available across different frameworks.</p>
+<p><strong>Flexibility</strong></p>
+<p>Developers can select their preferred framework to develop in without worrying about the downstream consequences for
+deployment, or what frameworks colleagues are using.</p>
+<p><strong>Collaboration</strong></p>
+<p>The interoperability the transpiler provides facilitates easier collaboration and knowledge sharing within organizations,
+as well as the machine learning community in general. Engineers and researchers can share models and tools without being
+constrained by the framework in which the work was conducted, promoting reproducibility and accelerating
+progress.</p>
+<p><strong>Efficiency and Optimization</strong></p>
+<p>By enabling seamless conversion, developers can leverage the strengths of different frameworks within a single project.
+For example, they can prototype a model in PyTorch, known for its ease of use, and then convert it to TensorFlow for
+production deployment, benefiting from TensorFlow’s optimization for serving models at scale. Or similarly convert the
+model to JAX for its high-performance accelerator-oriented computing.</p>
+<p><strong>Legacy Integration</strong></p>
+<p>Legacy codebases in frameworks or framework versions that are no longer used by an organization can easily be converted
+to the preferred state-of-the-art framework, saving months of painstaking migration work.</p>
+<p><strong>Roundup</strong></p>
+<p>Hopefully, this has given an idea of how Ivy’s transpiler can be useful for the ML community 🙂</p>
+<p>Feel free to reach out on <a class="reference external" href="https://discord.gg/H3pUVDeM">discord</a> if you have any questions!</p>
 </section>
 
 
@@ -1414,20 +1408,20 @@ The Core ML format is itself an exchange format, albeit with the sole purpose of
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="graph_tracers.html"
+       href="ml_explosion.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Graph Tracers</p>
+        <p class="prev-next-title">ML Explosion</p>
       </div>
     </a>
     <a class="right-next"
-       href="compiler_infrastructure.html"
+       href="../related_work.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Compiler Infrastructure</p>
+        <p class="prev-next-title">Related Work</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1438,24 +1432,7 @@ The Core ML format is itself an exchange format, albeit with the sole purpose of
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#onnx-onnx">ONNX </a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nnef-nnef">NNEF </a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coreml-coreml">CoreML </a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -1531,24 +1508,16 @@ The Core ML format is itself an exchange format, albeit with the sole purpose of
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Background</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../motivation.html">Motivation</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/ml_explosion.html">ML Explosion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/why_unify.html">Why Unify?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../motivation/standardization.html">Standardization</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../motivation.html">Motivation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ml_explosion.html">ML Explosion</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Why Transpile?</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../related_work.html">Related Work</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_standards.html">API Standards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wrapper_frameworks.html">Wrapper Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="frameworks.html">Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph_tracers.html">Graph Tracers</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exchange Formats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compiler_infrastructure.html">Compiler Infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_vendor_compiler_frameworks.html">Multi-Vendor Compiler Frameworks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_apis.html">Vendor-Specific APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vendor_specific_compilers.html">Vendor-Specific Compilers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ml_unifying_companies.html">ML-Unifying Companies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="what_does_ivy_add.html">What does Ivy Add?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../related_work.html">Related Work</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/frameworks.html">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/graph_tracers.html">Graph Tracers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/ivy_vs_onnx.html">Comparing Ivy with ONNX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../related_work/what_does_ivy_add.html">What does Ivy Add?</a></li>
 </ul>
 </li>
 </ul>
