@@ -1333,23 +1333,23 @@ document.write(`
 <hr class="docutils" />
 <div style="display: block;" align="center">
     <a href="https://ivy.dev/">
-        <img class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/website_button.svg">
+        Website
     </a>
     <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/logos/supported/empty.png">
     <a href="https://ivy.dev/docs">
-        <img class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/docs_button.svg">
+        Docs
     </a>
     <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/logos/supported/empty.png">
     <a href="https://ivy.dev/docs/demos">
-        <img class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/examples_button.svg">
+        Examples
     </a>
     <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/logos/supported/empty.png">
     <a href="https://ivy.dev/docs/overview/design.html">
-        <img class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/design_button.svg">
+        Design
     </a>
     <img class="dark-light" width="5%" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/logos/supported/empty.png">
     <a href="https://ivy.dev/docs/overview/faq.html">
-        <img class="dark-light" src="https://raw.githubusercontent.com/unifyai/unifyai.github.io/main/img/externally_linked/faq_button.svg">
+        FAQ
     </a>
 </div>
 <br>
@@ -1381,8 +1381,9 @@ document.write(`
 <h1>Convert Machine Learning Code Between Frameworks<a class="headerlink" href="#convert-machine-learning-code-between-frameworks" title="Link to this heading">#</a></h1>
 <p>Ivy is an open-source machine learning framework that enables you to:</p>
 <ul class="simple">
-<li><p>Use your ML models and/or functions in any framework by converting any code from one framework to another using <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code></p></li>
-<li><p>Convert entire ML models and libraries between frameworks by generating identical source code in any frameworkusing <code class="docutils literal notranslate"><span class="pre">ivy.source_to_source</span></code> <em>(currently in private beta)</em></p></li>
+<li><p>Convert ML models, tools and libraries between frameworks while maintaining complete functionality using <code class="docutils literal notranslate"><span class="pre">ivy.source_to_source</span></code></p></li>
+<li><p>Create optimized graph-based models and functions in any native framework (PyTorch, TensorFlow, etc..) with <code class="docutils literal notranslate"><span class="pre">ivy.trace_graph</span></code></p></li>
+<li><p>Use your ML models or functions in any framework using a graph-tracing approach with <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code></p></li>
 </ul>
 <div style="display: block;" align="center">
     <div>
@@ -1415,12 +1416,9 @@ document.write(`
 </pre></div>
 </div>
 <details>
-<summary><b>Docker Images</b></summary>
-<p>Given the challenges of maintaining installations of various frameworks in a single environment,
-users who would want to test <code class="docutils literal notranslate"><span class="pre">ivy</span></code> with multiple frameworks at once can use our Docker images for a seamless experience.
-You can pull the images from:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>ivyllc/ivy:latest<span class="w">      </span><span class="c1"># CPU</span>
-docker<span class="w"> </span>pull<span class="w"> </span>ivyllc/ivy:latest-gpu<span class="w">  </span><span class="c1"># GPU</span>
+<summary><b>Docker Image</b></summary>
+<p>You can pull the Docker image for Ivy from:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>ivyllc/ivy:latest
 </pre></div>
 </div>
 </details>
@@ -1444,10 +1442,8 @@ tutorials to do so are available!</p>
 <section id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><a class="reference external" href="https://ivy.dev">Website</a></p></li>
 <li><p><a class="reference external" href="https://ivy.dev/docs">Docs</a></p></li>
 <li><p><a class="reference external" href="https://ivy.dev/demos">Demos</a></p></li>
-<li><p><a class="reference external" href="https://ivy.dev/docs/overview/design.html">Design</a></p></li>
 <li><p><a class="reference external" href="https://ivy.dev/docs/overview/faq.html">FAQ</a></p></li>
 </ul>
 <p><a class="reference external" href="https://ivy.dev/docs/overview/design/ivy_as_a_transpiler.html">Ivy’s transpiler</a> allows you convert code between different ML frameworks. Have a look at our <a class="reference external" href="https://ivy.dev/docs/demos/quickstart.html">Quickstart</a> notebook to get a brief idea of the features!</p>
