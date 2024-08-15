@@ -310,46 +310,16 @@ document.write(`
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/02_unify_code.html">Unify code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>
@@ -1486,8 +1456,8 @@ otherwise kernel_size will be used. # noqa: E501</p></li>
 <li><p><strong>strides</strong> – The stride of the sliding window for each dimension of input.</p></li>
 <li><p><strong>padding</strong> – SAME” or “VALID” indicating the algorithm, or
 list indicating the per-dimension paddings.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaee60&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaee00&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12ace0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12ac80&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>data_format</strong> (default: <code class="docutils literal notranslate"><span class="pre">'NWC'</span></code>) – NWC” or “NCW”. Defaults to “NWC”.</p></li>
 <li><p><strong>dilations</strong> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>) – The dilation factor for each dimension of input. (Default value = 1)</p></li>
@@ -1524,8 +1494,8 @@ constructed internally by default.</p></li>
 <li><p><strong>strides</strong> – The stride of the sliding window for each dimension of input.</p></li>
 <li><p><strong>padding</strong> – SAME” or “VALID” indicating the algorithm, or
 list indicating the per-dimension paddings.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaeda0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaed40&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12ac20&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12abc0&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>output_shape</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – Shape of the output (Default value = None)</p></li>
 <li><p><strong>data_format</strong> (default: <code class="docutils literal notranslate"><span class="pre">'NWC'</span></code>) – NWC” or “NCW”. Defaults to “NWC”.</p></li>
@@ -1563,8 +1533,8 @@ constructed internally by default.</p></li>
 <li><p><strong>strides</strong> – The stride of the sliding window for each dimension of input.</p></li>
 <li><p><strong>padding</strong> – SAME” or “VALID” indicating the algorithm, or
 list indicating the per-dimension paddings.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaece0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaec80&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12ab60&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12ab00&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>data_format</strong> (default: <code class="docutils literal notranslate"><span class="pre">'NHWC'</span></code>) – NHWC” or “NCHW”. Defaults to “NHWC”.</p></li>
 <li><p><strong>dilations</strong> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>) – The dilation factor for each dimension of input. (Default value = 1)</p></li>
@@ -1601,8 +1571,8 @@ constructed internally by default.</p></li>
 <li><p><strong>strides</strong> – The stride of the sliding window for each dimension of input.</p></li>
 <li><p><strong>padding</strong> – SAME” or “VALID” indicating the algorithm, or
 list indicating the per-dimension paddings.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaec20&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaebc0&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12aaa0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12aa40&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>output_shape</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – Shape of the output (Default value = None)</p></li>
 <li><p><strong>data_format</strong> (default: <code class="docutils literal notranslate"><span class="pre">'NHWC'</span></code>) – NHWC” or “NCHW”. Defaults to “NHWC”.</p></li>
@@ -1640,8 +1610,8 @@ constructed internally by default.</p></li>
 <li><p><strong>strides</strong> – The stride of the sliding window for each dimension of input.</p></li>
 <li><p><strong>padding</strong> – SAME” or “VALID” indicating the algorithm, or
 list indicating the per-dimension paddings.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaeaa0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaea40&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12a920&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12a8c0&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>data_format</strong> (default: <code class="docutils literal notranslate"><span class="pre">'NDHWC'</span></code>) – NDHWC” or “NCDHW”. Defaults to “NDHWC”.</p></li>
 <li><p><strong>dilations</strong> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>) – The dilation factor for each dimension of input. (Default value = 1)</p></li>
@@ -1678,8 +1648,8 @@ constructed internally by default.</p></li>
 <li><p><strong>strides</strong> – The stride of the sliding window for each dimension of input.</p></li>
 <li><p><strong>padding</strong> – SAME” or “VALID” indicating the algorithm, or
 list indicating the per-dimension paddings.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eae9e0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eae980&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12a860&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12a800&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>output_shape</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – Shape of the output (Default value = None)</p></li>
 <li><p><strong>data_format</strong> (default: <code class="docutils literal notranslate"><span class="pre">'NDHWC'</span></code>) – NDHWC” or “NCDHW”. Defaults to “NDHWC”.</p></li>
@@ -1742,8 +1712,8 @@ then x is truncated, if n is larger then x is zero-padded.</p></li>
 <li><p><strong>strides</strong> – The stride of the sliding window for each dimension of input.</p></li>
 <li><p><strong>padding</strong> – SAME” or “VALID” indicating the algorithm, or
 list indicating the per-dimension paddings.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaeb60&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaeb00&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12a9e0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12a980&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>data_format</strong> (default: <code class="docutils literal notranslate"><span class="pre">'NHWC'</span></code>) – NHWC” or “NCHW”. Defaults to “NHWC”.</p></li>
 <li><p><strong>dilations</strong> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>) – The dilation factor for each dimension of input. (Default value = 1)</p></li>
@@ -1930,7 +1900,7 @@ performed. It doesn’t have any learnable parameter.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_channels</strong> – Number of input channels for the layer</p></li>
 <li><p><strong>output_channels</strong> – Number of output channels for the layer</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eae920&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12a7a0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
 <li><p><strong>num_layers</strong> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>) – Number of lstm cells in the lstm layer, default is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
 <li><p><strong>return_sequence</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to return the entire output sequence, or
 just the latest timestep.
@@ -1989,8 +1959,8 @@ vector.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_channels</strong> – Number of input channels for the layer.</p></li>
 <li><p><strong>output_channels</strong> – Number of output channels for the layer.</p></li>
-<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaef20&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
-<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f2aa2eaeec0&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
+<li><p><strong>weight_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.GlorotUniform</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12ada0&gt;</span></code>) – Initializer for the weights. Default is GlorotUniform.</p></li>
+<li><p><strong>bias_initializer</strong> (default: <code class="docutils literal notranslate"><span class="pre">&lt;ivy.stateful.initializers.Zeros</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fce3b12ad40&gt;</span></code>) – Initializer for the bias. Default is Zeros.</p></li>
 <li><p><strong>with_bias</strong> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether or not to include a bias term, default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>device</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – device on which to create the layer’s variables ‘cuda:0’, ‘cuda:1’, ‘cpu’
 etc. Default is cpu.</p></li>
@@ -2305,46 +2275,16 @@ Default is <code class="docutils literal notranslate"><span class="pre">None</sp
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/02_unify_code.html">Unify code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>

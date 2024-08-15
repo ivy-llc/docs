@@ -310,46 +310,16 @@ document.write(`
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/02_unify_code.html">Unify code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>
@@ -1355,6 +1325,38 @@ document.write(`
   <section id="ivy-as-a-transpiler">
 <h1>Ivy as a Transpiler<a class="headerlink" href="#ivy-as-a-transpiler" title="Link to this heading">#</a></h1>
 <p>Here, we explain the Ivy’s source-to-source transpiler and computational graph tracer, and the roles they play.</p>
+<p><strong>Supported Frameworks</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Framework</p></th>
+<th class="head"></th>
+<th class="head"><p>Source</p></th>
+<th class="head"><p>Target</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PyTorch</p></td>
+<td></td>
+<td><p>✅</p></td>
+<td><p>🚧</p></td>
+</tr>
+<tr class="row-odd"><td><p>TensorFlow</p></td>
+<td></td>
+<td><p>🚧</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>JAX</p></td>
+<td></td>
+<td><p>🚧</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>NumPy</p></td>
+<td></td>
+<td><p>🚧</p></td>
+<td><p>🚧</p></td>
+</tr>
+</tbody>
+</table>
 <section id="source-to-source-transpiler">
 <h2>Source-to-Source Transpiler ✅<a class="headerlink" href="#source-to-source-transpiler" title="Link to this heading">#</a></h2>
 <p>Ivy’s source-to-source transpiler enables seamless conversion of code between different machine learning frameworks.</p>
@@ -1372,7 +1374,7 @@ document.write(`
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">TFNetwork</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">source_to_source</span><span class="p">(</span><span class="n">Network</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+<span class="n">TFNetwork</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">Network</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">])</span>
 <span class="n">net</span> <span class="o">=</span> <span class="n">TFNetwork</span><span class="p">()</span>
@@ -1380,12 +1382,12 @@ document.write(`
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Here <strong>ivy.source_to_source</strong> takes three arguments:</div>
+<div class="line">Here <strong>ivy.transpile</strong> takes three arguments:</div>
 <div class="line">- The object to be converted</div>
 <div class="line">- The framework we are converting from</div>
 <div class="line">- The framework we are converting to</div>
 </div>
-<p>The transpiled TensorFlow class is immediately available for use after the ivy.source_to_source call, as shown in this example, but the
+<p>The transpiled TensorFlow class is immediately available for use after the ivy.transpile call, as shown in this example, but the
 generated source code is also saved into the <strong>Translated_Outputs/</strong> directory, meaning you can edit the source code manually after the fact,
 or use it just as if the model had been originally written in TensorFlow.</p>
 </section>
@@ -1708,46 +1710,16 @@ This is in keeping with the rest of the documentation.</p>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/02_unify_code.html">Unify code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>

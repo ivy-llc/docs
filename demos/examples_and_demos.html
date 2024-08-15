@@ -62,8 +62,8 @@
     <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using Ivy ResNet" href="examples_and_demos/resnet_demo.html" />
-    <link rel="prev" title="Transpiling a Tensorflow model to build on top" href="guides/03_transpiling_a_tf_model.html" />
+    <link rel="next" title="Training PyTorch ResNet in your TensorFlow Projects" href="examples_and_demos/resnet_to_tensorflow.html" />
+    <link rel="prev" title="Transpiling a PyTorch model to build on top" href="guides/01_transpiling_a_torch_model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -310,46 +310,16 @@ document.write(`
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/02_unify_code.html">Unify code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Examples and Demos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>
@@ -1357,73 +1327,10 @@ document.write(`
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-Using Ivy ResNet</div>
-<p class="sd-card-text">Use the Ivy <code class="docutils literal notranslate"><span class="pre">ResNet</span></code> model for image classification.</p>
-</div>
-<a class="sd-stretched-link reference internal" href="examples_and_demos/resnet_demo.html"><span class="doc"></span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
 Accelerating PyTorch models with JAX</div>
 <p class="sd-card-text">Accelerate your Pytorch models by converting them to JAX for faster inference.</p>
 </div>
 <a class="sd-stretched-link reference internal" href="examples_and_demos/torch_to_jax.html"><span class="doc"></span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Accelerating MMPreTrain models with JAX</div>
-<p class="sd-card-text">Accelerate your MMPreTrain models by converting them to JAX for faster inference.</p>
-</div>
-<a class="sd-stretched-link reference internal" href="examples_and_demos/mmpretrain_to_jax.html"><span class="doc"></span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Image Segmentation with Ivy UNet</div>
-<p class="sd-card-text">Use the Ivy <code class="docutils literal notranslate"><span class="pre">UNet</span></code> model for image segmentation.</p>
-</div>
-<a class="sd-stretched-link reference internal" href="examples_and_demos/image_segmentation_with_ivy_unet.html"><span class="doc"></span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Ivy AlexNet demo</div>
-<p class="sd-card-text">In this demo, we show how an AlexNet model written in…</p>
-</div>
-<a class="sd-stretched-link reference internal" href="examples_and_demos/alexnet_demo.html"><span class="doc"></span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Accelerating XGBoost with JAX</div>
-<p class="sd-card-text">Accelerate your XGBoost by converting them to JAX.</p>
-</div>
-<a class="sd-stretched-link reference internal" href="examples_and_demos/xgboost_demo.html"><span class="doc"></span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Convert PyTorch Models to PaddlePaddle</div>
-<p class="sd-card-text">In this demo, we convert the DINOv2 model to PaddlePaddle</p>
-</div>
-<a class="sd-stretched-link reference internal" href="examples_and_demos/dinov2_to_paddle.html"><span class="doc"></span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-Using TensorFlow Models in your PyTorch Projects</div>
-<p class="sd-card-text">In this demo, we convert the ConvNeXt model to PyTorch</p>
-</div>
-<a class="sd-stretched-link reference internal" href="examples_and_demos/convnext_to_torch.html"><span class="doc"></span></a></div>
 </div>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
@@ -1451,20 +1358,20 @@ Finetuning PyTorch Models in your TensorFlow Projects</div>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="guides/03_transpiling_a_tf_model.html"
+       href="guides/01_transpiling_a_torch_model.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Transpiling a Tensorflow model to build on top</p>
+        <p class="prev-next-title">Transpiling a PyTorch model to build on top</p>
       </div>
     </a>
     <a class="right-next"
-       href="examples_and_demos/resnet_demo.html"
+       href="examples_and_demos/resnet_to_tensorflow.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using Ivy ResNet</p>
+        <p class="prev-next-title">Training PyTorch ResNet in your TensorFlow Projects</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1505,46 +1412,16 @@ Finetuning PyTorch Models in your TensorFlow Projects</div>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/02_unify_code.html">Unify code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learn_the_basics/08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Examples and Demos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>

@@ -65,8 +65,6 @@
     <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Trace code" href="03_trace_code.html" />
-    <link rel="prev" title="Write Ivy code" href="01_write_ivy_code.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -128,6 +126,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -162,7 +162,7 @@
                     </li>
                 
 
-                    <li class="nav-item current active">
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../learn_the_basics.html">
                         Learn the basics
                       </a>
@@ -311,48 +311,18 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unify code</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>
@@ -1335,9 +1305,6 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="../learn_the_basics.html" class="nav-link">Learn the basics</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page">Unify code</li>
   </ul>
 </nav>
@@ -1507,24 +1474,6 @@ ivy.array([ 0.66391283, -1.12516928, -1.38367081,  0.03102401,  0.76419425,
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="01_write_ivy_code.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Write Ivy code</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="03_trace_code.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Trace code</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1575,48 +1524,18 @@ ivy.array([ 0.66391283, -1.12516928, -1.38367081,  0.03102401,  0.76419425,
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_write_ivy_code.html">Write Ivy code</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unify code</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="03_trace_code.html">Trace code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_transpile_code.html">Transpile code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05_lazy_vs_eager.html">Lazy vs Eager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06_how_to_use_decorators.html">How to use decorators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07_transpile_any_library.html">Transpile any library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08_transpile_any_model.html">Transpile any model</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../guides.html">Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../guides/01_transpiling_a_torch_model.html">Transpiling a PyTorch model to build on top</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../guides/03_transpiling_a_tf_model.html">Transpiling a Tensorflow model to build on top</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_demo.html">Using Ivy ResNet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/mmpretrain_to_jax.html">Accelerating MMPreTrain models with JAX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/image_segmentation_with_ivy_unet.html">Image Segmentation with Ivy UNet</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/alexnet_demo.html">Ivy AlexNet demo</a></li>
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/xgboost_demo.html">Accelerating XGBoost with JAX</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/dinov2_to_paddle.html">How To Convert Models from PyTorch to PaddlePaddle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/convnext_to_torch.html">Using TensorFlow Models in your PyTorch Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
 </ul>
 </li>
