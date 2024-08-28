@@ -62,6 +62,8 @@
     <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/ivy-llc.github.io/main/src/assets/spiral_logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ivy.graph_transpile()" href="graph_transpile.html" />
+    <link rel="prev" title="ivy.trace_graph()" href="trace.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -222,7 +222,7 @@
                     </li>
                 
 
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../one_liners.html">
                         One liners
                       </a>
@@ -378,11 +378,11 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="trace.html"><code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.graph_transpile()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="unify.html"><code class="docutils literal notranslate"><span class="pre">ivy.unify()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1292,6 +1292,9 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
+    
+    <li class="breadcrumb-item"><a href="../one_liners.html" class="nav-link">One liners</a></li>
+    
     <li class="breadcrumb-item active" aria-current="page"><code...</li>
   </ul>
 </nav>
@@ -1311,227 +1314,32 @@ document.write(`
                   
   <section id="ivy-transpile">
 <h1><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code><a class="headerlink" href="#ivy-transpile" title="Link to this heading">#</a></h1>
-<blockquote>
-<div><p>⚠️ <strong>Warning</strong>: The tracer and the transpiler are not publicly available yet, so certain parts of this doc won’t work as expected as of now!</p>
-</div></blockquote>
-<p>Ivy’s Transpiler converts a function written in any framework into your framework of
-choice, preserving all the logic between frameworks.
-As the output of transpilation is native code in the target framework, it
-can be used as if it was originally developed in that framework,
-allowing you to apply and use framework-specific optimizations or tools.</p>
-<p>This makes all ML-related projects available to you, independently of the framework you
-want to use to research, develop, or deploy systems. So if you want to:</p>
-<ul class="simple">
-<li><p>Use functions and building blocks like neural networks, layers, activations, and
-training pipelines published in other frameworks. Ex: Using Haiku modules in PyTorch to
-get access to the latest model.</p></li>
-<li><p>Integrate code developed in other frameworks into your code. Ex: Use the Kornia
-library in Jax for extra performance.</p></li>
-<li><p>Take advantage of specific features in other frameworks. Ex: Convert Jax code to Tensorflow for deployment.</p></li>
-</ul>
-<p>Ivy’s Transpiler is definitely the tool for the job 🔧</p>
-<p>To convert the code, it traces a computational graph using the Tracer and
-leverages Ivy’s frontends and backends to link one framework to another. After swapping
-each function node in the computational graph with their equivalent Ivy frontend
-functions, the tracer removes all the wrapping in the frontends and replaces them with the native
-functions of the target framework.</p>
+<p>Ivy’s Transpiler converts a function, class, or module written in any framework into
+your framework of choice, preserving all the logic between frameworks.</p>
 <section id="transpiler-api">
 <h2>Transpiler API<a class="headerlink" href="#transpiler-api" title="Link to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.transpile">
-<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">transpile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">objs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ivy.transpile" title="Link to this definition">#</a></dt>
-<dd><p>Transpiles a <code class="docutils literal notranslate"><span class="pre">Callable</span></code> or set of them from a <code class="docutils literal notranslate"><span class="pre">source</span></code> framework to another framework. If <code class="docutils literal notranslate"><span class="pre">args</span></code> or <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> are specified,
-transpilation is performed eagerly, otherwise, transpilation will happen lazily.</p>
+<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">transpile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'torch'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tensorflow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profiling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ivy.transpile" title="Link to this definition">#</a></dt>
+<dd><p>Converts a given object (class/function) from one framework to another.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>objs</strong> (<code class="docutils literal notranslate"><span class="pre">Callable</span></code>) – Native callable(s) to transpile.</p></li>
-<li><p><strong>source</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[str]</span></code>) – The framework that <code class="docutils literal notranslate"><span class="pre">obj</span></code> is from. This must be provided unless <code class="docutils literal notranslate"><span class="pre">obj</span></code> is a framework-specific module.</p></li>
-<li><p><strong>to</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[str]</span></code>) – The target framework to transpile <code class="docutils literal notranslate"><span class="pre">obj</span></code> to.</p></li>
-<li><p><strong>debug_mode</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to transpile to ivy first, before the final compilation to
-the target framework. If the target is ivy, then this flag makes no
-difference.</p></li>
-<li><p><strong>args</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[Tuple]</span></code>) – If specified, arguments that will be used to transpile eagerly.</p></li>
-<li><p><strong>kwargs</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[dict]</span></code>) – If specified, keyword arguments that will be used to transpile eagerly.</p></li>
-<li><p><strong>params_v</strong> – Parameters of a haiku model, as when transpiling these, the parameters
-need to be passed explicitly to the function call.</p></li>
+<li><p><strong>object</strong> (<code class="docutils literal notranslate"><span class="pre">Any</span></code>) – The object (class/function) to be transpiled to a new framework.</p></li>
+<li><p><strong>source</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[str]</span></code>) – The source framework we’re converting the object from.</p></li>
+<li><p><strong>target</strong> (<code class="docutils literal notranslate"><span class="pre">Optional[str]</span></code>) – The target framework we’re converting the object to.</p></li>
+<li><p><strong>profiling</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to use performance profiling.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Union[Graph,</span> <span class="pre">LazyGraph,</span> <span class="pre">ModuleType,</span> <span class="pre">ivy.Module,</span> <span class="pre">torch.nn.Module,</span> <span class="pre">tf.keras.Model,</span> <span class="pre">hk.Module]</span></code></p>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">Union[MethodType,</span> <span class="pre">FunctionType,</span> <span class="pre">type]</span></code></p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A transpiled <code class="docutils literal notranslate"><span class="pre">Graph</span></code> or a non-initialized <code class="docutils literal notranslate"><span class="pre">LazyGraph</span></code>. If the object is a native trainable module, the corresponding module in the target framework will be returned. If the object is a <code class="docutils literal notranslate"><span class="pre">ModuleType</span></code>, the function will return a copy of the module with every method lazily transpiled.</p>
+<dd class="field-odd"><p>The transpiled object.</p>
 </dd>
 </dl>
 </dd></dl>
 
-</section>
-<section id="using-the-transpiler">
-<h2>Using the transpiler<a class="headerlink" href="#using-the-transpiler" title="Link to this heading">#</a></h2>
-<p>Similar to the <code class="docutils literal notranslate"><span class="pre">ivy.trace</span></code> function, <code class="docutils literal notranslate"><span class="pre">ivy.unify</span></code> and <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code> can be used
-eagerly and lazily. If you pass the necessary arguments, the function will be called
-instantly, otherwise, transpilation will happen the first time you invoke the function
-with the proper arguments.</p>
-<p>In both cases, arguments or keyword arguments can be arrays from
-either the <code class="docutils literal notranslate"><span class="pre">source</span></code> framework or the target (<code class="docutils literal notranslate"><span class="pre">to</span></code>) framework.</p>
-<section id="transpiling-functions">
-<h3>Transpiling functions<a class="headerlink" href="#transpiling-functions" title="Link to this heading">#</a></h3>
-<p>First, let’s start transpiling some simple functions. In the snippet below, we transpile
-a small JAX function to Torch both eagerly and lazily.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
-
-<span class="c1"># Simple JAX function to transpile</span>
-<span class="k">def</span> <span class="nf">test_fn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">x1</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">])</span>
-
-<span class="c1"># Arguments are available -&gt; transpilation happens eagerly</span>
-<span class="n">eager_graph</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">test_fn</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x1</span><span class="p">,))</span>
-
-<span class="c1"># eager_graph is now torch code and runs efficiently</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">eager_graph</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
-
-<span class="c1"># Arguments are not available -&gt; transpilation happens lazily</span>
-<span class="n">lazy_graph</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">test_fn</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
-
-<span class="c1"># The transpiled graph is initialized, transpilation will happen here</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">lazy_graph</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
-
-<span class="c1"># lazy_graph is now torch code and runs efficiently</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">lazy_graph</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="transpiling-libraries">
-<h3>Transpiling Libraries<a class="headerlink" href="#transpiling-libraries" title="Link to this heading">#</a></h3>
-<p>Likewise, you can use <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code> to convert entire libraries and modules with just one line of
-code!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
-<span class="kn">import</span> <span class="nn">kornia</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-
-<span class="c1"># transpile kornia from torch to jax</span>
-<span class="n">jax_kornia</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">kornia</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
-
-<span class="c1"># get an image</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/train2017/000000000034.jpg&quot;</span>
-<span class="n">raw_img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
-
-<span class="c1"># convert it to the format expected by kornia</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">raw_img</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
-
-<span class="c1"># and use the transpiled version of any function from the library!</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">jax_kornia</span><span class="o">.</span><span class="n">enhance</span><span class="o">.</span><span class="n">sharpness</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="transpiling-modules">
-<h3>Transpiling Modules<a class="headerlink" href="#transpiling-modules" title="Link to this heading">#</a></h3>
-<p>Last but not least, Ivy can also transpile trainable modules from one framework to
-another, at the moment we support <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code> when <code class="docutils literal notranslate"><span class="pre">to=&quot;torch&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code> when <code class="docutils literal notranslate"><span class="pre">to=&quot;tensorflow&quot;</span></code>, and haiku models when <code class="docutils literal notranslate"><span class="pre">to=&quot;jax&quot;</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
-<span class="kn">import</span> <span class="nn">timm</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">jax</span>
-<span class="kn">import</span> <span class="nn">haiku</span> <span class="k">as</span> <span class="nn">hk</span>
-
-<span class="c1"># Get a pretrained pytorch model</span>
-<span class="n">mlp_encoder</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">&quot;mixer_b16_224&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># Transpile it into a hk.Module with the corresponding parameters</span>
-<span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
-<span class="n">mlp_encoder</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">mlp_encoder</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">noise</span><span class="p">,))</span>
-
-<span class="c1"># Build a classifier using the transpiled encoder</span>
-<span class="k">class</span> <span class="nc">Classifier</span><span class="p">(</span><span class="n">hk</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">mlp_encoder</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">output_size</span><span class="o">=</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span>
-
-    <span class="k">def</span> <span class="nf">_forward_classifier</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="n">module</span> <span class="o">=</span> <span class="n">Classifier</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">module</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="c1"># Transform the classifier and use it as a standard hk.Module</span>
-<span class="n">rng_key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">rng_key</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="n">forward_classifier</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">_forward_classifier</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="n">forward_classifier</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">rng</span><span class="o">=</span><span class="n">rng_key</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">ret</span> <span class="o">=</span> <span class="n">forward_classifier</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="sharp-bits">
-<h2>Sharp bits<a class="headerlink" href="#sharp-bits" title="Link to this heading">#</a></h2>
-<p>In a similar fashion to the trace, the transpiler is under development and we are
-still working on some rough edges. These include:</p>
-<ol class="arabic simple">
-<li><p><strong>Keras model subclassing</strong>: If a model is transpiled to keras, the resulting
-<code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code> can not be used within a keras sequential model at the moment. If
-you want to use the transpiled model as part of a more complex keras model, you can
-<a class="reference external" href="https://www.tensorflow.org/guide/keras/custom_layers_and_models#the_model_class">create a Model subclass</a>.
-Due to this, any training of a keras model should be done using a TensorFlow training
-pipeline instead of the keras utils.</p></li>
-<li><p><strong>Keras arguments</strong>: Keras models require at least an argument to be passed, so if a
-model from another framework that only takes <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> is transpiled to keras,
-you’ll need to pass a <code class="docutils literal notranslate"><span class="pre">None</span></code> argument to the transpiled model before the
-corresponding <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p></li>
-<li><p><strong>Haiku transform with state</strong>: As of now, we only support the transpilation of
-transformed Haiku modules, this means that <code class="docutils literal notranslate"><span class="pre">transformed_with_state</span></code> objects will
-not be correctly transpiled.</p></li>
-<li><p><strong>Array format between frameworks</strong>: As the tracer outputs a 1-to-1 mapping of the
-traced function, the format of the tensors is preserved when transpiling from a
-framework to another. As an example, if you transpile a convolutional block from
-PyTorch (which uses <code class="docutils literal notranslate"><span class="pre">N,</span> <span class="pre">C,</span> <span class="pre">H,</span> <span class="pre">W</span></code>) to TensorFlow (which uses <code class="docutils literal notranslate"><span class="pre">N,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">C</span></code>) and want
-to use it as part of a bigger (TensorFlow) model, you’ll need to include a permute statement for
-the inference to be correct.</p></li>
-</ol>
-<p>Keep in mind that the transpiler uses the Tracer under the hood, so the
-<a class="reference internal" href="trace.html#sharp-bits"><span class="std std-ref">sharp bits of the tracer</span></a>
-apply here as well!</p>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<p>Here, we are transpiling a HF model from torch to tensorflow and then using the
-resulting model with tensorflow tensors directly:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoImageProcessor</span><span class="p">,</span> <span class="n">ResNetForImageClassification</span>
-<span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
-
-<span class="c1"># Set backend to torch</span>
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
-
-<span class="c1"># Download the input image</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;huggingface/cats-image&quot;</span><span class="p">)</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">][</span><span class="s2">&quot;image&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># Setting the model</span>
-<span class="n">image_processor</span> <span class="o">=</span> <span class="n">AutoImageProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;microsoft/resnet-50&quot;</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ResNetForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;microsoft/resnet-50&quot;</span><span class="p">)</span>
-
-<span class="c1"># Transpiling the model to tensorflow</span>
-<span class="n">tf_model</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
-
-<span class="c1"># Using the transpiled model</span>
-<span class="n">tf_inputs</span> <span class="o">=</span> <span class="n">image_processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;tf&quot;</span><span class="p">)</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">tf_model</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tf_inputs</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -1545,6 +1353,24 @@ resulting model with tensorflow tensors directly:</p>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="trace.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="graph_transpile.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">ivy.graph_transpile()</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1567,14 +1393,6 @@ resulting model with tensorflow tensors directly:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.transpile"><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-transpiler">Using the transpiler</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpiling-functions">Transpiling functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpiling-libraries">Transpiling Libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpiling-modules">Transpiling Modules</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharp-bits">Sharp bits</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
   </nav></div>
 
@@ -1683,11 +1501,11 @@ resulting model with tensorflow tensors directly:</p>
 <li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="trace.html"><code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="graph_transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.graph_transpile()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="unify.html"><code class="docutils literal notranslate"><span class="pre">ivy.unify()</span></code></a></li>
 </ul>
 </li>
 </ul>
