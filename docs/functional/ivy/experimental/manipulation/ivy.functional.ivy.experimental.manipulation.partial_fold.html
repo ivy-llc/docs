@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="partial_tensor_to_vec" href="ivy.functional.ivy.experimental.manipulation.partial_tensor_to_vec.html" />
-    <link rel="prev" title="pad" href="ivy.functional.ivy.experimental.manipulation.pad.html" />
+    <link rel="prev" title="pad_sequence" href="ivy.functional.ivy.experimental.manipulation.pad_sequence.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -789,6 +789,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.matricize.html">matricize</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.moveaxis.html">moveaxis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.pad.html">pad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.pad_sequence.html">pad_sequence</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">partial_fold</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.partial_tensor_to_vec.html">partial_tensor_to_vec</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.partial_unfold.html">partial_unfold</a></li>
@@ -1324,7 +1325,7 @@ document.write(`
 <h1>partial_fold<a class="headerlink" href="#partial-fold" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.partial_fold">
-<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">partial_fold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/functional/ivy/experimental/manipulation.py#L2363-L2403"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.partial_fold" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.</span></span><span class="sig-name descname"><span class="pre">partial_fold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/functional/ivy/experimental/manipulation.py#L2429-L2469"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.partial_fold" title="Link to this definition">#</a></dt>
 <dd><p>Re-folds a partially unfolded tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1410,12 +1411,12 @@ that the inputs broadcast to.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ivy.functional.ivy.experimental.manipulation.pad.html"
+       href="ivy.functional.ivy.experimental.manipulation.pad_sequence.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">pad</p>
+        <p class="prev-next-title">pad_sequence</p>
       </div>
     </a>
     <a class="right-next"
@@ -1967,6 +1968,7 @@ that the inputs broadcast to.</p></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.matricize.html">matricize</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.moveaxis.html">moveaxis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.pad.html">pad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.pad_sequence.html">pad_sequence</a></li>
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">partial_fold</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.partial_tensor_to_vec.html">partial_tensor_to_vec</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ivy.functional.ivy.experimental.manipulation.partial_unfold.html">partial_unfold</a></li>

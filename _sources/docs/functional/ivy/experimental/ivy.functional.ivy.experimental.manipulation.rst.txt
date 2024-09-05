@@ -103,6 +103,9 @@ Manipulation
    ivy.functional.ivy.experimental.manipulation.pad
    
    
+   ivy.functional.ivy.experimental.manipulation.pad_sequence
+   
+   
    ivy.functional.ivy.experimental.manipulation.partial_fold
    
    
@@ -248,6 +251,8 @@ Manipulation
 .. autofunction:: ivy.moveaxis
 
 .. autofunction:: ivy.pad
+
+.. autofunction:: ivy.pad_sequence
 
 .. autofunction:: ivy.partial_fold
 

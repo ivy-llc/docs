@@ -1,0 +1,8 @@
+pad\_sequence
+=============
+
+.. autofunction:: ivy.pad_sequence
+
+.. autoskippablemethod:: ivy.Array.pad_sequence
+
+.. autoskippablemethod:: ivy.Container.pad_sequence
