@@ -961,6 +961,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lamb_update.html">lamb_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lars_update.html">lars_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.optimizer_update.html">optimizer_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.requires_gradient.html">requires_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.stop_gradient.html">stop_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.value_and_grad.html">value_and_grad</a></li>
 </ul>
@@ -1331,8 +1332,8 @@ The Ivy function then entails the <em>superset</em> of all backend features.
 However, this is not always totally possible, and in some cases certain framework-specific features must be sacrificed, but usually it’s possible to implement a very generalized function which covers most of the unique features among the corresponding functions in each framework.</p>
 <p>We strive to implement the superset for primary, compositional, and mixed functions.
 In many cases compositional functions do not actually have corresponding backend-specific functions, but this is not always the case.
-For example, <a class="reference internal" href="../../docs/functional/ivy/layers/ivy.functional.ivy.layers.linear.html#ivy.linear" title="ivy.linear"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.linear()</span></code></a> is a fully compositional function, but <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.linear()</span></code> also exists.
-We should therefore make sure the compositional <a class="reference internal" href="../../docs/functional/ivy/layers/ivy.functional.ivy.layers.linear.html#ivy.linear" title="ivy.linear"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.linear()</span></code></a> function includes all behaviours supported by <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.linear()</span></code>.</p>
+For example, <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.linear" title="ivy.linear"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.linear()</span></code></a> is a fully compositional function, but <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.linear()</span></code> also exists.
+We should therefore make sure the compositional <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.linear" title="ivy.linear"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.linear()</span></code></a> function includes all behaviours supported by <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.linear()</span></code>.</p>
 </section>
 <section id="a-non-duplicate-superset">
 <h2>A Non-Duplicate Superset<a class="headerlink" href="#a-non-duplicate-superset" title="Link to this heading">#</a></h2>
@@ -2282,6 +2283,7 @@ src="https://www.youtube.com/embed/_D6xER3H4NU" class="video">
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lamb_update.html">lamb_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lars_update.html">lars_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.optimizer_update.html">optimizer_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.requires_gradient.html">requires_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.stop_gradient.html">stop_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.value_and_grad.html">value_and_grad</a></li>
 </ul>

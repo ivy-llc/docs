@@ -1,0 +1,8 @@
+requires\_gradient
+==================
+
+.. autofunction:: ivy.requires_gradient
+
+.. autoskippablemethod:: ivy.Array.requires_gradient
+
+.. autoskippablemethod:: ivy.Container.requires_gradient

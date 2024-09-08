@@ -961,6 +961,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lamb_update.html">lamb_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lars_update.html">lars_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.optimizer_update.html">optimizer_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.requires_gradient.html">requires_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.stop_gradient.html">stop_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.value_and_grad.html">value_and_grad</a></li>
 </ul>
@@ -1682,7 +1683,7 @@ The following is a slightly simplified version of this code for illustration, wh
 <p>The functions implemented by the backend-specific backend such as <code class="code docutils literal notranslate"><span class="pre">ivy.functional.backends.torch</span></code> only constitute a subset of the full Ivy API.
 This is because many higher level functions are written as a composition of lower level Ivy functions.
 These functions therefore do not need to be written independently for each backend framework.
-A good example is <a class="reference internal" href="../../docs/functional/ivy/layers/ivy.functional.ivy.layers.lstm_update.html#ivy.lstm_update" title="ivy.lstm_update"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.lstm_update()</span></code></a>, as shown:</p>
+A good example is <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.lstm_update" title="ivy.lstm_update"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.lstm_update()</span></code></a>, as shown:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/ivy/layers.py</span>
 <span class="nd">@to_native_arrays_and_back</span>
 <span class="nd">@handle_nestable</span>
@@ -2525,6 +2526,7 @@ Generally, we have made decisions so that Ivy is as stable and scalable as possi
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lamb_update.html">lamb_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.lars_update.html">lars_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.optimizer_update.html">optimizer_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.requires_gradient.html">requires_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.stop_gradient.html">stop_gradient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../docs/functional/ivy/gradients/ivy.functional.ivy.gradients.value_and_grad.html">value_and_grad</a></li>
 </ul>

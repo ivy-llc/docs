@@ -55,6 +55,9 @@ Gradients
    ivy.functional.ivy.gradients.optimizer_update
    
    
+   ivy.functional.ivy.gradients.requires_gradient
+   
+   
    ivy.functional.ivy.gradients.stop_gradient
    
    
@@ -126,6 +129,8 @@ Gradients
 .. autofunction:: ivy.lars_update
 
 .. autofunction:: ivy.optimizer_update
+
+.. autofunction:: ivy.requires_gradient
 
 .. autofunction:: ivy.stop_gradient
 
