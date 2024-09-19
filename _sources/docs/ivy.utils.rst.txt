@@ -18,5 +18,4 @@
     ivy.utils.inspection
     ivy.utils.logging
     ivy.utils.profiler
-    ivy.utils.verbosity
 

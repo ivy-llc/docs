@@ -1236,7 +1236,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.inspection.html">Inspection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.logging.html">Logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.profiler.html">Profiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.verbosity.html">Verbosity</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/ivy_tests.test_ivy.helpers.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-56" name="toctree-checkbox-56" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-56"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -1636,15 +1635,11 @@ The contents of this function are as follows:</p>
      <span class="c1"># if a global backend has been set with set_backend then this will be returned</span>
      <span class="k">if</span> <span class="n">backend_stack</span><span class="p">:</span>
          <span class="n">f</span> <span class="o">=</span> <span class="n">backend_stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-         <span class="k">if</span> <span class="n">verbosity</span><span class="o">.</span><span class="n">level</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-             <span class="n">verbosity</span><span class="o">.</span><span class="n">cprint</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using backend from stack: </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
          <span class="k">return</span> <span class="n">f</span>
 
      <span class="c1"># if no global backend exists, we try to infer the backend from the arguments</span>
      <span class="n">f</span> <span class="o">=</span> <span class="n">_determine_backend_from_args</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
      <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-         <span class="k">if</span> <span class="n">verbosity</span><span class="o">.</span><span class="n">level</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-             <span class="n">verbosity</span><span class="o">.</span><span class="n">cprint</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using backend from type: </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
          <span class="n">implicit_backend</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">current_backend_str</span><span class="p">()</span>
          <span class="k">return</span> <span class="n">f</span>
      <span class="k">return</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">_backend_dict</span><span class="p">[</span><span class="n">implicit_backend</span><span class="p">])</span>
@@ -1674,12 +1669,6 @@ The following is a slightly simplified version of this code for illustration, wh
             <span class="n">backend</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
         <span class="c1"># update global ivy.__dict__ with this method</span>
         <span class="n">ivy</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-
-    <span class="c1"># maybe log to the terminal</span>
-    <span class="k">if</span> <span class="n">verbosity</span><span class="o">.</span><span class="n">level</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">verbosity</span><span class="o">.</span><span class="n">cprint</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;Backend stack: </span><span class="si">{</span><span class="n">backend_stack</span><span class="si">}</span><span class="s1">&#39;</span>
-         <span class="p">)</span>
 </pre></div>
 </div>
 <p>The functions implemented by the backend-specific backend such as <code class="code docutils literal notranslate"><span class="pre">ivy.functional.backends.torch</span></code> only constitute a subset of the full Ivy API.
@@ -2803,7 +2792,6 @@ Generally, we have made decisions so that Ivy is as stable and scalable as possi
 <li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.inspection.html">Inspection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.logging.html">Logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.profiler.html">Profiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../docs/utils/ivy.utils.verbosity.html">Verbosity</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../docs/ivy_tests.test_ivy.helpers.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-56" name="toctree-checkbox-56" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-56"><i class="fa-solid fa-chevron-down"></i></label><ul>

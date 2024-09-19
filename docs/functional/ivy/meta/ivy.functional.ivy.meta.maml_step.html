@@ -1236,7 +1236,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.inspection.html">Inspection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.logging.html">Logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.profiler.html">Profiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.verbosity.html">Verbosity</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../ivy_tests.test_ivy.helpers.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-56" name="toctree-checkbox-56" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-56"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -1337,7 +1336,7 @@ optimized in the outer loop.</p></li>
 <li><p><strong>variables</strong> (<a class="reference internal" href="../../../data_classes/data_classes/ivy.data_classes.container.html#ivy.data_classes.container.container.Container" title="ivy.data_classes.container.container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a>) – Variables to be optimized during the meta step</p></li>
 <li><p><strong>inner_grad_steps</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Number of gradient steps to perform during the inner loop.</p></li>
 <li><p><strong>inner_learning_rate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – The learning rate of the inner loop.</p></li>
-<li><p><strong>inner_optimization_step</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>, default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">gradient_descent_update</span> <span class="pre">at</span> <span class="pre">0x7f53c3ad5c60&gt;</span></code>) – The function used for the inner loop optimization.
+<li><p><strong>inner_optimization_step</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>, default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">gradient_descent_update</span> <span class="pre">at</span> <span class="pre">0x7f7ec6e08790&gt;</span></code>) – The function used for the inner loop optimization.
 Default is ivy.gradient_descent_update.</p></li>
 <li><p><strong>inner_batch_fn</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>], default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – Function to apply to the task sub-batch, before passing to the inner_cost_fn.
 Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
@@ -2416,7 +2415,6 @@ batch by default.</p></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.inspection.html">Inspection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.logging.html">Logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.profiler.html">Profiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../utils/ivy.utils.verbosity.html">Verbosity</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../ivy_tests.test_ivy.helpers.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-56" name="toctree-checkbox-56" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-56"><i class="fa-solid fa-chevron-down"></i></label><ul>
