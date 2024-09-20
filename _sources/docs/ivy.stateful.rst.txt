@@ -17,4 +17,5 @@
     ivy.stateful.norms
     ivy.stateful.optimizers
     ivy.stateful.sequential
+    ivy.stateful.utilities
 
