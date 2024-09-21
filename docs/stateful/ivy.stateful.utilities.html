@@ -1320,39 +1320,52 @@ document.write(`
 <span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-ivy.stateful.utilities" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L721-L753"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
-<dd><p>Synchronizes the weights and buffers between a native PyTorch model (<cite>torch.nn.Module</cite>)
-and it’s translated version in TensorFlow or Flax.</p>
-<dl>
-<dt>Args:</dt><dd><p>original_model (torch.nn.Module): The PyTorch model to synchronize from.
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L736-L767"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
+<dd><p>Synchronizes the weights and buffers between a native PyTorch model
+(<cite>torch.nn.Module</cite>) and it’s translated version in TensorFlow or Flax.</p>
+<section id="args">
+<h2>Args:<a class="headerlink" href="#args" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>original_model (torch.nn.Module): The PyTorch model to synchronize from.
 translated_model (tf.keras.Model or nnx.Module): The target model to synchronize to,</p>
 <blockquote>
 <div><p>either a TensorFlow or Flax model.</p>
 </div></blockquote>
-</dd>
-</dl>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_jax">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L587-L718"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
-<dd><p>Synchronizes the weights and buffers between a PyTorch model (<cite>torch.nn.Module</cite>)
-and a Flax model (<cite>flax.nnx.Module</cite>).</p>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L599-L733"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
+<dd><p>Synchronizes the weights and buffers between a PyTorch model
+(<cite>torch.nn.Module</cite>) and a Flax model (<cite>flax.nnx.Module</cite>).</p>
 <p>This function ensures both models have identical parameters and buffers by
 iterating through their submodules and synchronizing them. The Flax model must
 either be an instance of <cite>FlaxModel</cite> or have submodules that inherit from the
 translated <cite>FlaxModel</cite>, and expose interfaces similar to <cite>torch.nn.Module</cite>,
 including <cite>named_parameters()</cite> and <cite>named_buffers()</cite>.</p>
-<dl>
-<dt>Args:</dt><dd><p>model_pt (torch.nn.Module): The PyTorch model to synchronize from.
+<section id="id1">
+<h2>Args:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>model_pt (torch.nn.Module): The PyTorch model to synchronize from.
 model_flax (flax.nnx.Module): The Flax model to synchronize to, with submodules</p>
 <blockquote>
 <div><p>inheriting from the custom <cite>FlaxModel</cite> class.</p>
 </div></blockquote>
+</div></blockquote>
+</section>
+<section id="returns">
+<h2>Returns:<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>:</dt><dd><p>None</p>
 </dd>
-<dt>Returns:</dt><dd><p>None</p>
-</dd>
-<dt>Example:</dt><dd><p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
+</dl>
+</section>
+<section id="example">
+<h2>Example:<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a>python
 import torch.nn as nn
 import jax.numpy as jnp
 import flax.nnx as nnx</p>
@@ -1402,31 +1415,42 @@ model_pt = PyTorchModel()  # PyTorch model
 model_flax = NativeFlaxModel()  # Native Flax model inheriting from nnx.Module</p>
 <p># Sync all submodules between the PyTorch and Keras models
 sync_models_torch_and_jax(model_pt, model_flax)
-<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
-</dd>
-</dl>
+<a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a></p>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_tf">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L470-L584"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
-<dd><p>Synchronizes the weights and buffers between a PyTorch model (<cite>torch.nn.Module</cite>)
-and a TensorFlow model (<cite>keras.Model</cite>).</p>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L481-L596"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
+<dd><p>Synchronizes the weights and buffers between a PyTorch model
+(<cite>torch.nn.Module</cite>) and a TensorFlow model (<cite>keras.Model</cite>).</p>
 <p>This function ensures that both models have identical parameters and buffers by
 iterating through their submodules and synchronizing them. The TensorFlow model
 must either be an instance of <cite>KerasModel</cite> or have submodules that inherit from the
 translated <cite>KerasModel</cite>/<cite>KerasLayer</cite>, and expose interfaces similar to <cite>torch.nn.Module</cite>,
 including <cite>named_parameters()</cite> and <cite>named_buffers()</cite>.</p>
-<dl>
-<dt>Args:</dt><dd><p>model_pt (torch.nn.Module): The PyTorch model to synchronize from.
+<section id="id10">
+<h2>Args:<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>model_pt (torch.nn.Module): The PyTorch model to synchronize from.
 model_tf (keras.Model): The TensorFlow model to synchronize to, with submodules</p>
 <blockquote>
 <div><p>inheriting from the custom <cite>KerasModel</cite>/<cite>KerasLayer</cite> class.</p>
 </div></blockquote>
+</div></blockquote>
+</section>
+<section id="id11">
+<h2>Returns:<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>:</dt><dd><p>None</p>
 </dd>
-<dt>Returns:</dt><dd><p>None</p>
-</dd>
-<dt>Example:</dt><dd><p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>python
+</dl>
+</section>
+<section id="id12">
+<h2>Example:<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p><a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a>python
 import torch.nn as nn
 import keras</p>
 <p>#`CustomKerasLinear` is a subclass of <cite>Layer</cite> that exposes a similar
@@ -1475,9 +1499,9 @@ model_pt = PyTorchModel()  # PyTorch model
 model_tf = NativeKerasModel()  # Native Keras model inheriting from keras.Model</p>
 <p># Sync all submodules between the PyTorch and Keras models
 sync_models_torch_and_tf(model_pt, model_tf)
-<a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
-</dd>
-</dl>
+<a href="#id17"><span class="problematic" id="id18">``</span></a><a href="#id19"><span class="problematic" id="id20">`</span></a></p>
+</div></blockquote>
+</section>
 </dd></dl>
 
 <p>This should have hopefully given you an overview of the utilities submodule, if you have any questions, please feel free to reach out on our <a class="reference external" href="https://discord.gg/r5mcSAfp">discord</a>!</p>
