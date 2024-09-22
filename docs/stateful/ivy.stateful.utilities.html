@@ -59,7 +59,7 @@
                 gtag('config', 'G-QP5BET66XH');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/stateful/ivy.stateful.utilities';</script>
-    <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/assets/ef677f0eb3e9ee756cf766e3ac0088eb8c187713/assets/spiral_logo.svg"/>
+    <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/assets/refs/heads/main/assets/logos/ivy.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Utils" href="../ivy.utils.html" />
@@ -1320,7 +1320,7 @@ document.write(`
 <span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-ivy.stateful.utilities" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L794-L825"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L810-L841"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a native PyTorch model
 (<cite>torch.nn.Module</cite>) and it’s translated version in TensorFlow or Flax.</p>
 <section id="args">
@@ -1337,7 +1337,7 @@ translated_model (tf.keras.Model or nnx.Module): The target model to synchronize
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_jax">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L657-L791"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L673-L807"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a PyTorch model
 (<cite>torch.nn.Module</cite>) and a Flax model (<cite>flax.nnx.Module</cite>).</p>
 <p>This function ensures both models have identical parameters and buffers by
@@ -1422,7 +1422,7 @@ sync_models_torch_and_jax(model_pt, model_flax)
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_tf">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L539-L654"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L555-L670"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a PyTorch model
 (<cite>torch.nn.Module</cite>) and a TensorFlow model (<cite>keras.Model</cite>).</p>
 <p>This function ensures that both models have identical parameters and buffers by
