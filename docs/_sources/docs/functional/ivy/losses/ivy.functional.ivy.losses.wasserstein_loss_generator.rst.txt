@@ -1,8 +1,0 @@
-wasserstein\_loss\_generator
-============================
-
-.. autofunction:: ivy.wasserstein_loss_generator
-
-.. autoskippablemethod:: ivy.Array.wasserstein_loss_generator
-
-.. autoskippablemethod:: ivy.Container.wasserstein_loss_generator

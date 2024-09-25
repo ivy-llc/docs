@@ -1,8 +1,0 @@
-wasserstein\_loss\_discriminator
-================================
-
-.. autofunction:: ivy.wasserstein_loss_discriminator
-
-.. autoskippablemethod:: ivy.Array.wasserstein_loss_discriminator
-
-.. autoskippablemethod:: ivy.Container.wasserstein_loss_discriminator
