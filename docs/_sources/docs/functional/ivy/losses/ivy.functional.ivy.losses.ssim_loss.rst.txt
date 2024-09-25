@@ -1,0 +1,8 @@
+ssim\_loss
+==========
+
+.. autofunction:: ivy.ssim_loss
+
+.. autoskippablemethod:: ivy.Array.ssim_loss
+
+.. autoskippablemethod:: ivy.Container.ssim_loss

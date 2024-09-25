@@ -1,0 +1,8 @@
+complex
+=======
+
+.. autofunction:: ivy.complex
+
+.. autoskippablemethod:: ivy.Array.complex
+
+.. autoskippablemethod:: ivy.Container.complex

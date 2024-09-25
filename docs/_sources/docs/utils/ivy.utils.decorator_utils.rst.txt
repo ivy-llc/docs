@@ -1,0 +1,16 @@
+Decorator utils
+===============
+
+
+
+
+.. automodule:: ivy.utils.decorator_utils
+    :members:
+    :special-members: __init__
+    :undoc-members:
+    :show-inheritance:
+
+
+
+
+.. discussion-links:: ivy.utils.decorator_utils

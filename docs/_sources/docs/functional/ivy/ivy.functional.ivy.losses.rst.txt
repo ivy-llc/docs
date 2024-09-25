@@ -1,0 +1,61 @@
+Losses
+======
+
+
+.. autosummary::
+   :toctree: losses
+   :template: functional_module.rst
+   :hide-table:
+   :recursive:
+
+   
+   
+   ivy.functional.ivy.losses.binary_cross_entropy
+   
+   
+   ivy.functional.ivy.losses.cross_entropy
+   
+   
+   ivy.functional.ivy.losses.sparse_cross_entropy
+   
+   
+   ivy.functional.ivy.losses.ssim_loss
+   
+   
+   ivy.functional.ivy.losses.wasserstein_loss_discriminator
+   
+   
+   ivy.functional.ivy.losses.wasserstein_loss_generator
+   
+
+
+
+
+.. automodule:: ivy.functional.ivy.losses
+   :special-members: __init__
+   :show-inheritance:
+
+
+
+
+.. autofunction:: ivy._reduce_loss
+
+.. autofunction:: ivy.binary_cross_entropy
+
+.. autofunction:: ivy.cross_entropy
+
+.. autofunction:: ivy.sparse_cross_entropy
+
+.. autofunction:: ivy.ssim_loss
+
+.. autofunction:: ivy.wasserstein_loss_discriminator
+
+.. autofunction:: ivy.wasserstein_loss_generator
+
+
+
+
+
+
+
+.. discussion-links:: ivy.functional.ivy.losses
