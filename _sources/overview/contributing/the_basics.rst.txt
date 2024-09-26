@@ -26,7 +26,7 @@ The `discord server <https://discord.gg/uYRmyPxMQq>`_ is most suitable for very 
 These questions should **always** be asked in the correct channel.
 There is a tendency to use the *general* landing channel for everything.
 This isn't the end of the world, but if many unrelated messages come flying into the *general* channel, then it does make it very hard to keep track of the different discussions, and it makes it less likely that you will receive a response.
-For example, if you are applying for an internship, then you should make use of the **internship** related channels, and **not** the general channel for your questions.
+For example, if you are applying for an internship, then you should make use of the **internship** channels, and **not** the general channel for your questions.
 
 
 **Issues**
