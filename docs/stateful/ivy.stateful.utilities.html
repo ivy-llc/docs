@@ -1320,7 +1320,7 @@ document.write(`
 <span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-ivy.stateful.utilities" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L794-L825"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L732-L763"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a native PyTorch model
 (<cite>torch.nn.Module</cite>) and it’s translated version in TensorFlow or Flax.</p>
 <section id="args">
@@ -1337,7 +1337,7 @@ translated_model (tf.keras.Model or nnx.Module): The target model to synchronize
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_jax">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L657-L791"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L595-L729"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a PyTorch model
 (<cite>torch.nn.Module</cite>) and a Flax model (<cite>flax.nnx.Module</cite>).</p>
 <p>This function ensures both models have identical parameters and buffers by
@@ -1422,7 +1422,7 @@ sync_models_torch_and_jax(model_pt, model_flax)
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_tf">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L539-L654"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L477-L592"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a PyTorch model
 (<cite>torch.nn.Module</cite>) and a TensorFlow model (<cite>keras.Model</cite>).</p>
 <p>This function ensures that both models have identical parameters and buffers by
@@ -1504,6 +1504,30 @@ sync_models_torch_and_tf(model_pt, model_tf)
 </section>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="ivy.stateful.utilities.transpose_weights_pt_to_tf_jax">
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">transpose_weights_pt_to_tf_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose_weights</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L64-L96"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.transpose_weights_pt_to_tf_jax" title="Link to this definition">#</a></dt>
+<dd><p>Transpose weights from PyTorch to TensorFlow/JAX format.</p>
+<p>Args:
+- layer: The layer object.
+- params_np: The weights in NumPy format.
+- transpose_weights: Flag to enable weight transposition.</p>
+<p>Returns:
+- Transposed weights.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ivy.stateful.utilities.transpose_weights_tf_jax_to_pt">
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">transpose_weights_tf_jax_to_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose_weights</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L99-L131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.transpose_weights_tf_jax_to_pt" title="Link to this definition">#</a></dt>
+<dd><p>Transpose weights from TensorFlow/JAX to PyTorch format.</p>
+<p>Args:
+- layer: The layer object.
+- params_np: The weights in NumPy format.
+- transpose_weights: Flag to enable weight transposition.</p>
+<p>Returns:
+- Transposed weights.</p>
+</dd></dl>
+
 <p>This should have hopefully given you an overview of the utilities submodule, if you have any questions, please feel free to reach out on our <a class="reference external" href="https://discord.gg/r5mcSAfp">discord</a>!</p>
 </section>
 
@@ -1556,6 +1580,8 @@ sync_models_torch_and_tf(model_pt, model_tf)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.stateful.utilities.sync_models"><code class="docutils literal notranslate"><span class="pre">sync_models()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.stateful.utilities.sync_models_torch_and_jax"><code class="docutils literal notranslate"><span class="pre">sync_models_torch_and_jax()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.stateful.utilities.sync_models_torch_and_tf"><code class="docutils literal notranslate"><span class="pre">sync_models_torch_and_tf()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.stateful.utilities.transpose_weights_pt_to_tf_jax"><code class="docutils literal notranslate"><span class="pre">transpose_weights_pt_to_tf_jax()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ivy.stateful.utilities.transpose_weights_tf_jax_to_pt"><code class="docutils literal notranslate"><span class="pre">transpose_weights_tf_jax_to_pt()</span></code></a></li>
 </ul>
   </nav></div>
 
