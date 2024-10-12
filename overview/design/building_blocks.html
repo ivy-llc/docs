@@ -153,6 +153,13 @@
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_key.html">
+                        Setting up your API key
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../demos/quickstart.html">
                         Quickstart
                       </a>
@@ -298,6 +305,7 @@ document.write(`
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Basics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../get_started.html">Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_key.html">Setting up your API key</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../demos/quickstart.html">Quickstart</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
@@ -380,7 +388,6 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/trace.html"><code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../one_liners/graph_transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.graph_transpile()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1672,7 +1679,7 @@ The following is a slightly simplified version of this code for illustration, wh
 <p>The functions implemented by the backend-specific backend such as <code class="code docutils literal notranslate"><span class="pre">ivy.functional.backends.torch</span></code> only constitute a subset of the full Ivy API.
 This is because many higher level functions are written as a composition of lower level Ivy functions.
 These functions therefore do not need to be written independently for each backend framework.
-A good example is <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.lstm_update" title="ivy.lstm_update"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.lstm_update()</span></code></a>, as shown:</p>
+A good example is <a class="reference internal" href="../../docs/functional/ivy/layers/ivy.functional.ivy.layers.lstm_update.html#ivy.lstm_update" title="ivy.lstm_update"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.lstm_update()</span></code></a>, as shown:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/ivy/layers.py</span>
 <span class="nd">@to_native_arrays_and_back</span>
 <span class="nd">@handle_nestable</span>
@@ -1852,6 +1859,7 @@ Generally, we have made decisions so that Ivy is as stable and scalable as possi
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Basics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../get_started.html">Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_key.html">Setting up your API key</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../demos/quickstart.html">Quickstart</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
@@ -1934,7 +1942,6 @@ Generally, we have made decisions so that Ivy is as stable and scalable as possi
 <li class="toctree-l1 has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/trace.html"><code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../one_liners/graph_transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.graph_transpile()</span></code></a></li>
 </ul>
 </li>
 </ul>

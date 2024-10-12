@@ -153,6 +153,13 @@
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../api_key.html">
+                        Setting up your API key
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../demos/quickstart.html">
                         Quickstart
                       </a>
@@ -298,6 +305,7 @@ document.write(`
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Basics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../get_started.html">Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_key.html">Setting up your API key</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../demos/quickstart.html">Quickstart</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
@@ -380,7 +388,6 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/trace.html"><code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../one_liners/graph_transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.graph_transpile()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1499,7 +1506,7 @@ The functions <a class="reference internal" href="../../docs/functional/ivy/ivy.
 <p>Therefore, our approach is to <strong>not</strong> wrap any compositional functions which are already <em>implicitly nestable</em> as a result of the <em>nestable</em> functions called internally.</p>
 <p><strong>Explicitly Nestable Compositional Functions</strong></p>
 <p>There may be some compositional functions which are not implicitly nestable for some reason, and in such cases adding the explicit <a class="reference external" href="https://github.com/unifyai/ivy/blob/5f58c087906a797b5cb5603714d5e5a532fc4cd4/ivy/func_wrapper.py#L407">handle_nestable</a> wrapping may be necessary.
-One such example is the <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.layers.html#ivy.linear" title="ivy.linear"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.linear()</span></code></a> function which is not implicitly nestable despite being compositional. This is because of the use of special functions like <code class="xref py py-func docutils literal notranslate"><span class="pre">__len__()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">__list__()</span></code> which, among other functions, are not nestable and can’t be made nestable.
+One such example is the <a class="reference internal" href="../../docs/functional/ivy/layers/ivy.functional.ivy.layers.linear.html#ivy.linear" title="ivy.linear"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.linear()</span></code></a> function which is not implicitly nestable despite being compositional. This is because of the use of special functions like <code class="xref py py-func docutils literal notranslate"><span class="pre">__len__()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">__list__()</span></code> which, among other functions, are not nestable and can’t be made nestable.
 But we should try to avoid this, in order to make the flow of computation as intuitive to the user as possible.</p>
 <p>When tracing the code, the computation graph is <strong>identical</strong> in either case, and there will be no implications on performance whatsoever.
 The implicit nestable solution may be slightly less efficient in eager mode, as the leaves of the container are traversed multiple times rather than once, but if performance is of concern then the code should always be traced in any case.
@@ -1649,6 +1656,7 @@ src="https://www.youtube.com/embed/oHcoYFi2rvI" class="video">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Basics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../get_started.html">Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_key.html">Setting up your API key</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../demos/quickstart.html">Quickstart</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
@@ -1731,7 +1739,6 @@ src="https://www.youtube.com/embed/oHcoYFi2rvI" class="video">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../one_liners.html">One liners</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/trace.html"><code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../one_liners/transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.transpile()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../one_liners/graph_transpile.html"><code class="docutils literal notranslate"><span class="pre">ivy.graph_transpile()</span></code></a></li>
 </ul>
 </li>
 </ul>
