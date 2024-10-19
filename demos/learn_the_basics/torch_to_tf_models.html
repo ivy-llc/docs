@@ -171,7 +171,7 @@
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../learn_the_basics.html">
-                        Learn the basics
+                        Learn the Basics
                       </a>
                     </li>
                 
@@ -313,7 +313,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_trace_code.html">Trace code</a></li>
@@ -322,7 +322,10 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>
@@ -1304,7 +1307,7 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../learn_the_basics.html" class="nav-link">Learn the basics</a></li>
+    <li class="breadcrumb-item"><a href="../learn_the_basics.html" class="nav-link">Learn the Basics</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">Transpiling...</li>
   </ul>
@@ -1330,7 +1333,7 @@ document.write(`
 </a></p>
 <section id="Transpiling-Models-from-PyTorch-to-TensorFlow">
 <h1>Transpiling Models from PyTorch to TensorFlow<a class="headerlink" href="#Transpiling-Models-from-PyTorch-to-TensorFlow" title="Link to this heading">#</a></h1>
-<p>You can install the dependencies required for this notebook by running the cell below ⬇️, or check out the <a class="reference external" href="https://ivy.dev/docs/overview/get_started.html">Get Started</a> section of the docs to find out more about installing ivy.</p>
+<p>You can install the dependencies required for this notebook by running the cell below ⬇️, or check out the <a class="reference external" href="https://www.docs.ivy.dev/overview/get_started.html">Get Started</a> section of the docs to find out more about installing ivy.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1342,35 +1345,60 @@ document.write(`
 </div>
 </div>
 <p>Here we’ll go through an example of how any model written in PyTorch can be converted, and used in, TensorFlow via <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>. First, lets import a simple torch model.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">example_models</span> <span class="kn">import</span> <span class="n">SimpleModel</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This model is defined as follows:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">This model is defined as follows:</span>
 
-<span class="sd">class SimpleModel(torch.nn.Module):</span>
-<span class="sd">    def __init__(self):</span>
-<span class="sd">        super(SimpleModel, self).__init__()</span>
-<span class="sd">        self.conv1 = torch.nn.Conv2d(1, 3, kernel_size=3)</span>
-<span class="sd">        self.relu = torch.nn.ReLU()</span>
-<span class="sd">        self.fc = torch.nn.Linear(3 * 26 * 26, 10)</span>
+<span class="s2">class SimpleModel(torch.nn.Module):</span>
+<span class="s2">    def __init__(self):</span>
+<span class="s2">        super(SimpleModel, self).__init__()</span>
+<span class="s2">        self.conv1 = torch.nn.Conv2d(1, 3, kernel_size=3)</span>
+<span class="s2">        self.relu = torch.nn.ReLU()</span>
+<span class="s2">        self.fc = torch.nn.Linear(3 * 26 * 26, 10)</span>
 
-<span class="sd">    def forward(self, x):</span>
-<span class="sd">        x = self.conv1(x)</span>
-<span class="sd">        x = self.relu(x)</span>
-<span class="sd">        x = torch.flatten(x, 1)</span>
-<span class="sd">        x = self.fc(x)</span>
-<span class="sd">        return x</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="s2">    def forward(self, x):</span>
+<span class="s2">        x = self.conv1(x)</span>
+<span class="s2">        x = self.relu(x)</span>
+<span class="s2">        x = torch.flatten(x, 1)</span>
+<span class="s2">        x = self.fc(x)</span>
+<span class="s2">        return x</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+This model is defined as follows:
+
+class SimpleModel(torch.nn.Module):
+    def __init__(self):
+        super(SimpleModel, self).__init__()
+        self.conv1 = torch.nn.Conv2d(1, 3, kernel_size=3)
+        self.relu = torch.nn.ReLU()
+        self.fc = torch.nn.Linear(3 * 26 * 26, 10)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.relu(x)
+        x = torch.flatten(x, 1)
+        x = self.fc(x)
+        return x
+
+</pre></div></div>
+</div>
 <p>Next, we can convert the model to tensorflow</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
@@ -1379,9 +1407,72 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING:root:   Some binaries seem to be missing in your system. This could be either because we don&#39;t have compatible binaries for your system or that newer binaries were available. In the latter case, calling ivy.utils.cleanup_and_fetch_binaries() should fetch the binaries binaries. Feel free to create an issue on https://github.com/ivy-llc/ivy.git in case of the former
+
+WARNING:root:
+Following are the supported configurations :
+compiler : cp38-cp38-manylinux_2_17_x86_64, cp38-cp38-win_amd64, cp39-cp39-manylinux_2_17_x86_64, cp39-cp39-win_amd64, cp310-cp310-manylinux_2_17_x86_64, cp310-cp310-win_amd64, cp310-cp310-macosx_12_0_arm64, cp311-cp311-manylinux_2_17_x86_64, cp311-cp311-win_amd64, cp311-cp311-macosx_12_0_arm64, cp312-cp312-manylinux_2_17_x86_64, cp312-cp312-win_amd64, cp312-cp312-macosx_12_0_arm64
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-10-18 14:54:00.304303: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-10-18 14:54:00.315374: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-10-18 14:54:00.329079: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-10-18 14:54:00.332741: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-10-18 14:54:00.346229: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-18 14:54:01.007774: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpiling SimpleModel from torch to tensorflow. This could take a few minu
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1729245274.391513  365152 cuda_executor.cc:1001] could not open file to read NUMA node: /sys/bus/pci/devices/0000:01:00.0/numa_node
+Your kernel may have been built without NUMA support.
+2024-10-18 14:54:34.393241: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2343] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpilation of SimpleModel complete.
+</pre></div></div>
+</div>
 <p>Now we can use the model with TensorFlow</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -1392,7 +1483,7 @@ document.write(`
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1402,7 +1493,7 @@ TensorShape([1, 10])
 </div>
 <p>We can also take advantage of TensorFlow-specific features, such as <code class="docutils literal notranslate"><span class="pre">tf.function</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compiled_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">tf_model</span><span class="p">)</span>
@@ -1411,7 +1502,7 @@ TensorShape([1, 10])
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1486,7 +1577,7 @@ TensorShape([1, 10])
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_trace_code.html">Trace code</a></li>
@@ -1495,7 +1586,10 @@ TensorShape([1, 10])
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>

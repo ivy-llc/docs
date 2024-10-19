@@ -171,7 +171,7 @@
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../learn_the_basics.html">
-                        Learn the basics
+                        Learn the Basics
                       </a>
                     </li>
                 
@@ -313,7 +313,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Trace code</a></li>
@@ -322,7 +322,10 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>
@@ -1304,7 +1307,7 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../learn_the_basics.html" class="nav-link">Learn the basics</a></li>
+    <li class="breadcrumb-item"><a href="../learn_the_basics.html" class="nav-link">Learn the Basics</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">Trace code</li>
   </ul>
@@ -1323,11 +1326,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h4 style="margin-top: .05rem;">Video Tutorial</h4><iframe width="560" height="315" style="margin-bottom: 1rem;"
-    src="https://www.youtube.com/embed/fqnhEi-qA4w"
-    frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen>
-</iframe>
-<br><p><a href="https://colab.research.google.com/github/ivy-llc/demos/blob/main/learn_the_basics/03_trace_code.ipynb" target="_blank">
+  <p><a href="https://colab.research.google.com/github/ivy-llc/demos/blob/main/learn_the_basics/03_trace_code.ipynb" target="_blank">
     <img src="https://colab.research.google.com/assets/colab-badge.svg">
 </a> <a href="https://github.com/ivy-llc/demos/blob/main/learn_the_basics/03_trace_code.ipynb" target="_blank">
     <img src="https://badgen.net/badge/icon/github?icon=github&label">
@@ -1336,7 +1335,7 @@ document.write(`
 <h1>Trace code<a class="headerlink" href="#Trace-code" title="Link to this heading">#</a></h1>
 <p>Turn your Ivy code into an efficient fully-functional graph, removing wrappers and unused parts of the code.</p>
 <p>⚠️ If you are running this notebook in Colab, you will have to install <code class="docutils literal notranslate"><span class="pre">Ivy</span></code> and some dependencies manually. You can do so by running the cell below ⬇️</p>
-<p>If you want to run the notebook locally but don’t have Ivy installed just yet, you can check out the <a class="reference external" href="https://unify.ai/docs/ivy/overview/get_started.html">Get Started section of the docs.</a></p>
+<p>If you want to run the notebook locally but don’t have Ivy installed just yet, you can check out the <a class="reference external" href="https://www.docs.ivy.dev/overview/get_started.html">Get Started section of the docs.</a></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1345,26 +1344,23 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p>Firstly, let’s pick up where we left off in the <a class="reference internal" href="02_unify_code.html"><span class="doc">last notebook</span></a>, with our unified <code class="docutils literal notranslate"><span class="pre">normalize</span></code> function:</p>
+<p>Let’s begin with an implementation of the <code class="docutils literal notranslate"><span class="pre">normalize</span></code> function using <code class="docutils literal notranslate"><span class="pre">ivy</span></code>’s Functional API:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
-<span class="kn">import</span> <span class="nn">torch</span>
 
 <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">),</span> <span class="n">std</span><span class="p">)</span>
-
-<span class="n">normalize</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">unify</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">),</span> <span class="n">std</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>For the purpose of illustration, we will use <code class="docutils literal notranslate"><span class="pre">jax</span></code> as our backend framework:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set ivy&#39;s backend to jax</span>
@@ -1376,26 +1372,18 @@ document.write(`
 <span class="c1"># create random jax arrays for testing</span>
 <span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,))</span>
-</pre></div>
-</div>
-</div>
-<p>As in the previous example, the Ivy function can be executed like so (in this case it will trigger lazy unification, see the <a class="reference internal" href="05_lazy_vs_eager.html"><span class="doc">Lazy vs Eager</span></a> section for more details):</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-ivy.array([ 0.55563945, -0.65538704, -1.14150524,  1.46951997,  1.30220294,
-       -1.14739668, -0.57017946, -0.91962677,  0.51029003,  0.59644395])
+ivy.array([ 0.58569533, -0.69083852, -1.20325196,  1.5490098 ,  1.37264228,
+       -1.20946217, -0.60102183, -0.96937162,  0.53789282,  0.62870705])
 </pre></div></div>
 </div>
 <p>When calling this function, all of <code class="docutils literal notranslate"><span class="pre">ivy</span></code>’s function wrapping is included in the call stack of <code class="docutils literal notranslate"><span class="pre">normalize</span></code>, which adds runtime overhead. In general, <code class="docutils literal notranslate"><span class="pre">ivy.trace_graph</span></code> strips any arbitrary function down to its constituent functions in the functional API of the target framework. The code can be traced like so:</p>
@@ -1408,7 +1396,7 @@ ivy.array([ 0.55563945, -0.65538704, -1.14150524,  1.46951997,  1.30220294,
 </pre></div>
 </div>
 </div>
-<p>The traced function can be executed in exactly the same manner as the non-traced function (in this case it will also trigger lazy graph tracing, see the <a class="reference internal" href="05_lazy_vs_eager.html"><span class="doc">Lazy vs Eager</span></a> section for more details):</p>
+<p>The traced function can be executed in exactly the same manner as the non-traced function:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
@@ -1423,13 +1411,13 @@ ivy.array([ 0.55563945, -0.65538704, -1.14150524,  1.46951997,  1.30220294,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Array([ 0.5556394 , -0.655387  , -1.1415051 ,  1.4695197 ,  1.3022028 ,
-       -1.1473966 , -0.5701794 , -0.91962665,  0.51028997,  0.5964439 ],      dtype=float32)
+Array([ 0.5856953 , -0.6908385 , -1.203252  ,  1.5490098 ,  1.3726423 ,
+       -1.2094622 , -0.6010218 , -0.9693716 ,  0.5378928 ,  0.62870705],      dtype=float32)
 </pre></div></div>
 </div>
 <p>With all lazy graph tracing calls now performed (which all increase runtime during the very first call of the function), we can now assess the runtime efficiencies of each function:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
@@ -1442,7 +1430,7 @@ Array([ 0.5556394 , -0.655387  , -1.1415051 ,  1.4695197 ,  1.3022028 ,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-985 µs ± 6.76 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+138 ms ± 3.57 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1459,13 +1447,16 @@ Array([ 0.5556394 , -0.655387  , -1.1415051 ,  1.4695197 ,  1.3022028 ,
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-69.5 µs ± 1.24 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+122 µs ± 2.02 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div></div>
 </div>
 <p>As expected, we can see that <code class="docutils literal notranslate"><span class="pre">normalize</span></code> is slower, as it includes all <code class="docutils literal notranslate"><span class="pre">ivy</span></code> wrapping overhead. On the other hand, <code class="docutils literal notranslate"><span class="pre">traced</span></code> has no wrapping overhead and it’s more efficient!</p>
+<blockquote>
+<div><p>Fun Fact: You can use the graph tracer with pretty much any code written in one of the ML frameworks Ivy supports i.e. PyTorch, TensorFlow, Jax, NumPy etc. and speed it up by removing unnecessary computations that don’t contribute towards the output by extracting an efficient computation graph stitched together in the set backend framework!</p>
+</div></blockquote>
 <section id="Round-Up">
 <h2>Round Up<a class="headerlink" href="#Round-Up" title="Link to this heading">#</a></h2>
-<p>That’s it, you can now trace <code class="docutils literal notranslate"><span class="pre">ivy</span></code> code for more efficient inference! However, there are several other important topics to master before you’re ready to unify ML code like a pro 🥷. Next, we’ll be learning how to transpile code from one framework to another in a single line of code 🔄</p>
+<p>That’s it, you can now trace <code class="docutils literal notranslate"><span class="pre">ivy</span></code> code for more efficient inference! However, there are several other <a class="reference external" href="https://www.docs.ivy.dev/demos/learn_the_basics.html">important topics</a> to master before you’re ready to play with ML code like a pro 🥷.</p>
 </section>
 </section>
 
@@ -1549,7 +1540,7 @@ Array([ 0.5556394 , -0.655387  , -1.1415051 ,  1.4695197 ,  1.3022028 ,
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Trace code</a></li>
@@ -1558,7 +1549,10 @@ Array([ 0.5556394 , -0.655387  , -1.1415051 ,  1.4695197 ,  1.3022028 ,
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>

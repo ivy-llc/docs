@@ -168,7 +168,7 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../demos/learn_the_basics.html">
-                        Learn the basics
+                        Learn the Basics
                       </a>
                     </li>
                 
@@ -310,7 +310,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
@@ -319,7 +319,10 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>
@@ -1324,7 +1327,7 @@ document.write(`
 <span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-ivy.stateful.utilities" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L776-L807"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated_model</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L777-L808"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a native PyTorch model
 (<cite>torch.nn.Module</cite>) and it’s translated version in TensorFlow or Flax.</p>
 <section id="args">
@@ -1341,7 +1344,7 @@ translated_model (tf.keras.Model or nnx.Module): The target model to synchronize
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_jax">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L639-L773"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_jax</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L640-L774"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_jax" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a PyTorch model
 (<cite>torch.nn.Module</cite>) and a Flax model (<cite>flax.nnx.Module</cite>).</p>
 <p>This function ensures both models have identical parameters and buffers by
@@ -1426,7 +1429,7 @@ sync_models_torch_and_jax(model_pt, model_flax)
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.sync_models_torch_and_tf">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L521-L636"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">sync_models_torch_and_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_pt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_tf</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L522-L637"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.sync_models_torch_and_tf" title="Link to this definition">#</a></dt>
 <dd><p>Synchronizes the weights and buffers between a PyTorch model
 (<cite>torch.nn.Module</cite>) and a TensorFlow model (<cite>keras.Model</cite>).</p>
 <p>This function ensures that both models have identical parameters and buffers by
@@ -1510,7 +1513,7 @@ sync_models_torch_and_tf(model_pt, model_tf)
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.transpose_weights_pt_to_tf_jax">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">transpose_weights_pt_to_tf_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fw</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L64-L96"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.transpose_weights_pt_to_tf_jax" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">transpose_weights_pt_to_tf_jax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fw</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L65-L97"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.transpose_weights_pt_to_tf_jax" title="Link to this definition">#</a></dt>
 <dd><p>Transpose weights from PyTorch to TensorFlow/JAX format.</p>
 <p>Args:
 - layer: The layer object.
@@ -1522,7 +1525,7 @@ sync_models_torch_and_tf(model_pt, model_tf)
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ivy.stateful.utilities.transpose_weights_tf_jax_to_pt">
-<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">transpose_weights_tf_jax_to_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fw</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L99-L131"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.transpose_weights_tf_jax_to_pt" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ivy.stateful.utilities.</span></span><span class="sig-name descname"><span class="pre">transpose_weights_tf_jax_to_pt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_np</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fw</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/main/ivy/stateful/utilities.py#L100-L132"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.utilities.transpose_weights_tf_jax_to_pt" title="Link to this definition">#</a></dt>
 <dd><p>Transpose weights from TensorFlow/JAX to PyTorch format.</p>
 <p>Args:
 - layer: The layer object.
@@ -1619,7 +1622,7 @@ sync_models_torch_and_tf(model_pt, model_tf)
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
@@ -1628,7 +1631,10 @@ sync_models_torch_and_tf(model_pt, model_tf)
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>

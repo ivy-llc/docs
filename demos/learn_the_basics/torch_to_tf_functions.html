@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Transpiling Models from PyTorch to TensorFlow" href="torch_to_tf_models.html" />
-    <link rel="prev" title="Learn the basics" href="../learn_the_basics.html" />
+    <link rel="prev" title="Learn the Basics" href="../learn_the_basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,7 +171,7 @@
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../learn_the_basics.html">
-                        Learn the basics
+                        Learn the Basics
                       </a>
                     </li>
                 
@@ -313,7 +313,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_trace_code.html">Trace code</a></li>
@@ -322,7 +322,10 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>
@@ -1304,7 +1307,7 @@ document.write(`
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../learn_the_basics.html" class="nav-link">Learn the basics</a></li>
+    <li class="breadcrumb-item"><a href="../learn_the_basics.html" class="nav-link">Learn the Basics</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">Transpiling...</li>
   </ul>
@@ -1330,7 +1333,7 @@ document.write(`
 </a></p>
 <section id="Transpiling-Functions-from-PyTorch-to-TensorFlow">
 <h1>Transpiling Functions from PyTorch to TensorFlow<a class="headerlink" href="#Transpiling-Functions-from-PyTorch-to-TensorFlow" title="Link to this heading">#</a></h1>
-<p>You can install the dependencies required for this notebook by running the cell below ⬇️, or check out the <a class="reference external" href="https://ivy.dev/docs/overview/get_started.html">Get Started</a> section of the docs to find out more about installing ivy.</p>
+<p>You can install the dependencies required for this notebook by running the cell below ⬇️, or check out the <a class="reference external" href="https://www.docs.ivy.dev/overview/get_started.html">Get Started</a> section of the docs to find out more about installing ivy.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -1344,7 +1347,7 @@ document.write(`
 </div>
 <p>Here we’ll go through an example of how any function using torch can be converted, and used in, tensorflow via <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>. We’ll use kornia as our example, which is a state-of-the-art computer vision library built on top of torch.</p>
 <p>First, some boiler plate imports:</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -1356,14 +1359,77 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING:root:   Some binaries seem to be missing in your system. This could be either because we don&#39;t have compatible binaries for your system or that newer binaries were available. In the latter case, calling ivy.utils.cleanup_and_fetch_binaries() should fetch the binaries binaries. Feel free to create an issue on https://github.com/ivy-llc/ivy.git in case of the former
+
+WARNING:root:
+Following are the supported configurations :
+compiler : cp38-cp38-manylinux_2_17_x86_64, cp38-cp38-win_amd64, cp39-cp39-manylinux_2_17_x86_64, cp39-cp39-win_amd64, cp310-cp310-manylinux_2_17_x86_64, cp310-cp310-win_amd64, cp310-cp310-macosx_12_0_arm64, cp311-cp311-manylinux_2_17_x86_64, cp311-cp311-win_amd64, cp311-cp311-macosx_12_0_arm64, cp312-cp312-manylinux_2_17_x86_64, cp312-cp312-win_amd64, cp312-cp312-macosx_12_0_arm64
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-10-18 14:51:14.248738: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-10-18 14:51:14.406321: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-10-18 14:51:14.472277: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-10-18 14:51:14.492596: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-10-18 14:51:14.630290: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-18 14:51:15.705472: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+</pre></div></div>
+</div>
 <p>Now, lets transpile a kornia function that we want to use in tensorflow. The <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code> call returns a new tensorflow function which is mathematically equivalent to the torch function we passed. This can take up to a minute to run.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf_rgb_to_grayscale</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">kornia</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">rgb_to_grayscale</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpiling rgb_to_grayscale from torch to tensorflow. This could take a few.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1729245116.107734  357721 cuda_executor.cc:1001] could not open file to read NUMA node: /sys/bus/pci/devices/0000:01:00.0/numa_node
+Your kernel may have been built without NUMA support.
+2024-10-18 14:51:56.112350: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2343] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpilation of rgb_to_grayscale complete.
+</pre></div></div>
 </div>
 <p>We can now use this function exactly as the original kornia function would be, just passing tensorflow tensors rather than torch tensors:</p>
 <div class="nbinput docutils container">
@@ -1389,7 +1455,7 @@ TensorShape([1, 1, 28, 28])
 </div>
 <p>Finally, lets check that the outputs of both the original torch function and transpiled tensorflow are identical when given the same inputs.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
@@ -1403,7 +1469,8 @@ TensorShape([1, 1, 28, 28])
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
@@ -1428,7 +1495,7 @@ True
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Learn the basics</p>
+        <p class="prev-next-title">Learn the Basics</p>
       </div>
     </a>
     <a class="right-next"
@@ -1477,7 +1544,7 @@ True
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../learn_the_basics.html">Learn the Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03_trace_code.html">Trace code</a></li>
@@ -1486,7 +1553,10 @@ True
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>

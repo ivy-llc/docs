@@ -168,7 +168,7 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../demos/learn_the_basics.html">
-                        Learn the basics
+                        Learn the Basics
                       </a>
                     </li>
                 
@@ -310,7 +310,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
@@ -319,7 +319,10 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>
@@ -1339,10 +1342,7 @@ For example, if you are applying for an internship, then you should make use of 
 <p><strong>Issues</strong></p>
 <p>As the name suggests, the <a class="reference external" href="https://github.com/unifyai/ivy/issues">issues</a> section on GitHub is the best place to raise issues or general bugs that you find with the project.
 It can also serve as a useful place to ask questions, but only if you suspect that the behaviour you are observing <em>might</em> be a bug.</p>
-<p><strong>Video</strong></p>
-<iframe width="420" height="315" allow="fullscreen;"
-src="https://www.youtube.com/embed/T5vQP1pCXS8" class="video" allowfullscreen="true">
-</iframe><div class="line-block">
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
@@ -1387,10 +1387,7 @@ Please don’t take it personally if your issue or PR gets closed because of thi
 This is to prevent anyone from self-allocating many sub-tasks, preventing others in the community from engaging, and then not being able to complete them.
 Even though the limit is three, sub-tasks should only be self-assigned using <strong>one comment per sub-task</strong>.
 For example, a sequence of comments like this <code class="code docutils literal notranslate"><span class="pre">-</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">#Issue_number</span></code> will register correctly whereas a single comment like this <code class="code docutils literal notranslate"><span class="pre">-</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">#Issue_number,</span> <span class="pre">-</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">#Issue_number,</span> <span class="pre">-</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">#Issue_number</span></code> or this <code class="code docutils literal notranslate"><span class="pre">-</span> <span class="pre">[</span> <span class="pre">]</span> <span class="pre">#Issue_number</span> <span class="pre">#Issue_number</span> <span class="pre">#Issue_number</span></code> etc. will not.</p>
-<p><strong>Video</strong></p>
-<iframe width="420" height="315" allow="fullscreen;"
-src="https://www.youtube.com/embed/wBKTOGmwfbo" class="video" allowfullscreen="true">
-</iframe><div class="line-block">
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>For questions, please reach out on <a class="reference external" href="https://discord.gg/uYRmyPxMQq">discord</a> in the <a class="reference external" href="https://discord.com/channels/799879767196958751/1189903501011202128">todo list issues thread</a>!</p>
@@ -1417,10 +1414,7 @@ Once your branch is up-to-date with main, you can reinstate the most recently st
 The corresponding commands are <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span></code> -&gt; <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code> -&gt; <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> -&gt; <code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span> <span class="pre">apply</span> <span class="pre">stash&#64;{0}</span></code>.
 Note that this only works for uncommitted changes (staged and unstaged) and untracked files won’t be stashed.
 For a comprehensive explanation of git stashing, check out this <a class="reference external" href="https://www.atlassian.com/git/tutorials/saving-changes/git-stash">Atlassian tutorial</a>.</p>
-<p><strong>Video</strong></p>
-<iframe width="420" height="315" allow="fullscreen;"
-src="https://www.youtube.com/embed/TFMPihytg9U" class="video" allowfullscreen="true">
-</iframe><div class="line-block">
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>For questions, please reach out on <a class="reference external" href="https://discord.gg/uYRmyPxMQq">discord</a> in the <a class="reference external" href="https://discord.com/channels/799879767196958751/1189903708465672272">fork management thread</a>!</p>
@@ -1489,10 +1483,7 @@ Once approved, you can see the failing and passing checks for a commit relevant 
 This can be done by checking a tickbox in the lower right corner of the PR.
 This will enable us to quickly fix conflicts, merge with upstream, and get things moving much more quickly without us needing to request very simple fixes from yourself.</p>
 <p>The code review process is explained in more detail in the following video.</p>
-<p><strong>Video</strong></p>
-<iframe width="420" height="315" allow="fullscreen;"
-src="https://www.youtube.com/embed/9G4d-CvlT2g" class="video" allowfullscreen="true">
-</iframe><div class="line-block">
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>For questions, please reach out on <a class="reference external" href="https://discord.gg/uYRmyPxMQq">discord</a> in the <a href="#id4"><span class="problematic" id="id5">`pull requests thread`_</span></a>!</p>
@@ -1997,7 +1988,7 @@ Make sure you don’t add or commit this dummy file while pushing your changes.<
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/learn_the_basics.html">Learn the Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/learn_the_basics/03_trace_code.html">Trace code</a></li>
@@ -2006,7 +1997,10 @@ Make sure you don’t add or commit this dummy file while pushing your changes.<
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../demos/examples_and_demos.html">Examples and Demos</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../demos/examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>

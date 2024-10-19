@@ -62,7 +62,7 @@
     <link rel="icon" href="https://raw.githubusercontent.com/ivy-llc/assets/refs/heads/main/assets/logos/ivy.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Training PyTorch ResNet in your TensorFlow Projects" href="examples_and_demos/resnet_to_tensorflow.html" />
+    <link rel="next" title="Accelerating PyTorch models with JAX" href="examples_and_demos/torch_to_jax.html" />
     <link rel="prev" title="How to use decorators" href="learn_the_basics/06_how_to_use_decorators.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,7 +168,7 @@
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="learn_the_basics.html">
-                        Learn the basics
+                        Learn the Basics
                       </a>
                     </li>
                 
@@ -310,7 +310,7 @@ document.write(`
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="learn_the_basics.html">Learn the Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/03_trace_code.html">Trace code</a></li>
@@ -319,7 +319,10 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Examples and Demos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>
@@ -1339,6 +1342,24 @@ Finetuning PyTorch Models in your TensorFlow Projects</div>
 </div>
 <a class="sd-stretched-link reference internal" href="examples_and_demos/resnet_to_tensorflow.html"><span class="doc"></span></a></div>
 </div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Image and Keypoints Augmentations in Jax transpiled Kornia</div>
+<p class="sd-card-text">In this demo, we apply augmentations to images using Jax transpiled Kornia</p>
+</div>
+<a class="sd-stretched-link reference internal" href="examples_and_demos/kornia_image_points_transforms.html"><span class="doc"></span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Denoise Image using TensorFlow transpiled Kornia</div>
+<p class="sd-card-text">In this demo, we denoise an image using TensorFlow transpiled Kornia</p>
+</div>
+<a class="sd-stretched-link reference internal" href="examples_and_demos/kornia_total_variation_denoising.html"><span class="doc"></span></a></div>
+</div>
 </div>
 </div>
 <div class="toctree-wrapper compound">
@@ -1365,11 +1386,11 @@ Finetuning PyTorch Models in your TensorFlow Projects</div>
       </div>
     </a>
     <a class="right-next"
-       href="examples_and_demos/resnet_to_tensorflow.html"
+       href="examples_and_demos/torch_to_jax.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Training PyTorch ResNet in your TensorFlow Projects</p>
+        <p class="prev-next-title">Accelerating PyTorch models with JAX</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1410,7 +1431,7 @@ Finetuning PyTorch Models in your TensorFlow Projects</div>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="learn_the_basics.html">Learn the basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="learn_the_basics.html">Learn the Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/torch_to_tf_functions.html">Transpiling Functions from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/torch_to_tf_models.html">Transpiling Models from PyTorch to TensorFlow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_the_basics/03_trace_code.html">Trace code</a></li>
@@ -1419,7 +1440,10 @@ Finetuning PyTorch Models in your TensorFlow Projects</div>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Examples and Demos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/torch_to_jax.html">Accelerating PyTorch models with JAX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples_and_demos/resnet_to_tensorflow.html">Training PyTorch ResNet in your TensorFlow Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/kornia_image_points_transforms.html">Image and Keypoints Augmentations using Kornia and Ivy’s Transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_and_demos/kornia_total_variation_denoising.html">Denoise image using Kornia and Ivy’s Transpiler</a></li>
 </ul>
 </li>
 </ul>
