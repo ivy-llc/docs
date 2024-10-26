@@ -1336,7 +1336,7 @@ document.write(`
 <section id="Framework-Incompatibility">
 <h2>Framework Incompatibility<a class="headerlink" href="#Framework-Incompatibility" title="Link to this heading">#</a></h2>
 <p>Practitioners with large codebases written in other frameworks, such as PyTorch, are unable to take advantage of TensorFlow’s rich ecosystem of state-of-the-art (SOTA) deployment toolings, as this requires converting their code manually and inaccurately.</p>
-<p><a class="reference external" href="https://unify.ai/blog/unifying-with-ivy">Ivy’s transpiler</a> allows ML practitioners to dynamically connect libraries, layers and models from different frameworks together. For PyTorch users, the transpiler provides a seamless and accurate way to introduce code written in PyTorch to TensorFlow pipelines.</p>
+<p><a class="reference external" href="https://www.docs.ivy.dev/overview/design/ivy_as_a_transpiler.html">Ivy’s transpiler</a> allows ML practitioners to dynamically connect libraries, layers and models from different frameworks together. For PyTorch users, the transpiler provides a seamless and accurate way to introduce code written in PyTorch to TensorFlow pipelines.</p>
 <p>In this blog post, we’ll go through an example of how the transpiler can be used to convert a model from PyTorch to TensorFlow and train the converted model in TensorFlow.</p>
 </section>
 <section id="Transpiling-a-PyTorch-model-to-TensorFlow">
@@ -1405,7 +1405,7 @@ Successfully installed astor-0.8.1
 <section id="Setting-up-the-source-model">
 <h3>Setting-up the source model<a class="headerlink" href="#Setting-up-the-source-model" title="Link to this heading">#</a></h3>
 <p>We import the necessary libraries. We’ll mostly use the PyTorch’s Torchvision API to load the model, Ivy to transpile it from PyTorch to TensorFlow, and TensorFlow functions to fine-tune the transpiled model.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -1433,6 +1433,39 @@ Successfully installed astor-0.8.1
 <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2024-10-21 17:50:39.195130: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-10-21 17:50:39.374700: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-10-21 17:50:39.441741: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-10-21 17:50:39.461396: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-10-21 17:50:39.592512: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-10-21 17:50:40.820737: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1729515043.033296    4399 cuda_executor.cc:1001] could not open file to read NUMA node: /sys/bus/pci/devices/0000:01:00.0/numa_node
+Your kernel may have been built without NUMA support.
+2024-10-21 17:50:43.058149: W tensorflow/core/common_runtime/gpu/gpu_device.cc:2343] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+WARNING:root:   Some binaries seem to be missing in your system. This could be either because we don&#39;t have compatible binaries for your system or that newer binaries were available. In the latter case, calling ivy.utils.cleanup_and_fetch_binaries() should fetch the binaries binaries. Feel free to create an issue on https://github.com/ivy-llc/ivy.git in case of the former
+
+WARNING:root:
+Following are the supported configurations :
+compiler : cp38-cp38-manylinux_2_17_x86_64, cp38-cp38-win_amd64, cp39-cp39-manylinux_2_17_x86_64, cp39-cp39-win_amd64, cp310-cp310-manylinux_2_17_x86_64, cp310-cp310-win_amd64, cp310-cp310-macosx_12_0_arm64, cp311-cp311-manylinux_2_17_x86_64, cp311-cp311-win_amd64, cp311-cp311-macosx_12_0_arm64, cp312-cp312-manylinux_2_17_x86_64, cp312-cp312-win_amd64, cp312-cp312-macosx_12_0_arm64
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
 </div>
 </section>
 <section id="Load-the-Data">
@@ -1687,40 +1720,221 @@ ResNet(
 </pre></div></div>
 </div>
 </section>
-<section id="Converting-the-model-from-TensorFlow-to-PyTorch">
-<h3>Converting the model from TensorFlow to PyTorch<a class="headerlink" href="#Converting-the-model-from-TensorFlow-to-PyTorch" title="Link to this heading">#</a></h3>
-<p>With the model loaded, we can run the transpilation to TensorFlow eagerly. As we explain in our docs, <a class="reference external" href="https://unify.ai/docs/ivy/demos/learn_the_basics/05_lazy_vs_eager.html">eager transpilation</a> involves manually providing dummy input arguments (<code class="docutils literal notranslate"><span class="pre">tf.ones(4,</span> <span class="pre">3,</span> <span class="pre">224,</span> <span class="pre">224)</span></code> in our example) to use when tracing computational graphs.</p>
+<section id="Converting-the-model-from-PyTorch-to-TensorFlow">
+<h3>Converting the model from PyTorch to TensorFlow<a class="headerlink" href="#Converting-the-model-from-PyTorch-to-TensorFlow" title="Link to this heading">#</a></h3>
+<p>As we explain in our <a class="reference external" href="https://www.docs.ivy.dev/demos/quickstart.html">Quickstart Guide</a>, transpiling a model (an instance of a trainable class) involves manually providing the type/class of the model rather than the model itself. This is because Ivy’s transpiler will eagerly convert all source code of the model from <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code> to <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code> and make it readily available for you in the output directory (controlled by passing the <code class="docutils literal notranslate"><span class="pre">output_dir</span></code> kwarg to <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>, defaulting to
+<code class="docutils literal notranslate"><span class="pre">ivy_transpiled_outputs/</span></code>).</p>
+<p>The weights of the transpiled model and the original model (if it was pretrained or loaded from a checkpoint) can be easily synced by using <code class="docutils literal notranslate"><span class="pre">ivy.sync_models</span></code> as we demonstrate in this demo</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpiled_model</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">inputs</span><span class="p">,))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+torchvision.models.resnet.ResNet
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TensorflowResNet</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Initializing-and-building-the-TensorFlow-model">
+<h3>Initializing and building the TensorFlow model<a class="headerlink" href="#Initializing-and-building-the-TensorFlow-model" title="Link to this heading">#</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ivy_transpiled_outputs.tensorflow_outputs.torchvision.models.resnet</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">tensorflow_BasicBlock</span> <span class="k">as</span> <span class="n">TensorflowBasicBlock</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;num_classes&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">}</span>
+<span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">block</span> <span class="o">=</span> <span class="n">TensorflowBasicBlock</span>
+</pre></div>
+</div>
+</div>
+<p>Instantiate the model in TensorFlow</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensorflow_model</span> <span class="o">=</span> <span class="n">TensorflowResNet</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Call the forward pass once in order to build all the layers</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="n">tensorflow_model</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;tf.Tensor: shape=(4, 1000), dtype=float32, numpy=
+array([[ 0.03397159, -0.25558692, -0.24101321, ...,  0.30248338,
+         0.4400444 ,  0.19245608],
+       [ 0.04251331, -0.18369699, -0.19522265, ...,  0.30382818,
+         0.3872773 ,  0.18959698],
+       [ 0.01237407, -0.1483828 , -0.22826895, ...,  0.19425122,
+         0.33760768,  0.10684194],
+       [ 0.0467218 , -0.19289383, -0.22670889, ...,  0.277786  ,
+         0.39353883,  0.17944181]], dtype=float32)&gt;
+</pre></div></div>
+</div>
+<p>TensorFlow (Keras) Model specific attributes and methods are all still accessible on the transpiled model:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensorflow_model</span><span class="o">.</span><span class="n">layers</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[KerasConv2D(),
+ KerasBatchNorm2D(),
+ tensorflow_ReLU(),
+ tensorflow_MaxPool2d(),
+ tensorflow_Sequential(
+   (0): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+   )
+   (1): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Sequential(
+   (0): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+     (downsample): tensorflow_Sequential(
+       (0): KerasConv2D()
+       (1): KerasBatchNorm2D()
+     )
+   )
+   (1): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Sequential(
+   (0): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+     (downsample): tensorflow_Sequential(
+       (0): KerasConv2D()
+       (1): KerasBatchNorm2D()
+     )
+   )
+   (1): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Sequential(
+   (0): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+     (downsample): tensorflow_Sequential(
+       (0): KerasConv2D()
+       (1): KerasBatchNorm2D()
+     )
+   )
+   (1): tensorflow_BasicBlock(
+     (conv1): KerasConv2D()
+     (bn1): KerasBatchNorm2D()
+     (relu): tensorflow_ReLU()
+     (conv2): KerasConv2D()
+     (bn2): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_AdaptiveAvgPool2d(),
+ KerasDense()]
+</pre></div></div>
+</div>
+<p>Let’s sync the weights of both the source and the transpiled model to do a 1-to-1 comparison of the two models and validate that they are functionally equal:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">sync_models</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tensorflow_model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-WARNING:root:Native Numpy does not support GPU placement, consider using Jax instead
+All parameters and buffers are now synced!
 </pre></div></div>
 </div>
-<p>The transpiled graph can be used with any deep learning framework as backend and, in this case, adding the <code class="docutils literal notranslate"><span class="pre">to='tensorflow'</span></code> flag sets TensorFlow as the backend framework to use, thereby effectively converting the original PyTorch computational graph into a TensorFlow graph!</p>
 </section>
 <section id="Comparing-the-results">
 <h3>Comparing the results<a class="headerlink" href="#Comparing-the-results" title="Link to this heading">#</a></h3>
 <p>Let’s now try predicting the logits of the same input with the transpiled model</p>
 <p>To compare the logits produced by the original and transpiled models at a more granular level, let’s try an <code class="docutils literal notranslate"><span class="pre">allclose</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">logits_np</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 
-<span class="n">logits_transpiled</span> <span class="o">=</span> <span class="n">transpiled_model</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy</span><span class="p">()),</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">logits_transpiled</span> <span class="o">=</span> <span class="n">tensorflow_model</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy</span><span class="p">()),</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">logits_transpiled_np</span> <span class="o">=</span> <span class="n">logits_transpiled</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">logits_np</span><span class="p">,</span> <span class="n">logits_transpiled_np</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
@@ -1728,7 +1942,7 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1743,74 +1957,86 @@ True
 <p>One of the key benefits of using ivy’s transpiler is that the transpiled model is also trainable. As a result, we can also further train the transpiled model if required. Here’s an example of fine-tuning the transpiled model with a few images sampled from ImageNet using TensorFlow.</p>
 <p>Let’s start by writing a general function to train a model.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 
 
-<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">warmup_epochs</span><span class="p">,</span> <span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">):</span>
     <span class="c1"># Prepare the metrics.</span>
     <span class="n">train_acc_metric</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()</span>
     <span class="n">val_acc_metric</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()</span>
 
-    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Start of epoch </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">epoch</span><span class="p">,))</span>
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">jit_compile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_batch_train</span><span class="p">,</span> <span class="n">y_batch_train</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_batch_train</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">loss_value</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">y_batch_train</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
 
-        <span class="c1"># Iterate over the batches of the dataset.</span>
-        <span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="p">(</span><span class="n">x_batch_train</span><span class="p">,</span> <span class="n">y_batch_train</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">):</span>
+        <span class="n">grads</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss_value</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
 
-            <span class="n">x_batch_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x_batch_train</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
-            <span class="n">y_batch_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">y_batch_train</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="c1"># Update training metric.</span>
+        <span class="n">train_acc_metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">y_batch_train</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss_value</span>
 
-            <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
-                <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_batch_train</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="n">loss_value</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">y_batch_train</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">train_loop</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">warmup_epochs</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">):</span>
 
-            <span class="n">grads</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss_value</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">)</span>
-            <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span> <span class="o">+</span> <span class="n">warmup_epochs</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Start of epoch </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">epoch</span><span class="p">,))</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-            <span class="c1"># Update training metric.</span>
-            <span class="n">train_acc_metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">y_batch_train</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+            <span class="c1"># Iterate over the batches of the dataset.</span>
+            <span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="p">(</span><span class="n">x_batch_train</span><span class="p">,</span> <span class="n">y_batch_train</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">):</span>
 
-            <span class="c1"># Log every 20 batches.</span>
-            <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span>
-                    <span class="s2">&quot;Training loss (for one batch) at step </span><span class="si">%d</span><span class="s2">: </span><span class="si">%.4f</span><span class="s2">&quot;</span>
-                    <span class="o">%</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">loss_value</span><span class="p">))</span>
-                <span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Seen so far: </span><span class="si">%d</span><span class="s2"> samples&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">))</span>
+                <span class="n">x_batch_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x_batch_train</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                <span class="n">y_batch_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">y_batch_train</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 
-        <span class="c1"># Display metrics at the end of each epoch.</span>
-        <span class="n">train_acc</span> <span class="o">=</span> <span class="n">train_acc_metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training acc over epoch: </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">train_acc</span><span class="p">),))</span>
+                <span class="n">loss_value</span> <span class="o">=</span> <span class="n">train_step</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_batch_train</span><span class="p">,</span> <span class="n">y_batch_train</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">)</span>
 
-        <span class="c1"># Reset training metrics at the end of each epoch</span>
-        <span class="n">train_acc_metric</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+                <span class="c1"># Log every 20 batches.</span>
+                <span class="k">if</span> <span class="n">epoch</span> <span class="o">&gt;=</span> <span class="n">warmup_epochs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="s2">&quot;Training loss (for one batch) at step </span><span class="si">%d</span><span class="s2">: </span><span class="si">%.4f</span><span class="s2">&quot;</span>
+                            <span class="o">%</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">loss_value</span><span class="p">))</span>
+                        <span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Seen so far: </span><span class="si">%d</span><span class="s2"> samples&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">))</span>
 
-        <span class="c1"># Run a validation loop at the end of each epoch.</span>
-        <span class="k">for</span> <span class="n">x_batch_val</span><span class="p">,</span> <span class="n">y_batch_val</span> <span class="ow">in</span> <span class="n">val_dataset</span><span class="p">:</span>
-            <span class="n">x_batch_val</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x_batch_val</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
-            <span class="n">y_batch_val</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">y_batch_val</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+            <span class="c1"># Display metrics at the end of each epoch.</span>
+            <span class="k">if</span> <span class="n">epoch</span> <span class="o">&gt;=</span> <span class="n">warmup_epochs</span><span class="p">:</span>
+                <span class="n">train_acc</span> <span class="o">=</span> <span class="n">train_acc_metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training acc over epoch: </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">train_acc</span><span class="p">),))</span>
 
-            <span class="n">val_logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_batch_val</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="c1"># Reset training metrics at the end of each epoch</span>
+                <span class="n">train_acc_metric</span><span class="o">.</span><span class="n">reset_state</span><span class="p">()</span>
 
-            <span class="c1"># Update val metrics</span>
-            <span class="n">val_acc_metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">y_batch_val</span><span class="p">,</span> <span class="n">val_logits</span><span class="p">)</span>
+                <span class="c1"># Run a validation loop at the end of each epoch.</span>
+                <span class="k">for</span> <span class="n">x_batch_val</span><span class="p">,</span> <span class="n">y_batch_val</span> <span class="ow">in</span> <span class="n">val_dataset</span><span class="p">:</span>
+                    <span class="n">x_batch_val</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x_batch_val</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                    <span class="n">y_batch_val</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">y_batch_val</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 
-        <span class="n">val_acc</span> <span class="o">=</span> <span class="n">val_acc_metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-        <span class="n">val_acc_metric</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation acc: </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">val_acc</span><span class="p">),))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time taken: </span><span class="si">%.2f</span><span class="s2">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+                    <span class="n">val_logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_batch_val</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                    <span class="c1"># Update val metrics</span>
+                    <span class="n">val_acc_metric</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">y_batch_val</span><span class="p">,</span> <span class="n">val_logits</span><span class="p">)</span>
+
+                <span class="n">val_acc</span> <span class="o">=</span> <span class="n">val_acc_metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                <span class="n">val_acc_metric</span><span class="o">.</span><span class="n">reset_state</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Validation acc: </span><span class="si">%.4f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">val_acc</span><span class="p">),))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time taken: </span><span class="si">%.2f</span><span class="s2">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+
+    <span class="c1"># Call the training loop</span>
+    <span class="n">train_loop</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">warmup_epochs</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate an optimizer to train the model.</span>
@@ -1826,13 +2052,14 @@ True
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train the model</span>
 <span class="n">transpiled_model</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span>
-    <span class="n">transpiled_model</span><span class="p">,</span>
-    <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">tensorflow_model</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">warmup_epochs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">train_dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span>
     <span class="n">val_dataset</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span>
     <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
@@ -1850,398 +2077,268 @@ True
 Start of epoch 0
 Training loss (for one batch) at step 0: 9.3121
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 4.2126
+Training loss (for one batch) at step 20: 4.2399
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 2.4992
+Training loss (for one batch) at step 40: 2.4778
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 1.6072
+Training loss (for one batch) at step 60: 1.6033
 Seen so far: 244 samples
-Training acc over epoch: 0.3852
-Validation acc: 0.1830
-Time taken: 224.00s
+Training acc over epoch: 0.3730
+Validation acc: 0.1634
+Time taken: 39.59s
 
 Start of epoch 1
-Training loss (for one batch) at step 0: 1.1015
+Training loss (for one batch) at step 0: 1.0761
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 2.1364
+Training loss (for one batch) at step 20: 2.0626
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 1.3915
+Training loss (for one batch) at step 40: 1.3433
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.7465
+Training loss (for one batch) at step 60: 0.6616
 Seen so far: 244 samples
-Training acc over epoch: 0.8033
-Validation acc: 0.3333
-Time taken: 214.04s
+Training acc over epoch: 0.7910
+Validation acc: 0.3529
+Time taken: 39.50s
 
 Start of epoch 2
-Training loss (for one batch) at step 0: 0.2763
+Training loss (for one batch) at step 0: 0.2815
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.3526
+Training loss (for one batch) at step 20: 0.3439
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.4220
+Training loss (for one batch) at step 40: 0.3905
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.1592
+Training loss (for one batch) at step 60: 0.1333
 Seen so far: 244 samples
 Training acc over epoch: 0.8525
-Validation acc: 0.3660
-Time taken: 214.46s
+Validation acc: 0.2745
+Time taken: 38.26s
 
 Start of epoch 3
-Training loss (for one batch) at step 0: 0.1364
+Training loss (for one batch) at step 0: 0.0913
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.1085
+Training loss (for one batch) at step 20: 0.0851
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.1366
+Training loss (for one batch) at step 40: 0.1482
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.4634
-Seen so far: 244 samples
-Training acc over epoch: 0.8115
-Validation acc: 0.3987
-Time taken: 224.36s
-
-Start of epoch 4
-Training loss (for one batch) at step 0: 0.3875
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.8096
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.5836
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.4432
-Seen so far: 244 samples
-Training acc over epoch: 0.8402
-Validation acc: 0.3529
-Time taken: 218.69s
-
-Start of epoch 5
-Training loss (for one batch) at step 0: 0.0323
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0982
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.4332
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0324
+Training loss (for one batch) at step 60: 0.6250
 Seen so far: 244 samples
 Training acc over epoch: 0.8197
 Validation acc: 0.3464
-Time taken: 228.84s
+Time taken: 38.24s
+
+Start of epoch 4
+Training loss (for one batch) at step 0: 0.3456
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.8281
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.6437
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 0.4446
+Seen so far: 244 samples
+Training acc over epoch: 0.8402
+Validation acc: 0.3725
+Time taken: 38.19s
+
+Start of epoch 5
+Training loss (for one batch) at step 0: 0.0307
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.0915
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.4379
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 0.0393
+Seen so far: 244 samples
+Training acc over epoch: 0.8197
+Validation acc: 0.4379
+Time taken: 38.38s
 
 Start of epoch 6
-Training loss (for one batch) at step 0: 0.1794
+Training loss (for one batch) at step 0: 0.1792
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.9244
+Training loss (for one batch) at step 20: 1.0138
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.9429
+Training loss (for one batch) at step 40: 0.8425
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.1794
+Training loss (for one batch) at step 60: 0.1388
 Seen so far: 244 samples
-Training acc over epoch: 0.7951
-Validation acc: 0.3529
-Time taken: 231.99s
+Training acc over epoch: 0.8197
+Validation acc: 0.4314
+Time taken: 38.74s
 
 Start of epoch 7
-Training loss (for one batch) at step 0: 0.0132
+Training loss (for one batch) at step 0: 0.0170
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.4156
+Training loss (for one batch) at step 20: 0.2789
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.2132
+Training loss (for one batch) at step 40: 0.2099
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 1.1413
+Training loss (for one batch) at step 60: 1.1670
 Seen so far: 244 samples
-Training acc over epoch: 0.8279
-Validation acc: 0.4183
-Time taken: 224.95s
+Training acc over epoch: 0.8320
+Validation acc: 0.4706
+Time taken: 39.20s
 
 Start of epoch 8
-Training loss (for one batch) at step 0: 0.3028
+Training loss (for one batch) at step 0: 0.2829
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.1461
+Training loss (for one batch) at step 20: 0.2262
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.3779
+Training loss (for one batch) at step 40: 0.3582
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.4553
+Training loss (for one batch) at step 60: 0.4215
 Seen so far: 244 samples
-Training acc over epoch: 0.8607
-Validation acc: 0.4444
-Time taken: 223.66s
+Training acc over epoch: 0.8566
+Validation acc: 0.4967
+Time taken: 38.92s
 
 Start of epoch 9
-Training loss (for one batch) at step 0: 0.2835
+Training loss (for one batch) at step 0: 0.2506
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0436
+Training loss (for one batch) at step 20: 0.0339
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.7022
+Training loss (for one batch) at step 40: 0.5903
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 1.1335
-Seen so far: 244 samples
-Training acc over epoch: 0.8648
-Validation acc: 0.4052
-Time taken: 215.37s
-
-Start of epoch 10
-Training loss (for one batch) at step 0: 0.0863
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0237
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.0181
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.1331
-Seen so far: 244 samples
-Training acc over epoch: 0.8975
-Validation acc: 0.4967
-Time taken: 209.94s
-
-Start of epoch 11
-Training loss (for one batch) at step 0: 0.1050
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.2271
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.3540
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0588
+Training loss (for one batch) at step 60: 1.1273
 Seen so far: 244 samples
 Training acc over epoch: 0.8689
-Validation acc: 0.4902
-Time taken: 222.28s
+Validation acc: 0.4771
+Time taken: 38.93s
+
+Start of epoch 10
+Training loss (for one batch) at step 0: 0.0745
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.0148
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.0130
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 0.1275
+Seen so far: 244 samples
+Training acc over epoch: 0.8975
+Validation acc: 0.5098
+Time taken: 39.82s
+
+Start of epoch 11
+Training loss (for one batch) at step 0: 0.1808
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.3167
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.3353
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 0.0544
+Seen so far: 244 samples
+Training acc over epoch: 0.8607
+Validation acc: 0.5229
+Time taken: 38.37s
 
 Start of epoch 12
-Training loss (for one batch) at step 0: 0.7880
+Training loss (for one batch) at step 0: 0.6601
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.4800
+Training loss (for one batch) at step 20: 0.2705
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 1.4741
+Training loss (for one batch) at step 40: 1.4662
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0218
+Training loss (for one batch) at step 60: 0.0162
+Seen so far: 244 samples
+Training acc over epoch: 0.8443
+Validation acc: 0.5229
+Time taken: 39.60s
+
+Start of epoch 13
+Training loss (for one batch) at step 0: 0.2667
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.5686
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.3593
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 0.0349
+Seen so far: 244 samples
+Training acc over epoch: 0.8115
+Validation acc: 0.4902
+Time taken: 40.25s
+
+Start of epoch 14
+Training loss (for one batch) at step 0: 0.0202
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.1907
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.0127
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 0.0399
 Seen so far: 244 samples
 Training acc over epoch: 0.8197
 Validation acc: 0.5033
-Time taken: 220.61s
-
-Start of epoch 13
-Training loss (for one batch) at step 0: 0.2198
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.6509
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.3352
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0270
-Seen so far: 244 samples
-Training acc over epoch: 0.8197
-Validation acc: 0.4771
-Time taken: 216.12s
-
-Start of epoch 14
-Training loss (for one batch) at step 0: 0.0385
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.1798
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.0143
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0309
-Seen so far: 244 samples
-Training acc over epoch: 0.8197
-Validation acc: 0.5359
-Time taken: 213.23s
+Time taken: 38.17s
 
 Start of epoch 15
-Training loss (for one batch) at step 0: 0.7697
+Training loss (for one batch) at step 0: 0.5231
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.3405
+Training loss (for one batch) at step 20: 0.3243
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.6033
+Training loss (for one batch) at step 40: 0.6539
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.8392
+Training loss (for one batch) at step 60: 0.7478
 Seen so far: 244 samples
-Training acc over epoch: 0.8770
-Validation acc: 0.5359
-Time taken: 205.21s
+Training acc over epoch: 0.8811
+Validation acc: 0.4575
+Time taken: 38.08s
 
 Start of epoch 16
-Training loss (for one batch) at step 0: 0.0623
+Training loss (for one batch) at step 0: 0.0512
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.4221
+Training loss (for one batch) at step 20: 0.3078
 Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.0138
+Training loss (for one batch) at step 40: 0.0097
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.4607
+Training loss (for one batch) at step 60: 0.5082
 Seen so far: 244 samples
-Training acc over epoch: 0.8648
-Validation acc: 0.5294
-Time taken: 221.65s
+Training acc over epoch: 0.8607
+Validation acc: 0.5033
+Time taken: 40.78s
 
 Start of epoch 17
-Training loss (for one batch) at step 0: 0.0349
+Training loss (for one batch) at step 0: 0.0344
 Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.6545
+Training loss (for one batch) at step 20: 0.6654
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.1881
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 0.1394
+Seen so far: 244 samples
+Training acc over epoch: 0.8934
+Validation acc: 0.5163
+Time taken: 42.20s
+
+Start of epoch 18
+Training loss (for one batch) at step 0: 0.0837
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.1806
+Seen so far: 84 samples
+Training loss (for one batch) at step 40: 0.8223
+Seen so far: 164 samples
+Training loss (for one batch) at step 60: 1.4363
+Seen so far: 244 samples
+Training acc over epoch: 0.8607
+Validation acc: 0.5425
+Time taken: 44.21s
+
+Start of epoch 19
+Training loss (for one batch) at step 0: 0.1178
+Seen so far: 4 samples
+Training loss (for one batch) at step 20: 0.1384
 Seen so far: 84 samples
 Training loss (for one batch) at step 40: 0.1935
 Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.1512
-Seen so far: 244 samples
-Training acc over epoch: 0.8852
-Validation acc: 0.5098
-Time taken: 212.37s
-
-Start of epoch 18
-Training loss (for one batch) at step 0: 0.0821
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.1985
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.7769
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 1.3897
-Seen so far: 244 samples
-Training acc over epoch: 0.8648
-Validation acc: 0.5359
-Time taken: 204.62s
-
-Start of epoch 19
-Training loss (for one batch) at step 0: 0.1106
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.1354
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.1801
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0276
-Seen so far: 244 samples
-Training acc over epoch: 0.8893
-Validation acc: 0.5621
-Time taken: 214.83s
-
-Start of epoch 20
-Training loss (for one batch) at step 0: 0.1185
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0447
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 1.2817
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.1006
-Seen so far: 244 samples
-Training acc over epoch: 0.8402
-Validation acc: 0.5752
-Time taken: 215.36s
-
-Start of epoch 21
-Training loss (for one batch) at step 0: 0.2220
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0387
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.1639
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0080
-Seen so far: 244 samples
-Training acc over epoch: 0.9221
-Validation acc: 0.5686
-Time taken: 214.12s
-
-Start of epoch 22
-Training loss (for one batch) at step 0: 0.0287
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0115
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.1679
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.7920
-Seen so far: 244 samples
-Training acc over epoch: 0.8893
-Validation acc: 0.5621
-Time taken: 208.51s
-
-Start of epoch 23
-Training loss (for one batch) at step 0: 0.0071
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0790
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.2657
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0758
+Training loss (for one batch) at step 60: 0.0257
 Seen so far: 244 samples
 Training acc over epoch: 0.8934
-Validation acc: 0.5686
-Time taken: 210.86s
-
-Start of epoch 24
-Training loss (for one batch) at step 0: 0.2406
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.9193
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.2372
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.9555
-Seen so far: 244 samples
-Training acc over epoch: 0.9139
-Validation acc: 0.5817
-Time taken: 211.98s
-
-Start of epoch 25
-Training loss (for one batch) at step 0: 0.1150
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0810
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.2205
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.1616
-Seen so far: 244 samples
-Training acc over epoch: 0.9344
-Validation acc: 0.5817
-Time taken: 218.82s
-
-Start of epoch 26
-Training loss (for one batch) at step 0: 0.0200
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0117
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.2090
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.1444
-Seen so far: 244 samples
-Training acc over epoch: 0.8934
-Validation acc: 0.5948
-Time taken: 208.63s
-
-Start of epoch 27
-Training loss (for one batch) at step 0: 0.0482
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.0338
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.5971
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0368
-Seen so far: 244 samples
-Training acc over epoch: 0.8607
-Validation acc: 0.6144
-Time taken: 207.13s
-
-Start of epoch 28
-Training loss (for one batch) at step 0: 0.1593
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.4745
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.0733
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.0434
-Seen so far: 244 samples
-Training acc over epoch: 0.8852
 Validation acc: 0.6078
-Time taken: 209.68s
-
-Start of epoch 29
-Training loss (for one batch) at step 0: 0.3923
-Seen so far: 4 samples
-Training loss (for one batch) at step 20: 0.1614
-Seen so far: 84 samples
-Training loss (for one batch) at step 40: 0.3711
-Seen so far: 164 samples
-Training loss (for one batch) at step 60: 0.2719
-Seen so far: 244 samples
-Training acc over epoch: 0.8852
-Validation acc: 0.6275
-Time taken: 209.91s
+Time taken: 43.48s
 </pre></div></div>
 </div>
 <p>And that’s it. we’ve successfully been able to train the transpiled model, we can now plug into any TensorFlow workflow!</p>
 <p>Let’s now visualize the inference of the trained model on some sample images from the validation step</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_images</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
@@ -2275,7 +2372,7 @@ Time taken: 209.91s
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_model</span><span class="p">(</span><span class="n">transpiled_model</span><span class="p">)</span>
@@ -2286,42 +2383,42 @@ Time taken: 209.91s
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_0.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_0.png" />
+<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_0.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_0.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_1.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_1.png" />
+<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_1.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_2.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_2.png" />
+<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_2.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_2.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_3.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_3.png" />
+<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_3.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_4.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_4.png" />
+<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_4.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_4.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_5.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_28_5.png" />
+<img alt="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_5.png" src="../../_images/demos_examples_and_demos_resnet_to_tensorflow_38_5.png" />
 </div>
 </div>
 </section>
@@ -2329,8 +2426,8 @@ Time taken: 209.91s
 <section id="Conclusion">
 <h2>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading">#</a></h2>
 <p>We’ve just seen how the transpiler can be used to convert a model from PyTorch to TensorFlow and train the converted model in TensorFlow.</p>
-<p>Head over to the <a class="reference external" href="https://unify.ai/docs/ivy/demos/">tutorials</a> section in our documentation if you’d like to explore other demos like this. You can also run demos locally on your own machine by <a class="reference external" href="https://console.unify.ai/">signing up</a> to get a transpiler API key for local development.</p>
-<p>If you have any questions or suggestions for other interesting demos you’d like to see, feel free to ask on our <a class="reference external" href="https://discord.gg/sXyFF8tDtm">Discord</a> community server, we look forward to seeing you there!</p>
+<p>Head over to the <a class="reference external" href="https://www.docs.ivy.dev/demos/examples_and_demos.html">Examples and Demos</a> section in our documentation if you’d like to explore other demos like this. You can also run demos locally on your own machine by <a class="reference external" href="https://www.docs.ivy.dev/overview/get_started.html">getting started</a> or <a class="reference external" href="https://www.docs.ivy.dev/overview/api_key.html">signing up for an API key</a> to get a transpiler API key with juiced up usage quotas for local development.</p>
+<p>If you have any questions or suggestions for other interesting demos you’d like to see, feel free to ask on our <a class="reference external" href="https://discord.com/invite/vKqazsCK2Y">Discord</a> community server, we look forward to seeing you there!</p>
 </section>
 </section>
 
@@ -2388,7 +2485,8 @@ Time taken: 209.91s
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-the-Data">Load the Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Visualize-a-few-images">Visualize a few images</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Load-the-pre-trained-model">Load the pre-trained model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Converting-the-model-from-TensorFlow-to-PyTorch">Converting the model from TensorFlow to PyTorch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Converting-the-model-from-PyTorch-to-TensorFlow">Converting the model from PyTorch to TensorFlow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Initializing-and-building-the-TensorFlow-model">Initializing and building the TensorFlow model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Comparing-the-results">Comparing the results</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Fine-tuning-the-transpiled-model">Fine-tuning the transpiled model</a></li>
 </ul>

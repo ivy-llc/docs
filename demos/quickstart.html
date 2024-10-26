@@ -1332,13 +1332,12 @@ document.write(`
 <h1>Quickstart<a class="headerlink" href="#Quickstart" title="Link to this heading">#</a></h1>
 <p>Get up to speed with Ivy with a quick, general introduction of its features and capabilities!</p>
 <p>⚠️ If you are running this notebook in Colab, you will have to install <code class="docutils literal notranslate"><span class="pre">Ivy</span></code> and some extra packages manually. You can do so by running the cell below ⬇️</p>
-<p>If you want to run the notebook locally but don’t have Ivy installed just yet, you can check out the <a class="reference external" href="https://unify.ai/docs/ivy/overview/contributing/setting_up.html">Setting Up section of the docs.</a></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>If you want to run the notebook locally but don’t have Ivy installed just yet, you can check out the <a class="reference external" href="https://www.docs.ivy.dev/overview/contributing/setting_up.html">Setting Up section of the docs.</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>ivy
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>dm-haiku
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>kornia
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>timm
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyvis
@@ -1346,10 +1345,89 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p>In this notebook we’ll go over the basic aspects of Ivy, which is both a transpiler and a ML framework that you can use to write framework-agnostic code and to integrate code from any framework into your existing code, tools, or infrastructure!</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Requirement already satisfied: ivy in /usr/local/lib/python3.10/dist-packages (1.0.0.0)
+Requirement already satisfied: astor in /usr/local/lib/python3.10/dist-packages (from ivy) (0.8.1)
+Requirement already satisfied: cryptography&gt;=40.0.0 in /usr/local/lib/python3.10/dist-packages (from ivy) (43.0.3)
+Requirement already satisfied: dill in /usr/local/lib/python3.10/dist-packages (from ivy) (0.3.9)
+Requirement already satisfied: einops in /usr/local/lib/python3.10/dist-packages (from ivy) (0.8.0)
+Requirement already satisfied: gast in /usr/local/lib/python3.10/dist-packages (from ivy) (0.6.0)
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from ivy) (1.26.4)
+Requirement already satisfied: packaging in /usr/local/lib/python3.10/dist-packages (from ivy) (24.1)
+Requirement already satisfied: psutil in /usr/local/lib/python3.10/dist-packages (from ivy) (5.9.5)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (from ivy) (2.32.3)
+Requirement already satisfied: ruff in /usr/local/lib/python3.10/dist-packages (from ivy) (0.7.1)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.10/dist-packages (from ivy) (4.66.5)
+Requirement already satisfied: cffi&gt;=1.12 in /usr/local/lib/python3.10/dist-packages (from cryptography&gt;=40.0.0-&gt;ivy) (1.17.1)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;ivy) (3.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;ivy) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;ivy) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;ivy) (2024.8.30)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.12-&gt;cryptography&gt;=40.0.0-&gt;ivy) (2.22)
+Requirement already satisfied: kornia in /usr/local/lib/python3.10/dist-packages (0.7.3)
+Requirement already satisfied: kornia-rs&gt;=0.1.0 in /usr/local/lib/python3.10/dist-packages (from kornia) (0.1.5)
+Requirement already satisfied: packaging in /usr/local/lib/python3.10/dist-packages (from kornia) (24.1)
+Requirement already satisfied: torch&gt;=1.9.1 in /usr/local/lib/python3.10/dist-packages (from kornia) (2.5.0+cu121)
+Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.9.1-&gt;kornia) (3.16.1)
+Requirement already satisfied: typing-extensions&gt;=4.8.0 in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.9.1-&gt;kornia) (4.12.2)
+Requirement already satisfied: networkx in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.9.1-&gt;kornia) (3.4.2)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.9.1-&gt;kornia) (3.1.4)
+Requirement already satisfied: fsspec in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.9.1-&gt;kornia) (2024.6.1)
+Requirement already satisfied: sympy==1.13.1 in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.9.1-&gt;kornia) (1.13.1)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /usr/local/lib/python3.10/dist-packages (from sympy==1.13.1-&gt;torch&gt;=1.9.1-&gt;kornia) (1.3.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;torch&gt;=1.9.1-&gt;kornia) (3.0.2)
+Requirement already satisfied: timm in /usr/local/lib/python3.10/dist-packages (1.0.11)
+Requirement already satisfied: torch in /usr/local/lib/python3.10/dist-packages (from timm) (2.5.0+cu121)
+Requirement already satisfied: torchvision in /usr/local/lib/python3.10/dist-packages (from timm) (0.20.0+cu121)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.10/dist-packages (from timm) (6.0.2)
+Requirement already satisfied: huggingface_hub in /usr/local/lib/python3.10/dist-packages (from timm) (0.24.7)
+Requirement already satisfied: safetensors in /usr/local/lib/python3.10/dist-packages (from timm) (0.4.5)
+Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from huggingface_hub-&gt;timm) (3.16.1)
+Requirement already satisfied: fsspec&gt;=2023.5.0 in /usr/local/lib/python3.10/dist-packages (from huggingface_hub-&gt;timm) (2024.6.1)
+Requirement already satisfied: packaging&gt;=20.9 in /usr/local/lib/python3.10/dist-packages (from huggingface_hub-&gt;timm) (24.1)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (from huggingface_hub-&gt;timm) (2.32.3)
+Requirement already satisfied: tqdm&gt;=4.42.1 in /usr/local/lib/python3.10/dist-packages (from huggingface_hub-&gt;timm) (4.66.5)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.10/dist-packages (from huggingface_hub-&gt;timm) (4.12.2)
+Requirement already satisfied: networkx in /usr/local/lib/python3.10/dist-packages (from torch-&gt;timm) (3.4.2)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from torch-&gt;timm) (3.1.4)
+Requirement already satisfied: sympy==1.13.1 in /usr/local/lib/python3.10/dist-packages (from torch-&gt;timm) (1.13.1)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /usr/local/lib/python3.10/dist-packages (from sympy==1.13.1-&gt;torch-&gt;timm) (1.3.0)
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from torchvision-&gt;timm) (1.26.4)
+Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.10/dist-packages (from torchvision-&gt;timm) (10.4.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;torch-&gt;timm) (3.0.2)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface_hub-&gt;timm) (3.4.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface_hub-&gt;timm) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface_hub-&gt;timm) (2.2.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface_hub-&gt;timm) (2024.8.30)
+Requirement already satisfied: pyvis in /usr/local/lib/python3.10/dist-packages (0.3.2)
+Requirement already satisfied: ipython&gt;=5.3.0 in /usr/local/lib/python3.10/dist-packages (from pyvis) (7.34.0)
+Requirement already satisfied: jinja2&gt;=2.9.6 in /usr/local/lib/python3.10/dist-packages (from pyvis) (3.1.4)
+Requirement already satisfied: jsonpickle&gt;=1.4.1 in /usr/local/lib/python3.10/dist-packages (from pyvis) (3.3.0)
+Requirement already satisfied: networkx&gt;=1.11 in /usr/local/lib/python3.10/dist-packages (from pyvis) (3.4.2)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (75.1.0)
+Requirement already satisfied: jedi&gt;=0.16 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (0.19.1)
+Requirement already satisfied: decorator in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (4.4.2)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (0.7.5)
+Requirement already satisfied: traitlets&gt;=4.2 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (5.7.1)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (3.0.48)
+Requirement already satisfied: pygments in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (2.18.0)
+Requirement already satisfied: backcall in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (0.2.0)
+Requirement already satisfied: matplotlib-inline in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (0.1.7)
+Requirement already satisfied: pexpect&gt;4.3 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis) (4.9.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2&gt;=2.9.6-&gt;pyvis) (3.0.2)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.3 in /usr/local/lib/python3.10/dist-packages (from jedi&gt;=0.16-&gt;ipython&gt;=5.3.0-&gt;pyvis) (0.8.4)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from pexpect&gt;4.3-&gt;ipython&gt;=5.3.0-&gt;pyvis) (0.7.0)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.10/dist-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=5.3.0-&gt;pyvis) (0.2.13)
+</pre></div></div>
+</div>
+<p>In this notebook we’ll go over the basic aspects of Ivy to integrate code from any framework into your existing code, tools, or infrastructure!</p>
 <p>Let’s import Ivy and get started!</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
@@ -1358,20 +1436,28 @@ document.write(`
 </div>
 <section id="Get-familiar-with-Ivy">
 <h2>Get familiar with Ivy<a class="headerlink" href="#Get-familiar-with-Ivy" title="Link to this heading">#</a></h2>
-<p>When used as a ML framework, Ivy allows you to write framework-agnostic code that can be executed as native code in your framework of choice. This means that when executed, Ivy code will use the appropriate functions and data structures, allowing you to seamlessly integrate your code with any other code and to leverage any framework-specific benefits.</p>
-<p>To change the backend, we simply have to call <code class="docutils literal notranslate"><span class="pre">ivy.set_backend()</span></code> and pass the framework we want to use as a string, for example:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>Ivy supports multiple frameworks like <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code>, <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>, <code class="docutils literal notranslate"><span class="pre">Jax</span></code>, <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> etc. as different backends. To change the backend, we simply have to call <code class="docutils literal notranslate"><span class="pre">ivy.set_backend()</span></code> and pass the framework we want to use as a string, for example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;module &#39;ivy.functional.backends.torch&#39; from &#39;/usr/local/lib/python3.10/dist-packages/ivy/functional/backends/torch/__init__.py&#39;&gt;
+</pre></div></div>
+</div>
 <p>Now let’s take a look at the data structures of Ivy. The main one is <code class="docutils literal notranslate"><span class="pre">ivy.Array</span></code>, which is an abstraction of the <code class="docutils literal notranslate"><span class="pre">array</span></code> class of the backends with extra functionalities. You can also access the corresponding class directly through <code class="docutils literal notranslate"><span class="pre">ivy.NativeArray</span></code>.</p>
-<p>There is also another structure called the <code class="docutils literal notranslate"><span class="pre">ivy.Container</span></code>, which is a subclass of dict that is optimized for recursive operations. If you want to learn more about it, you can defer to the following <a class="reference external" href="https://unify.ai/docs/ivy/overview/design/ivy_as_a_framework/ivy_container.html">link</a>!</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>There is also another structure called the <code class="docutils literal notranslate"><span class="pre">ivy.Container</span></code>, which is a subclass of dict that is optimized for recursive operations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
@@ -1384,11 +1470,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;ivy.data_classes.array.array.Array&#39;&gt;
+&lt;class &#39;torch.Tensor&#39;&gt;
+</pre></div></div>
+</div>
 <section id="Functional-API">
 <h3>Functional API<a class="headerlink" href="#Functional-API" title="Link to this heading">#</a></h3>
 <p>In a similar manner, Ivy’s functional API wraps the functional API of the backends, and therefore uses native operations under the hood. Let’s see an example of this.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
@@ -1408,98 +1503,27 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;jaxlib.xla_extension.ArrayImpl&#39;&gt;
+&lt;class &#39;tensorflow.python.framework.ops.EagerTensor&#39;&gt;
+&lt;class &#39;torch.Tensor&#39;&gt;
+</pre></div></div>
+</div>
 <p>As expected, calling <code class="docutils literal notranslate"><span class="pre">ivy.matmul</span></code> with different backends performs the corresponding operation in each one of the frameworks.</p>
-<p>Using the functional API, we can define any framework-independent function that we want:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">ivy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Stateful-API">
-<h3>Stateful API<a class="headerlink" href="#Stateful-API" title="Link to this heading">#</a></h3>
-<p>Ivy also has a stateful API which builds on its functional API and the <code class="docutils literal notranslate"><span class="pre">ivy.Container</span></code> class to provide high-level classes such as optimizers, network layers, or trainable modules.</p>
-<p>The most important stateful class within Ivy is <code class="docutils literal notranslate"><span class="pre">ivy.Module</span></code>, which can be used to create trainable layers and entire networks. A very simple example of an <code class="docutils literal notranslate"><span class="pre">ivy.Module</span></code> could be:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Regressor</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linear0</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
-        <span class="n">ivy</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<p>To use this model, we would simply have to set a backend and instantiate the model:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s1">&#39;torch&#39;</span><span class="p">)</span>  <span class="c1"># set backend to PyTorch</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">Regressor</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Now we can generate some sample data and train the model using Ivy as well.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_training_examples</span> <span class="o">=</span> <span class="mi">2000</span>
-<span class="n">noise</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_training_examples</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n_training_examples</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_training_examples</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="n">noise</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">pred</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
-    <span class="c1"># forward pass</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-    <span class="c1"># compute loss and gradients</span>
-    <span class="n">loss</span><span class="p">,</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">execute_with_gradients</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">model</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
-
-    <span class="c1"># update parameters</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">grads</span><span class="p">)</span>
-
-    <span class="c1"># print current loss</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1"> --- Loss: </span><span class="si">{</span><span class="n">ivy</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Finished training!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </section>
 </section>
 <section id="Tracing-code">
 <h2>Tracing code<a class="headerlink" href="#Tracing-code" title="Link to this heading">#</a></h2>
-<p>We have just explored how to create framework agnostic functions and models with Ivy. Nonetheless, due to the wrapping Ivy performs on top of native functions, there is a slight performance overhead introduced with each function call. To address this, we can use Ivy’s graph tracer.</p>
+<p>Due to the wrapping Ivy performs on top of native functions, there is a slight performance overhead introduced with each function call. To address this, we can use Ivy’s graph tracer.</p>
 <p>The purpose of the Graph Tracer is to extract a fully functional, efficient graph composed only of functions from the corresponding functional APIs of the underlying framework (backend).</p>
 <p>On top of using the Graph Tracer to remove the overhead introduced by Ivy, it can also be used with functions and modules written in any framework. In this case, the GC will decompose any high-level API into a fully-functional graph of functions from said framework.</p>
 <p>As an example, let’s write a simple <code class="docutils literal notranslate"><span class="pre">normalize</span></code> function using Ivy:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1511,7 +1535,7 @@ document.write(`
 </div>
 <p>To trace this function, simply call <code class="docutils literal notranslate"><span class="pre">ivy.trace_graph()</span></code>. To specify the underlying framework, you can pass the name of the framework as an argument using <code class="docutils literal notranslate"><span class="pre">to</span></code>. Otherwise, the current backend will be used by default.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -1520,9 +1544,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p>This results in the following graph:</p>
+<p>This results in the following graph (Note if the graph is not properly displayed in the notebook, feel free to visualize the <code class="docutils literal notranslate"><span class="pre">graph.html</span></code> file generated in the current directory in a browser):</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -1532,8 +1556,8 @@ document.write(`
 </div>
 </div>
 <p>As anticipated, the traced function, which uses native <code class="docutils literal notranslate"><span class="pre">torch</span></code> operations directly, is faster than the original function:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
@@ -1541,8 +1565,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+15.6 ms ± 3.07 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
@@ -1550,17 +1582,33 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+99.2 µs ± 22.6 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div></div>
+</div>
 <p>Additionally, we can set the <code class="docutils literal notranslate"><span class="pre">backend_compile</span></code> arg to <code class="docutils literal notranslate"><span class="pre">True</span></code> to apply the (native) target framework compilation function to Ivy’s traced graph, making the resulting function even more efficient.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normalize_native_comp</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">trace_graph</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">backend_compile</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x0</span><span class="p">,))</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+No CUDA runtime is found, using CUDA_HOME=&#39;/usr/local/cuda&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
@@ -1568,9 +1616,17 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+280 µs ± 124 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+</pre></div></div>
+</div>
 <p>In the example above, we traced the function eagerly, which means that the compilation process happened immediately, as we have passed the arguments for tracing. However, if we don’t pass any arguments to the <code class="docutils literal notranslate"><span class="pre">trace_graph</span></code> function, compilation will occur lazily, and the graph will be built only when we call the compiled function for the first time. To summarize:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -1580,7 +1636,7 @@ document.write(`
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Arguments are available -&gt; tracing happens eagerly</span>
@@ -1592,7 +1648,7 @@ document.write(`
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Arguments are not available -&gt; tracing happens lazily</span>
@@ -1609,27 +1665,36 @@ document.write(`
 </section>
 <section id="Ivy-as-a-Transpiler">
 <h2>Ivy as a Transpiler<a class="headerlink" href="#Ivy-as-a-Transpiler" title="Link to this heading">#</a></h2>
-<p>We have just learned how to write framework-agnostic code and trace it into an efficient graph. However, many codebases, libraries, and models have already been developed (and will continue to be!) using other frameworks.</p>
-<p>To allow for speed-of-thought research and development, Ivy also allows you to use any code directly into your project, regardless of the framework it was written in. No matter what ML code you want to use, Ivy’s Transpiler is the tool for the job 🛠️</p>
+<p>We have just learned how to use the graph tracer to trace a piece of code into an efficient graph composed of the backend framework. To allow for speed-of-thought research and development, Ivy also allows you to use any code directly into your project, regardless of the framework it was written in. No matter what ML code you want to use, Ivy’s Transpiler is the tool for the job 🛠️</p>
 <section id="Any-function">
 <h3>Any function<a class="headerlink" href="#Any-function" title="Link to this heading">#</a></h3>
 <p>Let’s start by transpiling a very simple <code class="docutils literal notranslate"><span class="pre">torch</span></code> function.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">),</span> <span class="n">std</span><span class="p">)</span>
 
-<span class="n">jax_normalize</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
+<span class="n">jax_normalize</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Similar to <code class="docutils literal notranslate"><span class="pre">trace_graph</span></code>, the <code class="docutils literal notranslate"><span class="pre">transpile</span></code> function can be used eagerly or lazily. In this particular example, transpilation is being performed lazily, since we haven’t passed any arguments or keyword arguments to <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpilation of normalize complete.
+</pre></div></div>
+</div>
+<p>Contrary to <code class="docutils literal notranslate"><span class="pre">trace_graph</span></code>, the <code class="docutils literal notranslate"><span class="pre">transpile</span></code> function will transpile eagerly (unless a module is passed) without requiring any arguments to be passed. In this particular example, transpilation is being performed eagerly, even though we haven’t passed any arguments or keyword arguments to <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>. The transpiled code will be available in the <code class="docutils literal notranslate"><span class="pre">ivy_transpiled_outputs</span></code> folder in the current directory by default. This output directory can also be controlled by passing the <code class="docutils literal notranslate"><span class="pre">output_dir</span></code>
+keyword argument to <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>
@@ -1642,13 +1707,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-0.93968587  0.26075466 -0.22723222 -1.06276492 -0.47426987  1.72835908
+  1.71737559 -0.50411096 -0.65419174  0.15576624] &lt;class &#39;jaxlib.xla_extension.ArrayImpl&#39;&gt;
+</pre></div></div>
+</div>
 <p>That’s pretty much it! You can now use any function you need in your projects regardless of the framework you’re using 🚀</p>
 <p>However, transpiling functions one by one is far from ideal. But don’t worry, with <code class="docutils literal notranslate"><span class="pre">transpile</span></code>, you can transpile entire libraries at once and easily bring them into your projects. Let’s see how this works by transpiling <code class="docutils literal notranslate"><span class="pre">kornia</span></code>, a widely-used computer vision library written in <code class="docutils literal notranslate"><span class="pre">torch</span></code>:</p>
 </section>
 <section id="Any-library">
 <h3>Any library<a class="headerlink" href="#Any-library" title="Link to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kornia</span>
@@ -1661,16 +1735,17 @@ document.write(`
 </div>
 <p>Let’s get the transpiled library by calling <code class="docutils literal notranslate"><span class="pre">transpile</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jax_kornia</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">kornia</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jax_kornia</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">kornia</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Now let’s get a sample image and preprocess so that it has the format kornia expects:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>Note however that when passing a module/library such as <code class="docutils literal notranslate"><span class="pre">kornia</span></code> to <code class="docutils literal notranslate"><span class="pre">transpile</span></code>, it will perform lazy transpilation of the entire library. It won’t be until you have actually called a function/class from this transpiled <code class="docutils literal notranslate"><span class="pre">jax_kornia</span></code> when that function/class is eagerly transpiled and made available for usage.</p>
+<p>Let’s go over an example to see what this means. Let’s get a sample image and preprocess so that it has the format kornia expects</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/train2017/000000000034.jpg&quot;</span>
@@ -1681,9 +1756,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/demos_quickstart_49_0.png" src="../_images/demos_quickstart_49_0.png" />
+</div>
+</div>
 <p>And we can call any function from kornia in <code class="docutils literal notranslate"><span class="pre">jax</span></code>, as simple as that!</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">jax_kornia</span><span class="o">.</span><span class="n">enhance</span><span class="o">.</span><span class="n">sharpness</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -1691,9 +1773,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpilation of sharpness complete.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+jaxlib.xla_extension.ArrayImpl
+</pre></div></div>
+</div>
 <p>Finally, let’s see if the transformation has been applied correctly:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span>
@@ -1701,119 +1800,1014 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/demos_quickstart_53_0.png" src="../_images/demos_quickstart_53_0.png" />
+</div>
+</div>
 <p>It’s worth noting that every operation in the transpiled functions is performed natively in the target framework, which means that gradients can be tracked and the resulting functions are fully differentiable. Even after transpilation, you can still take advantage of the powerful features of your chosen framework.</p>
 <p>While transpiling functions and libraries is useful, trainable modules play a critical role in ML and DL. The good news is that Ivy makes it just as easy to transpile modules and models from one framework to another with just one line of code.</p>
 </section>
 <section id="Any-model">
 <h3>Any model<a class="headerlink" href="#Any-model" title="Link to this heading">#</a></h3>
-<p>For the purpose of this demonstration, let’s define a very basic CNN block using the Sequential API of <code class="docutils literal notranslate"><span class="pre">keras</span></code>.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>For the purpose of this demonstration, let’s define a very basic CNN block using <code class="docutils literal notranslate"><span class="pre">pytorch</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> pytorch_classifier_example.py
+
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="k">class</span> <span class="nc">Classifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Classifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">26</span> <span class="o">*</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Writing pytorch_classifier_example.py
+</pre></div></div>
+</div>
+<p>The model we just defined is a subclass of <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>. Using <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>, we can effortlessly convert it into a <code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code> subclass, for instance. Note that here we are not instantiating the model but actually passing the model definition (class variable) <code class="docutils literal notranslate"><span class="pre">Classifier</span></code> directly to the <code class="docutils literal notranslate"><span class="pre">transpile</span></code> function which is enough for the transpiler to convert this into the target framework. As with functions, this model will be eagerly transpiled to <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> without
+needing to pass in any input arguments or keyword arguments to <code class="docutils literal notranslate"><span class="pre">transpile</span></code>.</p>
+<blockquote>
+<div><p>Note: In some cases it is a possibility that the source code of a model defined dynamically such as in a Jupyter Notebook like above is not accessible to the transpiler and it would throw a <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">code</span> <span class="pre">not</span> <span class="pre">available</span></code> exception. In such scenarios, we recommend simply defining the model in a separate <code class="docutils literal notranslate"><span class="pre">.py</span></code> file and importing it in your main script where you can call <code class="docutils literal notranslate"><span class="pre">transpile</span></code> on the model class. This way, the transpiler will be able to access the source code of the model to transpile.
+For this demonstration, we will achieve this by using the <code class="docutils literal notranslate"><span class="pre">%%writefile</span></code> directive in Jupyter Notebook as seen in the previous cell</p>
+</div></blockquote>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pytorch_classifier_example</span> <span class="kn">import</span> <span class="n">Classifier</span>
+<span class="n">TensorflowClassifier</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">Classifier</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpilation of Classifier complete.
+</pre></div></div>
+</div>
+<p>After transpilation, we can pass a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> tensor and obtain the expected output. As mentioned previously, all operations are now TensorFlow native functions, making them differentiable. Additionally, Ivy also makes the source code for the transpiled model readily available in your working directory in TensorFlow</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="nb">issubclass</span><span class="p">(</span><span class="n">TensorflowClassifier</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span>
-<span class="p">])</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">default_device</span><span class="p">(</span><span class="n">as_native</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)):</span>
+    <span class="n">input_array</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+    <span class="n">tensorflow_model</span> <span class="o">=</span> <span class="n">TensorflowClassifier</span><span class="p">()</span>
+    <span class="n">output_array</span> <span class="o">=</span> <span class="n">tensorflow_model</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">output_array</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>The model we just defined is an instance of <code class="docutils literal notranslate"><span class="pre">tf.keras.Model</span></code>. Using <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code>, we can effortlessly convert it into a <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>, for instance.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_array</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">torch_model</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">input_array</span><span class="p">,))</span>
-</pre></div>
-</div>
-</div>
-<p>After transpilation, we can pass a <code class="docutils literal notranslate"><span class="pre">torch</span></code> tensor and obtain the expected output. As mentioned previously, all operations are now PyTorch native functions, making them differentiable. Additionally, Ivy automatically converts all parameters of the original model to the new one, allowing you to transpile pre-trained models and fine-tune them in your preferred framework.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">torch_model</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_array</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">default_device</span><span class="p">(</span><span class="n">as_native</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">))</span>
-<span class="n">torch_model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">default_device</span><span class="p">(</span><span class="n">as_native</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">))</span>
-<span class="n">output_array</span> <span class="o">=</span> <span class="n">torch_model</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output_array</span><span class="p">)</span>
-</pre></div>
-</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tf.Tensor(
+[[0.09153255 0.09393365 0.11840326 0.09457473 0.08881382 0.09985055
+  0.09611838 0.09817807 0.11475282 0.10384216]], shape=(1, 10), dtype=float32)
+</pre></div></div>
 </div>
 <p>While we have only transpiled a simple model for demonstration purposes, we can certainly transpile more complex models as well. Let’s take a model from <code class="docutils literal notranslate"><span class="pre">timm</span></code> and see how we can build upon transpiled modules.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">timm</span>
 </pre></div>
 </div>
 </div>
-<p>We will only be using the encoder, so we can remove the unnecessary layers by setting <code class="docutils literal notranslate"><span class="pre">num_classes=0</span></code>, and then pass <code class="docutils literal notranslate"><span class="pre">pretrained=True</span></code> to download the pre-trained parameters.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>Let’s download the <code class="docutils literal notranslate"><span class="pre">Xception</span></code> model from <code class="docutils literal notranslate"><span class="pre">timm</span></code> and then pass <code class="docutils literal notranslate"><span class="pre">pretrained=True</span></code> to download the pre-trained parameters.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp_encoder</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s2">&quot;mixer_b16_224&quot;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xception</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;xception&#39;</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Downloading: &#34;https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-cadene/xception-43020ad28.pth&#34; to /root/.cache/torch/hub/checkpoints/xception-43020ad28.pth
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">xception</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
+      pre.function-repr-contents {
+        overflow-x: auto;
+        padding: 8px 12px;
+        max-height: 500px;
+      }
+
+      pre.function-repr-contents.function-repr-contents-collapsed {
+        cursor: pointer;
+        max-height: 100px;
+      }
+    </style>
+    <pre style="white-space: initial; background:
+         var(--colab-secondary-surface-color); padding: 8px 12px;
+         border-bottom: 1px solid var(--colab-border-color);"><b>timm.models.xception.Xception</b><br/>def _wrapped_call_impl(*args, **kwargs)</pre><pre class="function-repr-contents function-repr-contents-collapsed" style=""><a class="filepath" style="display:none" href="#">/usr/local/lib/python3.10/dist-packages/timm/models/xception.py</a>Xception optimized for the ImageNet dataset, as specified in
+https://arxiv.org/pdf/1610.02357.pdf</pre>
+      <script>
+      if (google.colab.kernel.accessAllowed && google.colab.files && google.colab.files.view) {
+        for (const element of document.querySelectorAll('.filepath')) {
+          element.style.display = 'block'
+          element.onclick = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            google.colab.files.view(element.textContent, 93);
+          };
+        }
+      }
+      for (const element of document.querySelectorAll('.function-repr-contents')) {
+        element.onclick = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          element.classList.toggle('function-repr-contents-collapsed');
+        };
+      }
+      </script>
+      </div></div>
 </div>
 <p>Let’s transpile the model to tensorflow with <code class="docutils literal notranslate"><span class="pre">ivy.transpile</span></code> 🔀</p>
+<blockquote>
+<div><p>Note <code class="docutils literal notranslate"><span class="pre">transpile</span></code> expects a class or a function, but if we want to transpile an instance of type ‘{obj_type}’, in this case an instance of type <code class="docutils literal notranslate"><span class="pre">timm.models.xception.Xception</span></code>, we’ll need to pass the class instead i.e. <code class="docutils literal notranslate"><span class="pre">timm.models.xception.Xception</span></code>. For restoring weights, we will be using <code class="docutils literal notranslate"><span class="pre">ivy.sync_models</span></code> after instantiating the transpiled class to ensure correct weight transfer.</p>
+</div></blockquote>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TfXception</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">xception</span><span class="p">),</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Transpilation of Xception complete.
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
-<span class="n">tf_mlp_encoder</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">mlp_encoder</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">noise</span><span class="p">,))</span>
-</pre></div>
-</div>
-</div>
-<p>And now let’s build a model on top of our pretrained encoder!</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Classifier</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Classifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">tf_mlp_encoder</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_dense</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">timm.data</span> <span class="kn">import</span> <span class="n">resolve_data_config</span>
+<span class="kn">from</span> <span class="nn">timm.data.transforms_factory</span> <span class="kn">import</span> <span class="n">create_transform</span>
 
-    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dense</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Classifier</span><span class="p">()</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">resolve_data_config</span><span class="p">({},</span> <span class="n">model</span><span class="o">=</span><span class="n">xception</span><span class="p">)</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">create_transform</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">))</span>
-<span class="n">ret</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ret</span><span class="p">),</span> <span class="n">ret</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">url</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;https://github.com/pytorch/hub/raw/master/images/dog.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;dog.jpg&quot;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+<span class="n">tensor</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># transform and add batch dimension</span>
 </pre></div>
 </div>
 </div>
-<p>As the encoder now consists of <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> functions, we can extend the transpiled modules as much as we want, leveraging existing weights and the tools and infrastructure of all frameworks 🚀</p>
+<section id="Initializing-and-building-the-TensorFlow-model">
+<h4>Initializing and building the TensorFlow model<a class="headerlink" href="#Initializing-and-building-the-TensorFlow-model" title="Link to this heading">#</a></h4>
+<p>Instantiate the model in TensorFlow</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;num_classes&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;in_chans&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">tf_xception</span> <span class="o">=</span> <span class="n">TfXception</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Call the forward pass once in order to build all the layers</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="n">tf_xception</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;tf.Tensor: shape=(1, 1000), dtype=float32, numpy=
+array([[-4.22755184e-05,  1.42075314e-05,  1.58988969e-05,
+        -2.32432230e-05, -2.88090951e-06, -2.22377948e-05,
+        -2.71238241e-05,  2.70060809e-05, -9.80165896e-06,
+        -1.98187299e-05, -1.20095065e-05,  5.86572241e-06,
+         3.70310518e-05, -3.68799192e-05, -1.89316324e-05,
+         1.88813228e-05,  1.06084435e-05, -4.46851527e-06,
+        -5.17494736e-05, -7.61849242e-06, -1.58902385e-05,
+        -2.57819993e-05,  2.38571502e-05, -3.15760622e-06,
+        -2.91142242e-05,  4.53267385e-05,  1.93926462e-05,
+         2.18675596e-05, -4.93177431e-05,  8.37095831e-06,
+         1.51016848e-05,  2.05479027e-05, -1.94458080e-05,
+         8.87603619e-06, -4.79350638e-06, -7.54593316e-07,
+         2.88015326e-05, -1.59873034e-05,  5.36158332e-05,
+         2.21644568e-05, -1.93870455e-05, -2.21645969e-05,
+        -3.14673598e-05, -2.37357126e-05,  1.37528268e-05,
+         8.26696942e-06,  8.23905430e-06, -4.04126376e-06,
+        -4.54791698e-05, -3.59835794e-05, -3.91804424e-05,
+         2.60497181e-05,  6.20841165e-05,  4.67165364e-06,
+        -1.68019651e-05, -2.71271892e-05, -7.50980234e-06,
+         1.32131972e-05,  4.63567085e-06,  4.57394526e-06,
+         3.51456729e-05,  3.63449362e-05,  5.22993687e-05,
+        -1.12290845e-05, -2.13572221e-05, -3.36402554e-05,
+        -2.13314815e-05,  1.66737445e-05,  2.52627524e-06,
+        -5.72147019e-06, -2.50344619e-05, -5.28341570e-06,
+         1.53219808e-05, -2.33885312e-05,  2.53693033e-05,
+         4.32307570e-06, -7.55302653e-06,  3.57026438e-05,
+        -9.81973972e-06, -1.06548350e-05, -9.78598382e-06,
+         1.81922278e-05,  2.35874759e-05, -5.74125261e-06,
+         1.02923077e-05,  2.91143351e-05, -2.96296348e-05,
+         7.15814822e-05, -2.42873602e-06,  1.35935916e-05,
+         8.99913721e-06, -1.79284234e-05,  4.53422217e-06,
+        -5.84874906e-05, -5.52299753e-06, -1.51678432e-05,
+        -4.54159590e-06, -1.74623219e-05, -3.32612908e-05,
+         3.13830933e-05,  3.92034526e-05,  2.75000566e-05,
+        -2.26360839e-06,  1.34744123e-05, -1.34203028e-05,
+        -3.21813350e-05, -6.15908311e-06,  7.98864312e-06,
+         2.90137814e-05,  5.57152380e-05, -2.61716250e-05,
+        -4.54216788e-05,  4.47630919e-05, -1.93827400e-05,
+         3.57818535e-05, -3.11837471e-06,  2.37387649e-05,
+        -1.90458250e-05,  6.72506440e-06,  5.77929541e-07,
+        -2.82434157e-05, -1.79839444e-05, -4.03084159e-05,
+        -2.94080928e-05, -3.09073512e-05, -4.41123047e-05,
+        -1.24911530e-05,  3.16682126e-05, -1.66683585e-05,
+         6.43009753e-06,  5.54898979e-05, -6.05939658e-06,
+         2.74779609e-07, -2.12688701e-05,  2.09694349e-06,
+         1.51766944e-05, -1.33516187e-05,  2.47232056e-05,
+        -1.40506727e-05,  2.09562422e-05,  3.55263001e-05,
+        -1.10166584e-05, -1.37294437e-05, -1.91032832e-05,
+        -3.03445977e-05, -2.46699601e-05,  9.57804332e-06,
+         5.75474769e-06,  2.93382727e-05, -4.22832163e-05,
+         5.25076575e-06, -2.61282348e-05, -1.43624075e-05,
+        -1.27350113e-05,  1.35436039e-05, -6.22630432e-06,
+        -5.01011118e-06, -3.96343057e-05, -4.02826990e-05,
+        -4.53871235e-06, -3.34399447e-05,  1.82099102e-05,
+        -7.10900167e-06,  9.75082003e-06,  7.01748263e-07,
+        -1.28950214e-05,  9.19945887e-06, -7.91386083e-06,
+         1.08386084e-05, -8.17717319e-06, -1.17370055e-05,
+         6.84746774e-05, -2.10975577e-05, -1.00104180e-05,
+         4.15352006e-05,  3.49072025e-07,  1.96136425e-05,
+        -3.99861128e-05, -1.40815928e-05,  1.52727316e-05,
+         6.38027495e-06,  5.93997083e-06, -3.29815748e-07,
+        -5.31498990e-05, -1.12699645e-05,  2.76616379e-06,
+         5.22730079e-05, -1.43066000e-05, -3.45149238e-05,
+        -2.57908123e-05, -2.55639425e-05,  1.93153919e-05,
+         1.51880549e-05, -1.00535844e-05,  1.07120040e-05,
+         4.07472508e-05,  2.63099555e-05,  2.15298242e-05,
+         2.55860887e-05, -5.94924450e-06,  1.28574914e-06,
+        -1.42403842e-05, -1.72589753e-05, -1.32658824e-05,
+         2.90384605e-06,  5.92683955e-06, -3.68030232e-05,
+        -1.69448663e-06, -7.59524619e-06, -1.83562406e-05,
+         6.60131336e-05,  1.98724429e-05, -1.97438749e-05,
+         2.36044684e-06, -1.82457479e-05, -3.71746864e-05,
+        -4.22133598e-06, -5.74615433e-06,  8.62040088e-06,
+         3.83646511e-06,  1.65986912e-05, -1.12989965e-05,
+         6.04373417e-06, -3.15382295e-06, -1.03787652e-05,
+        -3.10593459e-05,  3.13024175e-05, -1.69296436e-06,
+        -3.40054467e-05, -2.33090650e-05,  1.61446333e-05,
+        -3.08949202e-05, -1.34922038e-05,  2.18116402e-05,
+         2.08761521e-05,  1.89168331e-05,  3.58938341e-05,
+        -2.32085313e-06,  2.05373108e-05,  2.23972766e-05,
+         3.02532021e-06, -2.46939053e-05, -6.91925743e-06,
+        -1.73254848e-05, -3.47550704e-05,  3.24316497e-05,
+        -2.34658637e-06, -2.82124511e-05,  3.85571184e-05,
+        -1.00508059e-05,  1.95308603e-05,  2.00424274e-05,
+        -7.45815669e-06, -3.60275444e-05, -1.47059814e-06,
+         3.26789450e-05, -1.57446138e-05,  1.12737289e-05,
+         1.62237245e-06, -5.55993283e-05, -2.33644296e-05,
+         8.11637346e-06,  3.55543561e-05,  1.43533962e-05,
+        -5.26246877e-05, -3.95961797e-06,  4.00767294e-06,
+         2.95060854e-05,  1.21505300e-05,  9.38517951e-06,
+         3.75168020e-05, -7.37665277e-06, -2.06711811e-05,
+         4.28618514e-05, -2.59395983e-05,  1.07422238e-05,
+        -2.31458580e-05, -9.61658316e-07,  1.26833565e-05,
+        -3.73583571e-05, -2.31228732e-05, -8.65626043e-06,
+         2.14131323e-05, -3.94054987e-05, -5.19249215e-06,
+        -8.57593932e-06, -3.27399175e-05,  7.34549212e-06,
+         4.21386030e-05,  3.05462127e-05, -5.51284757e-06,
+         3.64046969e-06, -2.76020037e-05, -9.10357994e-06,
+         5.45754083e-05, -2.17401930e-06,  8.30594581e-06,
+         1.12471216e-05,  2.53927847e-05,  2.63996953e-05,
+        -2.85903043e-05, -8.02039904e-06,  1.09364182e-05,
+        -9.50962567e-06,  5.23075141e-06, -5.61894694e-06,
+        -1.79144299e-05, -5.00270471e-05,  1.35188266e-05,
+        -2.20668462e-05,  2.42485403e-05, -1.81163214e-05,
+        -5.24096322e-09,  2.18520763e-05,  1.18016487e-05,
+        -1.27426847e-05,  1.51053764e-05,  1.86545640e-05,
+         8.99766928e-06,  1.11417694e-06,  3.56677447e-05,
+         2.34811087e-05, -1.65598112e-06, -4.71319217e-05,
+         7.28222767e-06,  2.68872845e-05,  5.58561351e-06,
+        -7.54446683e-06, -2.18823857e-06, -1.01271744e-05,
+        -3.36860976e-05, -4.45616752e-05,  1.86409779e-05,
+        -1.44363394e-05,  3.24600551e-05,  1.07936303e-05,
+         3.82459234e-07,  1.52528100e-05, -2.38740395e-05,
+        -2.16464123e-05, -7.01379213e-06,  3.45417220e-06,
+        -2.01049647e-06, -3.66015956e-05, -1.19362248e-05,
+        -2.53052913e-05,  2.34728232e-05, -5.53701284e-06,
+        -5.66321105e-05,  5.95836264e-06,  2.88193933e-05,
+        -1.60828567e-05,  4.67236059e-05, -1.70924577e-05,
+        -1.37782217e-06,  5.20368303e-05, -2.94555230e-05,
+        -1.87741844e-05,  4.40981385e-05, -1.71998067e-06,
+         1.09386692e-05,  2.20536531e-05, -3.15996158e-06,
+        -4.90961356e-05, -6.19636012e-06, -4.76879541e-06,
+        -1.32745872e-05,  1.08209742e-05,  1.67243397e-05,
+        -2.13239546e-05, -2.10806702e-05,  2.88194155e-06,
+        -1.86600300e-05,  2.34608233e-05, -2.66968855e-05,
+        -8.54374503e-06,  1.80329371e-05,  1.86162870e-05,
+        -2.11532260e-05, -1.92196294e-05,  1.83596585e-05,
+         1.02445392e-05,  5.55229090e-05, -2.56348758e-05,
+        -3.12185221e-05,  2.79511801e-06,  2.79039227e-06,
+        -2.06342156e-06, -1.38183786e-05, -1.95395751e-05,
+         9.79626202e-06, -1.56104616e-05, -4.60983711e-06,
+         7.05438742e-06,  8.02661089e-06,  4.24539439e-06,
+         1.20520262e-05,  1.84398450e-05,  1.71727461e-05,
+         8.54013979e-06,  2.72145426e-05,  1.00191874e-05,
+        -1.99717633e-05, -3.11105987e-06, -8.53216716e-06,
+        -4.34626554e-06, -1.15166074e-06,  2.71814270e-06,
+         3.16115729e-05, -1.42350164e-05,  3.14056597e-05,
+         2.11728129e-05, -3.70197376e-05,  1.66522987e-05,
+        -6.52746621e-06, -6.54357518e-06, -2.62526555e-05,
+         4.45378646e-05,  2.48393662e-05, -3.22729029e-05,
+        -2.13963031e-05,  1.50117357e-05, -2.98993677e-06,
+         4.27967425e-05,  2.33490682e-05, -8.20714740e-06,
+        -1.68399583e-05, -1.56350907e-05,  1.35021191e-05,
+        -2.76405244e-05,  5.90234185e-06,  9.68508812e-06,
+         4.07787957e-06,  1.68137794e-05,  5.74410660e-06,
+         9.63071307e-06, -2.61655459e-05,  9.49780406e-06,
+         2.53713570e-05,  1.12800935e-05, -3.66192180e-05,
+         1.52429166e-05,  2.54186125e-06,  3.08098097e-05,
+        -4.81814022e-05,  3.74608426e-05, -2.49021123e-05,
+        -6.90337984e-05, -2.22380713e-05,  6.27423015e-06,
+         1.38995119e-05,  5.60769604e-06,  1.70186104e-05,
+        -2.06874120e-05,  2.28660865e-05, -4.88610840e-06,
+        -1.86280977e-05,  2.50197954e-05, -1.98043949e-06,
+        -1.05315576e-05, -1.70730218e-05, -2.87945295e-06,
+        -8.81196411e-06, -1.54862410e-05, -5.51150197e-06,
+         4.52620661e-05, -4.24813807e-05, -4.34867034e-05,
+        -2.98602299e-05, -2.35124080e-05,  1.60918898e-05,
+         6.87436932e-06, -2.01221269e-06,  2.51563233e-05,
+         4.44271382e-06, -1.73660137e-05, -3.41783816e-05,
+         7.81113340e-06, -1.64054363e-05, -9.17579200e-06,
+        -3.57553508e-05, -1.76061758e-06,  5.83363690e-05,
+         2.88804295e-05, -5.06369252e-05, -5.44777977e-05,
+        -1.00392017e-05,  7.00065766e-06, -2.51475303e-05,
+         5.04135533e-05, -1.22752117e-05,  2.39611127e-05,
+         1.60349664e-05,  9.22757681e-05, -2.02211231e-05,
+        -6.29150281e-06,  3.77160677e-06, -1.14349996e-05,
+         2.19999656e-05, -2.99362891e-05, -1.10922037e-05,
+        -2.75656694e-05,  7.23747053e-06,  1.74989364e-05,
+         2.06114291e-05, -4.13839625e-05,  1.47978153e-05,
+        -1.97691388e-05, -1.50509723e-05, -1.50089836e-05,
+         1.59422179e-05,  2.83421250e-05,  4.44397847e-05,
+        -1.73295102e-05, -7.83894666e-06, -1.67853923e-05,
+         1.16278361e-05,  1.93973774e-05, -1.50001069e-05,
+         3.43586657e-06,  3.76850367e-05,  2.11699626e-05,
+        -7.94323114e-06,  4.59375042e-06,  1.44865116e-05,
+         3.95141615e-06,  4.64693312e-06, -5.93263940e-06,
+        -1.14713703e-05, -2.21419305e-05, -2.74162358e-05,
+        -1.80275365e-05,  3.67939392e-05, -4.78432639e-06,
+        -1.99335391e-05, -3.23343520e-05, -1.53212350e-05,
+        -3.75822710e-05, -1.28808497e-05, -2.49983586e-05,
+        -3.09693496e-05, -3.64502412e-05, -2.03452091e-05,
+         1.15590938e-05, -3.99156015e-05,  4.45448677e-05,
+        -2.83934751e-05, -2.57038137e-05, -9.30203605e-05,
+        -1.58197090e-05,  5.01127724e-05, -4.21309887e-05,
+         9.87308977e-06, -1.83698958e-05,  3.22962387e-06,
+         6.52619019e-06, -5.15791362e-06,  3.71721144e-05,
+         2.52258906e-05, -6.84381894e-06,  6.27816644e-06,
+        -1.23784648e-05, -6.11566247e-06,  2.52136215e-06,
+         1.17983359e-06,  3.23658969e-05, -1.04366211e-06,
+         1.83865723e-05, -4.08855476e-06,  1.32753557e-05,
+        -2.38567045e-05,  4.96325374e-05,  1.79313301e-05,
+        -3.63895088e-05,  2.46973013e-05,  3.05248977e-05,
+        -2.56123822e-05,  2.37462427e-05,  9.45668398e-06,
+         1.55675407e-05, -2.84593698e-05, -2.15385844e-05,
+         3.50923506e-06,  1.95744688e-05, -1.20059030e-05,
+         1.28455367e-05,  3.77559154e-05, -5.22633563e-05,
+         4.47160164e-06,  1.85046156e-06,  3.82554390e-06,
+        -1.47383389e-05, -1.45602564e-06,  4.03237709e-06,
+         2.94009396e-06, -3.30089460e-05,  2.27015207e-05,
+         2.53384292e-06, -7.53224958e-06,  1.57701688e-05,
+         1.69746932e-06, -2.45397905e-06,  2.74341855e-05,
+         3.59235382e-05, -1.92862699e-05, -1.32244568e-05,
+         1.03637103e-05, -6.96883171e-06, -5.45973671e-06,
+         2.72374218e-05, -5.84639565e-06,  1.53806468e-05,
+         3.03779598e-05,  3.75133313e-05, -7.79815309e-06,
+         4.67217833e-05, -3.90329842e-05,  1.34734000e-05,
+         7.10531685e-06, -3.16833575e-05, -5.12717706e-05,
+        -7.66121047e-06, -9.74466911e-06, -2.38011762e-05,
+        -1.85001081e-05,  5.14025123e-06,  4.46551076e-06,
+         3.23097629e-06, -1.41202117e-05,  1.29842701e-05,
+         2.45129268e-05,  4.30870241e-05, -6.90452816e-06,
+         1.23315776e-05,  1.92166244e-05,  4.91104838e-05,
+         3.13277487e-05,  2.88805822e-05,  4.66210477e-05,
+         2.47277376e-06,  1.79434519e-05,  6.23339361e-07,
+         4.25924118e-05,  2.34886884e-05, -1.50423120e-05,
+        -2.05089545e-05,  2.77289473e-07,  2.64046976e-05,
+        -7.17408402e-05,  1.16246774e-05,  5.34570472e-06,
+         3.23709037e-06,  2.22118751e-06,  2.20319689e-05,
+         1.30971712e-05, -7.75916560e-05, -1.28474303e-05,
+         3.16408614e-06,  3.52938332e-05,  4.40186250e-06,
+         2.29181387e-05,  1.22995766e-06,  4.88861224e-06,
+         3.63656509e-05,  1.21945395e-05,  1.21989160e-07,
+        -1.32836540e-05, -8.93577817e-06,  6.96363850e-06,
+        -1.08754703e-05,  2.87759394e-05,  1.32703690e-05,
+        -8.56165025e-06,  2.46960622e-06,  6.58008321e-06,
+         3.78605691e-05, -6.59295529e-06, -1.56734168e-05,
+         3.23566337e-06, -2.22920698e-05,  4.05710234e-05,
+        -7.55385418e-06,  4.20482611e-05,  6.76697664e-06,
+         1.46745042e-05,  2.37552867e-05, -3.63882209e-05,
+        -1.19655397e-06,  1.12200014e-05,  4.28613293e-06,
+         1.02123595e-05,  2.34623440e-06,  1.17628606e-05,
+        -4.93750122e-05, -1.39903850e-05, -1.94607874e-05,
+         1.38046307e-05,  5.66226590e-05, -7.86233431e-06,
+         2.64857936e-05, -1.16341898e-05, -1.89269995e-05,
+        -4.80192648e-06, -1.63296045e-06,  5.28613637e-05,
+         3.64209632e-06,  2.15201217e-05,  3.09400239e-05,
+         2.50538710e-06, -1.64114190e-05, -1.67967810e-05,
+        -6.01767642e-05,  2.95409245e-05,  1.24998996e-05,
+        -9.48243360e-06, -1.09958610e-05, -3.06784714e-05,
+        -1.05578474e-05, -1.05715981e-05, -4.20393153e-05,
+         2.15880918e-05, -4.10275643e-05,  4.72496067e-05,
+        -6.78039851e-06,  1.54230274e-05, -3.30130497e-05,
+        -4.51022461e-05, -3.00608608e-05,  6.56790726e-05,
+        -2.44263720e-05,  5.06179895e-05,  1.24884882e-05,
+         1.66942118e-05, -3.92023867e-05, -2.25668305e-06,
+        -1.02829972e-05, -4.12646405e-05,  3.05880712e-05,
+         2.23990742e-06, -2.53588332e-05, -4.28921776e-05,
+        -2.21008431e-05, -4.16034600e-05, -1.08191116e-05,
+         1.11137724e-05,  5.55538754e-05,  3.28979295e-05,
+        -3.61187667e-05, -3.27747075e-05,  5.86051556e-07,
+         4.53766734e-06,  3.04401442e-06, -3.77249744e-05,
+        -2.39102319e-05, -5.33367456e-05, -2.02238843e-05,
+        -5.03743740e-06,  3.40855258e-05, -4.45827709e-06,
+         1.05441886e-05, -1.80679053e-05,  8.24094695e-06,
+        -1.21796234e-06,  8.21327376e-06,  1.05756044e-06,
+        -4.13485486e-06, -1.73169410e-05, -1.87601599e-05,
+         4.46580343e-05, -1.68897859e-05, -1.45819004e-05,
+        -2.91112137e-05, -2.17631132e-05, -2.44717394e-05,
+         2.76226765e-05, -4.38533316e-05, -2.08080601e-05,
+         4.21553996e-05, -1.61345979e-05,  2.05925535e-05,
+         4.29884585e-06, -1.17747568e-05, -4.11998444e-05,
+        -6.47944944e-06,  3.59454873e-07,  1.05422523e-05,
+         1.81214964e-05,  1.56880978e-05, -7.90695049e-06,
+        -1.40444445e-06, -1.58560179e-05,  2.87692674e-05,
+         1.53881356e-05, -3.28254027e-05,  2.03370255e-05,
+        -8.94515870e-06,  1.19948554e-05,  1.54786867e-05,
+         1.29567179e-05, -2.29006564e-05,  3.47084267e-07,
+        -1.15217845e-05,  8.96383790e-06,  9.67412325e-06,
+         8.80343032e-06, -3.78341210e-05, -7.68180325e-06,
+        -1.92454481e-05,  3.62830651e-05,  3.67147950e-05,
+         1.99988390e-05, -1.32594751e-05, -4.85554046e-05,
+        -3.29718023e-05,  1.25930992e-05, -3.77187753e-05,
+         1.45235263e-05,  2.39781075e-05,  1.38739551e-05,
+         1.95226057e-05,  4.06614017e-05, -2.71706213e-05,
+         2.81099365e-05, -3.69653717e-05, -1.33330559e-05,
+         8.41970814e-06,  6.09279596e-06, -9.43604300e-06,
+         7.96594577e-06, -2.85497608e-05, -5.99353953e-05,
+        -2.63938418e-05,  6.53512234e-06,  1.84415258e-05,
+        -2.12896357e-05,  2.05220249e-06, -1.21635958e-05,
+         2.03788295e-05,  4.82996220e-05,  5.99380598e-07,
+        -5.32609965e-06, -1.64795638e-05, -3.62492283e-05,
+         1.61779935e-05,  3.00205029e-05, -4.10060893e-05,
+         2.71350882e-06,  3.60464037e-05, -5.19210116e-05,
+        -7.50489926e-06,  5.67011630e-05, -2.64338250e-05,
+         1.02145896e-05,  3.02252683e-05,  1.35600585e-05,
+         1.63040895e-05,  5.48878870e-06, -5.40858673e-06,
+         4.56573343e-06,  7.28327905e-08, -2.78810403e-05,
+        -3.00735846e-05,  1.91232848e-05,  1.25235474e-05,
+         3.77394172e-05,  7.77516743e-06,  1.62570595e-05,
+         1.83893535e-05, -3.25159017e-05, -1.88429312e-05,
+        -4.14833848e-05, -2.06115219e-05, -1.82702479e-05,
+         1.51946051e-05,  1.81360574e-05, -3.48343929e-05,
+         1.70917810e-05, -8.92917114e-07,  5.52072779e-05,
+         9.07423782e-06,  1.47564560e-05,  2.44231724e-05,
+         1.54915178e-05, -4.29754873e-05,  2.05323449e-05,
+        -8.63192599e-06, -6.28259340e-06,  2.04990811e-05,
+         2.13425847e-05,  3.21450607e-05,  5.25256110e-06,
+         4.49345644e-05,  1.49804500e-05,  3.93775736e-05,
+        -1.65188783e-06,  3.11517724e-05,  1.20013283e-05,
+         5.75788772e-06, -4.45174737e-05,  1.59291558e-05,
+         1.03563452e-05, -1.62506876e-06,  3.12565899e-05,
+        -5.93989489e-06, -1.57481409e-05, -2.10292546e-05,
+        -2.42784336e-05,  1.56243959e-06, -7.57462522e-06,
+        -3.86927095e-05,  9.74873728e-06,  5.06456445e-06,
+        -1.42188001e-05, -2.19294452e-05,  2.18714995e-05,
+         1.09277462e-05, -3.73069815e-05, -1.54704867e-05,
+        -4.35359607e-06,  1.10625833e-05, -1.71246256e-06,
+        -3.63676827e-06, -4.81476400e-06,  3.52687384e-05,
+        -2.33862738e-05,  1.92213975e-05, -7.45649504e-06,
+        -1.37068037e-05, -2.10829767e-05,  1.18823309e-05,
+         3.12252196e-05,  4.24370373e-05, -4.36065056e-05,
+        -4.92032223e-06,  5.26032727e-06,  2.59225126e-05,
+        -2.21148675e-05, -1.33171679e-05, -4.01533798e-05,
+        -1.18374246e-05, -2.38013172e-06, -5.63947651e-06,
+         2.11903262e-06, -1.37917277e-05, -4.38593997e-05,
+        -1.97551271e-05,  2.14356478e-05, -2.25195508e-05,
+        -5.40807996e-05, -1.82117728e-05,  7.25985819e-06,
+         1.83092343e-05,  6.19717093e-06, -8.00307862e-06,
+        -1.47603405e-05, -2.25457043e-05,  4.36048595e-06,
+        -6.08793334e-06,  2.50178819e-05, -1.29040927e-05,
+        -1.67083454e-05, -3.65851861e-07,  2.26422671e-05,
+         5.42250382e-06,  1.40924712e-05,  8.49811113e-06,
+         2.97447677e-05,  2.11639999e-05, -1.92428633e-05,
+         1.49038415e-05,  4.31870976e-05, -4.21867080e-05,
+         4.77388930e-05, -2.78794541e-05, -1.29277259e-05,
+         4.90754210e-05,  3.13431956e-05, -4.85764722e-05,
+        -3.80949423e-05,  3.00477877e-05, -2.61748391e-06,
+        -3.03840807e-05, -2.12695813e-05, -2.75898310e-06,
+         9.36092692e-06, -1.56920432e-05,  6.16171110e-06,
+        -7.20042544e-06,  2.03064701e-05, -3.96528958e-05,
+         2.58367509e-05,  3.12917064e-06, -1.37680163e-05,
+        -3.01163891e-05, -2.82695655e-05, -1.67298440e-05,
+        -2.22081635e-05, -2.16628487e-05,  1.34730562e-05,
+        -4.41967568e-05]], dtype=float32)&gt;
+</pre></div></div>
+</div>
+<p>TensorFlow (Keras) Model specific attributes and methods are all still accessible on the transpiled model:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf_xception</span><span class="o">.</span><span class="n">layers</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[KerasConv2D(),
+ KerasBatchNorm2D(),
+ tensorflow_ReLU(),
+ KerasConv2D(),
+ KerasBatchNorm2D(),
+ tensorflow_ReLU(),
+ tensorflow_Block(
+   (skip): KerasConv2D()
+   (skipbn): KerasBatchNorm2D()
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (1): KerasBatchNorm2D()
+     (2): tensorflow_ReLU()
+     (3): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (4): KerasBatchNorm2D()
+     (5): tensorflow_MaxPool2d()
+   )
+ ),
+ tensorflow_Block(
+   (skip): KerasConv2D()
+   (skipbn): KerasBatchNorm2D()
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_MaxPool2d()
+   )
+ ),
+ tensorflow_Block(
+   (skip): KerasConv2D()
+   (skipbn): KerasBatchNorm2D()
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_MaxPool2d()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_ReLU()
+     (7): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (8): KerasBatchNorm2D()
+   )
+ ),
+ tensorflow_Block(
+   (skip): KerasConv2D()
+   (skipbn): KerasBatchNorm2D()
+   (rep): tensorflow_Sequential(
+     (0): tensorflow_ReLU()
+     (1): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (2): KerasBatchNorm2D()
+     (3): tensorflow_ReLU()
+     (4): tensorflow_SeparableConv2d(
+       (conv1): KerasDepthWiseConv2D()
+       (pointwise): KerasConv2D()
+     )
+     (5): KerasBatchNorm2D()
+     (6): tensorflow_MaxPool2d()
+   )
+ ),
+ tensorflow_SeparableConv2d(
+   (conv1): KerasDepthWiseConv2D()
+   (pointwise): KerasConv2D()
+ ),
+ KerasBatchNorm2D(),
+ tensorflow_ReLU(),
+ tensorflow_SeparableConv2d(
+   (conv1): KerasDepthWiseConv2D()
+   (pointwise): KerasConv2D()
+ ),
+ KerasBatchNorm2D(),
+ tensorflow_ReLU(),
+ tensorflow_SelectAdaptivePool2d(pool_type=avg, flatten=tensorflow_Flatten()),
+ KerasDense()]
+</pre></div></div>
+</div>
+<p>Let’s sync the weights of both the source and the transpiled model to do a 1-to-1 comparison of the two models and validate that they are functionally equal:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">sync_models</span><span class="p">(</span><span class="n">xception</span><span class="p">,</span> <span class="n">tf_xception</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+All parameters and buffers are now synced!
+</pre></div></div>
+</div>
+</section>
+<section id="Comparing-the-results">
+<h4>Comparing the results<a class="headerlink" href="#Comparing-the-results" title="Link to this heading">#</a></h4>
+<p>Let’s now try predicting the logits of the same input with the transpiled model</p>
+<p>To compare the logits produced by the original and transpiled models at a more granular level, let’s try an <code class="docutils literal notranslate"><span class="pre">allclose</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">xception</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">xception</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+<span class="n">logits_np</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">logits_transpiled</span> <span class="o">=</span> <span class="n">tf_xception</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()),</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">logits_transpiled_np</span> <span class="o">=</span> <span class="n">logits_transpiled</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">logits_np</span><span class="p">,</span> <span class="n">logits_transpiled_np</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<p>And now let’s build a model on top of our pretrained xception_model in Keras!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+
+<span class="c1"># Define the custom model class</span>
+<span class="k">class</span> <span class="nc">CustomXceptionModel</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xception_model</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CustomXceptionModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Use selected layers and blocks from the transpiled Xception model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">conv1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn1</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">bn1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act1</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">act1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">conv2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bn2</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">bn2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act2</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">act2</span>
+
+        <span class="c1"># Select blocks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block1</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">block1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block2</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">block2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block3</span> <span class="o">=</span> <span class="n">xception_model</span><span class="o">.</span><span class="n">block3</span>
+
+        <span class="c1"># Custom classification head</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">global_pool</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalAveragePooling2D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="c1"># Initial convolution and activation layers</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># Pass through selected blocks</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># Custom head for classification</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Instantiate the custom model</span>
+<span class="n">custom_xception_model</span> <span class="o">=</span> <span class="n">CustomXceptionModel</span><span class="p">(</span><span class="n">tf_xception</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Test the model with a sample input</span>
+<span class="n">input_tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">custom_xception_model</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output shape:&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output type:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Output shape: (1, 10)
+Output type: &lt;class &#39;tensorflow.python.framework.ops.EagerTensor&#39;&gt;
+</pre></div></div>
+</div>
+<p>As the <code class="docutils literal notranslate"><span class="pre">tf_xception</span></code> model now consists of <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> functions, we can extend the transpiled modules as much as we want, leveraging existing weights and the tools and infrastructure of all frameworks 🚀</p>
+</section>
 </section>
 </section>
 <section id="Round-Up">
 <h2>Round Up<a class="headerlink" href="#Round-Up" title="Link to this heading">#</a></h2>
-<p>That’s about it! You are now prepared to start using Ivy on your own! However, there are still plenty of useful resources to explore. If you want to delve deeper into Ivy’s features and learn how to use them, you can visit the <a class="reference external" href="https://unify.ai/demos/">Demos</a> page and go through the notebooks 📚</p>
+<p>That’s about it! You are now prepared to start using Ivy on your own! However, there are still plenty of useful resources to explore. If you want to delve deeper into Ivy’s features and learn how to use them, you can visit the <a class="reference external" href="https://www.docs.ivy.dev/demos/examples_and_demos.html">Examples and Demos</a> page and go through the notebooks 📚</p>
 </section>
 </section>
 
@@ -1865,14 +2859,17 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Get-familiar-with-Ivy">Get familiar with Ivy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Functional-API">Functional API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Stateful-API">Stateful API</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Tracing-code">Tracing code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Ivy-as-a-Transpiler">Ivy as a Transpiler</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Any-function">Any function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Any-library">Any library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Any-model">Any model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Any-model">Any model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Initializing-and-building-the-TensorFlow-model">Initializing and building the TensorFlow model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#Comparing-the-results">Comparing the results</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Round-Up">Round Up</a></li>

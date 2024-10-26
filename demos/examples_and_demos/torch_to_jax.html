@@ -1335,15 +1335,15 @@ document.write(`
 <h1>Accelerating PyTorch models with JAX<a class="headerlink" href="#Accelerating-PyTorch-models-with-JAX" title="Link to this heading">#</a></h1>
 <p>Accelerate your Pytorch models by converting them to JAX for faster inference.</p>
 <p>⚠️ If you are running this notebook in Colab, you will have to install <code class="docutils literal notranslate"><span class="pre">Ivy</span></code> and some dependencies manually. You can do so by running the cell below ⬇️</p>
-<p>If you want to run the notebook locally but don’t have Ivy installed just yet, you can check out the <a class="reference external" href="https://unify.ai/docs/ivy/overview/get_started.html">Get Started section of the docs.</a></p>
+<p>If you want to run the notebook locally but don’t have Ivy installed just yet, you can check out the <a class="reference external" href="https://www.docs.ivy.dev/overview/get_started.html">Get Started section of the docs.</a></p>
 <p>Make sure you run this demo with GPU enabled!</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">ivy</span>
-<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">transformers</span>
-<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">dm</span><span class="o">-</span><span class="n">haiku</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>ivy
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>transformers
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>flax
 </pre></div>
 </div>
 </div>
@@ -1359,11 +1359,11 @@ document.write(`
 </pre></div></div>
 </div>
 <p>Let’s now import Ivy and the libraries we’ll use in this example:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>
 <span class="n">jax</span><span class="o">.</span><span class="n">devices</span><span class="p">()</span>
 <span class="kn">import</span> <span class="nn">ivy</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">set_default_device</span><span class="p">(</span><span class="s2">&quot;gpu:0&quot;</span><span class="p">)</span>
@@ -1375,12 +1375,34 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+WARNING:root:   Some binaries seem to be missing in your system. This could be either because we don&#39;t have compatible binaries for your system or that newer binaries were available. In the latter case, calling ivy.utils.cleanup_and_fetch_binaries() should fetch the binaries binaries. Feel free to create an issue on https://github.com/ivy-llc/ivy.git in case of the former
+
+WARNING:root:
+Following are the supported configurations :
+compiler : cp38-cp38-manylinux_2_17_x86_64, cp38-cp38-win_amd64, cp39-cp39-manylinux_2_17_x86_64, cp39-cp39-win_amd64, cp310-cp310-manylinux_2_17_x86_64, cp310-cp310-win_amd64, cp310-cp310-macosx_12_0_arm64, cp311-cp311-manylinux_2_17_x86_64, cp311-cp311-win_amd64, cp311-cp311-macosx_12_0_arm64, cp312-cp312-manylinux_2_17_x86_64, cp312-cp312-win_amd64, cp312-cp312-macosx_12_0_arm64
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
 <p>Now we can load a ResNet model and its corresponding feature extractor from Hugging Face transformers library</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
 <span class="n">arch_name</span> <span class="o">=</span> <span class="s2">&quot;ResNet&quot;</span>
 <span class="n">checkpoint_name</span> <span class="o">=</span> <span class="s2">&quot;microsoft/resnet-50&quot;</span>
@@ -1395,18 +1417,18 @@ document.write(`
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2023-11-02 19:23:15.980130: E tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:9342] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2023-11-02 19:23:15.980177: E tensorflow/compiler/xla/stream_executor/cuda/cuda_fft.cc:609] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2023-11-02 19:23:15.980207: E tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:1518] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2023-11-02 19:23:17.351203: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-10-21 20:32:14.781022: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-10-21 20:32:14.799336: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-10-21 20:32:14.805088: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-10-21 20:32:15.897178: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
 </pre></div></div>
 </div>
-<p>We will also need a sample image to pass during tracing, so let’s use the feature extractor to get the corresponding torch tensors.</p>
+<p>Let’s use the feature extractor to get the corresponding inputs.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/val2017/000000039769.jpg&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/val2017/000000039769.jpg&quot;</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
     <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span>
@@ -1414,83 +1436,149 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<p>And finally, let’s transpile the model to haiku!</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<p>And finally, let’s transpile the model to jax!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transpiled_graph</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;haiku&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers.models.resnet.modeling_resnet</span> <span class="kn">import</span> <span class="n">ResNetModel</span>
+
+
+<span class="n">JaxResNetModel</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">ResNetModel</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Instantiate the Jax/Flax model</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ivy_transpiled_outputs.jax_outputs.transformers.models.resnet.modeling_resnet</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">jax_ResNetConfig</span> <span class="k">as</span> <span class="n">JaxResNetConfig</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="n">jax_config</span> <span class="o">=</span> <span class="n">JaxResNetConfig</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="n">jax_model</span> <span class="o">=</span> <span class="n">JaxResNetModel</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">jax_config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s sync the weights of both the source and the transpiled model to do a 1-to-1 comparison of the two models and validate that they are functionally equal:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">sync_models</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">jax_model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-WARNING:root:To preserve the tracer and transpiler caches across multiple machines, ensure that the relative path of your projects from the .ivy folder is consistent across all machines. You can do this by adding .ivy to your home folder and placing all projects in the same place relative to the home folder on all machines.
-WARNING:root:Native Numpy does not support GPU placement, consider using Jax instead
-/workspaces/ivy/ivy/utils/exceptions.py:390: UserWarning: The current backend: &#39;jax&#39; does not support inplace updates natively. Ivy would quietly create new arrays when using inplace updates with this backend, leading to memory overhead (same applies for views). If you want to control your memory management, consider doing ivy.set_inplace_mode(&#39;strict&#39;) which should raise an error whenever an inplace update is attempted with this backend.
-  warnings.warn(
+All parameters and buffers are now synced!
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch_inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">torch_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">torch_inputs</span><span class="p">)</span>
+<span class="n">logits_np</span> <span class="o">=</span> <span class="n">torch_outputs</span><span class="o">.</span><span class="n">last_hidden_state</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jax_inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
+<span class="n">logits_transpiled</span> <span class="o">=</span> <span class="n">jax_model</span><span class="p">(</span><span class="o">**</span><span class="n">jax_inputs</span><span class="p">)</span>
+<span class="n">logits_transpiled_np</span> <span class="o">=</span> <span class="n">logits_transpiled</span><span class="o">.</span><span class="n">last_hidden_state</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">logits_np</span><span class="p">,</span> <span class="n">logits_transpiled_np</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
 </pre></div></div>
 </div>
 <p>After transpiling our model, we can see what’s the improvement in runtime efficiency like. For this let’s compile the original PyTorch model using <code class="docutils literal notranslate"><span class="pre">torch.compile</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ref : https://github.com/pytorch/pytorch/issues/107960</span>
+<span class="o">!</span><span class="nb">export</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
+<span class="o">!</span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib64-nvidia&quot;</span>
+<span class="o">!</span><span class="nb">export</span><span class="w"> </span><span class="nv">LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/cuda/lib64/stubs&quot;</span>
+<span class="o">!</span>ldconfig<span class="w"> </span>/usr/lib64-nvidia
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: Can&#39;t create temporary cache file /etc/ld.so.cache~: Permission denied
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ref : https://github.com/pytorch/pytorch/issues/107960</span>
-<span class="err">!</span><span class="n">export</span> <span class="n">LC_ALL</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
-<span class="err">!</span><span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib64-nvidia&quot;</span>
-<span class="err">!</span><span class="n">export</span> <span class="n">LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/cuda/lib64/stubs&quot;</span>
-<span class="err">!</span><span class="n">ldconfig</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">-</span><span class="n">nvidia</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WARMUPS</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
     <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span>
 <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">_f</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-  <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">comp_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-<span class="n">comp_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">_f</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">comp_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">WARMUPS</span><span class="p">):</span>
+  <span class="n">_</span> <span class="o">=</span> <span class="n">comp_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>Let’s now do the equivalent transformation in our new haiku model by using JAX just in time compilation:</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inputs_jax</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flax</span> <span class="kn">import</span> <span class="n">nnx</span>
+
+<span class="n">inputs_jax</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
     <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span>
 <span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">haiku</span> <span class="k">as</span> <span class="nn">hk</span>
-
 <span class="k">def</span> <span class="nf">_forward</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-  <span class="n">module</span> <span class="o">=</span> <span class="n">transpiled_graph</span><span class="p">()</span>
-  <span class="k">return</span> <span class="n">module</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span>
+  <span class="k">return</span> <span class="n">jax_model</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span>
 
-<span class="n">rng_key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">jax_forward</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">_forward</span><span class="p">)</span>
-<span class="n">params</span> <span class="o">=</span> <span class="n">jax_forward</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">rng</span><span class="o">=</span><span class="n">rng_key</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs_jax</span><span class="p">)</span>
-<span class="n">jit_apply</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">jax_forward</span><span class="o">.</span><span class="n">apply</span><span class="p">)</span>
+<span class="n">comp_model_jax</span> <span class="o">=</span> <span class="n">nnx</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">_forward</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">WARMUPS</span><span class="p">):</span>
+  <span class="n">_</span> <span class="o">=</span> <span class="n">comp_model_jax</span><span class="p">(</span><span class="o">**</span><span class="n">inputs_jax</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>Now that we have both models optimized, let’s see how their runtime speeds compare to each other!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 <span class="n">_</span> <span class="o">=</span> <span class="n">comp_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1504,11 +1592,11 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">timeit</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">jit_apply</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs_jax</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">_</span> <span class="o">=</span> <span class="n">comp_model_jax</span><span class="p">(</span><span class="o">**</span><span class="n">inputs_jax</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1523,10 +1611,10 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
 <p>As expected, we have made the model significantly faster with just one line of code, getting a ~2x increase in its execution speed! 🚀</p>
 <p>Finally, as a sanity check, let’s load a different image and make sure that the results are the same in both models</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/train2017/000000283921.jpg&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/train2017/000000283921.jpg&quot;</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
     <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span>
@@ -1535,14 +1623,14 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
     <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span>
 <span class="p">)</span>
 <span class="n">out_torch</span> <span class="o">=</span> <span class="n">comp_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
-<span class="n">out_jax</span> <span class="o">=</span> <span class="n">jit_apply</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs_jax</span><span class="p">)</span>
+<span class="n">out_jax</span> <span class="o">=</span> <span class="n">comp_model_jax</span><span class="p">(</span><span class="o">**</span><span class="n">inputs_jax</span><span class="p">)</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">out_torch</span><span class="o">.</span><span class="n">last_hidden_state</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">out_jax</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">out_torch</span><span class="o">.</span><span class="n">last_hidden_state</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">out_jax</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
