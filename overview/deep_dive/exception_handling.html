@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1335,8 +1335,8 @@ document.write(`
 <h2>Ivy Exception Class<a class="headerlink" href="#ivy-exception-class" title="Link to this heading">#</a></h2>
 <p>Firstly, Ivy’s base exception class is <code class="code docutils literal notranslate"><span class="pre">IvyException</span></code> class, which inherits from the Python <code class="code docutils literal notranslate"><span class="pre">Exception</span></code> class.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/utils/exceptions.py</span>
-<span class="k">class</span> <span class="nc">IvyException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">IvyException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">native_error</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
@@ -1355,8 +1355,8 @@ document.write(`
 <p>In cases where an exception class for a specific purpose is required, we inherit from the <code class="code docutils literal notranslate"><span class="pre">IvyException</span></code> class.
 For example, the <code class="code docutils literal notranslate"><span class="pre">IvyBackendException</span></code> class is created to unify backend exceptions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/utils/exceptions.py</span>
-<span class="k">class</span> <span class="nc">IvyBackendException</span><span class="p">(</span><span class="n">IvyException</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">IvyBackendException</span><span class="p">(</span><span class="n">IvyException</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="n">include_backend</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1364,8 +1364,8 @@ For example, the <code class="code docutils literal notranslate"><span class="pr
 Thus, the <code class="code docutils literal notranslate"><span class="pre">IvyIndexError</span></code> and <code class="code docutils literal notranslate"><span class="pre">IvyValueError</span></code> classes unifies these special cases.
 For a more general case, the <code class="code docutils literal notranslate"><span class="pre">IvyError</span></code> class can be used.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/utils/exceptions.py</span>
-<span class="k">class</span> <span class="nc">IvyError</span><span class="p">(</span><span class="n">IvyException</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">IvyError</span><span class="p">(</span><span class="n">IvyException</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="n">include_backend</span><span class="o">=</span><span class="n">include_backend</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1624,9 +1624,9 @@ IvyIndexError: jax: all: axis 2 is out of bounds for an array of dimension 1
 <h2><code class="code docutils literal notranslate"><span class="pre">&#64;handle_exceptions</span></code> Decorator<a class="headerlink" href="#handle-exceptions-decorator" title="Link to this heading">#</a></h2>
 <p>To ensure that all backend exceptions are caught properly, a decorator is used to handle functions in the <code class="code docutils literal notranslate"><span class="pre">try/except</span></code> block.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/utils/exceptions.py</span>
-<span class="k">def</span> <span class="nf">handle_exceptions</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_exceptions</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
     <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">_handle_exceptions</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_exceptions</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># Not to rethrow as IvyBackendException</span>
@@ -1674,7 +1674,7 @@ IvyIndexError: jax: all: axis 2 is out of bounds for an array of dimension 1
 Let’s look at an example of <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.utility.html#ivy.all" title="ivy.all"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.all()</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/functional/ivy/utility.py</span>
 <span class="nd">@handle_exceptions</span>
-<span class="k">def</span> <span class="nf">all</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -1729,7 +1729,7 @@ Let’s take an example of <a class="reference internal" href="../../docs/functi
 and for Numpy, <code class="code docutils literal notranslate"><span class="pre">AxisError</span></code> is raised. To unify the behaviour, we raise <code class="code docutils literal notranslate"><span class="pre">IvyIndexError</span></code> for both cases.</p>
 <p>In Numpy,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/functional/backends/numpy/utility.py</span>
-<span class="k">def</span> <span class="nf">all</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -1745,7 +1745,7 @@ and for Numpy, <code class="code docutils literal notranslate"><span class="pre"
 </div>
 <p>In Jax,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/functional/backends/jax/utility.py</span>
-<span class="k">def</span> <span class="nf">all</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">JaxArray</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -1776,7 +1776,7 @@ This allows them to be reused and promotes cleaner code.</p>
 <p>Let’s look at an example!</p>
 <p><strong>Helper: check_less</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/utils/assertions.py</span>
-<span class="k">def</span> <span class="nf">check_less</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">allow_equal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_less</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">allow_equal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
   <span class="c1"># less_equal</span>
   <span class="k">if</span> <span class="n">allow_equal</span> <span class="ow">and</span> <span class="n">ivy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">x1</span> <span class="o">&gt;</span> <span class="n">x2</span><span class="p">):</span>
       <span class="k">raise</span> <span class="n">ivy</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">IvyException</span><span class="p">(</span>
@@ -1796,7 +1796,7 @@ This allows them to be reused and promotes cleaner code.</p>
 <p><strong>ivy.set_split_factor</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/functional/ivy/device.py</span>
 <span class="nd">@handle_exceptions</span>
-<span class="k">def</span> <span class="nf">set_split_factor</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_split_factor</span><span class="p">(</span>
     <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">device</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Device</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeDevice</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>

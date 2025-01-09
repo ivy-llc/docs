@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1391,18 +1391,18 @@ For the reasons explained above, this would be a problem.</p>
 <p><strong>Note</strong>
 This functionality is inspired by <a class="reference external" href="https://numpy.org/doc/stable/user/basics.dispatch.html#basics-dispatch">NumPy’s</a> <code class="code docutils literal notranslate"><span class="pre">__ivy_array_function__</span></code> and <a class="reference external" href="https://pytorch.org/docs/stable/notes/extending.html#extending-torch">PyTorch’s</a> <code class="code docutils literal notranslate"><span class="pre">__torch_function__</span></code>.</p>
 <p>As an example, consider the following class <code class="code docutils literal notranslate"><span class="pre">MyArray</span></code> with the following definition:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyArray</span><span class="p">:</span>
-        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyArray</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
 </pre></div>
 </div>
 <p>Running any of Ivy’s functions using a <code class="code docutils literal notranslate"><span class="pre">MyArray</span></code> object as input will throw an <code class="code docutils literal notranslate"><span class="pre">IvyBackendException</span></code> since Ivy’s functions do not support this class type as input. This is where <code class="code docutils literal notranslate"><span class="pre">__ivy_array_function__</span></code> comes into play. Let’s add the method to our <code class="code docutils literal notranslate"><span class="pre">MyArray</span></code> class to see how it works.</p>
 <p>There are different ways to do so. One way is to use a global dict <code class="code docutils literal notranslate"><span class="pre">HANDLED_FUNCTIONS</span></code> which will map Ivy’s functions to the custom variant functions:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HANDLED_FUNCTIONS</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">class</span> <span class="nc">MyArray</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyArray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="k">def</span> <span class="nf">__ivy_array_function__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__ivy_array_function__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">func</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">HANDLED_FUNCTIONS</span><span class="p">:</span>
                     <span class="k">return</span> <span class="bp">NotImplemented</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="n">MyArray</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">))</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">types</span><span class="p">):</span>
@@ -1414,8 +1414,8 @@ This functionality is inspired by <a class="reference external" href="https://nu
 overridden, <code class="code docutils literal notranslate"><span class="pre">types</span></code> a list of the types of objects implementing <code class="code docutils literal notranslate"><span class="pre">__ivy_array_function__</span></code>, <code class="code docutils literal notranslate"><span class="pre">args</span></code> a tuple of arguments supplied to the function, and <code class="code docutils literal notranslate"><span class="pre">kwargs</span></code> being a dictionary of keyword arguments passed to the function.
 While this class contains an implementation for <code class="code docutils literal notranslate"><span class="pre">__ivy_array_function__</span></code>, it is still not enough as it is necessary to implement any needed Ivy functions with the new <code class="code docutils literal notranslate"><span class="pre">MyArray</span></code> class as input(s) for the code to run successfully.
 We will define a decorator function <code class="code docutils literal notranslate"><span class="pre">implements</span></code> that can be used to add functions to <code class="code docutils literal notranslate"><span class="pre">HANDLED_FUNCTIONS</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">implements</span><span class="p">(</span><span class="n">ivy_function</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">implements</span><span class="p">(</span><span class="n">ivy_function</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="n">HANDLED_FUNCTIONS</span><span class="p">[</span><span class="n">ivy_function</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
         <span class="k">return</span> <span class="n">func</span>
     <span class="k">return</span> <span class="n">decorator</span>
@@ -1423,7 +1423,7 @@ We will define a decorator function <code class="code docutils literal notransla
 </div>
 <p>Lastly, we need to apply that decorator to the override function. Let’s consider for example a function that overrides <code class="code docutils literal notranslate"><span class="pre">ivy.abs</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@implements</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">abs</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">my_abs</span><span class="p">(</span><span class="n">my_array</span><span class="p">,</span> <span class="n">ivy_array</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_abs</span><span class="p">(</span><span class="n">my_array</span><span class="p">,</span> <span class="n">ivy_array</span><span class="p">):</span>
     <span class="n">my_array</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">my_array</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>

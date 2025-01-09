@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css" />
@@ -1339,7 +1339,7 @@ document.write(`
 </ol>
 <section id="Transpiler-Interface">
 <h3>Transpiler Interface<a class="headerlink" href="#Transpiler-Interface" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transpile</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">transpile</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="n">objs</span><span class="p">,</span>
     <span class="n">to</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1385,8 +1385,8 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab.patches</span> <span class="kn">import</span> <span class="n">cv2_imshow</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">cv2_imshow</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;image.png&quot;</span><span class="p">)</span>
 <span class="n">cv2_imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
@@ -1404,10 +1404,10 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">ivy</span>
-<span class="kn">import</span> <span class="nn">kornia</span>
-<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">kornia</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
 
 <span class="c1"># set the API key</span>
 <span class="n">os</span><span class="o">.</span><span class="n">envrion</span><span class="p">[</span><span class="s2">&quot;IVY_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -1427,7 +1427,7 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 <span class="c1"># load image in tensorflow</span>
 <span class="n">original_img</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;image.png&#39;</span><span class="p">))</span><span class="o">/</span><span class="mi">255</span>
 <span class="n">original_img</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="mi">0</span><span class="p">)</span>
@@ -1439,12 +1439,12 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Run transpilation in eager/lazy mode { display-mode: &quot;form&quot; }</span>
-<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;Lazy&quot;</span> <span class="c1">#@param [&quot;Eager&quot;, &quot;Lazy&quot;]</span>
 <span class="n">fn_args</span> <span class="o">=</span> <span class="p">(</span><span class="n">original_img</span><span class="p">,)</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;Eager&quot;</span> <span class="k">else</span> <span class="kc">None</span>
 
 <span class="nd">@ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="n">fn_args</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">dilate_edges</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dilate_edges</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
   <span class="n">edges</span> <span class="o">=</span> <span class="n">kornia</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">canny</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
   <span class="k">return</span> <span class="n">kornia</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">dilation</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
@@ -1480,7 +1480,7 @@ You selected Eager
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># transpile module lazily</span>
 <span class="n">kornia</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">kornia</span><span class="p">,</span><span class="n">to</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">dilate_edges</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dilate_edges</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
   <span class="n">edges</span> <span class="o">=</span> <span class="n">kornia</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">canny</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
   <span class="k">return</span> <span class="n">kornia</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">dilation</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 
@@ -1504,7 +1504,7 @@ You selected Eager
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">haiku</span> <span class="k">as</span> <span class="nn">hk</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">haiku</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hk</span>
 
 <span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">hk_model</span> <span class="o">=</span> <span class="n">hk</span><span class="o">.</span><span class="n">nets</span><span class="o">.</span><span class="n">ResNet18</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>

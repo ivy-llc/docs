@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1384,7 +1384,7 @@ We can also see that numpy does not support a <code class="xref py py-func docut
 Ivy should also support the <code class="code docutils literal notranslate"><span class="pre">beta</span></code> and <code class="code docutils literal notranslate"><span class="pre">threshold</span></code> arguments, in order to provide the generalized superset implementation among the backend frameworks.</p>
 <p>Let’s take the tensorflow backend implementation as an example when assessing the necessary changes.
 Without superset behaviour, the implementation is incredibly simple, with only a single tensorflow function called under the hood.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">softplus</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">softplus</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
              <span class="o">/</span><span class="p">,</span>
              <span class="o">*</span><span class="p">,</span>
              <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -1393,7 +1393,7 @@ Without superset behaviour, the implementation is incredibly simple, with only a
 </div>
 <p>The simplest approach would be to implement <code class="xref py py-func docutils literal notranslate"><span class="pre">softplus()</span></code> in each Ivy backend as a simple composition.
 For example, a simple composition in the tensorflow backend would look like the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">softplus</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">softplus</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
              <span class="o">/</span><span class="p">,</span>
              <span class="o">*</span><span class="p">,</span>
              <span class="n">beta</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -1409,7 +1409,7 @@ If a user doesn’t care about the extra <code class="code docutils literal notr
 <p>Therefore, we should in general adopt a different approach when implementing superset behaviour.
 We should still implement the superset, but keep this extended behaviour as optional as possible, with maximal efficiency and minimal intrusion in the case that this extended behaviour is not required.
 The following would be a much better solution:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">softplus</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">softplus</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
              <span class="o">/</span><span class="p">,</span>
              <span class="o">*</span><span class="p">,</span>
              <span class="n">beta</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1484,7 +1484,7 @@ For example, if we look at the framework-specific functions available that serve
 <p>As a workaround, we can simply make use of the backend-specific implementations for a certain number of dimensions and modes for each backend, and then have a general compositional implementation which covers all the remaining cases.
 This will make sure that we don’t introduce any inefficiencies and also avoid re-implementation for all the backends.</p>
 <p>Ivy allows this using the <a class="reference external" href="https://github.com/ivy-llc/ivy/blob/a07919ebf64181852a3564c4d994bc1c25bd9a6f/ivy/functional/backends/tensorflow/experimental/layers.py#L817">partial_mixed_handler</a> attribute on the backend-specific implementation. So the <code class="code docutils literal notranslate"><span class="pre">torch</span></code> backend implementation of <code class="xref py py-func docutils literal notranslate"><span class="pre">interpolate()</span></code> would look like the following,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">interpolate</span><span class="p">(</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">size</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">],</span>
     <span class="o">/</span><span class="p">,</span>

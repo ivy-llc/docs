@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1333,7 +1333,7 @@ Instead, Ivy <strong>wraps</strong> the functional APIs of existing frameworks, 
 Let’s take the function <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.manipulation.html#ivy.stack" title="ivy.stack"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.stack()</span></code></a> as an example.</p>
 <p>There are separate backend modules for JAX, TensorFlow, PyTorch, and NumPy, and so we implement the <code class="code docutils literal notranslate"><span class="pre">stack</span></code> method once for each backend, each in separate backend files like so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/jax/manipulation.py:</span>
- <span class="k">def</span> <span class="nf">stack</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">stack</span><span class="p">(</span>
      <span class="n">arrays</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">JaxArray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">JaxArray</span><span class="p">]],</span>
      <span class="o">/</span><span class="p">,</span>
      <span class="o">*</span><span class="p">,</span>
@@ -1344,7 +1344,7 @@ Let’s take the function <a class="reference internal" href="../../docs/functio
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/numpy/manipulation.py:</span>
- <span class="k">def</span> <span class="nf">stack</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">stack</span><span class="p">(</span>
      <span class="n">arrays</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]],</span>
      <span class="o">/</span><span class="p">,</span>
      <span class="o">*</span><span class="p">,</span>
@@ -1358,7 +1358,7 @@ Let’s take the function <a class="reference internal" href="../../docs/functio
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/tensorflow/manipulation.py:</span>
- <span class="k">def</span> <span class="nf">stack</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">stack</span><span class="p">(</span>
      <span class="n">arrays</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span>
      <span class="o">/</span><span class="p">,</span>
      <span class="o">*</span><span class="p">,</span>
@@ -1369,7 +1369,7 @@ Let’s take the function <a class="reference internal" href="../../docs/functio
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/torch/manipulation.py:</span>
- <span class="k">def</span> <span class="nf">stack</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">stack</span><span class="p">(</span>
      <span class="n">arrays</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span>
      <span class="o">/</span><span class="p">,</span>
      <span class="o">*</span><span class="p">,</span>
@@ -1388,7 +1388,7 @@ For functions with differing behavior then we must modify the function to fit th
 For example, the APIs of JAX, PyTorch, and NumPy all have a <code class="code docutils literal notranslate"><span class="pre">logspace</span></code> method, but TensorFlow does not at the time of writing.
 Therefore, we need to construct it using a composition of existing TensorFlow ops like so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/tensorflow/creation.py:</span>
- <span class="k">def</span> <span class="nf">logspace</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">logspace</span><span class="p">(</span>
      <span class="n">start</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
      <span class="n">stop</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
      <span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -1414,7 +1414,7 @@ For example, the function <code class="xref py py-func docutils literal notransl
  <span class="nd">@to_native_arrays_and_back</span>
  <span class="nd">@handle_out_argument</span>
  <span class="nd">@handle_nestable</span>
- <span class="k">def</span> <span class="nf">prod</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">prod</span><span class="p">(</span>
      <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
      <span class="o">*</span><span class="p">,</span>
      <span class="n">axis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1483,12 +1483,12 @@ The examples can be seen below:</p>
 <table class="table">
 <tbody>
 <tr class="row-odd"><td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># implicit</span>
-<span class="kn">import</span> <span class="nn">ivy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">to_native</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 <span class="c1"># -&gt; &lt;class &#39;numpy.ndarray&#39;&gt;</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">to_native</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
 <span class="c1"># -&gt; &lt;class &#39;torch.Tensor&#39;&gt;</span>
@@ -1496,7 +1496,7 @@ The examples can be seen below:</p>
 </div>
 </td>
 <td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># explicit</span>
-<span class="kn">import</span> <span class="nn">ivy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
 
 <span class="n">z</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
@@ -1516,22 +1516,22 @@ The examples can be seen below:</p>
 But with frontend APIs, we can also achieve this!</p>
 <p>Let’s take a look at how the implementation of <code class="code docutils literal notranslate"><span class="pre">clip</span></code> method would seem like in the frontends:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/frontends/jax/lax/functions.py</span>
-<span class="k">def</span> <span class="nf">clamp</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/frontends/numpy/general.py</span>
-<span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/frontends/tensorflow/general.py</span>
-<span class="k">def</span> <span class="nf">clip_by_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clip_by_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/frontends/torch/general.py</span>
-<span class="k">def</span> <span class="nf">clamp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clamp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1549,13 +1549,13 @@ If there are semantic differences then these will be captured (a) in the wrapped
 <p>Let’s take a more complex example and convert the PyTorch method <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.one_hot()</span></code> into NumPy code.
 The frontend is implemented by wrapping a single Ivy method <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.creation.html#ivy.one_hot" title="ivy.one_hot"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.one_hot()</span></code></a> as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/frontends/torch/nn/sparse_functions.py</span>
-<span class="k">def</span> <span class="nf">one_hot</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">one_hot</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let’s look at the NumPy backend code for this Ivy method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/numpy/general.py</span>
- <span class="k">def</span> <span class="nf">one_hot</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">one_hot</span><span class="p">(</span>
      <span class="n">indices</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
  <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">depth</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
@@ -1563,8 +1563,8 @@ The frontend is implemented by wrapping a single Ivy method <a class="reference 
 </pre></div>
 </div>
 <p>By chaining these methods together, we can now call <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.one_hot()</span></code> using NumPy:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
-<span class="kn">import</span> <span class="nn">ivy.frontends.torch</span> <span class="k">as</span> <span class="nn">torch</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ivy.frontends.torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">torch</span>
 
 <span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
 
@@ -1575,7 +1575,7 @@ The frontend is implemented by wrapping a single Ivy method <a class="reference 
 <p>Let’s take one more example and convert TensorFlow method <code class="xref py py-func docutils literal notranslate"><span class="pre">tf.cumprod()</span></code> into PyTorch code.
 This time, the frontend is implemented by wrapping two Ivy methods <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.statistical.html#ivy.cumprod" title="ivy.cumprod"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.cumprod()</span></code></a>, and <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.manipulation.html#ivy.flip" title="ivy.flip"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.flip()</span></code></a> as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/frontends/tensorflow/math.py</span>
-<span class="k">def</span> <span class="nf">cumprod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">exclusive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cumprod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">exclusive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">ret</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
@@ -1584,7 +1584,7 @@ This time, the frontend is implemented by wrapping two Ivy methods <a class="ref
 </div>
 <p>Let’s look at the PyTorch backend code for both of these Ivy methods:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/torch/general.py</span>
- <span class="k">def</span> <span class="nf">cumprod</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">cumprod</span><span class="p">(</span>
      <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
      <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
      <span class="n">exclusive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -1600,7 +1600,7 @@ This time, the frontend is implemented by wrapping two Ivy methods <a class="ref
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/backends/torch/manipulation.py</span>
- <span class="k">def</span> <span class="nf">flip</span><span class="p">(</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">flip</span><span class="p">(</span>
      <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
      <span class="n">axis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
      <span class="o">*</span><span class="p">,</span>
@@ -1623,8 +1623,8 @@ This time, the frontend is implemented by wrapping two Ivy methods <a class="ref
 </pre></div>
 </div>
 <p>Again, by chaining these methods together, we can now call <code class="xref py py-func docutils literal notranslate"><span class="pre">tf.math.cumprod()</span></code> using PyTorch:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
-<span class="kn">import</span> <span class="nn">ivy.frontends.tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ivy.frontends.tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 
 <span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s1">&#39;torch&#39;</span><span class="p">)</span>
 
@@ -1638,7 +1638,7 @@ This time, the frontend is implemented by wrapping two Ivy methods <a class="ref
 <p>All code for setting and unsetting the backend resides in the submodule at <code class="xref py py-mod docutils literal notranslate"><span class="pre">ivy/utils/backend/handler.py</span></code>, and the front facing function is <code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.current_backend()</span></code>.
 The contents of this function are as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/utils/backend/handler.py</span>
- <span class="k">def</span> <span class="nf">current_backend</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+ <span class="k">def</span><span class="w"> </span><span class="nf">current_backend</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
      <span class="k">global</span> <span class="n">implicit_backend</span>
      <span class="c1"># if a global backend has been set with set_backend then this will be returned</span>
      <span class="k">if</span> <span class="n">backend_stack</span><span class="p">:</span>
@@ -1658,7 +1658,7 @@ Otherwise, the input arguments are type-checked to infer the backend, and this i
 <p>The functions in this returned module are populated by iterating through the global <code class="xref py py-attr docutils literal notranslate"><span class="pre">ivy.__dict__</span></code> (or a non-global copy of <code class="xref py py-attr docutils literal notranslate"><span class="pre">ivy.__dict__</span></code> if non-globally-set), and overwriting every function which is also directly implemented in the backend-specific namespace.
 The following is a slightly simplified version of this code for illustration, which updates the global <code class="xref py py-attr docutils literal notranslate"><span class="pre">ivy.__dict__</span></code> directly:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/utils/backend/handler.py</span>
-<span class="k">def</span> <span class="nf">set_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 
     <span class="c1"># un-modified ivy.__dict__</span>
     <span class="k">global</span> <span class="n">ivy_original_dict</span>
@@ -1686,7 +1686,7 @@ A good example is <a class="reference internal" href="../../docs/functional/ivy/
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy/functional/ivy/layers.py</span>
 <span class="nd">@to_native_arrays_and_back</span>
 <span class="nd">@handle_nestable</span>
-<span class="k">def</span> <span class="nf">lstm_update</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lstm_update</span><span class="p">(</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
     <span class="n">init_h</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
     <span class="n">init_c</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>

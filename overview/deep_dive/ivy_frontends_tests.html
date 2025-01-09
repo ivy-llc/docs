@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1371,7 +1371,7 @@ See the <span class="xref std std-ref">/overview/contributing/open_tasks:Where t
     <span class="n">dtype_and_x</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">dtype_and_values</span><span class="p">(</span><span class="n">available_dtypes</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)),</span>
     <span class="n">test_with_out</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_jax_tan</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_jax_tan</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">dtype_and_x</span><span class="p">,</span>
     <span class="n">on_device</span><span class="p">,</span>
@@ -1418,7 +1418,7 @@ See the <span class="xref std std-ref">/overview/contributing/open_tasks:Where t
         <span class="n">fn_name</span><span class="o">=</span><span class="s2">&quot;tan&quot;</span>
     <span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_numpy_tan</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_numpy_tan</span><span class="p">(</span>
     <span class="n">dtypes_values_casting</span><span class="p">,</span>
     <span class="n">where</span><span class="p">,</span>
     <span class="n">frontend</span><span class="p">,</span>
@@ -1467,7 +1467,7 @@ See the <span class="xref std std-ref">/overview/contributing/open_tasks:Where t
     <span class="n">dtype_and_x</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">dtype_and_values</span><span class="p">(</span><span class="n">available_dtypes</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)),</span>
     <span class="n">test_with_out</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_tensorflow_tan</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_tensorflow_tan</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">dtype_and_x</span><span class="p">,</span>
     <span class="n">frontend</span><span class="p">,</span>
@@ -1500,7 +1500,7 @@ See the <span class="xref std std-ref">/overview/contributing/open_tasks:Where t
         <span class="n">available_dtypes</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">),</span>
     <span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_torch_tan</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_torch_tan</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">dtype_and_x</span><span class="p">,</span>
     <span class="n">on_device</span><span class="p">,</span>
@@ -1533,7 +1533,7 @@ This function requires us to create extra functions for generating <code class="
 <p><strong>Jax</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy_tests/test_ivy/test_frontends/test_jax/test_lax/test_operators.py</span>
 <span class="nd">@st</span><span class="o">.</span><span class="n">composite</span>
-<span class="k">def</span> <span class="nf">_fill_value</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_fill_value</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dtype&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">with</span> <span class="n">update_backend</span><span class="p">(</span><span class="n">test_globals</span><span class="o">.</span><span class="n">CURRENT_BACKEND</span><span class="p">)</span> <span class="k">as</span> <span class="n">ivy_backend</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">ivy_backend</span><span class="o">.</span><span class="n">is_uint_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
@@ -1555,7 +1555,7 @@ This function requires us to create extra functions for generating <code class="
     <span class="n">fill_value</span><span class="o">=</span><span class="n">_fill_value</span><span class="p">(),</span>
     <span class="n">dtypes</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dtype&quot;</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_jax_full</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_jax_full</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">shape</span><span class="p">,</span>
     <span class="n">fill_value</span><span class="p">,</span>
@@ -1589,7 +1589,7 @@ This is used to specify the data type of the output array.</p></li>
 <p><strong>NumPy</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy_tests/test_ivy/test_frontends/test_numpy/creation_routines/test_from_shape_or_value.py</span>
 <span class="nd">@st</span><span class="o">.</span><span class="n">composite</span>
-<span class="k">def</span> <span class="nf">_input_fill_and_dtype</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_input_fill_and_dtype</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
     <span class="n">dtype_and_input</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">dtype_and_values</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span>
     <span class="k">with</span> <span class="n">update_backend</span><span class="p">(</span><span class="n">test_globals</span><span class="o">.</span><span class="n">CURRENT_BACKEND</span><span class="p">)</span> <span class="k">as</span> <span class="n">ivy_backend</span><span class="p">:</span>
@@ -1624,7 +1624,7 @@ This is used to specify the data type of the output array.</p></li>
     <span class="n">input_fill_dtype</span><span class="o">=</span><span class="n">_input_fill_and_dtype</span><span class="p">(),</span>
     <span class="n">test_with_out</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_numpy_full</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_numpy_full</span><span class="p">(</span>
     <span class="n">shape</span><span class="p">,</span>
     <span class="n">input_fill_dtype</span><span class="p">,</span>
     <span class="n">frontend</span><span class="p">,</span>
@@ -1654,7 +1654,7 @@ This is used to specify the data type of the output array.</p></li>
 <p><strong>TensorFlow</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy_tests/test_ivy/test_frontends/test_tensorflow/test_raw_ops.py</span>
 <span class="nd">@st</span><span class="o">.</span><span class="n">composite</span>
-<span class="k">def</span> <span class="nf">_fill_value</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_fill_value</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">_dtypes</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">with</span> <span class="n">update_backend</span><span class="p">(</span><span class="n">test_globals</span><span class="o">.</span><span class="n">CURRENT_BACKEND</span><span class="p">)</span> <span class="k">as</span> <span class="n">ivy_backend</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">ivy_backend</span><span class="o">.</span><span class="n">is_uint_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
@@ -1676,7 +1676,7 @@ This is used to specify the data type of the output array.</p></li>
     <span class="n">dtypes</span><span class="o">=</span><span class="n">_dtypes</span><span class="p">(),</span>
     <span class="n">test_with_out</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_tensorflow_Fill</span><span class="p">(</span>  <span class="c1"># NOQA</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_tensorflow_Fill</span><span class="p">(</span>  <span class="c1"># NOQA</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">shape</span><span class="p">,</span>
     <span class="n">fill_value</span><span class="p">,</span>
@@ -1708,7 +1708,7 @@ This is used to specify the data type of the output array.</p></li>
 <p><strong>PyTorch</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ivy_tests/test_ivy/test_frontends/test_torch/test_creation_ops.py</span>
 <span class="nd">@st</span><span class="o">.</span><span class="n">composite</span>
-<span class="k">def</span> <span class="nf">_fill_value</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_fill_value</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
     <span class="n">with_array</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">sampled_from</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]))</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">shared</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dtype&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">with</span> <span class="n">update_backend</span><span class="p">(</span><span class="n">test_globals</span><span class="o">.</span><span class="n">CURRENT_BACKEND</span><span class="p">)</span> <span class="k">as</span> <span class="n">ivy_backend</span><span class="p">:</span>
@@ -1736,7 +1736,7 @@ This is used to specify the data type of the output array.</p></li>
     <span class="n">fill_value</span><span class="o">=</span><span class="n">_fill_value</span><span class="p">(),</span>
     <span class="n">dtype</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">shared</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dtype&quot;</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_torch_full</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_torch_full</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">shape</span><span class="p">,</span>
     <span class="n">fill_value</span><span class="p">,</span>
@@ -1777,7 +1777,7 @@ we can not and we have to reconstruct the output as shown in the example below.<
     <span class="n">fn_tree</span><span class="o">=</span><span class="s2">&quot;torch.linalg.qr&quot;</span><span class="p">,</span>
     <span class="n">dtype_and_input</span><span class="o">=</span><span class="n">_get_dtype_and_matrix</span><span class="p">(</span><span class="n">batch</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_torch_qr</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_torch_qr</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">dtype_and_input</span><span class="p">,</span>
     <span class="n">frontend</span><span class="p">,</span>
@@ -1840,7 +1840,7 @@ For example <code class="xref py py-func docutils literal notranslate"><span cla
 <p>Code example for alias function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in ivy/functional/frontends/torch/comparison_ops.py</span>
 <span class="nd">@to_ivy_arrays_and_back</span>
-<span class="k">def</span> <span class="nf">greater</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">greater</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="nb">input</span><span class="p">,</span> <span class="n">other</span> <span class="o">=</span> <span class="n">torch_frontend</span><span class="o">.</span><span class="n">promote_types_of_torch_inputs</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span>
 
@@ -1863,7 +1863,7 @@ For example <code class="xref py py-func docutils literal notranslate"><span cla
         <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_torch_greater</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_torch_greater</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">dtype_and_inputs</span><span class="p">,</span>
     <span class="n">on_device</span><span class="p">,</span>
@@ -1927,7 +1927,7 @@ for example, <code class="code docutils literal notranslate"><span class="pre">n
         <span class="n">available_dtypes</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">),</span> <span class="n">num_arrays</span><span class="o">=</span><span class="mi">2</span>
     <span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_numpy_instance_add__</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_numpy_instance_add__</span><span class="p">(</span>
     <span class="n">dtype_and_x</span><span class="p">,</span>
     <span class="n">frontend_method_data</span><span class="p">,</span>
     <span class="n">init_flags</span><span class="p">,</span>
@@ -1971,7 +1971,7 @@ for example, <code class="code docutils literal notranslate"><span class="pre">n
         <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_tensorflow_instance_add</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_tensorflow_instance_add</span><span class="p">(</span>
     <span class="n">dtype_and_x</span><span class="p">,</span>
     <span class="n">frontend</span><span class="p">,</span>
     <span class="n">backend_fw</span><span class="p">,</span>
@@ -2016,7 +2016,7 @@ for example, <code class="code docutils literal notranslate"><span class="pre">n
     <span class="p">),</span>
     <span class="n">alpha</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">min_value</span><span class="o">=-</span><span class="mf">1e04</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">1e04</span><span class="p">,</span> <span class="n">allow_infinity</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_torch_instance_add</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_torch_instance_add</span><span class="p">(</span>
     <span class="n">dtype_and_x</span><span class="p">,</span>
     <span class="n">alpha</span><span class="p">,</span>
     <span class="n">frontend</span><span class="p">,</span>

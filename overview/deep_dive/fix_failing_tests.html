@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1511,7 +1511,7 @@ a. At the bottom right a window will pop up asking for “Dev Containers” exte
 <p>and place it above the function definition.</p>
 </li>
 <li><p>This is the case where the value from the ground-truth backend(tensorflow) does not match the value of the backend(jax) we are testing for this case.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span>  <span class="n">the</span> <span class="n">results</span> <span class="kn">from</span> <span class="nn">backend</span> <span class="n">jax</span> <span class="ow">and</span> <span class="n">ground</span> <span class="n">truth</span> <span class="n">framework</span> <span class="n">tensorflow</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">match</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span>  <span class="n">the</span> <span class="n">results</span> <span class="kn">from</span><span class="w"> </span><span class="nn">backend</span> <span class="n">jax</span> <span class="ow">and</span> <span class="n">ground</span> <span class="n">truth</span> <span class="n">framework</span> <span class="n">tensorflow</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">match</span>
 <span class="n">E</span>        <span class="mf">0.25830078125</span><span class="o">!=</span><span class="mf">0.258544921875</span>
 <span class="n">E</span>
 <span class="n">E</span>
@@ -1548,7 +1548,7 @@ a. At the bottom right a window will pop up asking for “Dev Containers” exte
         <span class="n">small_abs_safety_factor</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
     <span class="p">),</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_acosh</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">dtype_and_x</span><span class="p">,</span> <span class="n">test_flags</span><span class="p">,</span> <span class="n">backend_fw</span><span class="p">,</span> <span class="n">fn_name</span><span class="p">,</span> <span class="n">on_device</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_acosh</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">dtype_and_x</span><span class="p">,</span> <span class="n">test_flags</span><span class="p">,</span> <span class="n">backend_fw</span><span class="p">,</span> <span class="n">fn_name</span><span class="p">,</span> <span class="n">on_device</span><span class="p">):</span>
     <span class="n">input_dtype</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">dtype_and_x</span>
     <span class="n">helpers</span><span class="o">.</span><span class="n">test_function</span><span class="p">(</span>
         <span class="n">input_dtypes</span><span class="o">=</span><span class="n">input_dtype</span><span class="p">,</span>
@@ -1565,7 +1565,7 @@ a. At the bottom right a window will pop up asking for “Dev Containers” exte
 </div></blockquote>
 </li>
 <li><p>This is a similar assertion as stated in point 2 but with torch and ground-truth tensorflow not matching but the matrices are quite different so there should be an issue in the backends rather than a numerical instability here.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span>  <span class="n">the</span> <span class="n">results</span> <span class="kn">from</span> <span class="nn">backend</span> <span class="n">torch</span> <span class="ow">and</span> <span class="n">ground</span> <span class="n">truth</span> <span class="n">framework</span> <span class="n">tensorflow</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">match</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span>  <span class="n">the</span> <span class="n">results</span> <span class="kn">from</span><span class="w"> </span><span class="nn">backend</span> <span class="n">torch</span> <span class="ow">and</span> <span class="n">ground</span> <span class="n">truth</span> <span class="n">framework</span> <span class="n">tensorflow</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">match</span>
 <span class="n">E</span>        <span class="p">[[</span><span class="mf">1.41421356</span> <span class="mf">1.41421356</span> <span class="mf">1.41421356</span><span class="p">]</span>
 <span class="n">E</span>        <span class="p">[</span><span class="mf">1.41421356</span> <span class="mf">1.41421356</span> <span class="mf">1.41421356</span><span class="p">]</span>
 <span class="n">E</span>        <span class="p">[</span><span class="mf">1.41421356</span>        <span class="n">inf</span> <span class="mf">1.41421356</span><span class="p">]]</span><span class="o">!=</span><span class="p">[[</span><span class="mf">1.41421356e+000</span> <span class="mf">1.41421356e+000</span> <span class="mf">1.41421356e+000</span><span class="p">]</span>

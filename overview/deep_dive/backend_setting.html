@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1343,21 +1343,21 @@ This is explained in more detail in the next section: <a class="reference intern
 <p>It’s helpful to look at an example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]])</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend</span><span class="p">()</span>
-<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.numpy&#39;</span> <span class="kn">from</span> <span class="s1">&#39;/opt/project/ivy/functional/backends/numpy/__init__.py&#39;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.numpy&#39;</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;/opt/project/ivy/functional/backends/numpy/__init__.py&#39;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mf">3.</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mf">4.</span><span class="p">]))</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend</span><span class="p">()</span>
-<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.torch&#39;</span> <span class="kn">from</span> <span class="s1">&#39;/opt/project/ivy/functional/backends/torch/__init__.py&#39;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.torch&#39;</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;/opt/project/ivy/functional/backends/torch/__init__.py&#39;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s1">&#39;jax&#39;</span><span class="p">)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">]]),</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.</span><span class="p">],[</span><span class="mf">6.</span><span class="p">]]))</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend</span><span class="p">()</span>
-<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.jax&#39;</span> <span class="kn">from</span> <span class="s1">&#39;/opt/project/ivy/functional/backends/jax/__init__.py&#39;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.jax&#39;</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;/opt/project/ivy/functional/backends/jax/__init__.py&#39;</span><span class="o">&gt;</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">previous_backend</span><span class="p">()</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend</span><span class="p">()</span>
-<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.torch&#39;</span> <span class="kn">from</span> <span class="s1">&#39;/opt/project/ivy/functional/backends/torch/__init__.py&#39;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">module</span> <span class="s1">&#39;ivy.functional.backends.torch&#39;</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;/opt/project/ivy/functional/backends/torch/__init__.py&#39;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>In the last example above, the moment any backend is set, it will be used over the <a class="reference external" href="https://github.com/ivy-llc/ivy/blob/3358b5bbadbe4cbc0509cad4ea8f05f178dfd8b8/ivy/utils/backend/handler.py">implicit_backend</a>.

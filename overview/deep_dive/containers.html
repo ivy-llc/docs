@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1486,7 +1486,7 @@ If they do, this container is then unstacked to multiple containers(as many as t
 So, we do not need to explicitly wrap it at all.</p>
 <p>Let’s take the function <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.losses.html#ivy.cross_entropy" title="ivy.cross_entropy"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.cross_entropy()</span></code></a> as an example.
 The internally called functions are: <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.manipulation.html#ivy.clip" title="ivy.clip"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.clip()</span></code></a>, <a class="reference internal" href="../../docs/functional/ivy/elementwise/ivy.functional.ivy.elementwise.log.html#ivy.log" title="ivy.log"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.log()</span></code></a>, <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.statistical.html#ivy.sum" title="ivy.sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.sum()</span></code></a> and <a class="reference internal" href="../../docs/functional/ivy/elementwise/ivy.functional.ivy.elementwise.negative.html#ivy.negative" title="ivy.negative"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.negative()</span></code></a>, each of which are themselves <em>nestable</em>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cross_entropy</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cross_entropy</span><span class="p">(</span>
     <span class="n">true</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
     <span class="n">pred</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
     <span class="o">/</span><span class="p">,</span>

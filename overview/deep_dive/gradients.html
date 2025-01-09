@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=ae43ab1b" />
@@ -1337,7 +1337,7 @@ This is because the other gradient functions such as <a class="reference interna
 <section id="the-ivy-execute-with-gradients-function-signature">
 <h3>The <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.gradients.html#ivy.execute_with_gradients" title="ivy.execute_with_gradients"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.execute_with_gradients()</span></code></a> function signature<a class="headerlink" href="#the-ivy-execute-with-gradients-function-signature" title="Link to this heading">#</a></h3>
 <p>Following is the pseudo function signature for the <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.gradients.html#ivy.execute_with_gradients" title="ivy.execute_with_gradients"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.execute_with_gradients()</span></code></a> function,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute_with_gradients</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">execute_with_gradients</span> <span class="p">(</span>
     <span class="n">func</span> <span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">xs</span> <span class="p">:</span> <span class="n">Any</span> <span class="n">arbitrary</span> <span class="n">nest</span><span class="p">,</span>
     <span class="n">xs_grad_idxs</span> <span class="p">:</span> <span class="n">Input</span> <span class="n">indices</span><span class="p">,</span>
@@ -1373,7 +1373,7 @@ The arrays in <code class="code docutils literal notranslate"><span class="pre">
 </section>
 <section id="an-example-using-ivy-execute-with-gradients">
 <h3>An example using <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.gradients.html#ivy.execute_with_gradients" title="ivy.execute_with_gradients"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.execute_with_gradients()</span></code></a><a class="headerlink" href="#an-example-using-ivy-execute-with-gradients" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="p">:</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">])</span>
@@ -1397,14 +1397,14 @@ The arrays in <code class="code docutils literal notranslate"><span class="pre">
 Some of these are numerical stability, smoothing, and clipping of the computed gradients.
 Ivy provides the <a class="reference internal" href="../../docs/functional/ivy/experimental/ivy.functional.ivy.experimental.gradients.html#ivy.bind_custom_gradient_function" title="ivy.bind_custom_gradient_function"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.bind_custom_gradient_function()</span></code></a> function to allow users to bind custom gradient computation logic to their functions.</p>
 <p>Following is an example of usage of <a class="reference internal" href="../../docs/functional/ivy/experimental/ivy.functional.ivy.experimental.gradients.html#ivy.bind_custom_gradient_function" title="ivy.bind_custom_gradient_function"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.bind_custom_gradient_function()</span></code></a>,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ivy</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
 
 <span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">50.0</span><span class="p">)</span>
 <span class="n">inter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
 <span class="c1"># args –&gt; ((xs, ret), upstream)</span>
-<span class="k">def</span> <span class="nf">custom_grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">custom_grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="n">args1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">args</span><span class="p">)</span>
 
