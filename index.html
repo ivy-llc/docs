@@ -2440,7 +2440,7 @@ reference, but the functions you’d most likely want to use are:</p>
 <span class="c1"># Module is provided -&gt; transpilation happens lazily</span>
 <span class="n">tf_kornia</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">kornia</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
 
-<span class="c1"># The transpilation is initialized here, and this function is converted to tensorflwo</span>
+<span class="c1"># The transpilation is initialized here, and this function is converted to tensorflow</span>
 <span class="n">ret</span> <span class="o">=</span> <span class="n">tf_kornia</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">rgb_to_grayscale</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
 
 <span class="c1"># Transpilation has already occurred, the tensorflow function runs efficiently</span>
