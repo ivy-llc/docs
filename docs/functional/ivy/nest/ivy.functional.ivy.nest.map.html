@@ -1358,7 +1358,7 @@ Default is <code class="docutils literal notranslate"><span class="pre">False</s
 <span class="gp">... </span>                  <span class="n">unique</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]},</span>
 <span class="gp">... </span>                  <span class="n">mean</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-<span class="go">[1, 4, 9]</span>
+<span class="go">[np.int64(1), np.int64(4), np.int64(9)]</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fn</span> <span class="o">=</span> <span class="n">special_square</span><span class="p">,</span>
