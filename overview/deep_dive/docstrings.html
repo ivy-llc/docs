@@ -1327,7 +1327,7 @@ document.write(`
 <h1>Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading">#</a></h1>
 <p>All functions in the Ivy API at <code class="xref py py-mod docutils literal notranslate"><span class="pre">ivy/functional/ivy/category_name.py</span></code> should have full and thorough docstrings.
 In contrast, all backend implementations at <code class="xref py py-mod docutils literal notranslate"><span class="pre">ivy/functional/backends/backend_name/category_name.py</span></code> should not have any docstrings, on account that these are effectively just different instantiations of the functions at <code class="xref py py-mod docutils literal notranslate"><span class="pre">ivy/functional/ivy/category_name.py</span></code>.</p>
-<p>In order to explain how docstrings should be written, we will use <a class="reference internal" href="../../docs/functional/ivy/elementwise/ivy.functional.ivy.elementwise.tan.html#ivy.tan" title="ivy.tan"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.tan()</span></code></a> as an example.</p>
+<p>In order to explain how docstrings should be written, we will use <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.elementwise.html#ivy.tan" title="ivy.tan"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.tan()</span></code></a> as an example.</p>
 <p>Firstly, if the function exists in the <a class="reference external" href="https://data-apis.org/array-api/latest/">Array API Standard</a>, then we start with the corresponding docstring as a template.
 These docstrings can be found under <a class="reference external" href="https://github.com/data-apis/array-api/blob/main">spec/API_specification/array_api</a>.</p>
 <p>Important: you should open the file in <strong>raw</strong> format.
@@ -1365,7 +1365,7 @@ Therefore, we simply remove all type info from the docstring like so:</p>
 </div>
 <p>The <a class="reference external" href="https://data-apis.org/array-api/latest/">Array API Standard</a> defines a subset of behaviour that each function must adhere to.
 Ivy extends many of these functions with additional behaviour and arguments.
-In the case of <a class="reference internal" href="../../docs/functional/ivy/elementwise/ivy.functional.ivy.elementwise.tan.html#ivy.tan" title="ivy.tan"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.tan()</span></code></a>, there is also the argument <code class="code docutils literal notranslate"><span class="pre">out</span></code> which needs to be added to the docstring, like so:</p>
+In the case of <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.elementwise.html#ivy.tan" title="ivy.tan"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.tan()</span></code></a>, there is also the argument <code class="code docutils literal notranslate"><span class="pre">out</span></code> which needs to be added to the docstring, like so:</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gi">+out</span>
 <span class="gi">+    optional output array, for writing the result to. It must have a shape that the inputs</span>
 <span class="gi">+    broadcast to.</span>
