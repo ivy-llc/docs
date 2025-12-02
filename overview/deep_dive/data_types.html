@@ -1614,7 +1614,7 @@ So it is suggested to explore it both ways.</p>
 <p>Sometimes, it might be possible to support a natively unsupported data type by either
 casting to a supported data type and then casting back, or explicitly handling these
 data types without deferring to a backend function at all.</p>
-<p>An example of the former is <a class="reference internal" href="../../docs/functional/ivy/ivy.functional.ivy.elementwise.html#ivy.logical_not" title="ivy.logical_not"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.logical_not()</span></code></a> with a tensorflow backend:</p>
+<p>An example of the former is <a class="reference internal" href="../../docs/functional/ivy/elementwise/ivy.functional.ivy.elementwise.logical_not.html#ivy.logical_not" title="ivy.logical_not"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.logical_not()</span></code></a> with a tensorflow backend:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">logical_not</span><span class="p">(</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">],</span>
     <span class="o">/</span><span class="p">,</span>
