@@ -1599,7 +1599,7 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/val2017/000000039769.jpg&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://images.cocodataset.org/val2017/000000039769.jpg"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
 <span class="n">image</span>
 </pre></div>
@@ -1617,20 +1617,20 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># note: we are loading a TFDeiTForImageClassificationWithTeacher from the hub here,</span>
-<span class="c1"># so the head (layers like &#39;distillation_classifier&#39;, &#39;cls_classifier&#39;) will be randomly initialized, hence the predictions will be random.</span>
+<span class="c1"># so the head (layers like 'distillation_classifier', 'cls_classifier') will be randomly initialized, hence the predictions will be random.</span>
 
 <span class="c1"># To be able to reproduce, lets set the random seed.</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
 
-<span class="n">image_processor</span> <span class="o">=</span> <span class="n">DeiTImageProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;facebook/deit-base-distilled-patch16-224&quot;</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">TFDeiTForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;facebook/deit-base-distilled-patch16-224&quot;</span><span class="p">)</span>
-<span class="n">inputs</span> <span class="o">=</span> <span class="n">image_processor</span><span class="p">(</span><span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;tf&quot;</span><span class="p">)</span>
+<span class="n">image_processor</span> <span class="o">=</span> <span class="n">DeiTImageProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"facebook/deit-base-distilled-patch16-224"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TFDeiTForImageClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"facebook/deit-base-distilled-patch16-224"</span><span class="p">)</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">image_processor</span><span class="p">(</span><span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"tf"</span><span class="p">)</span>
 <span class="n">outputs_from_original_model</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">outputs_from_original_model</span><span class="o">.</span><span class="n">logits</span>
 <span class="c1"># model predicts one of the 1000 ImageNet classes</span>
 <span class="n">predicted_class_idx</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted class:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">id2label</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">predicted_class_idx</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Predicted class:"</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">id2label</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">predicted_class_idx</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -1670,7 +1670,7 @@ Predicted class: ptarmigan
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"tensorflow"</span><span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ivy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModuleConverters</span> <span class="k">as</span> <span class="n">mc</span>
 </pre></div>
 </div>
@@ -1714,8 +1714,8 @@ Predicted class: ptarmigan
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if outputs are the same</span>
-<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">outputs_from_original_model</span><span class="o">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">ivy_outputs</span><span class="o">.</span><span class="n">logits</span><span class="p">),</span> <span class="s2">&quot;Error, outputs diverge&quot;</span>
-<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">outputs_from_original_model</span><span class="o">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">compiled_outputs</span><span class="o">.</span><span class="n">logits</span><span class="p">),</span> <span class="s2">&quot;Error, outputs diverge&quot;</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">outputs_from_original_model</span><span class="o">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">ivy_outputs</span><span class="o">.</span><span class="n">logits</span><span class="p">),</span> <span class="s2">"Error, outputs diverge"</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">outputs_from_original_model</span><span class="o">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">compiled_outputs</span><span class="o">.</span><span class="n">logits</span><span class="p">),</span> <span class="s2">"Error, outputs diverge"</span>
 </pre></div>
 </div>
 </div>
@@ -1744,7 +1744,7 @@ Predicted class: ptarmigan
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span><span class="o">.</span><span class="n">show</span><span class="p">(</span>
     <span class="n">save_to_disk</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;deit&#39;</span>
+    <span class="n">fname</span><span class="o">=</span><span class="s1">'deit'</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1757,7 +1757,7 @@ Predicted class: ptarmigan
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">ivy_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="s1">'ms'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1776,7 +1776,7 @@ Predicted class: ptarmigan
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">compiled_func</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="s1">'ms'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1795,7 +1795,7 @@ Predicted class: ptarmigan
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="s1">'ms'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -1595,7 +1595,7 @@ document.write(`
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">example_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleModel</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"""</span>
 <span class="s2">This model is defined as follows:</span>
 
 <span class="s2">class SimpleModel(torch.nn.Module):</span>
@@ -1611,7 +1611,7 @@ document.write(`
 <span class="s2">        x = torch.flatten(x, 1)</span>
 <span class="s2">        x = self.fc(x)</span>
 <span class="s2">        return x</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1647,7 +1647,7 @@ class SimpleModel(torch.nn.Module):
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
 
-<span class="n">TFSimpleModel</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">SimpleModel</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+<span class="n">TFSimpleModel</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">SimpleModel</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"torch"</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">"tensorflow"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

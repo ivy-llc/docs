@@ -1597,22 +1597,22 @@ global default int dtype.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">set_default_int_dtype</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">intDtype</span><span class="p">(</span><span class="s2">&quot;int16&quot;</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">set_default_int_dtype</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">intDtype</span><span class="p">(</span><span class="s2">"int16"</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_int_dtype</span><span class="p">()</span>
-<span class="go">&#39;int16&#39;</span>
+<span class="go">'int16'</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_int_dtype</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="mi">4294967346</span><span class="p">)</span>
-<span class="go">&#39;int64&#39;</span>
+<span class="go">'int64'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_int_dtype</span><span class="p">(</span><span class="n">int_dtype</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">intDtype</span><span class="p">(</span><span class="s2">&quot;int8&quot;</span><span class="p">))</span>
-<span class="go">&#39;int8&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_int_dtype</span><span class="p">(</span><span class="n">int_dtype</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">intDtype</span><span class="p">(</span><span class="s2">"int8"</span><span class="p">))</span>
+<span class="go">'int8'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"int32"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_int_dtype</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="go">&#39;int32&#39;</span>
+<span class="go">'int32'</span>
 </pre></div>
 </div>
 </dd></dl>

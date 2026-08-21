@@ -1623,7 +1623,7 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;imagenet_classes.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"imagenet_classes.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
 </pre></div>
 </div>
@@ -1654,7 +1654,7 @@ imagenet_classes.tx 100%[===================&gt;]  10.23K  --.-KB/s    in 0s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/ivy-llc/models/master/images/cat.jpg
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;cat.jpg&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">"cat.jpg"</span>
 </pre></div>
 </div>
 </div>
@@ -1892,7 +1892,7 @@ ResNet(
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ivy_models.resnet</span><span class="w"> </span><span class="kn">import</span> <span class="n">resnet_34</span>
 
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s1">&#39;torch&#39;</span><span class="p">)</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s1">'torch'</span><span class="p">)</span>
 <span class="n">ivy_resnet_34</span> <span class="o">=</span> <span class="n">resnet_34</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1911,7 +1911,7 @@ Downloading: &#34;https://download.pytorch.org/models/resnet34-333f7ec4.pth&#34;
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">torch_img</span><span class="o">.</span><span class="n">permute</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">torch_img</span><span class="o">.</span><span class="n">permute</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"float32"</span><span class="p">)</span>
 <span class="n">ivy_resnet_34</span><span class="o">.</span><span class="n">trace_graph</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">img</span><span class="p">,))</span>
 </pre></div>
 </div>
@@ -1941,9 +1941,9 @@ WARNING:root:To preserve the tracer and transpiler caches across multiple machin
 <span class="n">torch_classes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">torch_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch_classes</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1968,9 +1968,9 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <span class="n">classes</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes</span><span class="p">)</span>  <span class="c1"># get the logits</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">to_list</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">to_list</span><span class="p">()])</span>
 </pre></div>
 </div>
 </div>
@@ -2241,9 +2241,9 @@ ResNet(
 <span class="n">torch_classes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">torch_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch_classes</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2268,9 +2268,9 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <span class="n">classes</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes</span><span class="p">)</span>  <span class="c1"># get the logits</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">to_list</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">to_list</span><span class="p">()])</span>
 </pre></div>
 </div>
 </div>

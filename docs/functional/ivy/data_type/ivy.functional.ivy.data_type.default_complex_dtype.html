@@ -1598,25 +1598,25 @@ global default complex dtype.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_complex_dtype</span><span class="p">()</span>
-<span class="go">&#39;complex64&#39;</span>
+<span class="go">'complex64'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">set_default_complex_dtype</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">ComplexDtype</span><span class="p">(</span><span class="s2">&quot;complex64&quot;</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">set_default_complex_dtype</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">ComplexDtype</span><span class="p">(</span><span class="s2">"complex64"</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_complex_dtype</span><span class="p">()</span>
-<span class="go">&#39;complex64&#39;</span>
+<span class="go">'complex64'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_complex_dtype</span><span class="p">(</span><span class="n">complex_dtype</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">ComplexDtype</span><span class="p">(</span><span class="s2">&quot;complex128&quot;</span><span class="p">))</span>
-<span class="go">&#39;complex128&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_complex_dtype</span><span class="p">(</span><span class="n">complex_dtype</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">ComplexDtype</span><span class="p">(</span><span class="s2">"complex128"</span><span class="p">))</span>
+<span class="go">'complex128'</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_complex_dtype</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="mf">4294.967346</span><span class="p">)</span>
-<span class="go">&#39;complex64&#39;</span>
+<span class="go">'complex64'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.8</span><span class="p">,</span><span class="mf">8.9</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;complex128&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.8</span><span class="p">,</span><span class="mf">8.9</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"complex128"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ivy</span><span class="o">.</span><span class="n">default_complex_dtype</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-<span class="go">&#39;complex128&#39;</span>
+<span class="go">'complex128'</span>
 </pre></div>
 </div>
 </dd></dl>

@@ -1620,10 +1620,10 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">"jax_enable_x64"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-<span class="n">arch_name</span> <span class="o">=</span> <span class="s2">&quot;ResNet&quot;</span>
-<span class="n">checkpoint_name</span> <span class="o">=</span> <span class="s2">&quot;microsoft/resnet-50&quot;</span>
+<span class="n">arch_name</span> <span class="o">=</span> <span class="s2">"ResNet"</span>
+<span class="n">checkpoint_name</span> <span class="o">=</span> <span class="s2">"microsoft/resnet-50"</span>
 
 <span class="n">feature_extractor</span> <span class="o">=</span> <span class="n">AutoFeatureExtractor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">checkpoint_name</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">checkpoint_name</span><span class="p">)</span>
@@ -1646,10 +1646,10 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/val2017/000000039769.jpg&quot;</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://images.cocodataset.org/val2017/000000039769.jpg"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
-    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span>
+    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1659,7 +1659,7 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transpiled_graph</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;haiku&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transpiled_graph</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">"haiku"</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1680,9 +1680,9 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
 </pre></div>
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ref : https://github.com/pytorch/pytorch/issues/107960</span>
-<span class="err">!</span><span class="n">export</span> <span class="n">LC_ALL</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
-<span class="err">!</span><span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib64-nvidia&quot;</span>
-<span class="err">!</span><span class="n">export</span> <span class="n">LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/cuda/lib64/stubs&quot;</span>
+<span class="err">!</span><span class="n">export</span> <span class="n">LC_ALL</span><span class="o">=</span><span class="s2">"en_US.UTF-8"</span>
+<span class="err">!</span><span class="n">export</span> <span class="n">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">"/usr/lib64-nvidia"</span>
+<span class="err">!</span><span class="n">export</span> <span class="n">LIBRARY_PATH</span><span class="o">=</span><span class="s2">"/usr/local/cuda/lib64/stubs"</span>
 <span class="err">!</span><span class="n">ldconfig</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">-</span><span class="n">nvidia</span>
 </pre></div>
 </div>
@@ -1692,7 +1692,7 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
 </pre></div>
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
-    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span>
+    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span>
 <span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_f</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1709,7 +1709,7 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
 </pre></div>
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inputs_jax</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
-    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span>
+    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"jax"</span>
 <span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">haiku</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hk</span>
@@ -1766,13 +1766,13 @@ WARNING:root:Native Numpy does not support GPU placement, consider using Jax ins
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://images.cocodataset.org/train2017/000000283921.jpg&quot;</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://images.cocodataset.org/train2017/000000283921.jpg"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
-    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span>
+    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span>
 <span class="p">)</span>
 <span class="n">inputs_jax</span> <span class="o">=</span> <span class="n">feature_extractor</span><span class="p">(</span>
-    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span>
+    <span class="n">images</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"jax"</span>
 <span class="p">)</span>
 <span class="n">out_torch</span> <span class="o">=</span> <span class="n">comp_model</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">out_jax</span> <span class="o">=</span> <span class="n">jit_apply</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">inputs_jax</span><span class="p">)</span>

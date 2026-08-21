@@ -1597,8 +1597,8 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span><span class="p">;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span><span class="p">;</span> <span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span><span class="p">;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"jax"</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span><span class="p">;</span> <span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">"jax_enable_x64"</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">ivy.functional.frontends.xgboost</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xgb_frontend</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
@@ -1625,10 +1625,10 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">ipytest</span>
-# functions to verify we&#39;re running with GPU
+# functions to verify we're running with GPU
 def test_jax_gpu():
     from jax.lib import xla_bridge
-    assert xla_bridge.get_backend().platform == &quot;gpu&quot;
+    assert xla_bridge.get_backend().platform == "gpu"
 
 def test_torch_gpu():
     import torch
@@ -1637,18 +1637,18 @@ def test_torch_gpu():
 def test_xgboost_gpu(capsys):
     from sklearn.datasets import load_diabetes
     dataset = load_diabetes()
-    X = dataset[&quot;data&quot;]
-    y = dataset[&quot;target&quot;]
+    X = dataset["data"]
+    y = dataset["target"]
     xgb_model = xgb.XGBRegressor(
         # If there is no GPU, the tree_method kwarg will cause either
         # - an error in `xgb_model.fit(X, y)` or
         # - a warning printed to the console.
-        tree_method=&quot;gpu_hist&quot;
+        tree_method="gpu_hist"
     )
     xgb_model.fit(X, y)
     captured = capsys.readouterr()
-    assert captured.out == &quot;&quot;
-    assert captured.err == &quot;&quot;
+    assert captured.out == ""
+    assert captured.err == ""
 </pre></div>
 </div>
 </div>
@@ -1672,9 +1672,9 @@ def test_xgboost_gpu(capsys):
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Class</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;Class&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"Class"</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -1697,7 +1697,7 @@ def test_xgboost_gpu(capsys):
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">&quot;data/train.csv&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">"data/train.csv"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1706,8 +1706,8 @@ def test_xgboost_gpu(capsys):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking the number of instances and features in data</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training data: &quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training target: &quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training data: "</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training target: "</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1732,13 +1732,13 @@ Training target:  ivy.Shape(117564, 1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;binary:logistic&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;booster&quot;</span><span class="p">:</span> <span class="s2">&quot;gblinear&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_lambda&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_alpha&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;base_margin&quot;</span><span class="p">:</span> <span class="kc">None</span>
+    <span class="s2">"objective"</span><span class="p">:</span> <span class="s2">"binary:logistic"</span><span class="p">,</span>
+    <span class="s2">"booster"</span><span class="p">:</span> <span class="s2">"gblinear"</span><span class="p">,</span>
+    <span class="s2">"n_estimators"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">"learning_rate"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_lambda"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_alpha"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"base_margin"</span><span class="p">:</span> <span class="kc">None</span>
 <span class="p">}</span>
 
 <span class="n">xgb_cls</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -1826,8 +1826,8 @@ Training target:  ivy.Shape(117564, 1)
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy_pred</span> <span class="o">=</span> <span class="n">ivy_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">xgb_pred</span> <span class="o">=</span> <span class="n">xgb_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;IvyClassifier: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">ivy_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">XGBClassifier: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">xgb_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"IvyClassifier: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">ivy_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">XGBClassifier: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">xgb_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1866,8 +1866,8 @@ weighted avg       0.94      0.94      0.92    117564
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">&quot;data/train.csv&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"tensorflow"</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">"data/train.csv"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1876,13 +1876,13 @@ weighted avg       0.94      0.94      0.92    117564
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;binary:logistic&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;booster&quot;</span><span class="p">:</span> <span class="s2">&quot;gblinear&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_lambda&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_alpha&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;base_margin&quot;</span><span class="p">:</span> <span class="kc">None</span>
+    <span class="s2">"objective"</span><span class="p">:</span> <span class="s2">"binary:logistic"</span><span class="p">,</span>
+    <span class="s2">"booster"</span><span class="p">:</span> <span class="s2">"gblinear"</span><span class="p">,</span>
+    <span class="s2">"n_estimators"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">"learning_rate"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_lambda"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_alpha"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"base_margin"</span><span class="p">:</span> <span class="kc">None</span>
 <span class="p">}</span>
 
 <span class="n">xgb_cls</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -1966,8 +1966,8 @@ weighted avg       0.94      0.94      0.92    117564
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">&quot;data/train.csv&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"torch"</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">"data/train.csv"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1976,13 +1976,13 @@ weighted avg       0.94      0.94      0.92    117564
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;binary:logistic&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;booster&quot;</span><span class="p">:</span> <span class="s2">&quot;gblinear&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_lambda&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_alpha&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;base_margin&quot;</span><span class="p">:</span> <span class="kc">None</span>
+    <span class="s2">"objective"</span><span class="p">:</span> <span class="s2">"binary:logistic"</span><span class="p">,</span>
+    <span class="s2">"booster"</span><span class="p">:</span> <span class="s2">"gblinear"</span><span class="p">,</span>
+    <span class="s2">"n_estimators"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">"learning_rate"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_lambda"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_alpha"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"base_margin"</span><span class="p">:</span> <span class="kc">None</span>
 <span class="p">}</span>
 
 <span class="n">xgb_cls</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -2067,8 +2067,8 @@ weighted avg       0.94      0.94      0.92    117564
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">&quot;data/train.csv&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"jax"</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">load_data</span><span class="p">(</span><span class="s2">"data/train.csv"</span><span class="p">))</span>
 
 <span class="n">X_doubled</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">])</span>
 <span class="n">y_doubled</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
@@ -2080,8 +2080,8 @@ weighted avg       0.94      0.94      0.92    117564
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># explore the number of instances in the resulting dataset</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training data: &quot;</span><span class="p">,</span> <span class="n">X_doubled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training target: &quot;</span><span class="p">,</span> <span class="n">y_doubled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training data: "</span><span class="p">,</span> <span class="n">X_doubled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Training target: "</span><span class="p">,</span> <span class="n">y_doubled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2099,13 +2099,13 @@ Training target:  ivy.Shape(235128, 1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;binary:logistic&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;booster&quot;</span><span class="p">:</span> <span class="s2">&quot;gblinear&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_lambda&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;reg_alpha&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-    <span class="s2">&quot;base_margin&quot;</span><span class="p">:</span> <span class="kc">None</span>
+    <span class="s2">"objective"</span><span class="p">:</span> <span class="s2">"binary:logistic"</span><span class="p">,</span>
+    <span class="s2">"booster"</span><span class="p">:</span> <span class="s2">"gblinear"</span><span class="p">,</span>
+    <span class="s2">"n_estimators"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">"learning_rate"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_lambda"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"reg_alpha"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">"base_margin"</span><span class="p">:</span> <span class="kc">None</span>
 <span class="p">}</span>
 
 <span class="n">xgb_cls</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
@@ -2192,11 +2192,11 @@ Training target:  ivy.Shape(235128, 1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_boosting_rounds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">]</span>
-<span class="n">ivy_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;training&quot;</span><span class="p">:[],</span> <span class="s2">&quot;inference&quot;</span><span class="p">:[]}</span>
-<span class="n">xgb_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;training&quot;</span><span class="p">:[],</span> <span class="s2">&quot;inference&quot;</span><span class="p">:[]}</span>
+<span class="n">ivy_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"training"</span><span class="p">:[],</span> <span class="s2">"inference"</span><span class="p">:[]}</span>
+<span class="n">xgb_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"training"</span><span class="p">:[],</span> <span class="s2">"inference"</span><span class="p">:[]}</span>
 
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">):</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;n_estimators&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">"n_estimators"</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
 
     <span class="n">ivy_cls</span> <span class="o">=</span> <span class="n">xgb_frontend</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
     <span class="n">ivy_cls</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -2204,16 +2204,16 @@ Training target:  ivy.Shape(235128, 1)
     <span class="n">xgb_cls</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
 
     <span class="n">ivy_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">ivy_cls</span><span class="o">.</span><span class="n">fit</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
+    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
 
     <span class="n">xgb_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">xgb_cls</span><span class="o">.</span><span class="n">fit</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
+    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
 
     <span class="n">ivy_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">ivy_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
+    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
 
     <span class="n">xgb_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">xgb_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
+    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2221,15 +2221,15 @@ Training target:  ivy.Shape(235128, 1)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;fivethirtyeight&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"fivethirtyeight"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ivy (JAX)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;XGBoost&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Ivy (JAX)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"XGBoost"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of boosting rounds&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Training time (s)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;XGBClassifier training time comparison&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Number of boosting rounds"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Training time (s)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"XGBClassifier training time comparison"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2253,15 +2253,15 @@ Text(0.5, 1.0, &#39;XGBClassifier training time comparison&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;fivethirtyeight&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"fivethirtyeight"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ivy (JAX)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;XGBoost&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Ivy (JAX)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">num_boosting_rounds</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"XGBoost"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of boosting rounds&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Inference time (s)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;XGBClassifier inference time comparison&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Number of boosting rounds"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Inference time (s)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"XGBClassifier inference time comparison"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2291,18 +2291,18 @@ Text(0.5, 1.0, &#39;XGBClassifier inference time comparison&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
-<span class="n">ivy_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;training&quot;</span><span class="p">:[],</span> <span class="s2">&quot;inference&quot;</span><span class="p">:[]}</span>
-<span class="n">xgb_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;training&quot;</span><span class="p">:[],</span> <span class="s2">&quot;inference&quot;</span><span class="p">:[]}</span>
+<span class="n">ivy_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"training"</span><span class="p">:[],</span> <span class="s2">"inference"</span><span class="p">:[]}</span>
+<span class="n">xgb_elapsed_time</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"training"</span><span class="p">:[],</span> <span class="s2">"inference"</span><span class="p">:[]}</span>
 
-<span class="c1"># let&#39;s slightly change the parameters this time</span>
+<span class="c1"># let's slightly change the parameters this time</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;objective&quot;</span><span class="p">:</span> <span class="s2">&quot;binary:logistic&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;booster&quot;</span><span class="p">:</span> <span class="s2">&quot;gblinear&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>
-    <span class="s2">&quot;reg_lambda&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
-    <span class="s2">&quot;reg_alpha&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
-    <span class="s2">&quot;base_margin&quot;</span><span class="p">:</span> <span class="kc">None</span>
+    <span class="s2">"objective"</span><span class="p">:</span> <span class="s2">"binary:logistic"</span><span class="p">,</span>
+    <span class="s2">"booster"</span><span class="p">:</span> <span class="s2">"gblinear"</span><span class="p">,</span>
+    <span class="s2">"n_estimators"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="s2">"learning_rate"</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>
+    <span class="s2">"reg_lambda"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="s2">"reg_alpha"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="s2">"base_margin"</span><span class="p">:</span> <span class="kc">None</span>
 <span class="p">}</span>
 
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sizes</span><span class="p">):</span>
@@ -2314,16 +2314,16 @@ Text(0.5, 1.0, &#39;XGBClassifier inference time comparison&#39;)
     <span class="n">xgb_cls</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
 
     <span class="n">ivy_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">ivy_cls</span><span class="o">.</span><span class="n">fit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
+    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
 
     <span class="n">xgb_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">xgb_cls</span><span class="o">.</span><span class="n">fit</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
+    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
 
     <span class="n">ivy_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">ivy_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_train</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
+    <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ivy_time</span><span class="p">)</span>
 
     <span class="n">xgb_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">xgb_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">X_train</span><span class="p">),</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;inference&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
+    <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"inference"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xgb_time</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2331,15 +2331,15 @@ Text(0.5, 1.0, &#39;XGBClassifier inference time comparison&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;fivethirtyeight&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"fivethirtyeight"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ivy (JAX)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;XGBoost&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Ivy (JAX)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"XGBoost"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Fraction of data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Training time (s)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;XGBClassifier training time comparison&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Fraction of data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Training time (s)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"XGBClassifier training time comparison"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2363,15 +2363,15 @@ Text(0.5, 1.0, &#39;XGBClassifier training time comparison&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;fivethirtyeight&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">"fivethirtyeight"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ivy (JAX)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">&quot;training&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;XGBoost&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">ivy_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Ivy (JAX)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">xgb_elapsed_time</span><span class="p">[</span><span class="s2">"training"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">"XGBoost"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Fraction of data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Inference time (s)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;XGBClassifier inference time comparison&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Fraction of data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Inference time (s)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"XGBClassifier inference time comparison"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2400,8 +2400,8 @@ Text(0.5, 1.0, &#39;XGBClassifier inference time comparison&#39;)
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy_pred</span> <span class="o">=</span> <span class="n">ivy_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">xgb_pred</span> <span class="o">=</span> <span class="n">xgb_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;IvyClassifier: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">ivy_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">XGBClassifier: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">xgb_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"IvyClassifier: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">ivy_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">XGBClassifier: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">xgb_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2452,8 +2452,8 @@ weighted avg       0.95      0.94      0.93    105807
 <span class="n">ivy_pred</span> <span class="o">=</span> <span class="n">ivy_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">xgb_pred</span> <span class="o">=</span> <span class="n">xgb_cls</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;IvyClassifier: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">ivy_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">XGBClassifier: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">xgb_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"IvyClassifier: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">ivy_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">XGBClassifier: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">xgb_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

@@ -1609,7 +1609,7 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;imagenet_classes.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"imagenet_classes.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
 </pre></div>
 </div>
@@ -1619,7 +1619,7 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/ivy-llc/models/master/images/cat.jpg
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;cat.jpg&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">"cat.jpg"</span>
 </pre></div>
 </div>
 </div>
@@ -1636,7 +1636,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 
 <span class="n">preprocess</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
     <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
@@ -1679,9 +1679,9 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_default_device</span><span class="p">(</span><span class="s2">&quot;gpu:0&quot;</span><span class="p">)</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">set_default_device</span><span class="p">(</span><span class="s2">"gpu:0"</span><span class="p">)</span>
 <span class="n">ivy</span><span class="o">.</span><span class="n">set_soft_device_mode</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"torch"</span><span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ivy_models.alexnet</span><span class="w"> </span><span class="kn">import</span> <span class="n">alexnet</span>
 <span class="n">ivy_alexnet</span> <span class="o">=</span> <span class="n">alexnet</span><span class="p">()</span>
@@ -1705,9 +1705,9 @@ document.write(`
 <span class="n">classes</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes</span><span class="p">)</span>  <span class="c1"># get the logits</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">to_list</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">to_list</span><span class="p">()])</span>
 </pre></div>
 </div>
 </div>
@@ -1729,7 +1729,7 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">alexnet</span> <span class="k">as</span> <span class="n">torch_alexnet</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AlexNet_Weights</span>
 
-<span class="n">torch_alexnet</span> <span class="o">=</span> <span class="n">torch_alexnet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">AlexNet_Weights</span><span class="o">.</span><span class="n">IMAGENET1K_V1</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">torch_alexnet</span> <span class="o">=</span> <span class="n">torch_alexnet</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">AlexNet_Weights</span><span class="o">.</span><span class="n">IMAGENET1K_V1</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1741,9 +1741,9 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <span class="n">torch_classes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">torch_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch_classes</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1768,7 +1768,7 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"tensorflow"</span><span class="p">)</span>
 <span class="n">ivy_alexnet</span> <span class="o">=</span> <span class="n">alexnet</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1782,13 +1782,13 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <span class="n">raw_logits</span> <span class="o">=</span> <span class="n">ivy_alexnet</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">))</span> <span class="c1"># pass the image to the model</span>
 <span class="n">latency</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">raw_logits</span><span class="p">)</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;DESCENDING&quot;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"DESCENDING"</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes</span><span class="p">)</span>  <span class="c1"># get the logits</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latency:&quot;</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Latency:"</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
 </pre></div>
 </div>
 </div>
@@ -1822,13 +1822,13 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <span class="n">raw_logits</span> <span class="o">=</span> <span class="n">ivy_alexnet</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">))</span> <span class="c1"># pass the image to the model</span>
 <span class="n">latency</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">st</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">raw_logits</span><span class="p">)</span>
-<span class="n">classes</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;DESCENDING&quot;</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">"DESCENDING"</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes</span><span class="p">)</span>  <span class="c1"># get the logits</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latency:&quot;</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Latency:"</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
 </pre></div>
 </div>
 </div>
@@ -1850,14 +1850,14 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Overrides Jax&#39;s default behavior of preallocating 75% of GPU memory</span>
-<span class="c1"># Temporary fix until this is handled by ivy&#39;s graph tracer</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Overrides Jax's default behavior of preallocating 75% of GPU memory</span>
+<span class="c1"># Temporary fix until this is handled by ivy's graph tracer</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;XLA_PYTHON_CLIENT_ALLOCATOR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;platform&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"XLA_PYTHON_CLIENT_ALLOCATOR"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"platform"</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
 
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"jax"</span><span class="p">)</span>
 <span class="n">ivy_alexnet</span> <span class="o">=</span> <span class="n">alexnet</span><span class="p">()</span>
 <span class="n">ivy_alexnet</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">trace_graph</span><span class="p">(</span><span class="n">ivy_alexnet</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">),))</span>
 <span class="n">ivy_alexnet</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">ivy_alexnet</span><span class="p">)</span>
@@ -1887,10 +1887,10 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <span class="n">classes</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes</span><span class="p">)</span>  <span class="c1"># get the logits</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latency:&quot;</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Latency:"</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
 </pre></div>
 </div>
 </div>
@@ -1912,7 +1912,7 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/ivy-llc/models/master/images/dog.jpg
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;dog.jpg&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">"dog.jpg"</span>
 <span class="c1"># Preprocess torch image</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">transforms</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
@@ -1961,10 +1961,10 @@ Categories of the top 3 classes are: [&#39;tiger cat&#39;, &#39;tabby&#39;, &#39
 <span class="n">classes</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># get the top 3 classes</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">classes</span><span class="p">)</span>  <span class="c1"># get the logits</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latency:&quot;</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Latency:"</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()])</span>
 </pre></div>
 </div>
 </div>
@@ -1991,10 +1991,10 @@ Categories of the top 3 classes are: [&#39;Samoyed&#39;, &#39;wallaby&#39;, &#39
 <span class="n">torch_classes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">torch_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">torch_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch_classes</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latency:&quot;</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Indices of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logits of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Categories of the top 3 classes are:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Latency:"</span><span class="p">,</span> <span class="n">latency</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Indices of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_classes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Logits of the top 3 classes are:"</span><span class="p">,</span> <span class="n">torch_logits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Categories of the top 3 classes are:"</span><span class="p">,</span> <span class="p">[</span><span class="n">categories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">torch_classes</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2018,7 +2018,7 @@ Categories of the top 3 classes are: [&#39;Samoyed&#39;, &#39;wallaby&#39;, &#39
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AlexNet</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;An Ivy native implementation of AlexNet&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""An Ivy native implementation of AlexNet"""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_classes</span> <span class="o">=</span> <span class="n">num_classes</span>
@@ -2027,19 +2027,19 @@ Categories of the top 3 classes are: [&#39;Samoyed&#39;, &#39;wallaby&#39;, &#39
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
             <span class="n">ivy</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
             <span class="n">ivy</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
             <span class="n">ivy</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">384</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">384</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
             <span class="n">ivy</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
             <span class="n">ivy</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
-            <span class="n">ivy</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">),</span>
+            <span class="n">ivy</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">"NCHW"</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">avgpool</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>

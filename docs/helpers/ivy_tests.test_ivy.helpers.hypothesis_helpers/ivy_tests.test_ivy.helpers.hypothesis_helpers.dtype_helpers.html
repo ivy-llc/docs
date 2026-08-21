@@ -1601,48 +1601,48 @@ table.</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_dtypes</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">[&#39;float64&#39;]</span>
+<span class="go">['float64']</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_dtypes</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">[&#39;int8&#39;, &#39;int8&#39;]</span>
+<span class="go">['int8', 'int8']</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_dtypes</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">[&#39;int32&#39;, &#39;int32&#39;, &#39;int32&#39;, &#39;int32&#39;]</span>
+<span class="go">['int32', 'int32', 'int32', 'int32']</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_dtypes</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">num_arrays</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"valid"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">[&#39;int8&#39;, &#39;float64&#39;, &#39;complex64&#39;, &#39;int8&#39;, &#39;bool&#39;]</span>
+<span class="go">['int8', 'float64', 'complex64', 'int8', 'bool']</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_dtypes</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">num_arrays</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"valid"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">[&#39;bool&#39;, &#39;complex64&#39;, &#39;bool&#39;, &#39;complex64&#39;, &#39;bool&#39;]</span>
+<span class="go">['bool', 'complex64', 'bool', 'complex64', 'bool']</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_dtypes</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">num_arrays</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">available_dtypes</span><span class="o">=</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"valid"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">shared_dtype</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">[&#39;float64&#39;, &#39;int8&#39;, &#39;float64&#39;, &#39;int8&#39;, &#39;float64&#39;]</span>
+<span class="go">['float64', 'int8', 'float64', 'int8', 'float64']</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1716,64 +1716,64 @@ the data types supported by the current backend.</p></li>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">()</span>
-<span class="go">[&#39;float16&#39;,</span>
-<span class="go">    &#39;uint8&#39;,</span>
-<span class="go">    &#39;complex128&#39;,</span>
-<span class="go">    &#39;bool&#39;,</span>
-<span class="go">    &#39;uint32&#39;,</span>
-<span class="go">    &#39;float64&#39;,</span>
-<span class="go">    &#39;int8&#39;,</span>
-<span class="go">    &#39;int16&#39;,</span>
-<span class="go">    &#39;complex64&#39;,</span>
-<span class="go">    &#39;float32&#39;,</span>
-<span class="go">    &#39;int32&#39;,</span>
-<span class="go">    &#39;uint16&#39;,</span>
-<span class="go">    &#39;int64&#39;,</span>
-<span class="go">    &#39;uint64&#39;]</span>
+<span class="go">['float16',</span>
+<span class="go">    'uint8',</span>
+<span class="go">    'complex128',</span>
+<span class="go">    'bool',</span>
+<span class="go">    'uint32',</span>
+<span class="go">    'float64',</span>
+<span class="go">    'int8',</span>
+<span class="go">    'int16',</span>
+<span class="go">    'complex64',</span>
+<span class="go">    'float32',</span>
+<span class="go">    'int32',</span>
+<span class="go">    'uint16',</span>
+<span class="go">    'int64',</span>
+<span class="go">    'uint64']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;int16&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'valid'</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['int16']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;uint16&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'valid'</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['uint16']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;numeric&#39;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;complex64&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'numeric'</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['complex64']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;leaky_relu&quot;</span><span class="p">)</span>
-<span class="go">[&#39;float16&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'float'</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"leaky_relu"</span><span class="p">)</span>
+<span class="go">['float16']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;searchsorted&quot;</span><span class="p">)</span>
-<span class="go">[&#39;bfloat16&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'float'</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"searchsorted"</span><span class="p">)</span>
+<span class="go">['bfloat16']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;dtype&quot;</span><span class="p">)</span>
-<span class="go">[&#39;float32&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'float'</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"dtype"</span><span class="p">)</span>
+<span class="go">['float32']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;int16&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['int16']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;uint32&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"valid"</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['uint32']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;complex128&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"valid"</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['complex128']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;bool&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"valid"</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['bool']</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">[&#39;float16&#39;]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"valid"</span><span class="p">,</span> <span class="n">prune_function</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">['float16']</span>
 </pre></div>
 </div>
 </dd></dl>

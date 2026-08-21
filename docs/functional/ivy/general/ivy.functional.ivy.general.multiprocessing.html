@@ -1600,19 +1600,19 @@ Default is <code class="docutils literal notranslate"><span class="pre">None</sp
 </pre></div>
 </div>
 <p>Specifying ‘fork’ as the context:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp_fork</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">&#39;fork&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp_fork</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">'fork'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mp_fork</span><span class="p">)</span>
 <span class="go">&lt;multiprocessing.context.ForkContext object at 0x7f4e3193e580&gt;</span>
 </pre></div>
 </div>
 <p>Specifying ‘spawn’ as the context:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp_spawn</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">&#39;spawn&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp_spawn</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">'spawn'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mp_spawn</span><span class="p">)</span>
 <span class="go">&lt;multiprocessing.context.SpawnContext object at 0x7f4e3193e5e0&gt;</span>
 </pre></div>
 </div>
 <p>Specifying ‘forkserver’ as the context:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp_forkserver</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">&#39;forkserver&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp_forkserver</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">'forkserver'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mp_forkserver</span><span class="p">)</span>
 <span class="go">&lt;multiprocessing.context.ForkServerContext object at 0x7f4e3193e640&gt;</span>
 </pre></div>

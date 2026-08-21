@@ -1636,7 +1636,7 @@ For example, let’s write a strategy that generates a random data type -:</p>
 <span class="gp">&gt;&gt;&gt; </span>        <span class="nb">print</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">example</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dtypes</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;int32&quot;</span><span class="p">,</span> <span class="s2">&quot;uint32&quot;</span><span class="p">,</span> <span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dtypes</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"int32"</span><span class="p">,</span> <span class="s2">"uint32"</span><span class="p">,</span> <span class="s2">"float32"</span><span class="p">,</span> <span class="s2">"bool"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">custom_strategy</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sampled_from</span><span class="p">(</span><span class="n">dtypes</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">custom_strategy</span><span class="p">)</span>
 
@@ -1754,7 +1754,7 @@ to write an effective test, the following example describes how to implement a t
 <p>Once a strategy is initialised the <code class="code docutils literal notranslate"><span class="pre">&#64;given</span></code> decorator is added to the test function for drawing values from the strategy and passing them as inputs to the test.
 For example, in this code snippet here -:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@handle_test</span><span class="p">(</span>
-    <span class="n">dtype_and_x</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">dtype_and_values</span><span class="p">(</span><span class="n">available_dtypes</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">)),</span>
+    <span class="n">dtype_and_x</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">dtype_and_values</span><span class="p">(</span><span class="n">available_dtypes</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">)),</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1785,8 +1785,8 @@ to the <cite>handle_frontend_test</cite> and <cite>handle_frontend_method</cite>
 <p>Let’s look at the data produced by this strategy -:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">dtype_and_values</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="go">([&#39;int8&#39;], [array(69, dtype=int8)])</span>
-<span class="go">([&#39;int8&#39;], [array([-23, -81], dtype=int8)])</span>
+<span class="go">(['int8'], [array(69, dtype=int8)])</span>
+<span class="go">(['int8'], [array([-23, -81], dtype=int8)])</span>
 </pre></div>
 </div>
 <p>These values are then unpacked, converted to <code class="xref py py-class docutils literal notranslate"><span class="pre">ivy.Array</span></code> class, with corresponding dtypes.
@@ -1841,15 +1841,15 @@ We should be <strong>always</strong> using this helper function whenever we need
 </dl>
 </li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;integer&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"integer"</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="go">[&#39;int8&#39;, &#39;int16&#39;, &#39;int32&#39;, &#39;int64&#39;, &#39;uint8&#39;, &#39;uint16&#39;, &#39;uint32&#39;, &#39;uint64&#39;]</span>
+<span class="go">['int8', 'int16', 'int32', 'int64', 'uint8', 'uint16', 'uint32', 'uint64']</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"numeric"</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="go">[&#39;uint64&#39;]</span>
-<span class="go">[&#39;float16&#39;]</span>
-<span class="go">[&#39;int8&#39;]</span>
+<span class="go">['uint64']</span>
+<span class="go">['float16']</span>
+<span class="go">['int8']</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -1861,9 +1861,9 @@ We should be <strong>always</strong> using this helper function whenever we need
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">dtype_and_values</span><span class="p">(),</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="go">([&#39;bool&#39;], [array([ True,  True,  True, False])])</span>
-<span class="go">([&#39;float64&#39;], [array(-2.44758124e-308)])</span>
-<span class="go">([&#39;int16&#39;], [array([[-11228,  456], [-11228,   -268]], dtype=int16)])</span>
+<span class="go">(['bool'], [array([ True,  True,  True, False])])</span>
+<span class="go">(['float64'], [array(-2.44758124e-308)])</span>
+<span class="go">(['int16'], [array([[-11228,  456], [-11228,   -268]], dtype=int16)])</span>
 </pre></div>
 </div>
 <p>This function contains a list of keyword arguments.
@@ -1875,20 +1875,20 @@ That would again be a list of functions which expects at least one <code class="
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">dtype_values_axis</span><span class="p">(),</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="go">([&#39;int16&#39;], [array([ -9622,  28136,   6375, -12720,  21354 -4], dtype=int16)], 0)</span>
-<span class="go">([&#39;float16&#39;], [array([-1.900e+00,  5.955e+04, -1.900e+00, -5.955e+04], dtype=float16)], 1)</span>
-<span class="go">([&#39;int8&#39;], [array([[14], [10]], dtype=int8)], 1)</span>
+<span class="go">(['int16'], [array([ -9622,  28136,   6375, -12720,  21354 -4], dtype=int16)], 0)</span>
+<span class="go">(['float16'], [array([-1.900e+00,  5.955e+04, -1.900e+00, -5.955e+04], dtype=float16)], 1)</span>
+<span class="go">(['int8'], [array([[14], [10]], dtype=int8)], 1)</span>
 </pre></div>
 </div>
 <p>4. <a class="reference external" href="https://github.com/ivy-llc/ivy/blob/e50f71e283313caa9737f3c284496022ac67b58b/ivy_tests/test_ivy/helpers/hypothesis_helpers/array_helpers.py#L543">array_values</a> - It works in a similar way as the <a class="reference external" href="https://github.com/ivy-llc/ivy/blob/e50f71e283313caa9737f3c284496022ac67b58b/ivy_tests/test_ivy/helpers/hypothesis_helpers/array_helpers.py#L83">dtype_and_values</a> function, with the only difference being, here an extensive set of parameters and sub-strategies are used to generate array values.
 For example-:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strategy</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">array_values</span><span class="p">(</span>
-<span class="go">                dtype=&quot;int32&quot;,</span>
+<span class="go">                dtype="int32",</span>
 <span class="go">                shape=(3,),</span>
 <span class="go">                min_value=0,</span>
 <span class="go">                exclude_min=True,</span>
 <span class="go">                large_abs_safety_factor=2,</span>
-<span class="go">                safety_factor_scale=&quot;linear&quot;)</span>
+<span class="go">                safety_factor_scale="linear")</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">strategy</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="go">array([57384, 25687,   248], dtype=int32)</span>
@@ -1906,8 +1906,8 @@ This is what the function returns -:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A sequence of floats with arbitrary lengths ranging from [1,5]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">array_dtypes</span><span class="p">(</span><span class="n">helpers</span><span class="o">.</span><span class="n">ints</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">5</span><span class="p">)))</span>
 
-<span class="p">[</span><span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">]</span>
-<span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'float16'</span><span class="p">,</span> <span class="s1">'float32'</span><span class="p">,</span> <span class="s1">'float16'</span><span class="p">,</span> <span class="s1">'float16'</span><span class="p">,</span> <span class="s1">'float32'</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">'float64'</span><span class="p">,</span> <span class="s1">'float64'</span><span class="p">,</span> <span class="s1">'float32'</span><span class="p">,</span> <span class="s1">'float32'</span><span class="p">,</span> <span class="s1">'float16'</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>This function should be used whenever we are testing an ivy function that accepts at least one array as an input.</p>
@@ -1966,12 +1966,12 @@ For example-:</p></li>
 <li><p><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/e50f71e283313caa9737f3c284496022ac67b58b/ivy_tests/test_ivy/helpers/hypothesis_helpers/general_helpers.py#L48">subsets</a> - As the function name suggests, it generates subsets of any sequence, and returns that subset as a tuple.
 For example-:</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">some_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tensorflow&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.06</span><span class="p">,</span> <span class="s1">&#39;torch&#39;</span><span class="p">,</span> <span class="s1">&#39;ivy&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">some_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'tensorflow'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.06</span><span class="p">,</span> <span class="s1">'torch'</span><span class="p">,</span> <span class="s1">'ivy'</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">subsets</span><span class="p">(</span><span class="n">some_sequence</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="go">(&#39;tensorflow&#39;, &#39;ivy&#39;, 0)</span>
-<span class="go">(&#39;tensorflow&#39;, 1, 3.06, &#39;torch&#39;, &#39;ivy&#39;)</span>
-<span class="go">(&#39;tensorflow&#39;, 1, &#39;torch&#39;, 0)</span>
+<span class="go">('tensorflow', 'ivy', 0)</span>
+<span class="go">('tensorflow', 1, 3.06, 'torch', 'ivy')</span>
+<span class="go">('tensorflow', 1, 'torch', 0)</span>
 <span class="go">(1, 3.06)</span>
 </pre></div>
 </div>
@@ -1999,7 +1999,7 @@ This strategy can be put to use when we want our function to pass on values in a
 We can also use the function to generate a list of possible bounds wherein the function fails.
 For example-:</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_dtype</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;integer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_dtype</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"integer"</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">get_bounds</span><span class="p">(</span><span class="n">input_dtype</span><span class="o">.</span><span class="n">example</span><span class="p">()))</span>
 
 <span class="go">(73, 36418)</span>
@@ -2012,7 +2012,7 @@ For example-:</p></li>
 The first one being the <em>unnormalized probabilities</em> for all elements in a population, the second one being the <em>population size</em>.
 For example-:</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_dtype</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_dtype</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"float"</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">get_probs</span><span class="p">(</span><span class="n">input_dtype</span><span class="o">.</span><span class="n">example</span><span class="p">()))</span>
 
 <span class="go">([[6.103515625e-05, 1.099609375], [1.0, 6.103515625e-05], [1.0, 1.0], [0.5, 6.103515625e-05]], 2)</span>
@@ -2033,7 +2033,7 @@ For example-:</p></li>
 <li><p><a class="reference external" href="https://github.com/ivy-llc/ivy/blob/e50f71e283313caa9737f3c284496022ac67b58b/ivy_tests/test_ivy/helpers/testing_helpers.py#L78">num_positional_args</a> - A helper function which generates the number of positional arguments, provided a function name from any ivy submodule.
 For example -:</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">num_positional_args</span><span class="p">(</span><span class="s2">&quot;matmul&quot;</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_hypothesis_examples</span><span class="p">(</span><span class="n">num_positional_args</span><span class="p">(</span><span class="s2">"matmul"</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
 
 <span class="go">2</span>
 <span class="go">0</span>
@@ -2061,7 +2061,7 @@ It can be helpful when we are testing a function with a varied number of argumen
 <p>As explained in the <a class="reference internal" href="function_types.html"><span class="doc">Function Types</span></a> section, partial mixed functions are a special type of mixed functions that either utilize the compositional implementation
 or the primary implementation depending on some conditions on the input. Therefore, the data-types supported by partial mixed functions depend on which implementation will
 be used for the given input. For example, when <code class="code docutils literal notranslate"><span class="pre">function_supported_dtypes</span></code> is called with respect to <cite>ivy.linear</cite> with torch backend, the following output is returned:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;compositional&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">),</span> <span class="s1">&#39;primary&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">)}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">'compositional'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'float32'</span><span class="p">,</span> <span class="s1">'int8'</span><span class="p">,</span> <span class="s1">'uint8'</span><span class="p">,</span> <span class="s1">'float64'</span><span class="p">,</span> <span class="s1">'int16'</span><span class="p">,</span> <span class="s1">'int32'</span><span class="p">,</span> <span class="s1">'int64'</span><span class="p">),</span> <span class="s1">'primary'</span><span class="p">:</span> <span class="p">(</span><span class="s1">'bool'</span><span class="p">,</span> <span class="s1">'float32'</span><span class="p">,</span> <span class="s1">'int8'</span><span class="p">,</span> <span class="s1">'uint8'</span><span class="p">,</span> <span class="s1">'float64'</span><span class="p">,</span> <span class="s1">'int64'</span><span class="p">,</span> <span class="s1">'int16'</span><span class="p">,</span> <span class="s1">'int32'</span><span class="p">)}</span>
 </pre></div>
 </div>
 <p>As can be seen from the above output that the data-types supported will depend on the implementation used for the given input. It’s because of this reason that we need a slightly
@@ -2069,9 +2069,9 @@ different pipeline for testing partial mixed functions. Basically, while writing
 will be used and then based on that generate the data to test the function. Here’s an example from the test of <code class="code docutils literal notranslate"><span class="pre">ivy.linear</span></code> function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">x_and_linear</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
     <span class="n">mixed_fn_compos</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">())</span>
-    <span class="n">is_torch_backend</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend_str</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;torch&quot;</span>
+    <span class="n">is_torch_backend</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend_str</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"torch"</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span>
-        <span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mixed_fn_compos</span><span class="o">=</span><span class="n">mixed_fn_compos</span><span class="p">)</span>
+        <span class="n">helpers</span><span class="o">.</span><span class="n">get_dtypes</span><span class="p">(</span><span class="s2">"numeric"</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mixed_fn_compos</span><span class="o">=</span><span class="n">mixed_fn_compos</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">in_features</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span>
         <span class="n">helpers</span><span class="o">.</span><span class="n">ints</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mixed_fn_compos</span><span class="o">=</span><span class="n">mixed_fn_compos</span><span class="p">)</span>
@@ -2087,7 +2087,7 @@ will be used and then based on that generate the data to test the function. Here
     <span class="p">)</span>
 
     <span class="n">weight_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="n">out_features</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="n">in_features</span><span class="p">,)</span>
-    <span class="c1"># if backend is torch and we&#39;re testing the primary implementation</span>
+    <span class="c1"># if backend is torch and we're testing the primary implementation</span>
     <span class="c1"># weight.ndim should be equal to 2</span>
     <span class="k">if</span> <span class="n">is_torch_backend</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">mixed_fn_compos</span><span class="p">:</span>
         <span class="n">weight_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">out_features</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="n">in_features</span><span class="p">,)</span>
@@ -2153,16 +2153,16 @@ For the code block below-:</p></li>
 </div>
 <p>Hypothesis reports the following -:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Falsifying</span> <span class="n">example</span><span class="p">:</span> <span class="n">failing_test</span><span class="p">(</span>
-<span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="n">input_dtype</span><span class="o">=</span><span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="n">as_variable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="n">input_dtype</span><span class="o">=</span><span class="s1">'float16'</span><span class="p">,</span> <span class="n">as_variable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">Draw</span> <span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-<span class="n">File</span> <span class="s2">&quot;&lt;file_name&gt;.py&quot;</span> <span class="n">line</span> <span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="ow">in</span> <span class="n">test_demo</span>
+<span class="n">File</span> <span class="s2">"&lt;file_name&gt;.py"</span> <span class="n">line</span> <span class="s2">"123"</span><span class="p">,</span> <span class="ow">in</span> <span class="n">test_demo</span>
 <span class="k">assert</span> <span class="n">as_variable</span> <span class="o">==</span> <span class="kc">False</span>
 <span class="ne">AssertionError</span>
 
 <span class="n">Falsifying</span> <span class="n">example</span><span class="p">:</span> <span class="n">failing_test</span><span class="p">(</span>
-<span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="n">input_dtype</span><span class="o">=</span><span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="n">as_variable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="n">input_dtype</span><span class="o">=</span><span class="s1">'float16'</span><span class="p">,</span> <span class="n">as_variable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">Draw</span> <span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>
 <span class="k">assert</span> <span class="n">shape</span> <span class="o">==</span> <span class="mi">0</span>
@@ -2265,13 +2265,13 @@ section respectively.</p>
 <p>When a Hypothesis test fails, the falsifying example is printed on the console by Hypothesis.
 For example, in the <code class="code docutils literal notranslate"><span class="pre">test_result_type</span></code> Test, we find the following output on running the test:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Falsifying</span> <span class="n">example</span><span class="p">:</span> <span class="n">test_result_type</span><span class="p">(</span>
-    <span class="n">dtype_and_x</span><span class="o">=</span><span class="p">([</span><span class="s1">&#39;bfloat16&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.9090909090909091</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+    <span class="n">dtype_and_x</span><span class="o">=</span><span class="p">([</span><span class="s1">'bfloat16'</span><span class="p">,</span> <span class="s1">'int16'</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.9090909090909091</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
     <span class="n">as_variable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">num_positional_args</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">native_array</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">container</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">instance_method</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">fw</span><span class="o">=</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span>
+    <span class="n">fw</span><span class="o">=</span><span class="s1">'torch'</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2281,13 +2281,13 @@ The <code class="code docutils literal notranslate"><span class="pre">&#64;examp
 The decorator requires the test arguments as parameters.
 For the <code class="code docutils literal notranslate"><span class="pre">test_result_type</span></code> Test, we can add the decorator as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@example</span><span class="p">(</span>
-    <span class="n">dtype_and_x</span><span class="o">=</span><span class="p">([</span><span class="s1">&#39;bfloat16&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.9090909090909091</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+    <span class="n">dtype_and_x</span><span class="o">=</span><span class="p">([</span><span class="s1">'bfloat16'</span><span class="p">,</span> <span class="s1">'int16'</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.9090909090909091</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
     <span class="n">as_variable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">num_positional_args</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">native_array</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">container</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">instance_method</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">fw</span><span class="o">=</span><span class="s1">&#39;torch&#39;</span><span class="p">,</span>
+    <span class="n">fw</span><span class="o">=</span><span class="s1">'torch'</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>

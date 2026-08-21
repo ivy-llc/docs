@@ -1738,19 +1738,19 @@ This will make sure that we don’t introduce any inefficiencies and also avoid 
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
-        <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;bilinear&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;trilinear&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;area&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;nearest_exact&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tf_area&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;bicubic&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mitchellcubic&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;lanczos3&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;lanczos5&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;gaussian&quot;</span><span class="p">,</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="s2">"linear"</span><span class="p">,</span>
+        <span class="s2">"bilinear"</span><span class="p">,</span>
+        <span class="s2">"trilinear"</span><span class="p">,</span>
+        <span class="s2">"nearest"</span><span class="p">,</span>
+        <span class="s2">"area"</span><span class="p">,</span>
+        <span class="s2">"nearest_exact"</span><span class="p">,</span>
+        <span class="s2">"tf_area"</span><span class="p">,</span>
+        <span class="s2">"bicubic"</span><span class="p">,</span>
+        <span class="s2">"mitchellcubic"</span><span class="p">,</span>
+        <span class="s2">"lanczos3"</span><span class="p">,</span>
+        <span class="s2">"lanczos5"</span><span class="p">,</span>
+        <span class="s2">"gaussian"</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">"linear"</span><span class="p">,</span>
     <span class="n">scale_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">recompute_scale_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1768,13 +1768,13 @@ This will make sure that we don’t introduce any inefficiencies and also avoid 
     <span class="p">)</span>
 
 
-<span class="n">interpolate</span><span class="o">.</span><span class="n">partial_mixed_handler</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
-    <span class="s2">&quot;tf_area&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;tf_bicubic&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;mitchellcubic&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;lanczos3&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;lanczos5&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gaussian&quot;</span><span class="p">,</span>
+<span class="n">interpolate</span><span class="o">.</span><span class="n">partial_mixed_handler</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"linear"</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="s2">"tf_area"</span><span class="p">,</span>
+    <span class="s2">"tf_bicubic"</span><span class="p">,</span>
+    <span class="s2">"mitchellcubic"</span><span class="p">,</span>
+    <span class="s2">"lanczos3"</span><span class="p">,</span>
+    <span class="s2">"lanczos5"</span><span class="p">,</span>
+    <span class="s2">"gaussian"</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
 </div>

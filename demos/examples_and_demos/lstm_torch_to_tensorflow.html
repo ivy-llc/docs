@@ -1615,11 +1615,11 @@ document.write(`
 </pre></div>
 </div>
 <div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create torch lstm layer</span>
-<span class="n">torch_lstm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">torch_lstm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
 
 <span class="c1"># transpile lstm layer to tensorflow</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
-<span class="n">tf_lstm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">torch_lstm</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,))</span>
+<span class="n">tf_lstm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">torch_lstm</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"torch"</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">"tensorflow"</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,))</span>
 </pre></div>
 </div>
 </div>
@@ -1685,7 +1685,7 @@ True
   <span class="n">compiled_tf_lstm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">transpiled_tf_time</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span>
 
-<span class="c1"># time tf&#39;s own lstm layer (also compiled) for comparison</span>
+<span class="c1"># time tf's own lstm layer (also compiled) for comparison</span>
 <span class="n">original_tf_lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">time_major</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">original_tf_lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">original_tf_lstm</span><span class="p">)</span>
 <span class="n">original_tf_lstm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1695,9 +1695,9 @@ True
   <span class="n">original_tf_lstm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">original_tf_time</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span>
 
-<span class="c1"># as we can see, the transpiled tf lstm has comparable performance to tf&#39;s own lstm layer</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;transpiled tf time is </span><span class="si">{</span><span class="n">transpiled_tf_time</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">original_torch_time</span><span class="si">}</span><span class="s1">x slower than torch</span><span class="se">\&#39;</span><span class="s1">s lstm&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;original tf lstm time is </span><span class="si">{</span><span class="n">original_tf_time</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">original_torch_time</span><span class="si">}</span><span class="s1">x slower than torch</span><span class="se">\&#39;</span><span class="s1">s lstm&#39;</span><span class="p">)</span>
+<span class="c1"># as we can see, the transpiled tf lstm has comparable performance to tf's own lstm layer</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'transpiled tf time is </span><span class="si">{</span><span class="n">transpiled_tf_time</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">original_torch_time</span><span class="si">}</span><span class="s1">x slower than torch</span><span class="se">\'</span><span class="s1">s lstm'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'original tf lstm time is </span><span class="si">{</span><span class="n">original_tf_time</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">original_torch_time</span><span class="si">}</span><span class="s1">x slower than torch</span><span class="se">\'</span><span class="s1">s lstm'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

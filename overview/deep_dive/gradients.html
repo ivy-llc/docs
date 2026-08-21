@@ -1611,7 +1611,7 @@ By scalars, we are referring to zero-dimensional arrays.</p>
 
 <span class="c1"># OR</span>
 
-<span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">25.</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">21.</span><span class="p">),</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">11.</span><span class="p">))},</span> <span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">9.</span><span class="p">),)]</span>
+<span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">25.</span><span class="p">),</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">21.</span><span class="p">),</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">11.</span><span class="p">))},</span> <span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">9.</span><span class="p">),)]</span>
 </pre></div>
 </div>
 <p><code class="code docutils literal notranslate"><span class="pre">xs</span></code> can be any arbitrary nest of arrays and refers to the inputs passed to the <code class="code docutils literal notranslate"><span class="pre">func</span></code>, so we suggest designing your <code class="code docutils literal notranslate"><span class="pre">func</span></code> based on what inputs you pass in <code class="code docutils literal notranslate"><span class="pre">xs</span></code>.
@@ -1634,7 +1634,7 @@ The arrays in <code class="code docutils literal notranslate"><span class="pre">
     <span class="n">func</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">,</span>
     <span class="n">xs_grad_idxs</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]],</span>
-    <span class="n">ret_grad_idxs</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">]]</span>
+    <span class="n">ret_grad_idxs</span><span class="o">=</span><span class="p">[[</span><span class="s2">"a"</span><span class="p">]]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1647,7 +1647,7 @@ Ivy provides the <a class="reference internal" href="../../docs/functional/ivy/e
 <p>Following is an example of usage of <a class="reference internal" href="../../docs/functional/ivy/experimental/ivy.functional.ivy.experimental.gradients.html#ivy.bind_custom_gradient_function" title="ivy.bind_custom_gradient_function"><code class="xref py py-func docutils literal notranslate"><span class="pre">ivy.bind_custom_gradient_function()</span></code></a>,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ivy</span>
 
-<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+<span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"torch"</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">50.0</span><span class="p">)</span>
 <span class="n">inter_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 

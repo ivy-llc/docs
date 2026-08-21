@@ -1874,7 +1874,7 @@ argument.</p></li>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">beta</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">eigh_tridiagonal</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">beta</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">beta</span><span class="p">,</span> <span class="n">select</span><span class="o">=</span><span class="s1">'v'</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">select_range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">3.0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="go">ivy.array([0.38196602, 2.61803389])</span>
@@ -1885,7 +1885,7 @@ argument.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">eigh_tridiagonal</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">beta</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">eigvals_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">select</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">select</span><span class="o">=</span><span class="s1">'i'</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">select_range</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">tol</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>

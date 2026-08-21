@@ -1595,10 +1595,10 @@ document.write(`
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">convert_subscripts</span><span class="p">([</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">],</span> <span class="p">{</span><span class="s1">&#39;abc&#39;</span><span class="p">:</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;def&#39;</span><span class="p">:</span><span class="s1">&#39;b&#39;</span><span class="p">})</span>
-<span class="go">&#39;ab&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">convert_subscripts</span><span class="p">([</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="p">{</span><span class="nb">object</span><span class="p">:</span><span class="s1">&#39;a&#39;</span><span class="p">})</span>
-<span class="go">&#39;...a&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">convert_subscripts</span><span class="p">([</span><span class="s1">'abc'</span><span class="p">,</span> <span class="s1">'def'</span><span class="p">],</span> <span class="p">{</span><span class="s1">'abc'</span><span class="p">:</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'def'</span><span class="p">:</span><span class="s1">'b'</span><span class="p">})</span>
+<span class="go">'ab'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">convert_subscripts</span><span class="p">([</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="nb">object</span><span class="p">],</span> <span class="p">{</span><span class="nb">object</span><span class="p">:</span><span class="s1">'a'</span><span class="p">})</span>
+<span class="go">'...a'</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1614,7 +1614,7 @@ into account broadcasting.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_shape</span><span class="p">([</span><span class="s2">&quot;ab&quot;</span><span class="p">,</span> <span class="s2">&quot;bc&quot;</span><span class="p">],</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="s2">&quot;ac&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_shape</span><span class="p">([</span><span class="s2">"ab"</span><span class="p">,</span> <span class="s2">"bc"</span><span class="p">],</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="s2">"ac"</span><span class="p">)</span>
 <span class="go">(2, 4)</span>
 </pre></div>
 </div>
@@ -1635,16 +1635,16 @@ default.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_str</span><span class="p">(</span><span class="s2">&quot;ab,bc&quot;</span><span class="p">)</span>
-<span class="go">&#39;ac&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_str</span><span class="p">(</span><span class="s2">"ab,bc"</span><span class="p">)</span>
+<span class="go">'ac'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_str</span><span class="p">(</span><span class="s2">&quot;a,b&quot;</span><span class="p">)</span>
-<span class="go">&#39;ab&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_str</span><span class="p">(</span><span class="s2">"a,b"</span><span class="p">)</span>
+<span class="go">'ab'</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_str</span><span class="p">(</span><span class="s2">&quot;a,a,b,b&quot;</span><span class="p">)</span>
-<span class="go">&#39;&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oe</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">find_output_str</span><span class="p">(</span><span class="s2">"a,a,b,b"</span><span class="p">)</span>
+<span class="go">''</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1735,12 +1735,12 @@ array shapes have been supplied.</p>
 <p>The operand list is simplified to reduce printing:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">legalise_einsum_eqn</span><span class="p">((</span><span class="s1">&#39;...a,...a-&gt;...&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
-<span class="go">&#39;za,xza-&gt;xz&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">legalise_einsum_eqn</span><span class="p">((</span><span class="s1">'...a,...a-&gt;...'</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="go">'za,xza-&gt;xz'</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_einsum_input</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="p">[</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">,</span> <span class="p">[</span><span class="bp">Ellipsis</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
-<span class="go">&#39;za,xza-&gt;xz&#39;</span>
+<span class="go">'za,xza-&gt;xz'</span>
 </pre></div>
 </div>
 </dd></dl>

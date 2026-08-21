@@ -1618,7 +1618,7 @@ To make this work, you should set the backend explicitly in the <cite>_array_mod
 At the beginning of the file, you will see the following line of code <code class="code docutils literal notranslate"><span class="pre">array_module</span> <span class="pre">=</span> <span class="pre">None</span></code>.
 You need to comment out that line and add the following:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import ivy as array_module
-array_module.set_backend(&quot;jax&quot;) # or numpy, tensorflow, torch
+array_module.set_backend("jax") # or numpy, tensorflow, torch
 </pre></div>
 </div>
 <p>You should now be able to run the following commands via terminal:</p>
@@ -1626,7 +1626,7 @@ array_module.set_backend(&quot;jax&quot;) # or numpy, tensorflow, torch
 pytest -vv ivy_tests/array_api_testing/test_array_api/array_api_tests/test_manipulation_functions.py
 
 # run a single test
-pytest -vv ivy_tests/array_api_testing/test_array_api/array_api_tests/test_manipulation_functions.py -k &quot;test_concat&quot;
+pytest -vv ivy_tests/array_api_testing/test_array_api/array_api_tests/test_manipulation_functions.py -k "test_concat"
 </pre></div>
 </div>
 </section>
@@ -1650,7 +1650,7 @@ ______________________ test_remainder[remainder(x1, x2)] _______________________
 ivy_tests/array_api_testing/test_array_api/array_api_tests/test_operators_and_elementwise_functions.py:1264: in test_remainder
     @given(data=st.data())
 ivy_tests/array_api_testing/test_array_api/array_api_tests/test_operators_and_elementwise_functions.py:1277: in test_remainder
-    binary_param_assert_against_refimpl(ctx, left, right, res, &quot;%&quot;, operator.mod)
+    binary_param_assert_against_refimpl(ctx, left, right, res, "%", operator.mod)
 ivy_tests/array_api_testing/test_array_api/array_api_tests/test_operators_and_elementwise_functions.py:620: in binary_param_assert_against_refimpl
     binary_assert_against_refimpl(
 ivy_tests/array_api_testing/test_array_api/array_api_tests/test_operators_and_elementwise_functions.py:324: in binary_assert_against_refimpl
@@ -1665,16 +1665,16 @@ E   )
 E   Draw 1 (x1): ivy.array(17304064.)
 E   Draw 2 (x2): ivy.array(3.)
 E
-E   You can reproduce this example by temporarily adding @reproduce_failure(&#39;6.55.0&#39;, b&#39;AXic42BAAowcnP+RuMwMABAeAR0=&#39;) as a decorator on your test case
+E   You can reproduce this example by temporarily adding @reproduce_failure('6.55.0', b'AXic42BAAowcnP+RuMwMABAeAR0=') as a decorator on your test case
 </pre></div>
 </div>
 <p>Copy the <code class="code docutils literal notranslate"><span class="pre">&#64;reproduce_failure</span></code> decorator and paste it after the usual decorators of <cite>test_remainder</cite>.
 You may also need to include the hypothesis import of <cite>reproduce_failure</cite> as shown below.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from hypothesis import reproduce_failure
 
-@pytest.mark.parametrize(&quot;ctx&quot;, make_binary_params(&quot;remainder&quot;, dh.numeric_dtypes))
+@pytest.mark.parametrize("ctx", make_binary_params("remainder", dh.numeric_dtypes))
 @given(data=st.data())
-@reproduce_failure(&#39;6.55.0&#39;, b&#39;AXic42BAAowcnP+RuMwMABAeAR0=&#39;)
+@reproduce_failure('6.55.0', b'AXic42BAAowcnP+RuMwMABAeAR0=')
 def test_remainder(ctx, data):
     left = data.draw(ctx.left_strat, label=ctx.left_sym)
     right = data.draw(ctx.right_strat, label=ctx.right_sym)
@@ -1687,7 +1687,7 @@ def test_remainder(ctx, data):
 
     binary_param_assert_dtype(ctx, left, right, res)
     binary_param_assert_shape(ctx, left, right, res)
-    binary_param_assert_against_refimpl(ctx, left, right, res, &quot;%&quot;, operator.mod)
+    binary_param_assert_against_refimpl(ctx, left, right, res, "%", operator.mod)
 </pre></div>
 </div>
 <p>The test should then include the inputs which led to the previous failure and recreate it.

@@ -1626,15 +1626,15 @@ stack. Used internally, do not set manually.</p></li>
 </pre></div>
 </div>
 <p>With <code class="code docutils literal notranslate"><span class="pre">Dict</span></code> input:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nest</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">],</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">9.4</span><span class="p">]}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nest</span><span class="o">=</span><span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">],</span> <span class="s1">'b'</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">],</span> <span class="s1">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mf">9.4</span><span class="p">]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fun</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">abs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nested_indices</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">nested_argwhere</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="n">fun</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">nested_indices</span><span class="p">)</span>
 <span class="go">[</span>
-<span class="go">    [&#39;a&#39;, 0], [&#39;a&#39;, 1],</span>
-<span class="go">    [&#39;a&#39;, 2], [&#39;b&#39;, 0],</span>
-<span class="go">    [&#39;b&#39;, 1], [&#39;b&#39;, 2],</span>
-<span class="go">    [&#39;c&#39;, 0]</span>
+<span class="go">    ['a', 0], ['a', 1],</span>
+<span class="go">    ['a', 2], ['b', 0],</span>
+<span class="go">    ['b', 1], ['b', 2],</span>
+<span class="go">    ['c', 0]</span>
 <span class="go">]</span>
 </pre></div>
 </div>

@@ -1615,10 +1615,10 @@ recursive stack. Used internally, do not set manually.</p></li>
 </pre></div>
 </div>
 <p>With <code class="code docutils literal notranslate"><span class="pre">Dict</span></code> input:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mf">2.</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.</span><span class="p">,</span> <span class="p">[</span><span class="mf">15.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]],</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">7.</span><span class="p">,</span> <span class="mf">56.</span><span class="p">)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="mf">2.</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.</span><span class="p">,</span> <span class="p">[</span><span class="mf">15.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]],</span> <span class="s1">'c'</span><span class="p">:</span> <span class="p">(</span><span class="mf">7.</span><span class="p">,</span> <span class="mf">56.</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">all_nested_indices</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="go">[[&#39;a&#39;], [&#39;b&#39;, 0], [&#39;b&#39;, 1, 0], [&#39;b&#39;, 1, 1], [&#39;c&#39;, 0], [&#39;c&#39;, 1]]</span>
+<span class="go">[['a'], ['b', 0], ['b', 1, 0], ['b', 1, 1], ['c', 0], ['c', 1]]</span>
 </pre></div>
 </div>
 <p>With <code class="xref py py-class docutils literal notranslate"><span class="pre">ivy.Array</span></code> input:</p>
@@ -1632,7 +1632,7 @@ recursive stack. Used internally, do not set manually.</p></li>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">412</span><span class="p">,</span> <span class="mi">948</span><span class="p">,</span> <span class="mi">482</span><span class="p">]),</span> <span class="n">b</span><span class="o">=</span><span class="n">ivy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">168</span><span class="p">,</span> <span class="mi">674</span><span class="p">,</span> <span class="mi">341</span><span class="p">]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">all_nested_indices</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="go">[[&#39;a&#39;], [&#39;b&#39;]]</span>
+<span class="go">[['a'], ['b']]</span>
 </pre></div>
 </div>
 </dd></dl>

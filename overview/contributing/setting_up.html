@@ -1891,8 +1891,8 @@ lsb-release
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>echo \
-&quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-$(lsb_release -cs) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 </pre></div>
 </div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get update
@@ -2226,14 +2226,14 @@ From there, select <code class="code docutils literal notranslate"><span class="
 <li><p>To simply run the tests using the play button in the toolbar, you will need to add the .vscode folder to your workspace. Then add the <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> file containing the following:</p></li>
 </ol>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;python.testing.pytestArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;./ivy_tests/test_ivy/&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;./ivy_tests/array_api_testing/test_array_api/&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;--continue-on-collection-errors&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"python.testing.pytestArgs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">"./ivy_tests/test_ivy/"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"./ivy_tests/array_api_testing/test_array_api/"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"--continue-on-collection-errors"</span><span class="p">,</span>
 <span class="w">   </span><span class="p">],</span>
-<span class="w">   </span><span class="nt">&quot;python.testing.unittestEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;python.testing.pytestEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;python.testing.autoTestDiscoverOnSaveEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"python.testing.unittestEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"python.testing.pytestEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"python.testing.autoTestDiscoverOnSaveEnabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2251,7 +2251,7 @@ meaning <code class="code docutils literal notranslate"><span class="pre">cp310-
 We continue to add support to many more supported configurations to our binaries to work with various python versions, OS and architecture.</p>
 <p>On installing <code class="code docutils literal notranslate"><span class="pre">ivy</span></code> with <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code> all the required binaries with a supported configuration to your system get downloaded.
 Just to have another check on whether all binaries are present, there’s a warning that gets thrown when you <code class="code docutils literal notranslate"><span class="pre">import</span> <span class="pre">ivy</span></code> if any binaries are missing of the form,</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WARNING:root:   Some binaries seem to be missing in your system. This could be either because we don&#39;t have compatible binaries for your system or that newer binaries were available.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WARNING:root:   Some binaries seem to be missing in your system. This could be either because we don't have compatible binaries for your system or that newer binaries were available.
                 In the latter case, calling ivy.utils.cleanup_and_fetch_binaries() should fetch the binaries binaries. Feel free to create an issue on https://github.com/unifyai/ivy.git in case of the former
 
 WARNING:root:

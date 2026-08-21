@@ -1617,7 +1617,7 @@ document.write(`
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/CPU:0&quot;</span><span class="p">):</span>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"/CPU:0"</span><span class="p">):</span>
   <span class="n">sample_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
 
   <span class="c1"># build the lstm keras model</span>
@@ -1625,7 +1625,7 @@ document.write(`
   <span class="n">tf_lstm</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">sample_input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
   <span class="c1"># transpile to torch</span>
-  <span class="n">torch_lstm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">tf_lstm</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">sample_input</span><span class="p">,))</span>
+  <span class="n">torch_lstm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">tf_lstm</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"tensorflow"</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">"torch"</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">sample_input</span><span class="p">,))</span>
 </pre></div>
 </div>
 </div>
@@ -1690,11 +1690,11 @@ True
 
 
 <span class="c1"># benchmark on CPU</span>
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/CPU:0&quot;</span><span class="p">):</span>
-  <span class="n">torch_lstm</span> <span class="o">=</span> <span class="n">torch_lstm</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"/CPU:0"</span><span class="p">):</span>
+  <span class="n">torch_lstm</span> <span class="o">=</span> <span class="n">torch_lstm</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span>
 
   <span class="n">tf_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-  <span class="n">torch_inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">tf_inputs</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+  <span class="n">torch_inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">tf_inputs</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span>
 
   <span class="c1"># time the tf lstm</span>
   <span class="n">s</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
@@ -1708,13 +1708,13 @@ True
     <span class="n">torch_lstm</span><span class="p">(</span><span class="n">torch_inputs</span><span class="p">)</span>
   <span class="n">torch_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(CPU)  tensorflow lstm time: </span><span class="si">{</span><span class="n">tf_time</span><span class="si">}</span><span class="s1"> seconds  transpiled torch lstm time: </span><span class="si">{</span><span class="n">torch_time</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'(CPU)  tensorflow lstm time: </span><span class="si">{</span><span class="n">tf_time</span><span class="si">}</span><span class="s1"> seconds  transpiled torch lstm time: </span><span class="si">{</span><span class="n">torch_time</span><span class="si">}</span><span class="s1"> seconds'</span><span class="p">)</span>
 
   <span class="n">cpu_speedup</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">tf_time</span> <span class="o">/</span> <span class="n">torch_time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 
 <span class="c1"># benchmark on GPU</span>
-<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/GPU:0&quot;</span><span class="p">):</span>
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"/GPU:0"</span><span class="p">):</span>
   <span class="n">torch_lstm</span> <span class="o">=</span> <span class="n">torch_lstm</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 
   <span class="n">tf_inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
@@ -1732,14 +1732,14 @@ True
     <span class="n">torch_lstm</span><span class="p">(</span><span class="n">torch_inputs</span><span class="p">)</span>
   <span class="n">torch_time</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(GPU)  tensorflow lstm time: </span><span class="si">{</span><span class="n">tf_time</span><span class="si">}</span><span class="s1"> seconds  transpiled torch lstm time: </span><span class="si">{</span><span class="n">torch_time</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'(GPU)  tensorflow lstm time: </span><span class="si">{</span><span class="n">tf_time</span><span class="si">}</span><span class="s1"> seconds  transpiled torch lstm time: </span><span class="si">{</span><span class="n">torch_time</span><span class="si">}</span><span class="s1"> seconds'</span><span class="p">)</span>
 
   <span class="n">gpu_speedup</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">tf_time</span> <span class="o">/</span> <span class="n">torch_time</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 
-<span class="c1"># the transpiled torch lstm is faster than tensorflow&#39;s lstm layer on both cpu and gpu</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">transpiled torch lstm is </span><span class="si">{</span><span class="n">cpu_speedup</span><span class="si">}</span><span class="s1">x faster than tensorflow</span><span class="se">\&#39;</span><span class="s1">s lstm on CPU&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;transpiled torch lstm is </span><span class="si">{</span><span class="n">gpu_speedup</span><span class="si">}</span><span class="s1">x faster than tensorflow</span><span class="se">\&#39;</span><span class="s1">s lstm on GPU&#39;</span><span class="p">)</span>
+<span class="c1"># the transpiled torch lstm is faster than tensorflow's lstm layer on both cpu and gpu</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="se">\n</span><span class="s1">transpiled torch lstm is </span><span class="si">{</span><span class="n">cpu_speedup</span><span class="si">}</span><span class="s1">x faster than tensorflow</span><span class="se">\'</span><span class="s1">s lstm on CPU'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'transpiled torch lstm is </span><span class="si">{</span><span class="n">gpu_speedup</span><span class="si">}</span><span class="s1">x faster than tensorflow</span><span class="se">\'</span><span class="s1">s lstm on GPU'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

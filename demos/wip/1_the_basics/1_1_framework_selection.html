@@ -1650,7 +1650,7 @@ Please go through the <a href="#id1"><span class="problematic" id="id3">`Lazy vs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">unify</span><span class="p">(</span><span class="n">normalize_via_operators</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">unify</span><span class="p">(</span><span class="n">normalize_via_operators</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">"torch"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1672,7 +1672,7 @@ Please go through the <a href="#id1"><span class="problematic" id="id3">`Lazy vs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"jax"</span><span class="p">)</span>
 <span class="n">norm_comp</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">trace_graph</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1682,8 +1682,8 @@ Please go through the <a href="#id1"><span class="problematic" id="id3">`Lazy vs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span> <span class="c1"># a different global backend</span>
-<span class="n">norm_comp</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">trace_graph</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span> <span class="c1"># doesn&#39;t matter, jax specified locally</span>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"tensorflow"</span><span class="p">)</span> <span class="c1"># a different global backend</span>
+<span class="n">norm_comp</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">trace_graph</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">to</span><span class="o">=</span><span class="s2">"jax"</span><span class="p">)</span> <span class="c1"># doesn't matter, jax specified locally</span>
 </pre></div>
 </div>
 </div>
@@ -1705,7 +1705,7 @@ Please go through the <a href="#id1"><span class="problematic" id="id3">`Lazy vs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">"torch"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1714,8 +1714,8 @@ Please go through the <a href="#id1"><span class="problematic" id="id3">`Lazy vs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span>
-<span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"jax"</span><span class="p">)</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">"torch"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1725,8 +1725,8 @@ Please go through the <a href="#id1"><span class="problematic" id="id3">`Lazy vs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;tensorflow&quot;</span><span class="p">)</span> <span class="c1"># a different global backend</span>
-<span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;jax&quot;</span><span class="p">)</span> <span class="c1"># doesn&#39;t matter, jax specified locally</span>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre><span></span><span class="n">ivy</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">"tensorflow"</span><span class="p">)</span> <span class="c1"># a different global backend</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">transpile</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">),</span> <span class="n">from</span><span class="o">=</span><span class="s2">"torch"</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">"jax"</span><span class="p">)</span> <span class="c1"># doesn't matter, jax specified locally</span>
 </pre></div>
 </div>
 </div>

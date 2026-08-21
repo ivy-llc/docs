@@ -1621,10 +1621,10 @@ They are implemented as a <em>composition</em> of other Ivy functions, which the
     <span class="o">*</span><span class="p">,</span>
     <span class="n">axis</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-7</span><span class="p">,</span>
-    <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span>
+    <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"mean"</span><span class="p">,</span>
     <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">:</span>
-    <span class="n">ivy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">assertions</span><span class="o">.</span><span class="n">check_elem_in_list</span><span class="p">(</span><span class="n">reduction</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">])</span>
+    <span class="n">ivy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">assertions</span><span class="o">.</span><span class="n">check_elem_in_list</span><span class="p">(</span><span class="n">reduction</span><span class="p">,</span> <span class="p">[</span><span class="s2">"none"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">,</span> <span class="s2">"mean"</span><span class="p">])</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span>
     <span class="n">log_pred</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_reduce_loss</span><span class="p">(</span><span class="n">reduction</span><span class="p">,</span> <span class="n">log_pred</span> <span class="o">*</span> <span class="n">true</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
@@ -1674,12 +1674,12 @@ is <cite>True</cite> and the compositional implementation otherwise.</p>
 We do this by creating a dictionary of two keys, <code class="code docutils literal notranslate"><span class="pre">to_add</span></code> and <code class="code docutils literal notranslate"><span class="pre">to_skip</span></code>, each containing the tuple of wrappers to be added or skipped respectively. In general, <code class="code docutils literal notranslate"><span class="pre">handle_out_argument</span></code>, <code class="code docutils literal notranslate"><span class="pre">inputs_to_native_arrays</span></code> and <code class="code docutils literal notranslate"><span class="pre">outputs_to_ivy_arrays</span></code>
 should always be added to the primary implementation and <code class="code docutils literal notranslate"><span class="pre">inputs_to_ivy_arrays</span></code> should be skipped. For the <code class="code docutils literal notranslate"><span class="pre">linear</span></code> function, <code class="code docutils literal notranslate"><span class="pre">mixed_backend_wrappers</span></code> was added in the following manner.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">linear</span><span class="o">.</span><span class="n">mixed_backend_wrappers</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="s2">&quot;to_add&quot;</span><span class="p">:</span> <span class="p">(</span>
-     <span class="s2">&quot;handle_out_argument&quot;</span><span class="p">,</span>
-     <span class="s2">&quot;inputs_to_native_arrays&quot;</span><span class="p">,</span>
-     <span class="s2">&quot;outputs_to_ivy_arrays&quot;</span><span class="p">,</span>
+   <span class="s2">"to_add"</span><span class="p">:</span> <span class="p">(</span>
+     <span class="s2">"handle_out_argument"</span><span class="p">,</span>
+     <span class="s2">"inputs_to_native_arrays"</span><span class="p">,</span>
+     <span class="s2">"outputs_to_ivy_arrays"</span><span class="p">,</span>
    <span class="p">),</span>
-   <span class="s2">&quot;to_skip&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;inputs_to_ivy_arrays&quot;</span><span class="p">,</span> <span class="s2">&quot;handle_partial_mixed_function&quot;</span><span class="p">),</span>
+   <span class="s2">"to_skip"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"inputs_to_ivy_arrays"</span><span class="p">,</span> <span class="s2">"handle_partial_mixed_function"</span><span class="p">),</span>
 <span class="p">}</span>
 </pre></div>
 </div>
